@@ -8,114 +8,154 @@
 
 </div>
 
-<div class="projects">
-  <h1>Projects</h1>
-  
-  <div class="project row">
-    <div class="col-md-4 project-preview">
-      <img src="assets/faux-genius-screenshot.png">
-    </div>
-    <div class="col-md-6 project-description">
-      <h3>Faux Genius</h3>
-      <div class="links">
-        <%= link_to "Live demo", "http://www.fauxgenius.com" %>
-        <span class="divider"> | </span>
-        <%= link_to "Github", "https://github.com/kvognar/faux-genius" %>
-      </div>
-      <p>A clone of the collaborative lyric annotation site <a href="http://www.genius.com">Genius</a>.
-Users add songs or other texts and create new annotations simply by highlighting words of interest.</p>
-      <ul class="features">
-        <li>
-          Follow artists, songs or other users to get updates on new annotations and suggestions they create and receive.
-        </li>
-        <li>
-          Speedy single-page Backbone frontend with a RESTful Rails API backend.
-        </li>
-    </div>
-  </div>
-  
-  <div class="project row">
-    <div class="col-md-4 project-preview">
-      <img src="assets/mello-trello-screenshot.png">
-    </div>
-    <div class="col-md-6 project-description">
-      <h3>Mello Trello</h3>
-      <%= link_to "Live demo", "http://mello-trello.herokuapp.com" %>
-      <span class="divider"> | </span>
-      <%= link_to "Github", "https://github.com/kvognar/trello_clone" %>
-      <p>
-        This is a simple clone of the web app <a href="http://www.trello.com">Trello</a>, a project planning app. Users can create project boards; each board contains multiple lists representing phases of the project, and each list contains multiple cards representing individual tasks for the phase. Cards and lists can be dragged and rearranged with the mouse, and cards can be moved from one list to another.
-      </p>
-      <ul class="features">
-        <li>
-          Uses jQueryUI to drag and drop lists and cards; changes persist in database.
-        </li>
-        <li>
-          Extends Backbone’s View “class” to support composite views with nested sub-views.
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="project row">
-    <div class="col-md-4 project-preview">
-      <img src="assets/rails-lite-screenshot.png">
-    </div>
-    <div class="col-md-6 project-description">
-      <h3>Rails + ActiveRecord Lite</h3>
-      <%= link_to "Github", "https://github.com/kvognar/rails-plus-activerecord-lite" %>
-      <p>
-        A simple but functional recreation of Rails and ActiveRecord built to better understand the real frameworks.
-      </p>
-      <ul class="features">
-        <li>
-          SQL queries generated with custom has_many, belongs_to and has_one_through associations.
-        </li>
-        <li>
-          Model methods are dynamically defined according to the same naming convention that Rails uses.
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="project row">
-    <div class="col-md-4 project-preview">
-      <img src="assets/chess-screenshot.png">
-    </div>
-    <div class="col-md-6 project-description">
-      <h3>Chess</h3>
-      <div class="links">
-        <%= link_to "Github", "https://github.com/kvognar/chess" %>
-      </div>
-      <p>A simple chess game built with the Tk GUI toolkit. </p>
-      <ul class="features">
-        <li>
-          Click to select a piece, then click a highlighted square to move there.
-        </li>
-        <li>
-          Save and load games: game state is exported to YAML.
-        </li>
-    </div>
-  </div>
-  
-  
-  <div class="project row">
-    <div class="col-md-4 project-preview">
-      <img src="assets/platformer-screenshot.png">
-    </div>
-    <div class="col-md-6 project-description">
-      <h3>Platformer</h3>
-      <%= link_to "Live demo", platformer_url, target: "_blank" %>
-      <span class="divider"> | </span>
-      <%= link_to "Github", 'https://github.com/kvognar/platformer' %>
-      <p>This is a simple platforming game I built with Processing in my first programming class. The assignment was to write a program that used arrays; I was so excited about my newly discovered love of coding that I went ahead and built a game, writing object classes and inheritance and my own collision detection system. Two and a half years have passed since then and the code is starting to look a little rough around the edges, but it still plays nicely and I have a certain fondness for it.
-      </p>
-    </div>
-  </div>
-</div>
-  
-</div>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active">
+    <a href="#projects" role="tab" data-toggle="tab">Projects</a>
+  </li>
+  <li>
+    <a href="#contact" role="tab" data-toggle="tab">Contact</a>
+  </li>
+</ul>
 
-<div class="contact-links">
+<div class="tab-content">
+
+  <div id="projects" class="tab-pane fade in active">
   
-</div>
+    <div class="project row">
+      <div class="col-md-4 project-preview">
+        <img src="assets/faux-genius-screenshot.png">
+      </div>
+      <div class="col-md-6 project-description">
+        <h3>Faux Genius</h3>
+        <div class="links">
+          <%= link_to "Live demo", "http://www.fauxgenius.com" %>
+          <span class="divider"> | </span>
+          <%= link_to "Github", "https://github.com/kvognar/faux-genius" %>
+        </div>
+        <p>A clone of the collaborative lyric annotation site <a href="http://www.genius.com">Genius</a>.
+  Users add songs or other texts and create new annotations simply by highlighting words of interest.</p>
+        <ul class="features">
+          <li>
+            Follow artists, songs or other users to get updates on new annotations and suggestions they create and receive.
+          </li>
+          <li>
+            Speedy single-page Backbone frontend with a RESTful Rails API backend.
+          </li>
+      </div>
+    </div>
+  
+    <div class="project row">
+      <div class="col-md-4 project-preview">
+        <img src="assets/mello-trello-screenshot.png">
+      </div>
+      <div class="col-md-6 project-description">
+        <h3>Mello Trello</h3>
+        <%= link_to "Live demo", "http://mello-trello.herokuapp.com" %>
+        <span class="divider"> | </span>
+        <%= link_to "Github", "https://github.com/kvognar/trello_clone" %>
+        <p>
+          This is a simple clone of the web app <a href="http://www.trello.com">Trello</a>, a project planning app. Users can create project boards; each board contains multiple lists representing phases of the project, and each list contains multiple cards representing individual tasks for the phase. Cards and lists can be dragged and rearranged with the mouse, and cards can be moved from one list to another.
+        </p>
+        <ul class="features">
+          <li>
+            Uses jQueryUI to drag and drop lists and cards; changes persist in database.
+          </li>
+          <li>
+            Extends Backbone’s View “class” to support composite views with nested sub-views.
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="project row">
+      <div class="col-md-4 project-preview">
+        <img src="assets/rails-lite-screenshot.png">
+      </div>
+      <div class="col-md-6 project-description">
+        <h3>Rails + ActiveRecord Lite</h3>
+        <%= link_to "Github", "https://github.com/kvognar/rails-plus-activerecord-lite" %>
+        <p>
+          A simple but functional recreation of Rails and ActiveRecord built to better understand the real frameworks.
+        </p>
+        <ul class="features">
+          <li>
+            SQL queries generated with custom has_many, belongs_to and has_one_through associations.
+          </li>
+          <li>
+            Model methods are dynamically defined according to the same naming convention that Rails uses.
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="project row">
+      <div class="col-md-4 project-preview">
+        <img src="assets/chess-screenshot.png">
+      </div>
+      <div class="col-md-6 project-description">
+        <h3>Chess</h3>
+        <div class="links">
+          <%= link_to "Github", "https://github.com/kvognar/chess" %>
+        </div>
+        <p>A simple chess game built with the Tk GUI toolkit. </p>
+        <ul class="features">
+          <li>
+            Click to select a piece, then click a highlighted square to move there.
+          </li>
+          <li>
+            Save and load games: game state is exported to YAML.
+          </li>
+      </div>
+    </div>
+  
+  
+    <div class="project row">
+      <div class="col-md-4 project-preview">
+        <img src="assets/platformer-screenshot.png">
+      </div>
+      <div class="col-md-6 project-description">
+        <h3>Platformer</h3>
+        <%= link_to "Live demo", platformer_url, target: "_blank" %>
+        <span class="divider"> | </span>
+        <%= link_to "Github", 'https://github.com/kvognar/platformer' %>
+        <p>This is a simple platforming game I built with Processing in my first programming class. The assignment was to write a program that used arrays; I was so excited about my newly discovered love of coding that I went ahead and built a game, writing object classes and inheritance and my own collision detection system. Two and a half years have passed since then and the code is starting to look a little rough around the edges, but it still plays nicely and I have a certain fondness for it.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div id="contact" class="tab-pane fade">
+    <ul>
+      <li>
+        <a href="http://github.com/kvognar" target="_blank">
+          <img src="assets/mark-github.svg" class="contact-icon">
+          <span>Github</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://linkedin.com/in/kevinvognar" target="_blank">
+          <img src="assets/mark-linkedin.svg" class="contact-icon">
+          <span>LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:kvognar@gmail.com">
+          <img src="assets/mark-email.svg" class="contact-icon">
+          <span>Email</span>
+        </a>
+      </li>
+      <li>
+        <a href="resume">
+          <img src="assets/mark-resume.svg" class="contact-icon">
+          <span>Resume</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  
+</div> <!-- tab-content -->
+
+
+</div> <!-- #home -->
+
