@@ -18,7 +18,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   username: kevinvog
-  password: wpxgbjcitN
+  password: h7zel-R0h
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
