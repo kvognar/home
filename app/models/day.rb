@@ -21,7 +21,11 @@ class Day < ActiveRecord::Base
   after_initialize :ensure_publish_date
   before_save :slugify_slug
   
-  has_attached_file :photo, styles: {thumb: '100x100#'}
+  has_attached_file :photo, 
+                    styles: { thumb: '100x100#', medium: '1200x900>' },
+                    convert_options: {
+                      thumb: '-strip'
+                    }
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   
   

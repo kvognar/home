@@ -1,10 +1,13 @@
-<form action="<%= days_url %>" method="post">
+<form action="<%= days_url %>" method="post" enctype="multipart/form-data">
   <input type="hidden" 
          name="authenticity_token" 
          value="<%= form_authenticity_token %>">
   <input type="hidden"
          name="day[number]"
          value="<%= @day.number %>">
+  <input type="file"
+         name="day[photo]"
+         accept="image/*">
   <input type="text" 
          placeholder="Title" 
          name="day[title]" 

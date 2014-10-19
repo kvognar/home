@@ -45,5 +45,5 @@ gem 'paperclip', "~> 4.2"
 group :development do 
   gem 'annotate'
   gem 'better_errors'
-  # gem 'binding_of_caller'
+  gem 'binding_of_caller'
 end

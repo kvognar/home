@@ -27,6 +27,7 @@ class DaysController < ApplicationController
   def day_params
     params.require(:day).permit(:title,
                                 :number,
+                                :photo,
                                 :publish_date,
                                 :body,
                                 :slug,
