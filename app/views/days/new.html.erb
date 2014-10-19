@@ -1,0 +1,27 @@
+<form action="<%= days_url %>" method="post">
+  <input type="hidden" 
+         name="authenticity_token" 
+         value="<%= form_authenticity_token %>">
+  <input type="hidden"
+         name="day[number]"
+         value="<%= @day.number %>">
+  <input type="text" 
+         placeholder="Title" 
+         name="day[title]" 
+         value="<%= @day.title %>"> of the Day #<%= @day.number %>
+  <textarea name="day[body]"><%= @day.body %></textarea>
+  <input type="text" 
+         placeholder="lyrics" 
+         name="day[lyrics]" 
+         value="<%= @day.lyrics %>">
+  <input type="text" 
+        placeholder="lyric credit" 
+        name="day[lyric_credit]"
+        value="<%= @day.lyric_credit %>">
+  <input type="text"
+         placeholder="slug"
+         name="day[slug]"
+         value="<%= @day.slug %>">
+  <input type="submit" value="Good night.">
+  
+</form>
