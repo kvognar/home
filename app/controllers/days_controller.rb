@@ -15,7 +15,7 @@ class DaysController < ApplicationController
   end
   
   def show
-    @day = Day.find(params[:id])
+    @day = Day.friendly.find(params[:id])
   end
   
   def index
@@ -30,7 +30,7 @@ class DaysController < ApplicationController
                                 :photo,
                                 :publish_date,
                                 :body,
-                                :slug,
+                                :whisper,
                                 :mouseover,
                                 :lyrics,
                                 :lyric_credit)

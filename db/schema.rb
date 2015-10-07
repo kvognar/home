@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019033525) do
+ActiveRecord::Schema.define(version: 20151007181423) do
 
   create_table "days", force: true do |t|
     t.string   "title",              null: false
@@ -28,11 +28,26 @@ ActiveRecord::Schema.define(version: 20141019033525) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "whisper"
   end
 
   add_index "days", ["number"], name: "index_days_on_number", unique: true, using: :btree
   add_index "days", ["slug"], name: "index_days_on_slug", unique: true, using: :btree
   add_index "days", ["title"], name: "index_days_on_title", using: :btree
+  add_index "days", ["whisper"], name: "index_days_on_whisper", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "name",       null: false
