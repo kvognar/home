@@ -16,3 +16,45 @@
     }
   }
 }
+
+#new_day {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+
+  .day-title {
+    font-size: 4rem;
+    color: darkgray;
+  }
+  #day_title {
+    border: none;
+    &:focus {
+      outline: thin solid darkblue;
+    }
+    font-size: 4rem;
+    width: 20rem;
+    margin-right: 1rem;
+  }
+
+  #day_body {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 60rem;
+    border: none;
+    resize: none;
+    &:focus {
+      outline: 0;
+    }
+  }
+  #day_photo {
+  }
+
+  #day_mouseover {
+    display:block;
+    width: 100%;
+  }
+  #day_whisper {
+    width: 80%;
+  }
+}

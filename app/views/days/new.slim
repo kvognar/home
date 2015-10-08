@@ -1,12 +1,14 @@
-= form_for @day do |f|
-  = f.hidden_field :number, value: @day.number
-  = f.file_field :photo, accept: 'image/*'
-  .day-title
-    = f.text_field :title, value: @day.title, placeholder: 'Title'
-    = "of the Day ##{@day.number}"
-  = text_area :day, :body
-  = f.text_field :lyrics, value: @day.lyrics, placeholder: 'Lyrics'
-  = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
-  = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover'
-  = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
-  = f.submit value: "Good night."
+.day-form
+  = form_for @day do |f|
+    = f.hidden_field :number, value: @day.number
+    = f.file_field :photo, accept: 'image/*'
+    .day-title
+      / try making this content-editable later
+      = f.text_field :title, value: @day.title, placeholder: 'Title'
+      = "of the Day ##{@day.number}"
+    = text_area :day, :body, placeholder: "What's on your mind?"
+    = f.text_field :lyrics, value: @day.lyrics, placeholder: 'Lyrics'
+    = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
+    = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover'
+    = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
+    = f.submit value: "Good night."
