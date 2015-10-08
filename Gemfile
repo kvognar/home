@@ -43,6 +43,8 @@ gem 'bootstrap-sass'
 gem 'paperclip', "~> 4.2"
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'slim-rails'
+
 group :development do 
   gem 'annotate'
   gem 'better_errors'
