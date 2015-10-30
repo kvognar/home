@@ -43,9 +43,10 @@ gem 'friendly_id', '~> 5.1.0'
 
 gem 'slim-rails'
 
-group :development do 
+group :development, :test do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
