@@ -1,11 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$('#image-form').on('submit', submitImage);
+$('#image-form').on('change', submitImage);
 
-submitImage = function(event) {
-  event.preventDefault();
+var submitImage = function() {
+    $.ajax('/days', {
+        contents: {
+            photo: $('#image-form').val()
+        }
+    })
 
 }
