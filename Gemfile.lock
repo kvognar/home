@@ -164,7 +164,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-  coffee-rails (~> 4.0.0)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
