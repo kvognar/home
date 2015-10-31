@@ -27,7 +27,7 @@ class Day < ActiveRecord::Base
   after_initialize :ensure_publish_date
   friendly_id :whisper, use: [:slugged, :finders]
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
 
   has_many :people, -> { where tag_type: 'people' }, class_name: 'Tag', through: :taggings, source: :tag
@@ -35,6 +35,8 @@ class Day < ActiveRecord::Base
 
   has_many :photos, dependent: :destroy
   has_one :photo_of_the_day, -> { where is_canonical: true }, class_name: 'Photo'
+
+  has_many :comments, dependent: :destroy
 
   default_scope { order(number: :desc) }
 

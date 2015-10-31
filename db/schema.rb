@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031020221) do
+ActiveRecord::Schema.define(version: 20151031035053) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "day_id",       null: false
+    t.string   "author"
+    t.string   "author_email"
+    t.text     "body",         null: false
+    t.datetime "date"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["day_id"], name: "index_comments_on_day_id", using: :btree
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
   create_table "days", force: true do |t|
     t.string   "title",              null: false
@@ -88,6 +102,6 @@ ActiveRecord::Schema.define(version: 20151031020221) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+  add_index "tags", ["name", "tag_type"], name: "index_tags_on_name_and_tag_type", unique: true, using: :btree
 
 end
