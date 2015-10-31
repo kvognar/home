@@ -27,16 +27,27 @@ class Day < ActiveRecord::Base
   after_initialize :ensure_publish_date
   friendly_id :whisper, use: [:slugged, :finders]
 
-  has_attached_file :photo,
-                    styles: { thumb: '100x100#', medium: '1200x900>' },
-                    convert_options: {
-                      thumb: '-strip'
-                    }
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  has_many :taggings
+  has_many :tags, through: :taggings, source: :tag
 
-  default_scope { order(publish_date: :desc) }
+  has_many :people, -> { where tag_type: 'people' }, class_name: 'Tag', through: :taggings, source: :tag
+  has_many :categories, -> { where tag_type: 'category' }, class_name: 'Tag', through: :taggings, source: :tag
 
-  
+  has_many :photos, dependent: :destroy
+  has_one :photo_of_the_day, -> { where is_canonical: true }, class_name: 'Photo'
+
+  default_scope { order(number: :desc) }
+
+  def comments=(comments)
+
+  end
+
+  delegate :photo, to: :photo_of_the_day
+
+  def has_photo?
+    photo_of_the_day.present?
+  end
+
   private
   
   def ensure_publish_date
