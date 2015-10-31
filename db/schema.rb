@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007181423) do
+ActiveRecord::Schema.define(version: 20151031020221) do
 
   create_table "days", force: true do |t|
     t.string   "title",              null: false
@@ -57,16 +57,37 @@ ActiveRecord::Schema.define(version: 20151007181423) do
 
   add_index "people", ["name"], name: "index_people_on_name", unique: true, using: :btree
 
+  create_table "photos", force: true do |t|
+    t.integer  "day_id"
+    t.boolean  "is_canonical"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "photos", ["day_id"], name: "index_photos_on_day_id", using: :btree
+  add_index "photos", ["is_canonical"], name: "index_photos_on_is_canonical", using: :btree
+
   create_table "taggings", force: true do |t|
-    t.integer  "day_id",        null: false
-    t.integer  "taggable_id",   null: false
-    t.string   "taggable_type", null: false
+    t.integer  "day_id",     null: false
+    t.integer  "tag_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "taggings", ["day_id"], name: "index_taggings_on_day_id", using: :btree
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
-  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "tag_type",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
 end
