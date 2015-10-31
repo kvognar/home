@@ -10,5 +10,5 @@
 #  updated_at    :datetime
 #
 
-class Taggings < ActiveRecord::Base
+class Tagging < ActiveRecord::Base
 end
