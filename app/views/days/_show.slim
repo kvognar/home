@@ -3,8 +3,9 @@
     h1 = "#{day.title} of the Day ##{day.number}"
 - else
   h1 = "#{day.title} of the Day ##{day.number}"
-.day-photo-container
-  = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
-p = day.body
+- if day.has_photo?
+  .day-photo-container
+    = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
+p = markdown(day.body)
 h6.lyrics title="#{day.lyric_credit}"
   = day.lyrics
