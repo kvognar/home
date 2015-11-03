@@ -9,3 +9,5 @@
 p = markdown(day.body)
 h6.lyrics title="#{day.lyric_credit}"
   = day.lyrics
+.timestamp
+  = day.publish_date.to_s(:long_ordinal)
