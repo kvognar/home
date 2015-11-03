@@ -9,11 +9,15 @@ class Api::DaysController < ApplicationController
         add_tags
         add_categories
         add_comments
-        @photo = Photo.new(photo: photo_params[:photo], day: @day, is_canonical: true)
-        if @photo.save
-          render json: "hurrah!"
+        if params[:photo]
+          @photo = Photo.new(photo: photo_params[:photo], day: @day, is_canonical: true)
+          if @photo.save
+            render json: "hurrah!"
+          else
+            render json: "photo couldn't save :("
+          end
         else
-          render json: "photo couldn't save :("
+          render json: "Photo #{@day.number} uploaded!"
         end
       else
         render json: @day.errors.full_messages
