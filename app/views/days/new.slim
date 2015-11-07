@@ -1,7 +1,12 @@
 .day-form
+  form.dropzone#photo-dropzone action="/api/photos"
+    input type="hidden" value=form_authenticity_token name="authenticity_token"
+
+  #photo-container
+
   = form_for @day do |f|
     = f.hidden_field :number, value: @day.number
-    = f.file_field :photo, accept: 'image/*'
+    /= f.file_field :photo, accept: 'image/*'
     .day-title
       / try making this content-editable later
       = f.text_field :title, value: @day.title, placeholder: 'Title'

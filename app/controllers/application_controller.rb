@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, if: :api_key_given?
 
   def api_key_given?
-    puts "HEY HEY HEY HEY HEY HEY HEY"
     params[:api_key] == ENV['TRANSFIGURATION_KEY']
   end
 

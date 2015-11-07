@@ -7,6 +7,10 @@ class DaysController < ApplicationController
   def create
     @day = Day.new(day_params)
     if @day.save
+      if params[:photo]
+        photo = Photo.find(params[:photo][:id])
+        photo.update_attributes(day_id: @day.id, is_canonical: true)
+      end
       redirect_to @day
     else
       flash.now[:errors] = @day.errors.full_messages
