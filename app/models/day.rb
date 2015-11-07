@@ -40,10 +40,6 @@ class Day < ActiveRecord::Base
 
   default_scope { order(number: :desc) }
 
-  def comments=(comments)
-
-  end
-
   delegate :photo, to: :photo_of_the_day
 
   def has_photo?
