@@ -61,7 +61,7 @@ class Api::DaysController < ApplicationController
   def add_tags
     if tag_params.present?
       tag_params[:tags].each do |tag|
-        @day.tags << Tag.find_or_create_by(name: tag, tag_type: 'tag')
+        @day.tags << Tag.find_or_create_by(name: tag, tag_type: 'person')
       end
     end
   end
