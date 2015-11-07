@@ -15,6 +15,47 @@
       display: block;
     }
   }
+  .day-body {
+    margin-top: 2rem;
+    font-family: serif;
+    font-size: 1.7rem;
+    padding: 0 15%;
+    .lyrics {
+      padding-top: 2rem;
+      font-family: sans-serif;
+      font-style: italic;
+      font-weight: lighter;
+      font-size: 1rem;
+    }
+  }
+
+  .day-title {
+    color: black;
+    transition: color 0.5s ease;
+    display: inline-block;
+    padding: 0 15%;
+
+    &:hover {
+      color: deepskyblue;
+    }
+  }
+
+  a {
+    color: mediumslateblue;
+    transition: color 0.2s ease;
+    &:hover {
+      color: deepskyblue;
+      text-decoration: none;
+    }
+  }
+
+  .day-data {
+    border-top: thin solid darkblue;
+    margin: 2rem 15%;
+    .timestamp {
+      margin: 1rem 0;
+    }
+  }
 }
 
 #new_day {

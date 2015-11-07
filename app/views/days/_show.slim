@@ -1,13 +1,22 @@
-- if link_title
-  a href=day_path(day)
-    h1 = "#{day.title} of the Day ##{day.number}"
-- else
-  h1 = "#{day.title} of the Day ##{day.number}"
-- if day.has_photo?
-  .day-photo-container
-    = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
-p = markdown(day.body)
-h6.lyrics title="#{day.lyric_credit}"
-  = day.lyrics
-.timestamp
-  = day.publish_date.to_s(:long_ordinal)
+.day
+  - if link_title
+    a href=day_path(day)
+      h1.day-title = "#{day.title} of the Day ##{day.number}"
+  - else
+    h1.day-title = "#{day.title} of the Day ##{day.number}"
+  - if day.has_photo?
+    .day-photo-container
+      = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
+  .day-body
+    = markdown(day.body)
+    h6.lyrics title="#{day.lyric_credit}"
+      = "♪ #{day.lyrics}"
+
+  .day-data
+    .timestamp
+      = day.publish_date.to_s(:long_ordinal)
+
+    .people
+      = day.people.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
+    .categories
+      = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
