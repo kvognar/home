@@ -24,7 +24,10 @@ class Day < ActiveRecord::Base
   extend FriendlyId
   validates :title, :number, :publish_date, :body, :whisper, presence: true
   validates :number,:whisper, uniqueness: true
+
   after_initialize :ensure_publish_date
+  before_create :assign_day_of
+
   friendly_id :whisper, use: [:slugged, :finders]
 
   has_many :taggings, dependent: :destroy
@@ -50,5 +53,13 @@ class Day < ActiveRecord::Base
   
   def ensure_publish_date
     self.publish_date ||= Time.now
+  end
+
+  def assign_day_of
+    if publish_date.hour < 6
+      self.day_of = publish_date.to_date - 1.day
+    else
+      self.day_of = publish_date.to_date
+    end
   end
 end

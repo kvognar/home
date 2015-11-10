@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031035053) do
+ActiveRecord::Schema.define(version: 20151110223811) do
 
   create_table "comments", force: true do |t|
     t.integer  "day_id",       null: false
@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 20151031035053) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "whisper"
+    t.date     "day_of"
   end
 
+  add_index "days", ["day_of"], name: "index_days_on_day_of", using: :btree
   add_index "days", ["number"], name: "index_days_on_number", unique: true, using: :btree
   add_index "days", ["slug"], name: "index_days_on_slug", unique: true, using: :btree
   add_index "days", ["title"], name: "index_days_on_title", using: :btree
