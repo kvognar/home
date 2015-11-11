@@ -4,7 +4,7 @@
 
   #photo-container
 
-  = form_for @day do |f|
+  = form_for @day, html: { autocomplete: :off } do |f|
     = f.hidden_field :number, value: @day.number
     /= f.file_field :photo, accept: 'image/*'
     .day-title
