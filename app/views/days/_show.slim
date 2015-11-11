@@ -9,8 +9,10 @@
       = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
   .day-body
     = markdown(day.body)
-    h6.lyrics title="#{day.lyric_credit}"
-      = "♪ #{day.lyrics}"
+
+    - if day.lyrics.present?
+      h6.lyrics title="#{day.lyric_credit}"
+        = "♪ #{day.lyrics}"
 
   .day-data
     .timestamp
