@@ -22,28 +22,35 @@
 
 class Day < ActiveRecord::Base
   extend FriendlyId
+  friendly_id :whisper, use: [:slugged, :finders]
+
+  ##### Validations #####
   validates :title, :number, :publish_date, :body, :whisper, presence: true
   validates :number,:whisper, uniqueness: true
+
+  ##### Callbacks #####
 
   after_initialize :ensure_publish_date
   before_create :assign_day_of
 
-  friendly_id :whisper, use: [:slugged, :finders]
+  ##### Associations ######
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
 
   has_many :people, -> { where tag_type: 'people' }, class_name: 'Tag', through: :taggings, source: :tag
-  has_many :categories, -> { where tag_type: 'category' }, class_name: 'Tag', through: :taggings, source: :tag
+  has_many :categories, -> { where tag_type: 'categories' }, class_name: 'Tag', through: :taggings, source: :tag
 
   has_many :photos, dependent: :destroy
   has_one :photo_of_the_day, -> { where is_canonical: true }, class_name: 'Photo'
+  delegate :photo, to: :photo_of_the_day
 
   has_many :comments, dependent: :destroy
 
+  ##### Defaults ######
   default_scope { order(number: :desc) }
+  self.per_page = 10
 
-  delegate :photo, to: :photo_of_the_day
 
   def has_photo?
     photo_of_the_day.present?

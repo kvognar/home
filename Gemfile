@@ -51,4 +51,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+# Markdown
 gem 'redcarpet'
+
+# Pagination
+gem 'will_paginate', '~> 3.0.6'

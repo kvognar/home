@@ -1,2 +1,4 @@
 - @days.each do |day|
   = render partial: 'show', locals: { day: day, link_title: true }
+
+= will_paginate @days, page_links: false
