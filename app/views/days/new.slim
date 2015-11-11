@@ -1,4 +1,5 @@
 .day-form
+
   form.dropzone#photo-dropzone action="/api/photos"
     input type="hidden" value=form_authenticity_token name="authenticity_token"
 
@@ -8,13 +9,14 @@
     = f.hidden_field :number, value: @day.number
     /= f.file_field :photo, accept: 'image/*'
     .day-title
-      / try making this content-editable later
       = f.text_field :title, value: @day.title, placeholder: 'Title'
       = "of the Day ##{@day.number}"
     = text_area :day, :body, placeholder: "What's on your mind?"
     = f.text_field :lyrics, value: @day.lyrics, placeholder: 'Lyrics'
     = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
     = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover'
+    = f.text_field :people, value: @day.people.map(&:name).join(', '), placeholder: 'People'
+    = f.text_field :categories, value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
     = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
     = f.submit value: "Good night.", class: 'good-night'
 
