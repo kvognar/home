@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :photos, only: :create
-    post 'migrate', to: 'days#migrate'
+    post 'migrate', to: 'migrations#migrate'
   end
 end
