@@ -5,7 +5,7 @@
 
   #photo-container
 
-  = form_for @day, html: { autocomplete: :off } do |f|
+  = form_for @day, url: api_days_url, html: { autocomplete: :off } do |f|
     = f.hidden_field :number, value: @day.number
     /= f.file_field :photo, accept: 'image/*'
     .day-title
@@ -19,4 +19,7 @@
     = f.text_field :categories, value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
     = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
     = f.submit value: "Good night.", class: 'good-night'
+
+  .continue-container
+  .error-container
 
