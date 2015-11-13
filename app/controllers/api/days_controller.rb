@@ -1,6 +1,8 @@
 class Api::DaysController < ApplicationController
   include DayConcerns
 
+  before_action :require_admin!, only: :create
+
   def create
     @day = Day.new(day_params)
     Day.transaction do

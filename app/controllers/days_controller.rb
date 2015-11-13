@@ -1,5 +1,7 @@
 class DaysController < ApplicationController
   include DayConcerns
+
+  before_action :require_admin!, only: [:new, :create]
   
   def new
     @day = Day.new(number: Day.count + 1)

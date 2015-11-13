@@ -40,7 +40,7 @@ gem 'bootstrap-sass'
 
 gem 'paperclip', "~> 4.2"
 gem 'friendly_id', '~> 5.1.0'
-
+gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 
 group :development, :test do
@@ -49,6 +49,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'bullet'
 end
 
 # Markdown

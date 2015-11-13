@@ -18,6 +18,7 @@
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
 #  whisper            :string(255)
+#  day_of             :date
 #
 
 class Day < ActiveRecord::Base
