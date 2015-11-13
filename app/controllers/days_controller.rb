@@ -30,7 +30,7 @@ class DaysController < ApplicationController
   end
   
   def index
-    @days = Day.paginate(page: params[:page])
+    @days = Day.paginate(page: params[:page]).includes(:tags, :photo_of_the_day)
   end
   
 end
