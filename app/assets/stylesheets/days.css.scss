@@ -84,13 +84,14 @@
   #day_body {
     display: block;
     width: 100%;
-    margin: 0 auto;
+    margin: 2rem auto;
     height: 60rem;
     border: none;
     resize: none;
     &:focus {
       outline: 0;
     }
+    font-size: 1.5rem;
   }
   #day_photo {
   }
@@ -111,6 +112,7 @@
   }
 
   .good-night {
+    color: lightgrey;
     border: none;
     background: none;
     border-radius: 4px;
@@ -126,6 +128,28 @@
     &:focus {
       outline: 0;
       color: lighten(darkslateblue, 10);
+    }
+  }
+
+  a.day-data-container-toggle {
+    color: lightgrey;
+    transition: color 0.5s ease;
+    text-decoration: none;
+    font-size: 3rem;
+    &:hover {
+      text-decoration: none;
+      color: darkslateblue;
+    }
+    display: block;
+    text-align: center;
+  }
+
+  .day-data-container {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    &.glass {
+      opacity: 0;
+      //transition: opacity 0.5s ease;
     }
   }
 }

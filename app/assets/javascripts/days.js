@@ -23,6 +23,9 @@ $(function() {
         });
     });
 
+    $('.day-data-container-toggle').on('click', function(event) {
+        $('.day-data-container').toggleClass('glass');
+    })
 
 });
 
