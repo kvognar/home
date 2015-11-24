@@ -1,0 +1,7 @@
+- if signed_in?
+    .home-brella data-no-turbolink=true = link_to '☂', new_day_path
+
+- @days.each do |day|
+  = render partial: 'show', locals: { day: day, link_title: true }
+
+= will_paginate @days, page_links: false

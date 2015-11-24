@@ -9,8 +9,6 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
  gem 'therubyracer',  platforms: :ruby
 
@@ -39,3 +37,23 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass'
+
+gem 'paperclip', "~> 4.2"
+gem 'friendly_id', '~> 5.1.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'slim-rails'
+
+group :development, :test do
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'bullet'
+end
+
+# Markdown
+gem 'redcarpet'
+
+# Pagination
+gem 'will_paginate', '~> 3.0.6'
