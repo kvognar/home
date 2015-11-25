@@ -59,7 +59,7 @@ def migrate
   def add_tags
     if tag_params.present?
       tag_params[:tags].each do |tag|
-        @day.tags << Tag.find_or_create_by(name: tag, tag_type: 'person')
+        @day.tags << Tag.find_or_create_by(name: tag, tag_type: 'people')
       end
     end
   end
@@ -67,7 +67,7 @@ def migrate
   def add_categories
     if category_params.present?
       category_params[:categories].each do |category|
-        @day.categories << Tag.find_or_create_by(name: category, tag_type: 'category')
+        @day.categories << Tag.find_or_create_by(name: category, tag_type: 'categories')
       end
     end
   end
