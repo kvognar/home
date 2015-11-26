@@ -1,0 +1,5 @@
+- @days.each do |day|
+  - if day.has_photo?
+    = link_to image_tag(day.photo.url(:thumb), class: 'photo-preview'), day
+  - else
+    = link_to '☂', day, class: 'photo-placeholder'

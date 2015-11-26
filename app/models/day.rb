@@ -31,7 +31,7 @@ class Day < ActiveRecord::Base
 
   ##### Callbacks #####
 
-  after_initialize :ensure_publish_date
+  before_save :ensure_publish_date
   before_create :assign_day_of
 
   ##### Associations ######

@@ -187,3 +187,24 @@
     }
   }
 }
+
+.photo-placeholder {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background: darkslateblue;
+  content: '☂';
+  color: lightgrey;
+  font-size: 5rem;
+
+  &:hover {
+    text-decoration: none;
+    color: deepskyblue;
+  }
+}
+
+.photo-preview {
+  vertical-align: top;
+}

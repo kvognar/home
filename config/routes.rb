@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'secrets' => 'sessions#create', as: 'login'
 
   resources :days, only: [:new, :create, :show, :index]
+  get 'day_by_day', to: 'days#calendar'
+
   resources :tags, only: :show
 
   namespace :api do
