@@ -2,3 +2,5 @@ h1.tag-title = @tag.name
 
 - @days.each do |day|
   = render partial: 'days/show', locals: { day: day, link_title: true }
+
+= will_paginate @days
