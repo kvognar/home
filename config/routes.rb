@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :photos, only: :create
     resources :days, only: [:update, :create]
     post 'migrate', to: 'migrations#migrate'
+    put 'migrate/:number', to: 'migrations#update_migrate'
   end
 end

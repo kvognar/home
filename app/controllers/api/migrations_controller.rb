@@ -1,6 +1,6 @@
 class Api::MigrationsController < ApplicationController
 
-def migrate
+  def migrate
     Day.transaction do
 
       @day = Day.new(day_params)
@@ -22,6 +22,15 @@ def migrate
         render json: @day.errors.full_messages
       end
 
+    end
+  end
+
+  def update_migrate
+    @day = Day.find_by_number(params[:number])
+    if @day.update_attributes(body: params[:body])
+      render json: "Day #{@day.number} patched!"
+    else
+      render json: @day.errors.full_messages
     end
   end
 
