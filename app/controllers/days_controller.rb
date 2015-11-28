@@ -36,5 +36,12 @@ class DaysController < ApplicationController
   def calendar
     @days = Day.includes(:photo_of_the_day)#.paginate(page: params[:page])
   end
+
+  def feed
+    @days = Day.limit(10)
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
+  end
   
 end

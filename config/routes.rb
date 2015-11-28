@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :days, only: [:new, :create, :show, :index]
   get 'day_by_day', to: 'days#calendar'
+  get 'feed', to: 'days#feed'
 
   resources :tags, only: :show
 
