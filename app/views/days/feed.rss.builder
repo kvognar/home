@@ -6,7 +6,7 @@ xml.rss :version => "2.0" do
     xml.title "The Transfiguration"
     xml.author "Umbrella Man"
     xml.description "Day after day"
-    xml.link "https://www.kevinvognar.com/days"
+    xml.link "http://www.kevinvognar.com/days"
     xml.language "en"
 
     for day in @days
