@@ -18,7 +18,7 @@ xml.rss :version => "2.0" do
         xml.guid day.slug
 
         if day.has_photo?
-          image_tag = "<p><img src='#{day.photo.url(:medium)}' title='#{day.mouseover} /></p>"
+          image_tag = "<p><img src='#{day.photo.url(:medium)}' title='#{day.mouseover}' /></p>"
         else
           image_tag = ''
         end
