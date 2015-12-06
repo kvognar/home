@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'
 
-  resources :days, only: [:new, :create, :show, :index]
+  resources :days, only: [:new, :create, :index, :edit, :show]
   get 'day_by_day', to: 'days#calendar'
   get 'feed', to: 'days#feed'
 

@@ -1,7 +1,7 @@
 class DaysController < ApplicationController
   include DayConcerns
 
-  before_action :require_admin!, only: [:new, :create]
+  before_action :require_admin!, only: [:new, :create, :edit]
   
   def new
     @day = Day.new(number: Day.count + 1)
@@ -23,6 +23,10 @@ class DaysController < ApplicationController
         render :new
       end
     end
+  end
+
+  def edit
+    @day = Day.friendly.find(params[:id])
   end
   
   def show

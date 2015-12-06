@@ -5,8 +5,10 @@
 Dropzone.autoDiscover = false;
 
 $(function() {
-    var photoUpload = new Dropzone('#photo-dropzone');
-    photoUpload.on('success', µ.showPhoto);
+    if($('#photo-dropzone').length) {
+        var photoUpload = new Dropzone('#photo-dropzone');
+        photoUpload.on('success', µ.showPhoto);
+    }
 
     $('.good-night').on('click', µ.submitDay);
 
@@ -22,9 +24,9 @@ $(function() {
 
 µ.submitDay = function(event) {
     event.preventDefault();
-    var dayForm = $('#new_day');
+    var dayForm = $('#day-form');
     $.ajax({
-        type: dayForm.attr('method'),
+        type: dayForm.data('method'),
         url: dayForm.attr('action'),
         data: dayForm.serialize(),
         success: µ.handleSubmissionResponse,
@@ -34,7 +36,7 @@ $(function() {
 
 µ.showPhoto = function(file, response) {
     $('#photo-container').append('<img class="photo-preview" src="' + response.url + '">');
-    $('#new_day').append('<input type="hidden" name="photo[id]" value="' + response.id + '">' );
+    $('#day-form').append('<input type="hidden" name="photo[id]" value="' + response.id + '">' );
     $('.dropzone').hide();
 };
 
@@ -59,8 +61,8 @@ $(function() {
 // Helper methods
 
 µ.setFormToEditMode = function(response) {
-    var dayForm = $('#new_day');
+    var dayForm = $('#day-form');
     dayForm.attr('action', response.update_url);
-    dayForm.attr('method', 'PUT');
+    dayForm.data('method', 'PUT');
     dayForm.append('<input type="hidden" name="id" value="' + response.id + '">');
 };

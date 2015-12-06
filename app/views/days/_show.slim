@@ -22,3 +22,5 @@
       = day.people.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     .categories
       = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
+    -if signed_in?
+       = link_to "Edit", edit_day_url(day), data: { 'no-turbolink' => true }
