@@ -1,0 +1,12 @@
+.comment
+  .comment-content
+    - gravatar_name = comment.author_email.present? ? comment.author_email : comment.author
+    = gravatar_image_tag(gravatar_name, gravatar: {default: :retro}, class: 'gravatar')
+    .comment-text
+      .comment-header
+        span.author = comment.author
+        span.timestamp = "#{time_ago_in_words(comment.date)} ago"
+      .body = comment.body
+
+  .child-comments
+    = render comment.children

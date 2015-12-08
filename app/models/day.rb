@@ -57,6 +57,14 @@ class Day < ActiveRecord::Base
     photo_of_the_day.present?
   end
 
+  def has_comments?
+    comments.present?
+  end
+
+  def top_level_comments
+    comments.select { |comment| comment.parent_id == 0 }
+  end
+
   private
   
   def ensure_publish_date

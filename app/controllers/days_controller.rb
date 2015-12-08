@@ -30,7 +30,7 @@ class DaysController < ApplicationController
   end
   
   def show
-    @day = Day.friendly.find(params[:id])
+    @day = Day.includes(:photo_of_the_day, :comments).find(params[:id])
   end
   
   def index
