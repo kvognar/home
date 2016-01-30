@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .day {
-  width: 90%;
+  max-width: 90rem;
+  //width: 90%;
   margin: 0 auto;
   .day-photo-container {
     margin: 0 auto;
@@ -20,7 +21,9 @@
     margin-top: 2rem;
     font-family: serif;
     font-size: 1.7rem;
-    padding: 0 15%;
+    max-width: 70rem;
+    margin: 0 auto;
+    //padding: 0 15%;
     .lyrics {
       padding-top: 2rem;
       font-family: sans-serif;
@@ -260,4 +263,9 @@
 
 .photo-preview {
   vertical-align: top;
+}
+
+div.pagination {
+  text-align: center;
+  display: block;
 }
