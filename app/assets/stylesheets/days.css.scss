@@ -205,7 +205,6 @@
     opacity: 1;
     &.glass {
       opacity: 0;
-      //transition: opacity 0.5s ease;
     }
   }
 }
@@ -263,6 +262,22 @@
 
 .photo-preview {
   vertical-align: top;
+}
+
+.comment-form {
+  display: block;
+  input {
+    display: block;
+    &:focus {
+      outline: thin solid darkblue;
+    }
+  }
+  textarea {
+    width: 100%;
+    &:focus {
+      outline: thin solid darkblue;
+    }
+  }
 }
 
 div.pagination {

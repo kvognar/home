@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'
 
-  resources :days, only: [:new, :create, :index, :edit, :show]
+  resources :days, only: [:new, :create, :index, :edit, :show] do
+    resources :comments, only: :create, controller: 'api/comments'
+  end
   get 'day_by_day', to: 'days#calendar'
   get 'feed', to: 'days#feed'
 
   resources :tags, only: :show
+  resources :comments, only: [:index, :update]
 
   namespace :api do
     resources :photos, only: :create

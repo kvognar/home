@@ -29,5 +29,6 @@
 
   - if show_comments
     .comments
-      - day.top_level_comments.each do |comment|
+      - day.comments.top_level.approved.each do |comment|
         = render comment
+      = render partial: 'comments/form', locals: {day: @day, parent_comment_id: nil}

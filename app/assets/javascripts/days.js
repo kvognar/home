@@ -17,6 +17,8 @@ $(function() {
         $('.day-data-container').toggleClass('glass');
     })
 
+    $('.comment-form').on('submit', µ.submitComment);
+
 });
 
 // Triggers
@@ -30,7 +32,7 @@ $(function() {
         url: dayForm.attr('action'),
         data: dayForm.serialize(),
         success: µ.handleSubmissionResponse,
-        error: µ.print_errors
+        error: µ.printErrors
     });
 };
 
@@ -40,18 +42,38 @@ $(function() {
     $('.dropzone').hide();
 };
 
+µ.submitComment = function(event) {
+    event.preventDefault();
+    if ($('.humanity-check').prop('checked')) {
+        var commentForm = $('.comment-form');
+        $.ajax({
+            type: commentForm.data('method'),
+            url: commentForm.attr('action'),
+            data: commentForm.serialize(),
+            success: µ.handleCommentResponse,
+            error: µ.printErrors
+        });
+    } else {
+        alert("No commenting unless you're a person!")
+    }
+}
+
 // Response callbacks
 
-µ.add_link_to_day = function(response) {
+µ.addLinkToDay = function(response) {
     $('.continue-container').html('<a class="sleep-well" target="_blank" href=' + response.url + '>Sleep well.</a>')
 };
 
 µ.handleSubmissionResponse = function(response) {
-    µ.add_link_to_day(response);
+    µ.addLinkToDay(response);
     µ.setFormToEditMode(response);
 };
 
-µ.print_errors = function(response) {
+µ.handleCommentResponse = function(response) {
+    $('.comments').append("Thanks! Your comment will be visible after review.")
+};
+
+µ.printErrors = function(response) {
     $('.error-container').html('<ul></ul>');
     response.responseJSON.errors.forEach(function(error) {
         $('.error-container ul').append('<li>' + error + '</li>')

@@ -1,0 +1,43 @@
+.comment {
+  border: thin solid darkblue;
+  padding: 1rem;
+  margin-bottom: 2px;
+
+  img.gravatar {
+    max-width: 10%;
+    height: auto;
+    display: inline-block;
+    margin-right: 1rem;
+    border-radius: 3px;
+    vertical-align: top;
+  }
+
+  .comment-content {
+    padding: 1rem;
+  }
+
+  .comment-text {
+    width: 85%;
+    display: inline-block;
+    margin-left: 1rem;
+
+    .author {
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .timestamp {
+      display: inline-block;
+      color: grey;
+      margin-left: 1rem;
+    }
+
+    .body {
+      //display: block;
+    }
+  }
+  .child-comments {
+    //margin-left: 2rem;
+  }
+}
+

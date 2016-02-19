@@ -12,7 +12,6 @@ class DaysController < ApplicationController
     Day.transaction do
       if @day.save
         add_and_remove_tags
-        # fail
         if params[:photo]
           photo = Photo.find(params[:photo][:id])
           photo.update_attributes(day_id: @day.id, is_canonical: true)
@@ -32,7 +31,7 @@ class DaysController < ApplicationController
   def show
     @day = Day.includes(:photo_of_the_day, :comments).find(params[:id])
   end
-  
+
   def index
     @days = Day.paginate(page: params[:page]).includes(:tags, :photo_of_the_day)
   end
