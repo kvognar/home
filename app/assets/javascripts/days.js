@@ -17,7 +17,7 @@ $(function() {
         $('.day-data-container').toggleClass('glass');
     });
 
-    $('.comment-form').on('submit', µ.submitComment);
+    $('.comments').on('click', '.submit-comment', µ.submitComment);
 
     $('.reply-link').on('click', µ.showCommentForm);
 
@@ -49,10 +49,10 @@ $(function() {
     var $parentComment = $(event.currentTarget).parent();
     var $newForm =$('#comment-form-template').clone();
     $newForm.attr('id', null);
-    $newForm.find('input#comment_parent_id').val($parentComment.data('id'))
+    $newForm.find('input#comment_parent_id').val($parentComment.data('id'));
     $parentComment.append($newForm);
     $(event.currentTarget).remove();
-}
+};
 
 µ.submitComment = function(event) {
     event.preventDefault();
@@ -68,7 +68,7 @@ $(function() {
     } else {
         alert("No commenting unless you're a person!")
     }
-}
+};
 
 // Response callbacks
 
