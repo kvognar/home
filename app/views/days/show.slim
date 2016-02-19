@@ -1,2 +1,3 @@
 .home-brella = link_to '☂', days_url
 = render partial: 'show', locals: { day: @day , link_title: false, show_comments: true }
+= render partial: 'comments/form', locals: { day: @day, }

@@ -15,9 +15,11 @@ $(function() {
     $('.day-data-container-toggle').on('click', function(event) {
         event.preventDefault();
         $('.day-data-container').toggleClass('glass');
-    })
+    });
 
     $('.comment-form').on('submit', µ.submitComment);
+
+    $('.reply-link').on('click', µ.showCommentForm);
 
 });
 
@@ -41,6 +43,16 @@ $(function() {
     $('#day-form').append('<input type="hidden" name="photo[id]" value="' + response.id + '">' );
     $('.dropzone').hide();
 };
+
+µ.showCommentForm = function(event) {
+    event.preventDefault();
+    var $parentComment = $(event.currentTarget).parent();
+    var $newForm =$('#comment-form-template').clone();
+    $newForm.attr('id', null);
+    $newForm.find('input#comment_parent_id').val($parentComment.data('id'))
+    $parentComment.append($newForm);
+    $(event.currentTarget).remove();
+}
 
 µ.submitComment = function(event) {
     event.preventDefault();

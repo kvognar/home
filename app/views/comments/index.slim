@@ -2,6 +2,7 @@ h1 New comments
 
 - @comments.each do |comment|
   = render partial: 'comments/comment', locals: { comment: comment }
+  = link_to 'Go to day', comment.day
   = form_for comment do |f|
     = f.hidden_field :approved, value: true
     = f.submit 'okay'

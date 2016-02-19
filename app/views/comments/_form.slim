@@ -1,18 +1,10 @@
-/form.comment-form id="comment-for-day-#{day.id}" action=day_comments_url(day) method="post"
-/  input type="hidden" value=form_authenticity_token name="authenticity_token"
-/  input type="hidden" value=parent_comment_id
-/  input type="text" name="comment[author]"
-/  input type="text" name="comment[author_email]"
-/  textarea name="comment[body]"
-/  submit.button value="Go"
-
-= form_tag day_comments_url(day), class: 'comment-form', data: { method: 'POST' } do
+= form_tag day_comments_url(day), class: 'comment-form', id: 'comment-form-template', data: { method: 'POST' } do
   = hidden_field :comment, :day_id, value: day.id
-  = hidden_field :comment, :parent_comment_id, value: parent_comment_id
+  = hidden_field :comment, :parent_id, value: nil
   = text_field :comment, :author, placeholder: 'Name'
   = text_field :comment, :author_email, placeholder: 'Email'
   = text_area :comment, :body, placeholder: "What's on your mind?"
   = submit_tag "Submit"
-input.humanity-check type='checkbox'
-span = " (Click that box if you're a person)"
-.error-container
+  input.humanity-check type='checkbox'
+  span = " (Click that box if you're a person)"
+  .error-container
