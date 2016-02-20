@@ -22,13 +22,16 @@
       = day.people.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     .categories
       = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
-    - if day.has_comments? && !show_comments
-      .comment-count = link_to "#{day.comments.count} #{'comment'.pluralize(day.comments.count)}", day
-    -if signed_in?
+    - unless show_comments
+      - if day.has_comments?
+        .comment-count = link_to "#{day.comments.count} #{'comment'.pluralize(day.comments.count)}", day
+      - else
+        .comment-link = link_to 'Leave a comment', day
+    - if signed_in?
       = link_to "Edit", edit_day_url(day), data: { 'no-turbolink' => true }
 
   - if show_comments
     .comments
       - day.comments.top_level.approved.each do |comment|
         = render comment
-      = render partial: 'comments/form', locals: {day: @day, parent_comment_id: nil}
+      = render partial: 'comments/form', locals: { day: @day, parent_comment_id: nil, id: 'new-comment' }

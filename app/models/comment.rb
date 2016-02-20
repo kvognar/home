@@ -18,8 +18,9 @@ class Comment < ActiveRecord::Base
   belongs_to :parent, class_name: 'Comment', foreign_key: :parent_id
   has_many :children, class_name: 'Comment', foreign_key: :parent_id
 
-  scope :top_level, -> { where(parent_id: 0) }
-  scope :approved,  -> { where(approved: true) }
+  scope :top_level,  -> { where(parent_id: 0) }
+  scope :approved,   -> { where(approved: true) }
+  scope :unapproved, -> { where(approved: false) }
 
   validates_presence_of :day, :body
 end

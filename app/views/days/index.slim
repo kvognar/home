@@ -1,5 +1,7 @@
 - if signed_in?
-    .home-brella data-no-turbolink=true = link_to '☂', new_day_path
+  .home-brella data-no-turbolink=true = link_to '☂', new_day_path
+  - if Comment.unapproved.present?
+    .fisheye = link_to '◉', comments_path
 
 - @days.each do |day|
   = render partial: 'show', locals: { day: day, link_title: true, show_comments: false }

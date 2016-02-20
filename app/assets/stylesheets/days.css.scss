@@ -248,6 +248,21 @@
   }
 }
 
+.fisheye {
+  font-size: 4rem;
+  position: absolute;
+  margin-top: 6rem;
+  a {
+    color: crimson;
+    transition: color .2s ease;
+    &:hover {
+      color: darkslateblue;
+      text-decoration: none;
+    }
+  }
+
+}
+
 .photo-placeholder {
   display: inline-block;
   width: 100px;

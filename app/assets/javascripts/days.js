@@ -4,7 +4,7 @@
 
 Dropzone.autoDiscover = false;
 
-$(function() {
+µ.ready = function () {
     if($('#photo-dropzone').length) {
         var photoUpload = new Dropzone('#photo-dropzone');
         photoUpload.on('success', µ.showPhoto);
@@ -21,7 +21,13 @@ $(function() {
 
     $('.reply-link').on('click', µ.showCommentForm);
 
+};
+
+$(function() {
+    µ.ready();
 });
+
+$(document).on('page:load', µ.ready);
 
 // Triggers
 
@@ -57,12 +63,12 @@ $(function() {
 µ.submitComment = function(event) {
     event.preventDefault();
     if ($('.humanity-check').prop('checked')) {
-        var commentForm = $('.comment-form');
+        var $commentForm = $(event.currentTarget).parent();
         $.ajax({
-            type: commentForm.data('method'),
-            url: commentForm.attr('action'),
-            data: commentForm.serialize(),
-            success: µ.handleCommentResponse,
+            type: $commentForm.data('method'),
+            url: $commentForm.attr('action'),
+            data: $commentForm.serialize(),
+            success: function() { µ.handleCommentResponse($commentForm); },
             error: µ.printErrors
         });
     } else {
@@ -81,8 +87,8 @@ $(function() {
     µ.setFormToEditMode(response);
 };
 
-µ.handleCommentResponse = function(response) {
-    $('.comments').append("Thanks! Your comment will be visible after review.")
+µ.handleCommentResponse = function($commentForm) {
+    $commentForm.html("Thanks! Your comment will be visible after I take a look.")
 };
 
 µ.printErrors = function(response) {

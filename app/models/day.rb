@@ -58,7 +58,7 @@ class Day < ActiveRecord::Base
   end
 
   def has_comments?
-    comments.present?
+    comments.approved.present?
   end
 
   def top_level_comments
