@@ -52,6 +52,12 @@ group :development, :test do
   gem 'bullet'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'pry-byebug'
+end
+
 # Markdown
 gem 'redcarpet'
 
