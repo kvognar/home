@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name, :session_token
   validates_presence_of :name
+  after_initialize :ensure_session_token
 
   scope :admin, -> { where(is_admin: true).first }
 
