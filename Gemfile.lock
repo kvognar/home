@@ -64,6 +64,11 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.2.1)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     gravatar_image_tag (1.2.0)
@@ -201,6 +206,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bullet
+  factory_girl_rails
   friendly_id (~> 5.1.0)
   gravatar_image_tag
   jbuilder (~> 2.0)

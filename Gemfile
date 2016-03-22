@@ -56,6 +56,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'pry-byebug'
+  gem 'factory_girl_rails'
 end
 
 # Markdown
