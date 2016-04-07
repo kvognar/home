@@ -5,7 +5,9 @@ FactoryGirl.define do
     mouseover "Extra thought about how the dust might have once been an eyelash or a fly wing or a bit of banana peel."
     lyrics "lost in the clouds"
     lyric_credit "The Transfiguration - Sufjan Stevens"
-    whisper "secret inside jokes"
+    sequence :whisper do |n|
+      "secret inside jokes #{n}"
+    end
     day_of Date.today
     sequence :number do |n|
       n
