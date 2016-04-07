@@ -16,5 +16,13 @@
 require 'spec_helper'
 
 describe Photo do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_attached_file(:photo) }
+  it { should validate_attachment_content_type(:photo).allowing('image/*') }
+  it { should belong_to :day }
+
+  it 'should be valid' do
+    photo = create(:photo)
+    expect(photo.photo).to be_present
+    expect(photo).to be_valid
+  end
 end
