@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'
+  delete 'secrets' => 'sessions#destroy', as: 'logout'
 
   resources :days, only: [:new, :create, :index, :edit, :show] do
     resources :comments, only: :create, controller: 'api/comments'
