@@ -12,5 +12,6 @@
 require 'spec_helper'
 
 describe Tag do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:taggings).dependent(:destroy) }
+  it { should have_many :days }
 end
