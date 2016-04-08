@@ -38,4 +38,33 @@ describe Day do
       end
     end
   end
+
+  context 'helper methods' do
+    describe '#has_photo?' do
+      it 'returns true if the day has a photo of the day' do
+        day_with_photo = create(:day, photo_of_the_day: create(:photo, is_canonical: true))
+        day_without_photo = create(:day)
+        expect(day_with_photo.has_photo?).to be true
+        expect(day_without_photo.has_photo?).to be false
+      end
+    end
+    describe '#has_comments?' do
+      it 'returns true if the day has approved comments' do
+        day = create(:day)
+        expect(day.has_comments?).to be false
+        day.comments << create(:comment, approved: false)
+        expect(day.has_comments?).to be false
+        day.comments.first.update(approved: true)
+        expect(day.reload.has_comments?).to be true
+      end
+    end
+    describe '#top_level_comments' do
+      it 'returns comments with no parent commnent' do
+        day = create(:day)
+        comment = create(:comment, day: day)
+        child_comment = create(:comment, parent: comment, day: day)
+        expect(day.top_level_comments).to match_array([comment])
+      end
+    end
+  end
 end
