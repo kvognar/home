@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'secrets' => 'sessions#create', as: 'login'
   delete 'secrets' => 'sessions#destroy', as: 'logout'
 
-  resources :days, only: [:new, :create, :index, :edit, :show] do
+  resources :days, only: [:new, :index, :edit, :show] do
     resources :comments, only: :create, controller: 'api/comments'
   end
   get 'day_by_day', to: 'days#calendar'
