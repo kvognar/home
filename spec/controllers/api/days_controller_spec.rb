@@ -34,6 +34,13 @@ describe Api::DaysController do
       expect(day.categories.map(&:name)).to match_array ['the effervescent sea', 'dreams']
     end
 
+    it 'returns errors if the day is invalid' do
+      controller.sign_in!(user)
+      post(:create,
+           day:
+      )
+    end
+
     it 'redirects if not signed in' do
       post(:create,
            photo: { id: photo.id },
