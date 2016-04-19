@@ -8,9 +8,10 @@
 #  author_email :string(255)
 #  body         :text             not null
 #  date         :datetime
-#  parent_id    :integer
+#  parent_id    :integer          default(0)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  approved     :boolean          default(TRUE)
 #
 
 class Comment < ActiveRecord::Base
