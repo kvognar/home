@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Api::DaysController do
     let!(:user) { create(:user, is_admin: true) }
     let(:photo) { create(:photo) }
+    after(:each) { Photo.destroy_all }
     let(:day_attributes) do
       {
         title: 'test',
@@ -37,8 +38,14 @@ describe Api::DaysController do
     it 'returns errors if the day is invalid' do
       controller.sign_in!(user)
       post(:create,
-           day:
+           day: {
+               title: 'error',
+               number: 1,
+               whisper: 'this will break'
+           }
       )
+      expect(response.body).to include("Body can't be blank")
+      expect(Day.count).to eq 0
     end
 
     it 'redirects if not signed in' do
@@ -66,6 +73,12 @@ describe Api::DaysController do
     it 'redirects if not signed in' do
       put(:update, id: day.slug, day: day_attributes)
       expect(response).to redirect_to days_url
+    end
+    it 'returns errors if the day is invalid' do
+      controller.sign_in!(user)
+      put(:update, id: day.slug, day: { body: '' })
+      expect(response.body).to include("Body can't be blank")
+      expect(day.reload.body).not_to be_blank
     end
   end
 
