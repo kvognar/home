@@ -10,8 +10,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(comment_params)
       flash[:success] = 'Comment approved!' if @comment.approved?
-    else
-      flash[:errors] = @comment.errors.full_messages
     end
     redirect_to comments_url
   end
