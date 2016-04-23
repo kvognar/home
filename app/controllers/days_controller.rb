@@ -5,6 +5,7 @@ class DaysController < ApplicationController
   
   def new
     @day = Day.draft
+    render :edit
   end
 
   def edit
