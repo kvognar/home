@@ -6,6 +6,8 @@
   - else
     form.dropzone#photo-dropzone action="/api/photos"
       input type="hidden" value=form_authenticity_token name="authenticity_token"
+      input type="hidden" value=@day.id name="photo[day_id]"
+      input type="hidden" value='true' name="photo[is_canonical]"
 
     #photo-container
 
