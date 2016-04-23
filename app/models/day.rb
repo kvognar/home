@@ -53,6 +53,18 @@ class Day < ActiveRecord::Base
   default_scope { order(number: :desc) }
   self.per_page = 10
 
+  ##### Class methods #####
+
+  def Day.draft
+    day = Day.find_or_initialize_by(is_draft: true)
+    unless day.persisted?
+      day.number = Day.count + 1
+      day.save!
+    end
+    day
+  end
+
+  ##### Instance methods #####
 
   def has_photo?
     photo_of_the_day.present?

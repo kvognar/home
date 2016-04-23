@@ -4,7 +4,7 @@ class DaysController < ApplicationController
   before_action :require_admin!, only: [:new, :create, :edit]
   
   def new
-    @day = Day.new(number: Day.count + 1)
+    @day = Day.draft
   end
 
   def edit
