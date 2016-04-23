@@ -17,11 +17,11 @@ class DaysController < ApplicationController
   end
 
   def index
-    @days = Day.paginate(page: params[:page]).includes(:tags, :photo_of_the_day)
+    @days = Day.published.paginate(page: params[:page]).includes(:tags, :photo_of_the_day)
   end
 
   def calendar
-    @days = Day.includes(:photo_of_the_day)#.paginate(page: params[:page])
+    @days = Day.published.includes(:photo_of_the_day)#.paginate(page: params[:page])
   end
 
   def feed

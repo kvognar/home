@@ -53,6 +53,11 @@ class Day < ActiveRecord::Base
   default_scope { order(number: :desc) }
   self.per_page = 10
 
+  ##### Scopes #####
+
+  scope :drafts, -> { where(is_draft: true) }
+  scope :published, -> { where(is_draft: false) }
+
   ##### Class methods #####
 
   def Day.draft
@@ -64,7 +69,6 @@ class Day < ActiveRecord::Base
     day
   end
 
-  ##### Instance methods #####
 
   def has_photo?
     photo_of_the_day.present?
@@ -81,7 +85,7 @@ class Day < ActiveRecord::Base
   private
   
   def ensure_publish_date
-    self.publish_date ||= Time.now
+    self.publish_date ||= Time.now unless is_draft?
   end
 
   def assign_day_of
