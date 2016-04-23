@@ -3,11 +3,11 @@
 # Table name: days
 #
 #  id                 :integer          not null, primary key
-#  title              :string(255)      not null
+#  title              :string(255)
 #  number             :integer          not null
-#  publish_date       :datetime         not null
-#  body               :text             not null
-#  slug               :string(255)      not null
+#  publish_date       :datetime
+#  body               :text
+#  slug               :string(255)
 #  mouseover          :text
 #  lyrics             :string(255)
 #  lyric_credit       :string(255)
@@ -19,6 +19,7 @@
 #  photo_updated_at   :datetime
 #  whisper            :string(255)
 #  day_of             :date
+#  is_draft           :boolean          default(FALSE), not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

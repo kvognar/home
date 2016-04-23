@@ -3,11 +3,11 @@
 # Table name: days
 #
 #  id                 :integer          not null, primary key
-#  title              :string(255)      not null
+#  title              :string(255)
 #  number             :integer          not null
-#  publish_date       :datetime         not null
-#  body               :text             not null
-#  slug               :string(255)      not null
+#  publish_date       :datetime
+#  body               :text
+#  slug               :string(255)
 #  mouseover          :text
 #  lyrics             :string(255)
 #  lyric_credit       :string(255)
@@ -19,6 +19,7 @@
 #  photo_updated_at   :datetime
 #  whisper            :string(255)
 #  day_of             :date
+#  is_draft           :boolean          default(FALSE), not null
 #
 
 class Day < ActiveRecord::Base
@@ -26,13 +27,13 @@ class Day < ActiveRecord::Base
   friendly_id :whisper, use: [:slugged, :finders]
 
   ##### Validations #####
-  validates :title, :number, :publish_date, :body, :whisper, presence: true
+  validates :title, :number, :publish_date, :body, :whisper, presence: true, unless: :is_draft?
   validates :number,:whisper, uniqueness: true
 
   ##### Callbacks #####
 
-  before_validation :ensure_publish_date
-  before_create :assign_day_of
+  before_validation :ensure_publish_date, unless: :is_draft?
+  before_validation :assign_day_of,       unless: :is_draft?
 
   ##### Associations ######
 

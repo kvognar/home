@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206214943) do
+ActiveRecord::Schema.define(version: 20160423191209) do
 
   create_table "comments", force: true do |t|
     t.integer  "day_id",                      null: false
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20160206214943) do
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
   create_table "days", force: true do |t|
-    t.string   "title",              null: false
-    t.integer  "number",             null: false
-    t.datetime "publish_date",       null: false
-    t.text     "body",               null: false
-    t.string   "slug",               null: false
+    t.string   "title"
+    t.integer  "number",                             null: false
+    t.datetime "publish_date"
+    t.text     "body"
+    t.string   "slug"
     t.text     "mouseover"
     t.string   "lyrics"
     t.string   "lyric_credit"
@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 20160206214943) do
     t.datetime "photo_updated_at"
     t.string   "whisper"
     t.date     "day_of"
+    t.boolean  "is_draft",           default: false, null: false
   end
 
   add_index "days", ["day_of"], name: "index_days_on_day_of", using: :btree
+  add_index "days", ["is_draft"], name: "index_days_on_is_draft", using: :btree
   add_index "days", ["number"], name: "index_days_on_number", unique: true, using: :btree
   add_index "days", ["slug"], name: "index_days_on_slug", unique: true, using: :btree
   add_index "days", ["title"], name: "index_days_on_title", using: :btree
