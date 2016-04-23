@@ -34,11 +34,7 @@ class User < ActiveRecord::Base
     self.save!
     self.session_token
   end
-
-  def is_admin?
-    self.is_admin
-  end
-
+  
   private
 
   def ensure_session_token
