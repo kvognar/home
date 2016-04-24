@@ -6,11 +6,12 @@ describe DaysController do
   let!(:user) { create(:user, is_admin: true) }
 
   describe '#new' do
-    it 'renders a new day page with an initialized day' do
+    it 'renders the edit day page with a new day draft' do
       controller.sign_in!(user)
       get(:new)
       expect(assigns(:day).number).to eq 3
-      expect(response).to render_template :new
+      expect(assigns(:day).is_draft).to eq true
+      expect(response).to render_template :edit
     end
     it 'redirects to index if not signed in' do
       get(:new)
@@ -57,7 +58,7 @@ describe DaysController do
   describe '#calendar' do
     it 'renders all of the days???' do
       get(:calendar)
-      expect(assigns(:days)).to eq Day.all
+      expect(assigns(:days)).to match_array Day.all
       expect(response).to render_template :calendar
     end
   end
