@@ -44,7 +44,9 @@ module DayConcerns
                                 :whisper,
                                 :mouseover,
                                 :lyrics,
-                                :lyric_credit)
+                                :lyric_credit,
+                                :is_draft
+    )
   end
 
 end

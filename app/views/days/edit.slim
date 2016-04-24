@@ -11,13 +11,14 @@
 
     #photo-container
 
-  = form_for @day, html: {id: 'day-form', autocomplete: :off} do |f|
+  = form_for @day, url: api_day_url(@day), data: { method: :put }, html: {id: 'day-form', autocomplete: :off} do |f|
     = f.hidden_field :number, value: @day.number
+    = f.hidden_field :is_draft, value: @day.is_draft
     .day-title
       = f.text_field :title, value: @day.title, placeholder: 'Title'
       = "of the Day ##{@day.number}"
+      span.save-state = " ☂"
       = text_area :day, :body, placeholder: "What's on your mind?", value: @day.body
-
 
     a.day-data-container-toggle href='#toggle' ◉
     .day-data-container.glass

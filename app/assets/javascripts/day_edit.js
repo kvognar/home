@@ -8,7 +8,14 @@ Dropzone.autoDiscover = false;
         photoUpload.on('success', µ.showPhoto);
     }
     µ.hasChanged = false;
-    setInterval(µ.checkToSaveDraft, 10000);
+    µ.saveCountdown = 3;
+    µ.draftInterval = setInterval(µ.saveDraft, 1000);
+
+    $('form #day_body').on('input', function() {
+        µ.hasChanged = true;
+        µ.saveCountdown = 3;
+        $('.save-state').removeClass('saved');
+    });
 
     $('.good-night').on('click', µ.submitDay);
 
@@ -16,13 +23,10 @@ Dropzone.autoDiscover = false;
         event.preventDefault();
         $('.day-data-container').toggleClass('glass');
     });
-    console.log('get ready');
-
 };
 
 $(document).on('page:change', function() {
     if ($('body.days.new').length || $('body.days.edit').length) {
-        console.log('huh?');
         µ.readyDayEdit();
     }
 });
@@ -30,7 +34,10 @@ $(document).on('page:change', function() {
 // Triggers
 
 µ.saveDraft = function() {
-    if(µ.hasChanged && $('#day_is_draft').attr('value') === 'true') {
+    µ.saveCountdown--;
+    if(µ.hasChanged && µ.saveCountdown < 1 && $('#day_is_draft').attr('value') === 'true') {
+        var dayForm = $('#day-form');
+        µ.hasChanged = false;
         $.ajax({
             type: dayForm.data('method'),
             url: dayForm.attr('action'),
@@ -43,7 +50,10 @@ $(document).on('page:change', function() {
 
 µ.submitDay = function(event) {
     event.preventDefault();
+    clearInterval(µ.draftInterval);
+    $('#day_is_draft').val('false');
     var dayForm = $('#day-form');
+
     $.ajax({
         type: dayForm.data('method'),
         url: dayForm.attr('action'),
@@ -67,7 +77,17 @@ $(document).on('page:change', function() {
 
 µ.handleSubmissionResponse = function(response) {
     µ.addLinkToDay(response);
-    µ.setFormToEditMode(response);
+    µ.updateFormUrl(response);
+};
+
+µ.handleDraftUpdate = function(response) {
+    $('.save-state').addClass('saved');
+    µ.updateFormUrl(response);
+    µ.hasChanged = false;
+};
+
+µ.handleDraftUpdateError = function(response) {
+    $('.save-state').addClass('error');
 };
 
 µ.printErrors = function(response) {
@@ -79,9 +99,7 @@ $(document).on('page:change', function() {
 
 // Helper methods
 
-µ.setFormToEditMode = function(response) {
+µ.updateFormUrl = function(response) {
     var dayForm = $('#day-form');
     dayForm.attr('action', response.update_url);
-    dayForm.data('method', 'PUT');
-    dayForm.append('<input type="hidden" name="id" value="' + response.id + '">');
 };
