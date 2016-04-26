@@ -19,17 +19,19 @@
 }
 
 body {
-  color: #333333
+  color: #333333;
 }
 
 nav {
   ul.nav a {
+    color: #333333;
     &:hover {
       color: darkslateblue;
     }
     transition: background-color 0.5s ease;
   }
   .navbar-brand {
+    color: #333333;
     &:hover {
       color: deepskyblue;
     }
