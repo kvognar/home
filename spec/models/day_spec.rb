@@ -44,6 +44,30 @@ describe Day do
     it { should have_many :comments }
   end
 
+  context 'drafts' do
+    describe 'validations' do
+      it 'should skip most validations as a draft' do
+        draft = Day.create(number: 1, is_draft: true)
+        expect(draft).to be_valid
+        draft.is_draft = false
+        expect(draft).to_not be_valid
+      end
+    end
+
+    describe '#Day.draft' do
+      it 'creates a new draft if none exists' do
+        expect(Day.count).to eq 0
+        draft = Day.draft
+        expect(draft.is_draft?).to be true
+        expect(Day.count).to eq 1
+      end
+      it 'fetches an existing draft if one exists' do
+        draft = Day.create(number: 314, is_draft: true)
+        expect(Day.draft).to eq draft
+      end
+    end
+  end
+
   context 'callbacks' do
     describe '#ensure_publish_date' do
       it 'defaults to now' do
@@ -65,6 +89,7 @@ describe Day do
 
   context 'helper methods' do
     describe '#has_photo?' do
+      after { Photo.destroy_all }
       it 'returns true if the day has a photo of the day' do
         day_with_photo = create(:day, photo_of_the_day: create(:photo, is_canonical: true))
         day_without_photo = create(:day)
