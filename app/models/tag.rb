@@ -12,4 +12,9 @@
 class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :days, through: :taggings, source: :day
+
+  scope :people, -> { where tag_type: 'people' }
+  scope :categories, -> { where tag_type: 'categories' }
+
+  default_scope { order(:name) }
 end

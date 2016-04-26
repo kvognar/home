@@ -17,3 +17,22 @@
 .content {
   margin-bottom: 5rem;
 }
+
+body {
+  color: #333333
+}
+
+nav {
+  ul.nav a {
+    &:hover {
+      color: darkslateblue;
+    }
+    transition: background-color 0.5s ease;
+  }
+  .navbar-brand {
+    &:hover {
+      color: deepskyblue;
+    }
+    transition: color 0.5s ease;
+  }
+}

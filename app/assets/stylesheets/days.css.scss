@@ -4,7 +4,6 @@
 
 .day {
   max-width: 90rem;
-  //width: 90%;
   margin: 0 auto;
   .day-photo-container {
     margin: 0 auto;
@@ -23,7 +22,6 @@
     font-size: 1.7rem;
     max-width: 70rem;
     margin: 0 auto;
-    //padding: 0 15%;
     .lyrics {
       padding-top: 2rem;
       font-family: sans-serif;
@@ -34,7 +32,7 @@
   }
 
   .day-title {
-    color: black;
+    color: #333333;
     transition: color 0.5s ease;
     display: inline-block;
     padding: 0 15%;
@@ -313,4 +311,11 @@
 div.pagination {
   text-align: center;
   display: block;
+}
+
+div.susurrus {
+  text-align: center;
+  a {
+    display: block;
+  }
 }

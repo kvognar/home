@@ -1,0 +1,21 @@
+nav.navbar role='navigation'
+  .container-fluid
+    .navbar-header
+      = link_to 'Good morning', days_url, class: 'navbar-brand'
+    ul.nav.navbar-nav
+      li.dropdown
+        a href='#' class="dropdown-toggle" data-toggle="dropdown" People
+        ul.dropdown-menu role='menu'
+          - Tag.people.each do |person|
+            li = link_to person.name, tag_url(person)
+      li.dropdown
+        a href='#' class='dropdown-toggle' data-toggle='dropdown' Categories
+        ul.dropdown-menu role='menu'
+          - Tag.categories.each do |category|
+            li = link_to category.name, tag_url(category)
+      li
+        = link_to 'Susurrus', susurrus_url
+      li
+        = link_to 'Day by day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
+      - if signed_in?
+        li = link_to '☂', new_day_url

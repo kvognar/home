@@ -24,6 +24,10 @@ class DaysController < ApplicationController
     @days = Day.published.includes(:photo_of_the_day)#.paginate(page: params[:page])
   end
 
+  def susurrus
+    @days = Day.published.select(:id, :slug)
+  end
+
   def feed
     @days = Day.limit(10)
     respond_to do |format|

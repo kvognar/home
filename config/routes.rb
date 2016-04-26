@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create, controller: 'api/comments'
   end
   get 'day_by_day', to: 'days#calendar'
+  get 'susurrus', to: 'days#susurrus'
   get 'feed', to: 'days#feed'
 
   resources :tags, only: :show
