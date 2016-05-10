@@ -24,7 +24,7 @@ class Api::DaysController < ApplicationController
           photo = Photo.find(params[:photo][:id])
           photo.update_attributes(day_id: @day.id, is_canonical: true)
         end
-        render json: { url: day_url(@day), update_url: api_day_url(@day), id: @day.id }, status: :ok
+        render json: { url: day_url(@day), id: @day.id }, status: :ok
       else
         render json: { errors: @day.errors.full_messages }, status: :unprocessable_entity
       end

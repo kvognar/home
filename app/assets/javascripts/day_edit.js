@@ -77,12 +77,10 @@ $(document).on('page:change', function() {
 
 µ.handleSubmissionResponse = function(response) {
     µ.addLinkToDay(response);
-    µ.updateFormUrl(response);
 };
 
 µ.handleDraftUpdate = function(response) {
     $('.save-state').addClass('saved');
-    µ.updateFormUrl(response);
     µ.hasChanged = false;
 };
 
@@ -95,11 +93,4 @@ $(document).on('page:change', function() {
     response.responseJSON.errors.forEach(function(error) {
         $('.error-container ul').append('<li>' + error + '</li>')
     })
-};
-
-// Helper methods
-
-µ.updateFormUrl = function(response) {
-    var dayForm = $('#day-form');
-    dayForm.attr('action', response.update_url);
 };

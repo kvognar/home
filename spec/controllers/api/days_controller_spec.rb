@@ -25,7 +25,7 @@ describe Api::DaysController do
             categories: 'the effervescent sea, dreams'
            )
       )
-      day = Day.find(day_attributes[:whisper].parameterize)
+      day = Day.first
       day_attributes.each do |attr_name, value|
         expect(day[attr_name]).to eq value
       end
@@ -64,19 +64,19 @@ describe Api::DaysController do
     let(:day) { create(:day) }
     it 'updates the day' do
       controller.sign_in!(user)
-      put(:update, id: day.slug, day: day_attributes)
+      put(:update, id: day.id, day: day_attributes)
       day.reload
       day_attributes.each do |attr_name, value|
         expect(day[attr_name]).to eq value
       end
     end
     it 'redirects if not signed in' do
-      put(:update, id: day.slug, day: day_attributes)
+      put(:update, id: day.id, day: day_attributes)
       expect(response).to redirect_to days_url
     end
     it 'returns errors if the day is invalid' do
       controller.sign_in!(user)
-      put(:update, id: day.slug, day: { body: '' })
+      put(:update, id: day.id, day: { body: '' })
       expect(response.body).to include("Body can't be blank")
       expect(day.reload.body).not_to be_blank
     end

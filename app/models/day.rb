@@ -24,7 +24,7 @@
 
 class Day < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :whisper, use: [:slugged, :finders]
+  friendly_id :whisper, use: :slugged
 
   ##### Validations #####
   validates :title, :number, :publish_date, :body, :whisper, presence: true, unless: :is_draft?
