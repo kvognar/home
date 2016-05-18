@@ -3,11 +3,7 @@ nav.navbar role='navigation'
     .navbar-header
       = link_to 'Good morning', days_url, class: 'navbar-brand'
     ul.nav.navbar-nav
-      li.dropdown
-        a href='#' class="dropdown-toggle" data-toggle="dropdown" People
-        ul.dropdown-menu role='menu'
-          - Tag.people.each do |person|
-            li = link_to person.name, tag_url(person)
+      li = link_to 'People', people_url
       li.dropdown
         a href='#' class='dropdown-toggle' data-toggle='dropdown' Categories
         ul.dropdown-menu role='menu'

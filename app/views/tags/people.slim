@@ -1,0 +1,7 @@
+- ('a'..'z').each do |letter|
+  - if @people.key?(letter)
+    h1 = letter
+    - @people[letter].each do |person|
+      a href=tag_url(person)
+        = image_tag(person.preview_photo.photo.url(:thumb))
+        = person.name
