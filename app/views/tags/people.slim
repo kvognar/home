@@ -25,5 +25,8 @@
       - @people[char].each do |person|
         .person-preview
           a href=tag_url(person)
-            = image_tag(person.preview_photo.photo.url(:thumb))
+            - if person.preview_photo.nil?
+              .photo-placeholder = '☂'
+            - else
+              = image_tag(person.preview_photo.photo.url(:thumb))
             .person-link = person.name
