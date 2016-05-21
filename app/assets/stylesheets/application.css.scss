@@ -38,3 +38,12 @@ nav {
     transition: color 0.5s ease;
   }
 }
+
+a {
+  color: darkblue;
+  &:hover {
+    color: deepskyblue;
+    text-decoration: none;
+  }
+  transition: color 0.5s ease;
+}

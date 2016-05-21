@@ -1,0 +1,26 @@
+.tag-letter-box {
+  max-width: 80%;
+}
+
+.person-preview {
+  display: inline-block;
+  img {
+    border-radius: 2px;
+  }
+  .person-link {
+    text-align: center;
+  }
+}
+
+h1 {
+  font-family: 'Gentium Book Basic', Georgia, serif;
+}
+
+h3.letter-shortcuts {
+  text-align: center;
+  font-family: 'Gentium Book Basic', Georgia, serif;
+}
+
+.people-index {
+  margin: 0 20%;
+}

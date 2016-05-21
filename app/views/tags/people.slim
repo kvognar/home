@@ -1,7 +1,26 @@
-- ('a'..'z').each do |letter|
-  - if @people.key?(letter)
-    h1 = letter
-    - @people[letter].each do |person|
-      a href=tag_url(person)
-        = image_tag(person.preview_photo.photo.url(:thumb))
-        = person.name
+.people-index
+  h3.letter-shortcuts
+    - ('a'..'z').each do |letter|
+      - if @people.key?(letter)
+        = link_to letter, "##{letter}"
+      - else
+        span = " #{letter}"
+    = link_to ' #', '#sym'
+
+  - ('a'..'z').each do |letter|
+    - if @people.key?(letter)
+      .tag-letter-box id=letter
+        h1 = letter
+        - @people[letter].each do |person|
+          .person-preview
+            a href=tag_url(person)
+              = image_tag(person.preview_photo.photo.url(:thumb))
+              .person-link = person.name
+  .tag-letter-box id='sym'
+    h1 #
+    - @people.keys.reject { |char| ('a'..'z').include?(char) }.sort.each do |char|
+      - @people[char].each do |person|
+        .person-preview
+          a href=tag_url(person)
+            = image_tag(person.preview_photo.photo.url(:thumb))
+            .person-link = person.name
