@@ -4,11 +4,11 @@
 
 .person-preview {
   display: inline-block;
+  width: 120px;
+  margin: 1rem;
+  text-align: center;
   img {
     border-radius: 2px;
-  }
-  .person-link {
-    text-align: center;
   }
 }
 

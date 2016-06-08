@@ -2,7 +2,7 @@
   h3.letter-shortcuts
     - ('a'..'z').each do |letter|
       - if @people.key?(letter)
-        = link_to letter, "##{letter}"
+        = link_to letter, " ##{letter}"
       - else
         span = " #{letter}"
     = link_to ' #', '#sym'
