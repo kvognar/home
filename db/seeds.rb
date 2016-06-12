@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create([{ name: 'Umbrella Man', password: 'good morning', is_admin: true}])
 
-names =
 people = (0...50).map { Faker::Name.first_name.downcase }.uniq.map { |name| Tag.create(tag_type: 'people', name: name) }
 categories = (0...10).map { Faker::Book.genre.downcase }.uniq.map { |name| Tag.create(tag_type: 'categories', name: name) }
 photos = Dir["#{Rails.root}/spec/support/fixtures/photos/*.JPG"].map { |filename| File.new(filename) }
