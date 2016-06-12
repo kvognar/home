@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'bullet'
+  gem 'faker', '~> 1.6.3'
 end
 
 group :test do
