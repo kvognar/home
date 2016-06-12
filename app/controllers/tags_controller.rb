@@ -8,4 +8,8 @@ class TagsController < ApplicationController
   def people
     @people = Tag.people.includes(:photos).group_by { |tag| tag.name.first }
   end
+
+  def categories
+    @categories = Tag.categories.includes(:photos).sort_by { |tag| tag.name }
+  end
 end

@@ -1,4 +1,4 @@
-.people-index
+.tags-index
   h3.letter-shortcuts
     - ('a'..'z').each do |letter|
       - if @people.key?(letter)
@@ -12,7 +12,7 @@
       .tag-letter-box id=letter
         h1 = letter
         - @people[letter].each do |person|
-          .person-preview
+          .tag-preview
             a href=tag_url(person)
               - if person.preview_photo.nil?
                 .photo-placeholder = '☂'

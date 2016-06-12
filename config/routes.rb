@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'day_by_day', to: 'days#calendar'
   get 'susurrus', to: 'days#susurrus'
   get 'people', to: 'tags#people'
+  get 'categories', to: 'tags#categories'
   get 'feed', to: 'days#feed'
 
   resources :tags, only: :show

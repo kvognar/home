@@ -1,0 +1,9 @@
+.tags-index
+  - @categories.each do |category|
+    .tag-preview
+      a href=tag_url(category)
+        - if category.preview_photo.nil?
+          .photo-placeholder = '☂'
+        - else
+          = image_tag(category.preview_photo.photo.url(:thumb))
+        .category-link = category.name
