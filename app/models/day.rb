@@ -24,7 +24,7 @@
 
 class Day < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :whisper, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
 
   ##### Validations #####
   validates :title, :number, :publish_date, :body, :whisper, presence: true, unless: :is_draft?
@@ -83,6 +83,13 @@ class Day < ActiveRecord::Base
   end
 
   private
+
+  def slug_candidates
+    [
+        :whisper,
+        [:whisper, :number]
+    ]
+  end
   
   def ensure_publish_date
     self.publish_date ||= Time.now unless is_draft?
