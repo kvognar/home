@@ -17,11 +17,10 @@
     }
   }
   .day-body {
-    margin-top: 2rem;
     font-family: 'Gentium Book Basic', Georgia, serif;
     font-size: 1.7rem;
     max-width: 70rem;
-    margin: 0 auto;
+    margin: 1.5rem auto 0 auto;
     .lyrics {
       padding-top: 2rem;
       font-family: sans-serif;
@@ -53,7 +52,8 @@
 
   .day-data {
     border-top: thin solid darkblue;
-    margin: 2rem 15%;
+    margin: 2rem auto;
+    max-width: 70rem;
     .timestamp {
       margin: 1rem 0;
     }
