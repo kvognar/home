@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'static_pages#home'
   get 'resume' => 'static_pages#resume', as: 'resume'
+  get 'contact', to: 'static_pages#contact'
   get '/platformer' => 'processing#platformer', as: 'platformer'
 
   get '/secrets' => 'sessions#new', as: 'secrets'
@@ -26,4 +27,9 @@ Rails.application.routes.draw do
     post 'migrate', to: 'migrations#migrate'
     put 'migrate/:number', to: 'migrations#update_migrate'
   end
+
+  get 'code/projects', to: 'code#projects'
+  get 'code/games', to: 'code#games'
+  get 'code/doodles', to: 'code#doodles'
+
 end

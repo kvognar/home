@@ -1,0 +1,51 @@
+.projects
+  h1 Projects
+
+  .project.row
+    .col-md-5.project-preview
+      = image_tag "faux-genius-screenshot.png"
+    .col-md-6.project-description
+      h3 Faux Genius
+      .links
+        = link_to 'Live demo', 'http://faux-genius.herokuapp.com/'
+        span.divider = ' | '
+        = link_to 'Github', 'https://github.com/kvognar/faux-genius'
+      p
+        span.code-date 2014 -
+        |  A clone of the collaborative lyric annotation side #{link_to 'Genius', "http://www.genius.com"}.
+        |  Users add songs or other texts and create new annotations simply by highlighting words of interest.
+      ul.features
+        li Follow artists, songs or other users to get updates on new annotations and suggestions they create and receive.
+        li Speedy single-page Backbone frontend with a RESTful Rails API backend.
+
+  .project.row
+    .col-md-5.project-preview
+      = image_tag "mello-trello-screenshot.png"
+    .col-md-6.project-description
+      h3 Mello Trello
+      .links
+        = link_to 'Live demo', 'http://mello-trello.herokuapp.com/'
+        span.divider = ' | '
+        = link_to 'Github', 'https://github.com/kvognar/trello_clone'
+      p
+        span.code-date 2014 -
+        |  This is a lightweight clone of the web app #{link_to 'Trello', 'http://www.trello.com'}, a project planning app.
+        |  Users can create project boards; each board contains multiple lists representing phases of the project, and each list contains multiple cards representing individual tasks for the phase.
+        |  Cards and lists can be dragged and rearranged with the mouse, and cards can be moved from one list to another.
+      ul.features
+        li Uses jQueryUI to drag and drop lists and cards; changes persist in database.
+        li Extends Backbone’s View “class” to support composite views with nested sub-views.
+
+  .project.row
+    .col-md-5.project-preview
+      = image_tag "rails-lite-screenshot.png"
+    .col-md-6.project-description
+      h3 Rails + ActiveRecord Lite
+      .links
+        = link_to 'Github', 'https://github.com/kvognar/rails-plus-activerecord-lite'
+      p
+        span.code-date 2014 -
+        |  A simple but functional recreation of Rails and ActiveRecord built to better understand the real frameworks.
+      ul.features
+        li SQL queries generated with custom has_many, belongs_to and has_one_through associations.
+        li Model methods are dynamically defined according to the same naming convention that Rails uses.

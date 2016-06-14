@@ -1,0 +1,28 @@
+.projects
+  h1 Games
+
+  .project.row
+    .col-md-5.project-preview
+      = image_tag "chess-screenshot.png"
+    .col-md-6.project-description
+      h3 Chess
+      .links
+        = link_to 'Github', 'https://github.com/kvognar/chess'
+      p
+        span.code-date 2014 -
+        |  A little chess game built with the Tk GUI toolkit. Boot it up from your terminal! You can click to select a piece and move it, and you can save and load games, but we never implemented castling, pawn promotion or
+        span.italic  en passant.
+        |  But it's mostly chess!
+
+  .project.row
+    .col-md-5.project-preview
+      = image_tag "platformer-screenshot.png"
+    .col-md-6.project-description
+      h3 Platformer
+      .links
+        = link_to 'Live demo', platformer_url, target: "_blank"
+        span.divider = ' | '
+        = link_to 'Github', 'https://github.com/kvognar/platformer'
+      p
+        span.code-date 2012 -
+        |  This is a single-stage platforming game I built with Processing in my first programming class. The assignment was to write a program that used arrays; I was so excited about my newly discovered love of coding that I went ahead and built a game, writing object classes and inheritance and my own collision detection system. #{time_ago_in_words(Time.parse('May 2012')).capitalize} have passed since then and the code is starting to look a little rough around the edges, but it still plays nicely and I have a certain fondness for it.
