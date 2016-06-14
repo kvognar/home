@@ -3,6 +3,25 @@
 
   .project.row
     .col-md-5.project-preview
+      = image_tag "fall_from_grace.p8.png"
+    .col-md-6.project-description
+      h3 Fall From Grace
+      .links
+        = link_to 'Play', fall_from_grace_url, target: "_blank"
+        span.divider = ' | '
+        = link_to 'Github', 'https://github.com/MCSDWVL/picopcp'
+      p
+        span.code-date 2016 -
+        |  The first game jam creation of Pizza Cat Productions, built in #{link_to 'Pico-8', 'http://www.lexaloffle.com/pico-8.php'}.
+        |  #{link_to 'Laurel', 'http://www.laurel-deel.com', target: '_blank'} and Barbie made the music and artwork, and #{link_to 'Matt', 'https://github.com/MCSDWVL', target: '_blank'}
+        |  and I did the coding.
+      p
+        | You are Jonathan, a meek demon spy sent to collect Heaven's magical relic. When combined with the one in Hell, it will create the ultimate weapon. The game starts after Jonathan has already infiltrated Heaven and stolen the relic - now take a leap and make your way back home!
+      p
+        | We built this in two days with almost no experience in Pico-8, and made it to the halfway point in our plan. Someday, perhaps, you'll get to play Act II.
+
+  .project.row
+    .col-md-5.project-preview
       = image_tag "chess-screenshot.png"
     .col-md-6.project-description
       h3 Chess
@@ -20,7 +39,7 @@
     .col-md-6.project-description
       h3 Platformer
       .links
-        = link_to 'Live demo', platformer_url, target: "_blank"
+        = link_to 'Play', platformer_url, target: "_blank"
         span.divider = ' | '
         = link_to 'Github', 'https://github.com/kvognar/platformer'
       p

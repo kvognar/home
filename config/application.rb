@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 module Portfolio
   class Application < Rails::Application
-    config.assets.paths << "#{Rails.root}/app/assets/processing"
+    config.assets.paths << "#{Rails.root}/app/assets/games"
 
     config.generators do |g|
       g.test_framework :rspec

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get 'resume' => 'static_pages#resume', as: 'resume'
   get 'contact', to: 'static_pages#contact'
-  get '/platformer' => 'processing#platformer', as: 'platformer'
 
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'
@@ -31,5 +30,8 @@ Rails.application.routes.draw do
   get 'code/projects', to: 'code#projects'
   get 'code/games', to: 'code#games'
   get 'code/doodles', to: 'code#doodles'
+  get 'code/games/fall_from_grace', to: 'code#fall_from_grace', as: 'fall_from_grace'
+  get 'code/games/platformer', to: 'code#platformer', as: 'platformer'
+
 
 end

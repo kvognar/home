@@ -7,4 +7,10 @@ class CodeController < ApplicationController
 
   def doodles
   end
+
+  def fall_from_grace
+  end
+
+  def platformer
+  end
 end
