@@ -14,7 +14,7 @@ module DayConcerns
     if tag_params(tag_type).present?
       tag_params(tag_type).each do |tag_name|
         tag = Tag.find_or_create_by(tag_type: tag_type, name: tag_name)
-        @day.send(tag_type) << tag unless @day.send(tag_type).include? tag
+        @day.tags << tag unless @day.tags.include? tag
       end
     end
   end

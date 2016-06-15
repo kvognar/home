@@ -24,7 +24,7 @@
       = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     - unless show_comments
       - if day.has_comments?
-        .comment-count = link_to "#{day.comments.count} #{'comment'.pluralize(day.comments.count)}", day
+        .comment-count = link_to "#{day.approved_comments.count} #{'comment'.pluralize(day.approved_comments.count)}", day
       - else
         .comment-link = link_to 'Leave a comment', day
     - if signed_in?

@@ -17,7 +17,7 @@ class DaysController < ApplicationController
   end
 
   def index
-    @days = Day.published.paginate(page: params[:page]).includes(:tags, :photo_of_the_day)
+    @days = Day.published.paginate(page: params[:page]).includes(:tags, :photo_of_the_day, :approved_comments)
   end
 
   def calendar

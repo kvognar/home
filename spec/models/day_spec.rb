@@ -37,8 +37,6 @@ describe Day do
   describe 'associations' do
     it { should have_many :taggings }
     it { should have_many :tags }
-    it { should have_many :people }
-    it { should have_many :categories }
     it { should have_many :photos }
     it { should have_one :photo_of_the_day }
     it { should have_many :comments }

@@ -40,14 +40,12 @@ class Day < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
 
-  has_many :people, -> { where tag_type: 'people' }, class_name: 'Tag', through: :taggings, source: :tag
-  has_many :categories, -> { where tag_type: 'categories' }, class_name: 'Tag', through: :taggings, source: :tag
-
   has_many :photos, dependent: :destroy
-  has_one :photo_of_the_day, -> { where is_canonical: true }, class_name: 'Photo'
+  has_one  :photo_of_the_day, -> { where is_canonical: true }, class_name: 'Photo'
   delegate :photo, to: :photo_of_the_day
 
   has_many :comments, dependent: :destroy
+  has_many :approved_comments, -> { where approved: true }, class_name: 'Comment'
 
   ##### Defaults ######
   default_scope { order(number: :desc) }
@@ -75,11 +73,19 @@ class Day < ActiveRecord::Base
   end
 
   def has_comments?
-    comments.approved.present?
+    approved_comments.present?
   end
 
   def top_level_comments
     comments.select { |comment| comment.parent_id == 0 }
+  end
+
+  def people
+    tags.select { |tag| tag.tag_type == 'people' }
+  end
+
+  def categories
+    tags.select { |tag| tag.tag_type == 'categories' }
   end
 
   private
