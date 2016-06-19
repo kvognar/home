@@ -3,13 +3,15 @@
 
   .project.row
     .col-md-5.project-preview
-      = image_tag "fall_from_grace.p8.png"
+      = link_to image_tag("fall_from_grace.gif"), fall_from_grace_url, target: '_blank'
     .col-md-6.project-description
       h3 Fall From Grace
       .links
         = link_to 'Play', fall_from_grace_url, target: "_blank"
         span.divider = ' | '
         = link_to 'Github', 'https://github.com/MCSDWVL/picopcp'
+        span.divider = ' | '
+        = link_to 'Cartridge', asset_url('fall_from_grace.p8.png'), target: '_blank'
       p
         span.code-date 2016 -
         |  The first game jam creation of Pizza Cat Productions, built in #{link_to 'Pico-8', 'http://www.lexaloffle.com/pico-8.php'}.
@@ -35,7 +37,7 @@
 
   .project.row
     .col-md-5.project-preview
-      = image_tag "platformer-screenshot.png"
+      = link_to image_tag("platformer-screenshot.png"), platformer_url, target: '_blank'
     .col-md-6.project-description
       h3 Platformer
       .links

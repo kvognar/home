@@ -13,4 +13,13 @@ class CodeController < ApplicationController
 
   def platformer
   end
+
+  def fairy
+  end
+
+  def dandelion
+  end
+
+  def jeffress_model
+  end
 end

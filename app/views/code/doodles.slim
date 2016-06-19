@@ -1,1 +1,52 @@
-h1 Doodles
+.projects
+  h1 Doodles
+
+  .project.row
+    .col-md-5.project-preview
+      = link_to image_tag('jeffress_model.png'), sound_location_url, target: '_blank'
+    .col-md-6.project-description
+      h3 Sound Locator Circuit
+      .links
+        = link_to 'Play', sound_location_url, target: '_blank'
+      p
+        span.code-date 2012 -
+        |  An interactive demonstration of the #{link_to 'Jeffress Model', 'http://www.st-andrews.ac.uk/~wjh/pred_prey/jeffress/jeffress.html'},
+        |  a hypothetical neural circuit that calculates the source of a sound wave
+        |  through coincidence detection. Click to create a "sound wave", and the
+        |  circuit will make a rough guess as to where it came from. Made for my
+        |  Biophysics class in my last year of college.
+
+  .project.row
+    .col-md-5.project-preview
+      = link_to image_tag('dandelion.png'), dandelion_url, target: '_blank'
+    .col-md-6.project-description
+      h3 Dandelion
+      .links
+        = link_to 'Play', dandelion_url, target: '_blank'
+      p
+        span.code-date 2012 -
+        |  Made for Emily. I still haven't worked out how to make convincing rain -
+        |  that'll be another project someday.
+
+  .project.row
+    .col-md-5.project-preview
+      = link_to image_tag('unicorn.png'), unicorn_url, target: '_blank'
+    .col-md-6.project-description
+      h3 The Unicorn
+      .links
+        = link_to 'Play', unicorn_url, target: '_blank'
+      p
+        span.code-date 2012 -
+        |  Made for Lauren. Bounce her old college minivan through the cosmos with the spacebar.
+
+  .project.row
+    .col-md-5.project-preview
+      = link_to image_tag('fairy.png'), fairy_url, target: '_blank'
+    .col-md-6.project-description
+      h3 Fairy
+      .links
+        = link_to 'Play', fairy_url, target: '_blank'
+      p
+        span.code-date 2012 -
+        |  Made for Anna. Navi will follow your mouse; Tatl and Tael will play tag; the rest of the
+        |  fairies will orbit the Triforce.

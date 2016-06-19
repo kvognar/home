@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   get 'code/doodles', to: 'code#doodles'
   get 'code/games/fall_from_grace', to: 'code#fall_from_grace', as: 'fall_from_grace'
   get 'code/games/platformer', to: 'code#platformer', as: 'platformer'
+  get 'code/doodles/fairy', to: 'code#fairy', as: 'fairy'
+  get 'code/doodles/unicorn', to: 'code#unicorn', as: 'unicorn'
+  get 'code/doodles/dandelion', to: 'code#dandelion', as: 'dandelion'
+  get 'code/doodles/jeffress_model', to: 'code#jeffress_model', as: 'sound_location'
+
 
 
 end
