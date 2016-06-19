@@ -10,6 +10,28 @@ body {
   margin: 0 50px;
 }
 
+#home {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Gentium Book Basic', Georgia, serif;
+}
+.previews-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  .project-preview {
+    margin: 0 1rem;
+    max-width: 300px;
+    img {
+      width: 100%;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
 ul.nav-tabs {
   text-align: center;
   li {
@@ -27,25 +49,15 @@ ul.nav-tabs {
   margin-top: 30px;
 }
 
-.project {
-  margin: 15px 40px;
-  padding: 15px 0;
-  border-bottom: thin solid darkblue;
-
-  img {
-    vertical-align: center;
-    max-width: 100%;
-    max-height: 300px;
-  }
-}
-
-.project:last-child {
-  border: none;
-}
-
 #home {
   a {
     color: darkblue;
+  }
+  .day-preview {
+    max-width: 50%;
+    .day-photo {
+      width: 100%;
+    }
   }
 }
 

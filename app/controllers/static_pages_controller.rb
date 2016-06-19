@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @day = Day.includes(:photo_of_the_day).last
   end
 
   def contact

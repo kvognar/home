@@ -1,0 +1,19 @@
+#home
+  .header
+    = image_tag 'profile.jpg', class: 'profile-image'
+    h1 Kevin Vognar
+    h4 Developer, writer, thought-collector
+  .previews-container
+    .project-preview
+      a href=days_url
+        h3 A photo a day
+        - if @day.photo_of_the_day.present?
+          = image_tag @day.photo.url(:medium), class: 'day-photo'
+    .project-preview
+      a href=code_games_url
+        h3 Games
+        = image_tag 'pico8.gif'
+    .project-preview
+      a href=code_projects_url
+       h3 Code
+       = image_tag 'rails-lite-screenshot.png'
