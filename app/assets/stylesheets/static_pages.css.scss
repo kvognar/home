@@ -50,13 +50,15 @@ ul.nav-tabs {
 }
 
 #home {
-  a {
-    color: darkblue;
-  }
   .day-preview {
     max-width: 50%;
     .day-photo {
       width: 100%;
+    }
+  }
+  a {
+    &:hover {
+      color: deepskyblue;
     }
   }
 }

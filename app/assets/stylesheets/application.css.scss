@@ -14,6 +14,9 @@
  *= require_self
  */
 
+$link-color : darkslateblue;
+$hover-color: deepskyblue;
+
 .content {
   margin-bottom: 5rem;
 }
@@ -26,23 +29,26 @@ nav {
   ul.nav a {
     color: #333333;
     &:hover {
-      color: darkslateblue;
+      color: $link-color;
     }
     transition: background-color 0.5s ease;
   }
   .navbar-brand {
     color: #333333;
     &:hover {
-      color: deepskyblue;
+      color: $hover-color;
     }
     transition: color 0.5s ease;
   }
 }
 
 a {
-  color: darkblue;
+  color: $link-color;
   &:hover {
-    color: deepskyblue;
+    color: $hover-color;
+    text-decoration: none;
+  }
+  &:focus {
     text-decoration: none;
   }
   transition: color 0.5s ease;
