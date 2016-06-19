@@ -88,6 +88,13 @@ class Day < ActiveRecord::Base
     tags.select { |tag| tag.tag_type == 'categories' }
   end
 
+  def youtube_link
+    youtube_matcher = /(\[\[youtube\]\]\(.*\))/.match(body)
+    unless youtube_matcher.nil?
+      youtube_matcher.captures.first
+    end
+  end
+
   private
 
   def slug_candidates
