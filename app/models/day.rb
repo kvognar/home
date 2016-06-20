@@ -95,15 +95,15 @@ class Day < ActiveRecord::Base
     end
   end
 
-  private
-
   def slug_candidates
     [
         :whisper,
         [:whisper, :number]
     ]
   end
-  
+
+  private
+
   def ensure_publish_date
     self.publish_date ||= Time.now unless is_draft?
   end
