@@ -102,6 +102,10 @@ class Day < ActiveRecord::Base
     ]
   end
 
+  def should_generate_new_friendly_id?
+    whisper_changed?
+  end
+
   private
 
   def ensure_publish_date

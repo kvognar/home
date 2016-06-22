@@ -83,6 +83,13 @@ describe Day do
         expect(day.day_of).to eq Date.yesterday
       end
     end
+
+    describe 'friendly id' do
+      it 'assigns the slug from a whisper' do
+        day = create(:day, whisper: 'good morning love')
+        expect(day.slug).to eq 'good-morning-love'
+      end
+    end
   end
 
   context 'helper methods' do

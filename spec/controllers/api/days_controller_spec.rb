@@ -31,6 +31,7 @@ describe Api::DaysController do
       end
       expect(day.photo_of_the_day).to eq photo
       expect(photo.reload.is_canonical).to eq true
+      expect(day.slug).to eq 'extra-bonus-secret'
       expect(day.people.map(&:name)).to match_array ['umbrella man', 'the dragon of doubt']
       expect(day.categories.map(&:name)).to match_array ['the effervescent sea', 'dreams']
     end
@@ -69,6 +70,7 @@ describe Api::DaysController do
       day_attributes.each do |attr_name, value|
         expect(day[attr_name]).to eq value
       end
+      expect(day.slug).to eq 'extra-bonus-secret'
     end
     it 'redirects if not signed in' do
       put(:update, id: day.id, day: day_attributes)
