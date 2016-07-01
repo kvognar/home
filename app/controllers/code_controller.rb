@@ -22,4 +22,7 @@ class CodeController < ApplicationController
 
   def jeffress_model
   end
+
+  def tweetjam_sea
+  end
 end

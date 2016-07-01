@@ -3,6 +3,35 @@
 
   .project.row
     .col-md-5.project-preview
+      = link_to image_tag('tweetjam_sea_preview.gif'), tweetjam_sea_url, target: '_blank'
+    .col-md-6.project-description
+      h3 Tweetjam Sea
+      .links
+        = link_to 'Play', tweetjam_sea_url, target: '_blank'
+        span.divider = ' | '
+        = link_to 'Cartridge', image_path('tweetjam_sea.p8.png'), target: '_blank'
+      p
+        span.code-date 2016 -
+        |  The Pico-8 community likes its jams. This was a quick one: code something neat that fits within the
+        |  140-character limit of a tweet. Most people came up with some kind of mesmerizing abstract animation,
+        |  but I wanted to see if I could draw a scene. The code itself is:
+        pre
+          | t= 0
+            while 1 do
+            cls()
+            for i=0, 14 do
+            y= 84+4*sin(t+i/15)
+            rectfill(i*9-5,0,i*9+5,y,7)
+            circfill(i*9,y,5)
+            end
+            circ(25,25,15,0)
+            t+=.01
+            flip()
+            end
+
+
+  .project.row
+    .col-md-5.project-preview
       = link_to image_tag('jeffress_model.png'), sound_location_url, target: '_blank'
     .col-md-6.project-description
       h3 Sound Locator Circuit

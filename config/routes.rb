@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'code/doodles/unicorn', to: 'code#unicorn', as: 'unicorn'
   get 'code/doodles/dandelion', to: 'code#dandelion', as: 'dandelion'
   get 'code/doodles/jeffress_model', to: 'code#jeffress_model', as: 'sound_location'
+  get 'code/doodles/tweetjam_sea', to: 'code#tweetjam_sea', as: 'tweetjam_sea'
 
 
 
