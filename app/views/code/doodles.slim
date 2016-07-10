@@ -16,11 +16,11 @@
         |  140-character limit of a tweet. Most people came up with some kind of mesmerizing abstract animation,
         |  but I wanted to see if I could draw a scene. The code itself is:
         pre
-          | t= 0
+          | t=0
             while 1 do
             cls()
-            for i=0, 14 do
-            y= 84+4*sin(t+i/15)
+            for i=0,14 do
+            y=84+4*sin(t+i/15)
             rectfill(i*9-5,0,i*9+5,y,7)
             circfill(i*9,y,5)
             end
