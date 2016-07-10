@@ -28,6 +28,9 @@
       font-weight: lighter;
       font-size: 1rem;
     }
+    img {
+      max-width: 100%;
+    }
   }
 
   .day-title {
@@ -118,106 +121,142 @@
   display: none;
 }
 
-#day-form {
-  width: 70%;
-  display: block;
-  margin: 0 auto;
+.day-form-container {
+  display: flex;
 
-  input {
-    &:focus {
-      outline: thin solid darkblue;
+  .dz-upload {
+    display: block;
+    background-color: midnightblue;
+    height: 10px;
+    width: 0%;
+  }
+
+  .day-form-main {
+    max-width: 80rem;
+    #photo-container {
+      img {
+        max-width: 100%;
+      }
     }
-  }
+    a#sidebar-button {
+      float: right;
+      font-size: 2rem;
+    }
 
-  .day-title {
-    font-size: 4rem;
-    color: darkgray;
-  }
-  #day_title {
-    border: none;
-    font-size: 4rem;
-    width: 20rem;
-    margin-right: 1rem;
-  }
-  .save-state {
-    color: white;
-    &.saved {
+    #day-form {
+    }
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+
+    input {
+      &:focus {
+        outline: thin solid darkblue;
+      }
+    }
+
+    .day-title {
+      font-size: 4rem;
       color: darkgray;
     }
-    &.error {
-      color: crimson;
+    #day_title {
+      border: none;
+      font-size: 4rem;
+      width: 20rem;
+      margin-right: 1rem;
     }
-    transition: color 0.5s ease;
-  }
-
-  #day_body {
-    display: block;
-    width: 100%;
-    margin: 2rem auto;
-    height: 60rem;
-    border: none;
-    resize: none;
-    &:focus {
-      outline: 0;
+    .save-state {
+      color: white;
+      &.saved {
+        color: darkgray;
+      }
+      &.error {
+        color: crimson;
+      }
+      transition: color 0.5s ease;
     }
-    font-size: 1.5rem;
-  }
-  #day_photo {
-  }
 
-  #day_mouseover {
-    display:block;
-    width: 100%;
-  }
-  #day_whisper {
-    width: 100%;
-  }
-
-  #day_categories {
-    width: 50%;
-  }
-  #day_people {
-    width: 50%;
-  }
-
-  .good-night {
-    color: lightgrey;
-    border: none;
-    background: none;
-    border-radius: 4px;
-    font-size: 2rem;
-    display: block;
-    margin: 1rem auto;
-
-    transition: color 0.5s ease;
-
-    &:hover {
-      color: darkblue
+    #day_body {
+      display: block;
+      width: 100%;
+      margin: 2rem auto;
+      height: 60rem;
+      border: none;
+      resize: none;
+      &:focus {
+        outline: 0;
+      }
+      font-size: 1.5rem;
     }
-    &:focus {
-      outline: 0;
-      color: lighten(darkslateblue, 10);
+    #day_photo {
     }
-  }
 
-  a.day-data-container-toggle {
-    color: lightgrey;
-    transition: color 0.5s ease;
-    text-decoration: none;
-    font-size: 3rem;
-    &:hover {
+    #day_mouseover {
+      display:block;
+      width: 100%;
+    }
+    #day_whisper {
+      width: 100%;
+    }
+
+    #day_categories {
+      width: 50%;
+    }
+    #day_people {
+      width: 50%;
+    }
+
+    .good-night {
+      color: lightgrey;
+      border: none;
+      background: none;
+      border-radius: 4px;
+      font-size: 2rem;
+      display: block;
+      margin: 1rem auto;
+
+      transition: color 0.5s ease;
+
+      &:hover {
+        color: darkblue
+      }
+      &:focus {
+        outline: 0;
+        color: lighten(darkslateblue, 10);
+      }
+    }
+
+    a.day-data-container-toggle {
+      color: lightgrey;
+      transition: color 0.5s ease;
       text-decoration: none;
-      color: darkslateblue;
+      font-size: 3rem;
+      &:hover {
+        text-decoration: none;
+        color: darkslateblue;
+      }
+      display: block;
+      text-align: center;
     }
-    display: block;
-    text-align: center;
-  }
 
-  .day-data-container {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
-    &.glass {
-      opacity: 0;
+    .day-data-container {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 1;
+      &.glass {
+        opacity: 0;
+      }
+    }
+  }
+  .day-form-sidebar {
+    flex-shrink: 1;
+    display: none;
+    margin-left: 1rem;
+    &.active {
+      display: block;
+    }
+    img {
+      display: block;
+      max-width: 300px;
     }
   }
 }

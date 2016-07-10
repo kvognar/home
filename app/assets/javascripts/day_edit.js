@@ -7,9 +7,21 @@ Dropzone.autoDiscover = false;
         var photoUpload = new Dropzone('#photo-dropzone');
         photoUpload.on('success', µ.showPhoto);
     }
+    if($('#bonus-dropzone').length) {
+        var photoUpload = new Dropzone('#bonus-dropzone');
+        photoUpload.on('success', function(file, response) {
+            µ.showBonusPhoto(file, response, photoUpload);
+        });
+    }
+
     µ.hasChanged = false;
     µ.saveCountdown = 3;
     µ.draftInterval = setInterval(µ.saveDraft, 1000);
+
+    $('#sidebar-button').on('click', function(event) {
+        event.preventDefault();
+        $('.day-form-sidebar').toggleClass('active');
+    });
 
     $('form #day_body').on('input', function() {
         µ.hasChanged = true;
@@ -65,9 +77,14 @@ $(document).on('page:change', function() {
 
 µ.showPhoto = function(file, response) {
     $('#photo-container').append('<img class="photo-preview" src="' + response.url + '">');
-    $('#day-form').append('<input type="hidden" name="photo[id]" value="' + response.id + '">' );
-    $('.dropzone').hide();
+    $('.dropzone#photo-dropzone').hide();
 };
+µ.showBonusPhoto = function(file, response, dropzone) {
+    dropzone.removeFile(file);
+    $('#bonus-container').append('<img class="photo-preview" src="' + response.url + '">');
+    $('#bonus-container').append('<code>' + response.url + '</code>');
+
+}
 
 // Response callbacks
 

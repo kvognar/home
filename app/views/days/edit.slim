@@ -1,34 +1,46 @@
 .day-form-container
+  .day-form-main
 
-  - if @day.has_photo?
-    #photo-container
-      = image_tag @day.photo.url(:medium)
-  - else
-    form.dropzone#photo-dropzone action="/api/photos"
+    - if @day.has_photo?
+      #photo-container
+        = image_tag @day.photo.url(:medium)
+    - else
+      form.dropzone#photo-dropzone action="/api/photos"
+        input type="hidden" value=form_authenticity_token name="authenticity_token"
+        input type="hidden" value=@day.id name="photo[day_id]"
+        input type="hidden" value='true' name="photo[is_canonical]"
+
+      #photo-container
+    a#sidebar-button href='#toggle-sidebar' ☁︎
+
+    = form_for @day, url: api_day_url(@day.id), data: { method: :put }, html: {id: 'day-form', autocomplete: :off} do |f|
+      = f.hidden_field :number, value: @day.number
+      = f.hidden_field :is_draft, value: @day.is_draft
+      .day-title
+        = f.text_field :title, value: @day.title, placeholder: 'Title'
+        = "of the Day ##{@day.number}"
+        span.save-state = " ☂"
+        = text_area :day, :body, placeholder: "What's on your mind?", value: @day.body
+
+      a.day-data-container-toggle href='#toggle' ◉
+      .day-data-container.glass
+        = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
+        = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
+        = f.text_field :mouseover,    value: @day.mouseover, placeholder: 'Mouseover'
+        = f.text_field :people,       value: @day.people.map(&:name).join(', '), placeholder: 'People'
+        = f.text_field :categories,   value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
+        = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
+        = f.submit value: "Good night.", class: 'good-night'
+
+    .continue-container
+    .error-container
+
+  .day-form-sidebar
+    form.dropzone#bonus-dropzone action="/api/photos"
       input type="hidden" value=form_authenticity_token name="authenticity_token"
       input type="hidden" value=@day.id name="photo[day_id]"
-      input type="hidden" value='true' name="photo[is_canonical]"
-
-    #photo-container
-
-  = form_for @day, url: api_day_url(@day.id), data: { method: :put }, html: {id: 'day-form', autocomplete: :off} do |f|
-    = f.hidden_field :number, value: @day.number
-    = f.hidden_field :is_draft, value: @day.is_draft
-    .day-title
-      = f.text_field :title, value: @day.title, placeholder: 'Title'
-      = "of the Day ##{@day.number}"
-      span.save-state = " ☂"
-      = text_area :day, :body, placeholder: "What's on your mind?", value: @day.body
-
-    a.day-data-container-toggle href='#toggle' ◉
-    .day-data-container.glass
-      = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
-      = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
-      = f.text_field :mouseover,    value: @day.mouseover, placeholder: 'Mouseover'
-      = f.text_field :people,       value: @day.people.map(&:name).join(', '), placeholder: 'People'
-      = f.text_field :categories,   value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
-      = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
-      = f.submit value: "Good night.", class: 'good-night'
-
-  .continue-container
-  .error-container
+      input type="hidden" value='false' name="photo[is_canonical]"
+    #bonus-container
+      - @day.photos.reject(&:is_canonical).each do |photo|
+        = image_tag photo.photo.url(:medium)
+        code = photo.photo.url(:medium)
