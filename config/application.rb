@@ -13,6 +13,7 @@ module Portfolio
     config.assets.paths << "#{Rails.root}/app/assets/games"
     config.assets.paths << "#{Rails.root}/app/assets/doodles"
 
+    config.filter_parameters << :secret
 
     config.generators do |g|
       g.test_framework :rspec
