@@ -12,6 +12,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  approved     :boolean          default(TRUE)
+#  rejected     :boolean          default(FALSE)
 #
 
 class Comment < ActiveRecord::Base
@@ -21,7 +22,8 @@ class Comment < ActiveRecord::Base
 
   scope :top_level,  -> { where(parent_id: 0) }
   scope :approved,   -> { where(approved: true) }
-  scope :unapproved, -> { where(approved: false) }
+  scope :unapproved, -> { where(approved: false, rejected: false) }
+  scope :rejected,   -> { where(rejected: true) }
 
   validates_presence_of :day, :body
 end

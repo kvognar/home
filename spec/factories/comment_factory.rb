@@ -12,6 +12,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  approved     :boolean          default(TRUE)
+#  rejected     :boolean          default(FALSE)
 #
 
 FactoryGirl.define do

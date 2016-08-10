@@ -8,5 +8,7 @@ h1 New comments
     = f.submit 'okay'
 
   = form_for comment do |f|
-    = f.hidden_field :approved, value: false
+    = f.hidden_field :rejected, value: true
     = f.submit 'nope'
+
+= link_to 'Sketchy comments', rejected_comments_url

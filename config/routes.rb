@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: :show
   resources :comments, only: [:index, :update]
+  get 'comments/rejected', to: 'comments#rejected', as: 'rejected_comments'
 
   namespace :api do
     resources :photos, only: :create

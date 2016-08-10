@@ -11,23 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423191209) do
+ActiveRecord::Schema.define(version: 20160810015142) do
 
   create_table "comments", force: true do |t|
-    t.integer  "day_id",                      null: false
+    t.integer  "day_id",                       null: false
     t.string   "author"
     t.string   "author_email"
-    t.text     "body",                        null: false
+    t.text     "body",                         null: false
     t.datetime "date"
     t.integer  "parent_id",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "approved",     default: true
+    t.boolean  "rejected",     default: false
   end
 
   add_index "comments", ["approved"], name: "index_comments_on_approved", using: :btree
   add_index "comments", ["day_id"], name: "index_comments_on_day_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+  add_index "comments", ["rejected"], name: "index_comments_on_rejected", using: :btree
 
   create_table "days", force: true do |t|
     t.string   "title"

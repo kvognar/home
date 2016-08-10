@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :require_admin!
 
   def index
-    @comments = Comment.where(approved: false)
+    @comments = Comment.unapproved
   end
 
   def update
@@ -14,7 +14,13 @@ class CommentsController < ApplicationController
     redirect_to comments_url
   end
 
+  def rejected
+    @comments = Comment.rejected
+  end
+
+  private
+
   def comment_params
-    params.require(:comment).permit(:approved)
+    params.require(:comment).permit(:approved, :rejected)
   end
 end
