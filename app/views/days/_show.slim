@@ -24,14 +24,14 @@
       = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     - unless show_comments
       - if day.has_comments?
-        .comment-count = link_to "#{day.approved_comments.count} #{'comment'.pluralize(day.approved_comments.count)}", day
+        .comment-count = link_to "#{day.approved_comments.count} #{'comment'.pluralize(day.approved_comments.count)}", "#{day_url(day)}#comments"
       - else
-        .comment-link = link_to 'Leave a comment', day
+        .comment-link = link_to 'Leave a comment', "#{day_url(day)}#comments"
     - if signed_in?
       = link_to "Edit", edit_day_url(day), data: { 'no-turbolink' => true }
 
   - if show_comments
-    .comments
+    #comments
       - day.comments.top_level.approved.each do |comment|
         = render comment
       = render partial: 'comments/form', locals: { day: @day, parent_comment_id: nil, id: 'new-comment' }
