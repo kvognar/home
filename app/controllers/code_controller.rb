@@ -1,4 +1,6 @@
 class CodeController < ApplicationController
+
+  before_action :hide_navbar, except: [:projects, :games, :doodles]
   def projects
   end
 

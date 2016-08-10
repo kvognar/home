@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller_name} #{action_name}"
-    = render partial: 'layouts/navbar'
+    = render partial: 'layouts/navbar' unless @hide_navbar
     - if flash[:success]
       .success= flash[:success]
     - if flash[:errors]

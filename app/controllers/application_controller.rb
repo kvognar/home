@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
     redirect_to days_url unless signed_in?
   end
 
+  def hide_navbar
+    @hide_navbar = true
+  end
+
   helper_method :signed_in?
 
 end
