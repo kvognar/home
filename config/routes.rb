@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   get 'day_by_day', to: 'days#calendar'
   get 'susurrus', to: 'days#susurrus'
+  get 'on_this_day', to: 'days#on_this_day'
   get 'people', to: 'tags#people'
   get 'categories', to: 'tags#categories'
   get 'feed', to: 'days#feed'

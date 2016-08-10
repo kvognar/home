@@ -28,6 +28,17 @@ class DaysController < ApplicationController
     @days = Day.published.select(:id, :slug)
   end
 
+  def on_this_day
+    dates = []
+    date = Date.today
+    first_day = Day.published.last.day_of
+    while date > first_day do
+      date -= 1.year
+      dates << date
+    end
+    @days = Day.published.where(day_of: dates)
+  end
+
   def feed
     @days = Day.limit(10)
     respond_to do |format|

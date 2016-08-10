@@ -1,0 +1,4 @@
+h1 On This Day
+
+- @days.each do |day|
+  = render partial: 'show', locals: { day: day, link_title: true, show_comments: false }
