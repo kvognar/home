@@ -1,5 +1,5 @@
 µ.readyDayShow = function () {
-    $('.comments').on('click', '.submit-comment', µ.submitComment);
+    $('#comments').on('click', '.submit-comment', µ.submitComment);
 
     $('.reply-link').on('click', µ.showCommentForm);
 };
