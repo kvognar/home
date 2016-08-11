@@ -30,11 +30,11 @@ class DaysController < ApplicationController
 
   def on_this_day
     dates = []
-    date = Date.today
+    current_date = @date = params[:date].try(:to_date) || Date.today
     first_day = Day.published.last.day_of
-    while date > first_day do
-      date -= 1.year
-      dates << date
+    while current_date > first_day do
+      dates << current_date
+      current_date -= 1.year
     end
     @days = Day.published.where(day_of: dates)
   end

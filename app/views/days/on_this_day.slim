@@ -1,4 +1,9 @@
-h1 On This Day
+#on-this-day
+  h1 On This Day
 
-- @days.each do |day|
-  = render partial: 'show', locals: { day: day, link_title: true, show_comments: false }
+  form.date-picker action="/on_this_day"
+    input.form-control.date type="date" name="date" value=@date
+    input.form-control.submit type="submit" value="Go"
+
+  - @days.each do |day|
+    = render partial: 'show', locals: { day: day, link_title: true, show_comments: false }

@@ -358,3 +358,21 @@ div.susurrus {
     display: block;
   }
 }
+
+#on-this-day {
+  h1 {
+    text-align: center;
+  }
+  .date-picker {
+    margin: 0 auto;
+    text-align: center;
+    input {
+      text-align: center;
+      display: inline;
+      width: 20rem;
+      &.submit {
+        width: 5rem;
+      }
+    }
+  }
+}
