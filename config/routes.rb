@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'day_by_day', to: 'days#calendar'
   get 'susurrus', to: 'days#susurrus'
   get 'on_this_day', to: 'days#on_this_day'
+  get 'your_song', to: 'days#your_song'
+  get 'api_your_song', to: 'api/days#your_song'
   get 'people', to: 'tags#people'
   get 'categories', to: 'tags#categories'
   get 'feed', to: 'days#feed'

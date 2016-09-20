@@ -39,6 +39,10 @@ class DaysController < ApplicationController
     @days = Day.published.where(day_of: dates)
   end
 
+  def your_song
+    @people = Tag.people.pluck(:name, :id)
+  end
+
   def feed
     @days = Day.limit(10)
     respond_to do |format|

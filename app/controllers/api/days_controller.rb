@@ -14,6 +14,16 @@ class Api::DaysController < ApplicationController
     save_day
   end
 
+  def your_song
+    person = Tag.people.first
+    @days = person.days.pluck(:number)
+    @total = Day.published.count
+    render json: {
+        days: @days,
+        total: @total
+    }
+  end
+
   private
 
   def save_day
