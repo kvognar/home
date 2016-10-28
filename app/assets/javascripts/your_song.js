@@ -1,8 +1,10 @@
 $(document).on('page:change', function() {
     if ($('canvas#sky').length) {
-        µ.getDays();
         $('#people').autocomplete({
-            source: ["laurel", "alina", "bob"]
+            source: $('#people').data('people')
+        });
+        $('#people').on('autocompleteselect', function(e, ui) {
+            µ.getDays(ui.item.value)
         });
     }
 });
@@ -13,6 +15,10 @@ $(document).on('page:change', function() {
 
     var c = document.getElementById("sky");
     var ctx = c.getContext('2d');
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0,0,1000,1000);
+    ctx.fillStyle = 'black';
 
     for (i = 0; i < total; i++) {
         var x = Math.floor(i / 14) * 10;
@@ -26,10 +32,11 @@ $(document).on('page:change', function() {
     }
 };
 
-µ.getDays = function() {
+µ.getDays = function(name) {
     $.ajax({
         type: 'GET',
         url: $('#sky').data('url'),
+        data: { name: name },
         success: µ.drawDays,
         error: µ.failDrawDays
     });

@@ -40,7 +40,7 @@ class DaysController < ApplicationController
   end
 
   def your_song
-    @people = Tag.people.pluck(:name, :id)
+    @people = Tag.people.pluck(:name)
   end
 
   def feed

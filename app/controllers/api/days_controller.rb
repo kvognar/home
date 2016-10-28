@@ -15,7 +15,7 @@ class Api::DaysController < ApplicationController
   end
 
   def your_song
-    person = Tag.people.first
+    person = Tag.people.find_by_name(params[:name])
     @days = person.days.pluck(:number)
     @total = Day.published.count
     render json: {
