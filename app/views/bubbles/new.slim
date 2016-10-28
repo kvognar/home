@@ -1,0 +1,9 @@
+form.bubble-form action=bubbles_url method="POST"
+  input type="hidden" value=form_authenticity_token name="authenticity_token"
+  input.form-control type="text" name="bubble[name]" placeholder="name" value=@bubble.name
+  input.form-control type="text" name="bubble[artist]" placeholder="artist"
+  input.form-control type="text" name="bubble[medium]" placeholder="medium"
+  input.form-control.date type="date" name="bubble[finish_date]"
+  textarea.form-control name="bubble[thoughts]" placeholder="so..."
+  textarea.form-control name="bubble[spoiler_thoughts]" placeholder="(spoilers)"
+  input.form-control type="submit"

@@ -1,0 +1,6 @@
+- if signed_in?
+  = link_to 'New', new_bubble_url
+
+.bubbles
+  - @bubbles.each do |bubble|
+    = render partial: 'show', locals: { bubble: bubble }
