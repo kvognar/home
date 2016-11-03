@@ -8,11 +8,11 @@
 <STYLE TYPE="text/css">
 <!--
 
-canvas#canvas { width: 580px; height: 540px; }
+canvas#canvas { width: 512px; height: 512px; }
 
 .pico8_el {
 	float:left;
-	width:105px;
+	width:92px;
 	display:inline-block; 
   	margin: 1px;
 	padding: 4px;
@@ -37,6 +37,16 @@ canvas#canvas { width: 580px; height: 540px; }
 	background-color:#aaa;
 }
 
+canvas{
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    border: 0px
+}
+
 -->
 </STYLE>
     
@@ -46,7 +56,7 @@ canvas#canvas { width: 580px; height: 540px; }
 
 	<br><br><br>
 
-	<center><div style="width:580px;">
+	<center><div style="width:512px;">
 
 	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 
@@ -58,9 +68,7 @@ canvas#canvas { width: 580px; height: 540px; }
 		// show Emscripten environment where the canvas is
 		// arguments are passed to PICO-8
 		
-		var Module = {
-			arguments: ["-width","580","-height","540"],
-		};
+		var Module = {};
 		Module.canvas = canvas;
 		
 		/*
@@ -69,6 +77,10 @@ canvas#canvas { width: 580px; height: 540px; }
 			
 			var pico8_buttons = [0, 0, 0, 0, 0, 0, 0, 0]; // max 8 players
 			pico8_buttons[0] = 2 | 16; // example: player 0, RIGHT and Z held down
+			
+			// when pico8_gpio is defined, reading and writing to gpio pins will
+			// read and write to these values
+			var pico8_gpio = new Array(128);
 		*/
 	</script>
 
