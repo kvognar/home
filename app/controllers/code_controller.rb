@@ -27,4 +27,7 @@ class CodeController < ApplicationController
 
   def tweetjam_sea
   end
+
+  def bubble_booper
+  end
 end

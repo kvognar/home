@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'code/projects', to: 'code#projects'
   get 'code/games', to: 'code#games'
   get 'code/doodles', to: 'code#doodles'
+  get 'code/games/bubble_booper',   to: 'code#bubble_booper', as: 'bubble_booper'
   get 'code/games/fall_from_grace', to: 'code#fall_from_grace', as: 'fall_from_grace'
   get 'code/games/platformer', to: 'code#platformer', as: 'platformer'
   get 'code/doodles/fairy', to: 'code#fairy', as: 'fairy'

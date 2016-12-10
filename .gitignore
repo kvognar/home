@@ -21,3 +21,6 @@
 
 # Ignore coverage files
 /coverage/
+
+# Ignore precompiled assets
+/public/assets
