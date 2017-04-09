@@ -393,3 +393,15 @@ div.susurrus {
     font-family: 'Gentium Book Basic', Georgia, serif;
   }
 }
+
+.your-song {
+  .canvas-container {
+    width: 800px;
+    border: thin solid darkblue;
+    overflow: scroll;
+  }
+
+  canvas#sky {
+    display: block;
+  }
+}

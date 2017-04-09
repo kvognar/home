@@ -41,6 +41,7 @@ class DaysController < ApplicationController
 
   def your_song
     @people = Tag.people.pluck(:name)
+    @day_count = Day.count
   end
 
   def feed
