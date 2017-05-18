@@ -31,6 +31,7 @@ $(document).on('page:change', function() {
 
     var daySize = 20;
     var width = $('#sky').width();
+    var height = $('#sky').height();
 
     var c = document.getElementById("sky");
     var ctx = c.getContext('2d');
@@ -38,7 +39,7 @@ $(document).on('page:change', function() {
     // fill by width/height
 
     ctx.fillStyle = 'white';
-    ctx.fillRect(0,0,1000,1000);
+    ctx.fillRect(0,0,width,height);
     ctx.fillStyle = 'darkblue';
 
 
@@ -62,7 +63,7 @@ $(document).on('page:change', function() {
 
         ctx.beginPath();
         ctx.moveTo(0, y*daySize);
-        ctx.lineTo(1000, y*daySize);
+        ctx.lineTo(width, y*daySize);
         ctx.closePath();
         ctx.stroke();
 
