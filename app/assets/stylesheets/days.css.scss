@@ -397,11 +397,12 @@ div.susurrus {
 .your-song {
   .canvas-container {
     width: 800px;
-    border: thin solid darkblue;
     overflow: scroll;
+    margin: 0 auto;
   }
 
   canvas#sky {
     display: block;
+    border: thin solid darkblue;
   }
 }

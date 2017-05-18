@@ -32,7 +32,7 @@ class DaysController < ApplicationController
     dates = []
     current_date = @date = params[:date].try(:to_date) || Date.today
     first_day = Day.published.last.day_of
-    while current_date > first_day do
+    while current_date >= first_day do
       dates << current_date
       current_date -= 1.year
     end
@@ -45,7 +45,7 @@ class DaysController < ApplicationController
   end
 
   def feed
-    @days = Day.limit(10)
+    @days = Day.published.limit(10)
     respond_to do |format|
       format.rss { render layout: false }
     end

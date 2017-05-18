@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :photos, only: :create
-    resources :days, only: [:update, :create]
+    resources :days, only: [:update, :create, :show]
     post 'migrate', to: 'migrations#migrate'
     put 'migrate/:number', to: 'migrations#update_migrate'
   end
