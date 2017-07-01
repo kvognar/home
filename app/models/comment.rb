@@ -25,5 +25,5 @@ class Comment < ActiveRecord::Base
   scope :unapproved, -> { where(approved: false, rejected: false) }
   scope :rejected,   -> { where(rejected: true) }
 
-  validates_presence_of :day, :body
+  validates_presence_of :day, :body, :author
 end

@@ -25,27 +25,23 @@ $(document).on('page:change', function() {
 
 µ.submitComment = function(event) {
     event.preventDefault();
-    if ($('.humanity-check').prop('checked')) {
-        var $commentForm = $(event.currentTarget).parent();
-        $.ajax({
-            type: $commentForm.data('method'),
-            url: $commentForm.attr('action'),
-            data: $commentForm.serialize(),
-            success: function() { µ.handleCommentResponse($commentForm); },
-            error: µ.printErrors
-        });
-    } else {
-        alert("No commenting unless you're a person!")
-    }
+    var $commentForm = $(event.currentTarget).parent();
+    $.ajax({
+        type: $commentForm.data('method'),
+        url: $commentForm.attr('action'),
+        data: $commentForm.serialize(),
+        success: function() { µ.handleCommentResponse($commentForm); },
+        error: function (response) {
+            console.log(response.responseJSON.errors)
+            var $errorContainer = $commentForm.find('.error-container')
+            $errorContainer.html('<ul></ul>');
+            response.responseJSON.errors.forEach(function(error) {
+                $errorContainer.append('<li>' + error + '</li>')
+            })
+        }
+    });
 };
 
 µ.handleCommentResponse = function($commentForm) {
     $commentForm.html("Thanks! Your comment will be visible after I take a look.")
-};
-
-µ.printErrors = function(response) {
-    $('.error-container').html('<ul></ul>');
-    response.responseJSON.errors.forEach(function(error) {
-        $('.error-container ul').append('<li>' + error + '</li>')
-    })
 };

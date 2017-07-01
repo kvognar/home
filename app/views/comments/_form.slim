@@ -1,10 +1,11 @@
 = form_tag day_comments_url(day), class: 'comment-form', id: id, data: { method: 'POST' } do
   = hidden_field :comment, :day_id, value: day.id
   = hidden_field :comment, :parent_id, value: 0
-  = text_field :comment, :author, placeholder: 'Name'
-  = text_field :comment, :author_email, placeholder: 'Email'
+  = text_field :comment, :author, placeholder: 'Name', value: session[:author]
+  = text_field :comment, :author_email, placeholder: 'Email', value: session[:author_email]
   = text_area :comment, :body, placeholder: "What's on your mind?"
+  = text_field :comment, :day_number, placeholder: "Number of the day", class: "human-verifier"
+  span
+    =< "(If this post is Photo of the Day #X, enter whatever X is)"
   = submit_tag "Submit", class: 'submit-comment'
-  input.humanity-check type='checkbox'
-  span = " (Click that box if you're a person)"
   .error-container
