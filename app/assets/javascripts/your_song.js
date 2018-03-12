@@ -1,4 +1,4 @@
-$(document).on('page:change', function() {
+$(document).on('turbolinks:load', function() {
     if ($('canvas#sky').length) {
         $('#people').autocomplete({
             source: $('#people').data('people')
@@ -12,7 +12,6 @@ $(document).on('page:change', function() {
             var pos = µ.getMousePos(c, e);
 
             var day = Math.floor((pos.y/20%14)+1) + Math.floor((pos.x/20))*14;
-            console.log(day)
             $('#sky').attr("title", "Day " + day);
         });
 

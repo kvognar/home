@@ -10,7 +10,7 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe ApplicationHelper do
+describe ApplicationHelper, type: :helper do
   describe '#markdown' do
     it 'creates links with titles that open in a new tab' do
       expect(helper.markdown('[home](kevinvognar.com "welcome home")')).to eq "<p><a title=\"welcome home\" href=\"kevinvognar.com\" target=\"_blank\">home</a></p>\n"

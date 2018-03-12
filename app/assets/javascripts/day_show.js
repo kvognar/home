@@ -5,7 +5,7 @@
 };
 
 
-$(document).on('page:change', function() {
+$(document).on('turbolinks:load', function() {
     if ($('body.days.show').length) {
         µ.readyDayShow();
     }

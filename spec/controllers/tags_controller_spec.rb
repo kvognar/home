@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TagsController do
+describe TagsController, type: :controller do
   describe '#show' do
     it 'shows days with the given tag' do
       day_with_tag = create(:day)

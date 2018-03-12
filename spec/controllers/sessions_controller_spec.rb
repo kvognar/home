@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe SessionsController, type: :controller do
   let!(:user) { create(:user, is_admin: true, password: 'good morning') }
   it 'renders a new page' do
     get(:new)

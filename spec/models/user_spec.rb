@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-describe User do
+describe User, type: :model do
 
   describe 'validations' do
     subject { create(:user) }

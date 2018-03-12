@@ -17,7 +17,7 @@
 
 require 'spec_helper'
 
-describe Comment do
+describe Comment, type: :model do
   context 'validations' do
     it { should validate_presence_of :day }
     it { should validate_presence_of :body }

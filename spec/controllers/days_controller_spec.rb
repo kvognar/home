@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DaysController do
+describe DaysController, type: :controller do
   let!(:day_1) { create(:day) }
   let!(:day_2) { create(:day) }
   let!(:user) { create(:user, is_admin: true) }

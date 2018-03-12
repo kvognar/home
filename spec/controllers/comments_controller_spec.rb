@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe CommentsController, type: :controller do
   let(:unapproved_comment) { create(:comment, approved: false) }
   let(:approved_comment) { create(:comment, approved: true) }
   let(:user) { create(:user, is_admin: true) }

@@ -11,7 +11,7 @@
 
 require 'spec_helper'
 
-describe Tag do
+describe Tag, type: :model do
   it { should have_many(:taggings).dependent(:destroy) }
   it { should have_many :days }
 end

@@ -37,7 +37,7 @@ Dropzone.autoDiscover = false;
     });
 };
 
-$(document).on('page:change', function() {
+$(document).on('turbolinks:load', function() {
     if ($('body.days.new').length || $('body.days.edit').length) {
         µ.readyDayEdit();
     }

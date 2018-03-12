@@ -24,7 +24,7 @@
 
 require 'spec_helper'
 
-describe Day do
+describe Day, type: :model do
   describe 'validations' do
     subject { create(:day) }
     it { should validate_presence_of :title }

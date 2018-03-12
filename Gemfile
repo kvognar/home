@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.17'
 # Use SCSS for stylesheets
@@ -40,10 +40,11 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 
-gem 'paperclip', "~> 4.2"
+gem 'paperclip', '5.3.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
+gem 'json', '1.8.6'
 
 group :development, :test do
   gem 'annotate'
@@ -60,6 +61,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'pry-byebug'
   gem 'factory_girl_rails'
+  gem 'rspec-rails'
 end
 
 # Markdown

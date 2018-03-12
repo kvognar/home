@@ -15,7 +15,7 @@
 
 require 'spec_helper'
 
-describe Photo do
+describe Photo, type: :model do
 
   after(:each) { Photo.destroy_all }
   it { should have_attached_file(:photo) }

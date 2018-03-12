@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::DaysController do
+describe Api::DaysController, type: :controller do
     let!(:user) { create(:user, is_admin: true) }
     let(:photo) { create(:photo) }
     after(:each) { Photo.destroy_all }
