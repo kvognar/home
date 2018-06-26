@@ -12,4 +12,5 @@
 class Tagging < ActiveRecord::Base
   belongs_to :tag
   belongs_to :day
+  validates :day_id, uniqueness: { scope: :tag_id }
 end

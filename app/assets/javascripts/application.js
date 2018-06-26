@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require turbolinks
 //= require jquery-ui/autocomplete
+//= require select2
 //= require mu
 //= require_tree .

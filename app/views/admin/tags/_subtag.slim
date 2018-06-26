@@ -1,0 +1,4 @@
+.subtag
+  h4 = tag.name
+  - tag.children.each do |child|
+    = render partial: 'subtag', locals: { tag: child }

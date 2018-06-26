@@ -1,0 +1,14 @@
+/ script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+/ script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"
+- if flash[:errors]
+  ul
+  - flash[:errors].each do |error|
+    li = error
+.tag-form-container
+  - form_path = tag.persisted? ? admin_tag_path(tag) : admin_tags_path
+  - form_method = tag.persisted? ? :put : :post
+  = form_for tag, url: form_path, data: { method: form_method }, html: { id: 'tag-form', autocomplete: :off } do |f|
+    = f.label :parent_id, 'Parent tag'
+    = f.select :parent_id, options_from_collection_for_select(tags, :id, :name, tag.id), { include_blank: true }, { class: 'searchable-select' }
+    = f.text_field :name, value: tag.name
+    = f.submit

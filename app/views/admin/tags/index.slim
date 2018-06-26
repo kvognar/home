@@ -1,0 +1,8 @@
+.admin
+  h1 All the tags
+  = link_to 'New tag', new_admin_tag_url
+  .tags-index
+    - @tags.each do |tag|
+      h2 = tag.name
+      - tag.children.each do |child|
+        = render partial: 'subtag', locals: { tag: child }

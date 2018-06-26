@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626015703) do
+ActiveRecord::Schema.define(version: 20180626145523) do
 
   create_table "bubbles", force: :cascade do |t|
     t.string   "name",               limit: 255,   null: false
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20180626015703) do
     t.integer  "parent_id",      limit: 4
     t.integer  "lft",            limit: 4,               null: false
     t.integer  "rgt",            limit: 4,               null: false
-    t.integer  "depth",          limit: 4,               null: false
+    t.integer  "depth",          limit: 4,   default: 0, null: false
     t.integer  "children_count", limit: 4,   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20180626015703) do
 
   add_index "tags", ["depth"], name: "index_tags_on_depth", using: :btree
   add_index "tags", ["lft"], name: "index_tags_on_lft", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
   add_index "tags", ["parent_id"], name: "index_tags_on_parent_id", using: :btree
   add_index "tags", ["rgt"], name: "index_tags_on_rgt", using: :btree
 
