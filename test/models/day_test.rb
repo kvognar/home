@@ -6,9 +6,9 @@
 #  title              :string(255)
 #  number             :integer          not null
 #  publish_date       :datetime
-#  body               :text
+#  body               :text(65535)
 #  slug               :string(255)
-#  mouseover          :text
+#  mouseover          :text(65535)
 #  lyrics             :string(255)
 #  lyric_credit       :string(255)
 #  created_at         :datetime

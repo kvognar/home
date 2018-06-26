@@ -1,15 +1,15 @@
 class TagsController < ApplicationController
 
   def show
-    @tag = Tag.find(params[:id])
+    @tag = LegacyTag.find(params[:id])
     @days = @tag.days.includes(:photo_of_the_day).paginate(page: params[:page])
   end
 
   def people
-    @people = Tag.people.includes(:photos).group_by { |tag| tag.name.first }
+    @people = LegacyTag.people.includes(:photos).group_by { |tag| tag.name.first }
   end
 
   def categories
-    @categories = Tag.categories.includes(:photos).sort_by { |tag| tag.name }
+    @categories = LegacyTag.categories.includes(:photos).sort_by { |tag| tag.name }
   end
 end

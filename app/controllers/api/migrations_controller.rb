@@ -68,7 +68,7 @@ class Api::MigrationsController < ApplicationController
   def add_tags
     if tag_params.present?
       tag_params[:tags].each do |tag|
-        @day.tags << Tag.find_or_create_by(name: tag, tag_type: 'people')
+        @day.legacy_tags << LegacyTag.find_or_create_by(name: tag, tag_type: 'people')
       end
     end
   end
@@ -76,7 +76,7 @@ class Api::MigrationsController < ApplicationController
   def add_categories
     if category_params.present?
       category_params[:categories].each do |category|
-        @day.categories << Tag.find_or_create_by(name: category, tag_type: 'categories')
+        @day.categories << LegacyTag.find_or_create_by(name: category, tag_type: 'categories')
       end
     end
   end

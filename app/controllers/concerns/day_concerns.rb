@@ -13,16 +13,16 @@ module DayConcerns
   def add_tags(tag_type)
     if tag_params(tag_type).present?
       tag_params(tag_type).each do |tag_name|
-        tag = Tag.find_or_create_by(tag_type: tag_type, name: tag_name)
-        @day.tags << tag unless @day.tags.include? tag
+        tag = LegacyTag.find_or_create_by(tag_type: tag_type, name: tag_name)
+        @day.legacy_tags << tag unless @day.legacy_tags.include? tag
       end
     end
   end
 
   def remove_tags(tag_type)
-    tags_to_keep = Tag.where(tag_type: tag_type, name: tag_params(tag_type))
+    tags_to_keep = LegacyTag.where(tag_type: tag_type, name: tag_params(tag_type))
     tags_to_delete = @day.send(tag_type) - tags_to_keep
-    @day.tags.delete(tags_to_delete)
+    @day.legacy_tags.delete(tags_to_delete)
   end
 
 

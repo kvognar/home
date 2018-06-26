@@ -6,7 +6,7 @@
 #  day_id       :integer          not null
 #  author       :string(255)
 #  author_email :string(255)
-#  body         :text             not null
+#  body         :text(65535)      not null
 #  date         :datetime
 #  parent_id    :integer          default(0)
 #  created_at   :datetime

@@ -2,24 +2,19 @@
 #
 # Table name: tags
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  tag_type   :string(255)      not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id             :integer          not null, primary key
+#  name           :string(255)      not null
+#  parent_id      :integer
+#  lft            :integer          not null
+#  rgt            :integer          not null
+#  depth          :integer          not null
+#  children_count :integer          default(0), not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class Tag < ActiveRecord::Base
-  has_many :taggings, dependent: :destroy
-  has_many :days, through: :taggings, source: :day
-  has_many  :photos, -> { order(created_at: :desc).limit(1) }, through: :days, source: :photo_of_the_day
-
-  scope :people, -> { where tag_type: 'people' }
-  scope :categories, -> { where tag_type: 'categories' }
-
-  default_scope { order(:name) }
-
-  def preview_photo
-    photos.first
-  end
+  acts_as_nested_set
+  has_many :taggings
+  has_many :days, through: :taggings
 end

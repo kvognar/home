@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.17'
 # Use SCSS for stylesheets
@@ -45,13 +45,13 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 gem 'json', '1.8.6'
+gem 'awesome_nested_set' # for hierarchical tags
 
 group :development, :test do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'rspec-rails'
   gem 'bullet'
   gem 'faker', '~> 1.6.3'
 end
