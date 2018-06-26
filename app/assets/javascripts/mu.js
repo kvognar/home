@@ -5,5 +5,7 @@ $(document).on('turbolinks:load', function() {
         event.preventDefault();
         alert('To subscribe to my RSS feed, add this to your feed reader:\nhttp://kevinvognar.com/feed.rss')
     });
-    $('.searchable-select').select2({tags: true});
+    $('.searchable-select').select2({
+        tags: true
+    });
 });

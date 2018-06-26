@@ -4,17 +4,21 @@ module DayConcerns
   private
 
   def add_and_remove_tags
-    add_tags
-    remove_tags
+    new_tag_names = tag_params.select { |name| name.include?('::') }
+    debugger
+    new_tags = new_tag_names.map { |name| Tag.recursive_create(name) }
+    add_tags(tag_params - new_tag_names)
+    remove_tags(tag_params - new_tag_names)
+    add_tags(new_tags.select(&:persisted?).map(&:name))
   end
 
-  def add_tags
-    new_tags = Tag.where(id: tag2_params) - @day.tags
+  def add_tags(names)
+    new_tags = Tag.where(name: names) - @day.tags
     new_tags.each { |tag| @day.tags << tag }
   end
 
-  def remove_tags
-    tags_to_keep = Tag.where(id: tag2_params)
+  def remove_tags(names)
+    tags_to_keep = Tag.where(name: names)
     tags_to_delete = @day.tags - tags_to_keep
     @day.tags.delete(tags_to_delete)
   end
@@ -41,12 +45,12 @@ module DayConcerns
     @day.legacy_legacy_tags.delete(legacy_tags_to_delete)
   end
 
-  def tag2_params
+  def tag_params
     params.require(:day)[:tags].select(&:present?)
   end
 
 
-  def tag_params(tag_type)
+  def legacy_tag_params(tag_type)
     tag_string = params.require(:day)[tag_type]
     if tag_string.present?
       tag_string.split(',').map(&:strip)

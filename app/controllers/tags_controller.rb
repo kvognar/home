@@ -1,7 +1,11 @@
 class TagsController < ApplicationController
 
   def show
-    @tag = LegacyTag.find(params[:id])
+    if params[:legacy].present?
+      @tag = LegacyTag.find(params[:id])
+    else
+      @tag = Tag.find_by(name: params[:id])
+    end
     @days = @tag.days.includes(:photo_of_the_day).paginate(page: params[:page])
   end
 
