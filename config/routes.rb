@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :tags
+    resources :quick_tags, only: [:show, :update]
   end
 
   get 'code/projects', to: 'code#projects'

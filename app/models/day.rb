@@ -109,6 +109,14 @@ class Day < ActiveRecord::Base
     whisper_changed?
   end
 
+  def next
+    Day.find_by(number: number + 1)
+  end
+
+  def previous
+    Day.find_by(number: number - 1)
+  end
+
   private
 
   def ensure_publish_date

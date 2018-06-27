@@ -4,21 +4,20 @@ module DayConcerns
   private
 
   def add_and_remove_tags
-    new_tag_names = tag_params.select { |name| name.include?('::') }
-    debugger
+    old_tags = Tag.where(name: tag_params)
+    new_tag_names = tag_params.reject { |name| old_tags.map(&:name).include? name }
     new_tags = new_tag_names.map { |name| Tag.recursive_create(name) }
-    add_tags(tag_params - new_tag_names)
-    remove_tags(tag_params - new_tag_names)
-    add_tags(new_tags.select(&:persisted?).map(&:name))
+    add_tags(old_tags)
+    remove_tags(old_tags)
+    add_tags(new_tags.select(&:persisted?))
   end
 
-  def add_tags(names)
-    new_tags = Tag.where(name: names) - @day.tags
+  def add_tags(tags)
+    new_tags = tags - @day.tags
     new_tags.each { |tag| @day.tags << tag }
   end
 
-  def remove_tags(names)
-    tags_to_keep = Tag.where(name: names)
+  def remove_tags(tags_to_keep)
     tags_to_delete = @day.tags - tags_to_keep
     @day.tags.delete(tags_to_delete)
   end
@@ -31,8 +30,8 @@ module DayConcerns
   end
 
   def add_legacy_tags(tag_type)
-    if tag_params(tag_type).present?
-      tag_params(tag_type).each do |tag_name|
+    if legacy_tag_params(tag_type).present?
+      legacy_tag_params(tag_type).each do |tag_name|
         tag = LegacyTag.find_or_create_by(tag_type: tag_type, name: tag_name)
         @day.legacy_legacy_tags << tag unless @day.legacy_legacy_tags.include? tag
       end
