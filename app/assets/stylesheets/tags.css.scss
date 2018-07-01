@@ -24,3 +24,17 @@ h3.letter-shortcuts {
 .tags-index {
   margin: 0 20%;
 }
+
+.subtag {
+  margin-left: 1rem;
+}
+
+.quick-tag {
+  .tag-select {
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

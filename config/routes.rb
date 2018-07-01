@@ -31,6 +31,11 @@ Rails.application.routes.draw do
     put 'migrate/:number', to: 'migrations#update_migrate'
   end
 
+  namespace :admin do
+    resources :tags
+    resources :quick_tags, only: [:show, :update]
+  end
+
   get 'code/projects', to: 'code#projects'
   get 'code/games', to: 'code#games'
   get 'code/doodles', to: 'code#doodles'

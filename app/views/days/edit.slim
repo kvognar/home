@@ -30,6 +30,7 @@
         = f.text_field :people,       value: @day.people.map(&:name).join(', '), placeholder: 'People'
         = f.text_field :categories,   value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
         = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
+        = f.select :tags, options_from_collection_for_select(Tag.all, :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
         = f.submit value: "Good night.", class: 'good-night'
 
     .continue-container

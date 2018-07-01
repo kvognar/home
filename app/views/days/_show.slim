@@ -18,10 +18,12 @@
     .timestamp
       = day.publish_date.to_s(:long_ordinal)
 
+    .tags
+      = day.tags.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     .people
-      = day.people.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
+      = day.people.map { |t| link_to t.name, tag_url(t, legacy: true) }.join(' • ').html_safe
     .categories
-      = day.categories.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
+      = day.categories.map { |t| link_to t.name, tag_url(t, legacy: true) }.join(' • ').html_safe
     - unless show_comments
       - if day.has_comments?
         .comment-count = link_to "#{day.approved_comments.count} #{'comment'.pluralize(day.approved_comments.count)}", "#{day_url(day)}#comments"

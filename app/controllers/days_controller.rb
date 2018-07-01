@@ -17,7 +17,7 @@ class DaysController < ApplicationController
   end
 
   def index
-    @days = Day.published.paginate(page: params[:page]).includes(:tags, :photo_of_the_day, :approved_comments)
+    @days = Day.published.paginate(page: params[:page]).includes(:legacy_tags, :photo_of_the_day, :approved_comments)
   end
 
   def calendar
@@ -40,7 +40,7 @@ class DaysController < ApplicationController
   end
 
   def your_song
-    @people = Tag.people.pluck(:name)
+    @people = LegacyTag.people.pluck(:name)
     @day_count = Day.count
   end
 

@@ -6,9 +6,9 @@
 #  title              :string(255)
 #  number             :integer          not null
 #  publish_date       :datetime
-#  body               :text
+#  body               :text(65535)
 #  slug               :string(255)
-#  mouseover          :text
+#  mouseover          :text(65535)
 #  lyrics             :string(255)
 #  lyric_credit       :string(255)
 #  created_at         :datetime
@@ -36,6 +36,9 @@ class Day < ActiveRecord::Base
   before_validation :assign_day_of,       unless: :is_draft?
 
   ##### Associations ######
+
+  has_many :legacy_taggings, dependent: :destroy
+  has_many :legacy_tags, through: :legacy_taggings, source: :legacy_tag
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
@@ -81,11 +84,11 @@ class Day < ActiveRecord::Base
   end
 
   def people
-    tags.select { |tag| tag.tag_type == 'people' }
+    legacy_tags.select { |tag| tag.tag_type == 'people' }
   end
 
   def categories
-    tags.select { |tag| tag.tag_type == 'categories' }
+    legacy_tags.select { |tag| tag.tag_type == 'categories' }
   end
 
   def youtube_link
@@ -104,6 +107,14 @@ class Day < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     whisper_changed?
+  end
+
+  def next
+    Day.find_by(number: number + 1)
+  end
+
+  def previous
+    Day.find_by(number: number - 1)
   end
 
   private
