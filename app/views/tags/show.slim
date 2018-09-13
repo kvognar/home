@@ -1,4 +1,9 @@
-h1.tag-title = @tag.name
+h1.tag-title
+  - @tag.ancestors.each do |ancestor|
+    span
+      = link_to(ancestor.name, tag_path(ancestor))
+      = ' > '
+  span = @tag.name
 
 - @days.each do |day|
   = render partial: 'days/show', locals: { day: day, link_title: true, show_comments: false }
