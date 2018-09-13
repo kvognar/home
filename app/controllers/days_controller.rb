@@ -40,7 +40,7 @@ class DaysController < ApplicationController
   end
 
   def your_song
-    @people = LegacyTag.people.pluck(:name)
+    @tags = Tag.all.order(:name)
     @day_count = Day.count
   end
 

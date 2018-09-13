@@ -1,7 +1,7 @@
 .quick-tag
   = render partial: '/days/show', locals: { day: @day, link_title: true, show_comments: false }
   = form_for @day, url: admin_quick_tag_url(@day.id), data: { method: :put}, html: { id: 'day-form', autocomplete: :off } do |f|
-    = f.select :tags, options_from_collection_for_select(Tag.all, :name, :name, @day.tags.map(&:name)), {}, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
+    = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), {}, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
     = f.submit class: 'btn btn-default'
   .row
     .col-md-6
