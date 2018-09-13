@@ -6,7 +6,7 @@ class TagsController < ApplicationController
       @days = @tag.days.includes(:photo_of_the_day).paginate(page: params[:page])
     else
       @tag = Tag.find_by(name: params[:id])
-      @days = Day.joins(:taggings).where(taggings: { tag:  @tag.self_and_descendants}).paginate(page: params[:page])
+      @days = Day.joins(:taggings).where(taggings: { tag:  @tag.self_and_descendants}).distinct.paginate(page: params[:page])
     end
   end
 
