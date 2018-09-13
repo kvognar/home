@@ -22,6 +22,7 @@ $(document).on('turbolinks:load', function() {
             µ.getDay(day);
         })
     }
+    $('#your-song-search').on('submit', µ.getDays);
 });
 
 µ.drawDays = function(response) {
@@ -77,11 +78,13 @@ $(document).on('turbolinks:load', function() {
     }
 };
 
-µ.getDays = function(name) {
+µ.getDays = function(event) {
+    event.preventDefault();
+    tags = $('#tag-selector').val();
     $.ajax({
         type: 'GET',
         url: $('#sky').data('index-url'),
-        data: { name: name },
+        data: { tags: tags },
         success: µ.drawDays,
         error: µ.failDrawDays
     });

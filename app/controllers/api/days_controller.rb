@@ -15,8 +15,11 @@ class Api::DaysController < ApplicationController
   end
 
   def your_song
-    person = LegacyTag.people.find_by_name(params[:name])
-    @days = person.days.pluck(:number)
+    common_day_ids = params[:tags].map do |tag|
+      Tag.find_by(name: tag).self_and_descendants.map(&:day_ids).flatten.uniq
+    end.inject(:&)
+
+    @days = Day.where(id: common_day_ids).pluck(:number)
     @total = Day.published.count
     render json: {
         days: @days,
