@@ -401,13 +401,34 @@ div.susurrus {
 }
 
 .your-song {
-  .canvas-container {
-    width: 800px;
-    overflow: scroll;
-    margin: 0 auto;
+
+  .row {
+    height: 90vh;
+    .scrollable-col {
+      height: 100%;
+      overflow-y: scroll;
+    }
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    * {
+      -ms-overflow-style: none !important;
+    }
   }
 
+  .canvas-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 1rem;
+    span.select2.select2-container.select2-container--default {
+      width: 100%;
+
+    }
+  }
   canvas#sky {
+    margin: 1rem auto;
     display: block;
     border: thin solid darkblue;
   }

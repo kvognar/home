@@ -8,4 +8,5 @@ $(document).on('turbolinks:load', function() {
     $('.searchable-select').select2({
         tags: true
     });
+    $('.tag-picker').select2({ width: '100%'});
 });

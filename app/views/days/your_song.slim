@@ -1,8 +1,11 @@
 .your-song
-  .canvas-container
-    = form_tag(api_your_song_url, method: :get, id: 'your-song-search') do
-      = label_tag('#tag-selector', 'Choose some tags to search by!')
-      = select_tag :tags, options_from_collection_for_select(@tags, :name, :name), { multiple: :multiple, class: 'searchable-select', id: 'tag-selector' }
-      = submit_tag 'Search', class: 'form-control'
-    canvas id='sky' width=@day_count*20/14 height='280' data={ index_url: api_your_song_url, show_url: api_days_url  }
-  .day-container
+  .row
+    .col-md-3.scrollable-col
+      .canvas-container
+        = form_tag(api_your_song_url, method: :get, id: 'your-song-search') do
+          = label_tag('#tag-selector', 'Choose some tags to search by!')
+          = select_tag :tags, options_from_collection_for_select(@tags, :name, :name), { multiple: :multiple, class: 'tag-picker', id: 'tag-selector' }
+          = submit_tag 'Search', class: 'form-control'
+        canvas id='sky' height=@day_count*20/14 width='280' data={ index_url: api_your_song_url, show_url: api_days_url  }
+    .col-md-9.scrollable-col
+      .day-container

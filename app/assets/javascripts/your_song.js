@@ -11,14 +11,14 @@ $(document).on('turbolinks:load', function() {
             var c = document.getElementById("sky");
             var pos = µ.getMousePos(c, e);
 
-            var day = Math.floor((pos.y/20%14)+1) + Math.floor((pos.x/20))*14;
+            var day = Math.floor((pos.x/20%14)+1) + Math.floor((pos.y/20))*14;
             $('#sky').attr("title", "Day " + day);
         });
 
         $('canvas#sky').on('click', function(e) {
             var c = document.getElementById("sky");
             var pos = µ.getMousePos(c, e);
-            var day = Math.floor((pos.y/20%14)+1) + Math.floor((pos.x/20))*14;
+            var day = Math.floor((pos.x/20%14)+1) + Math.floor((pos.y/20))*14;
             µ.getDay(day);
         })
     }
@@ -44,26 +44,26 @@ $(document).on('turbolinks:load', function() {
 
 
     for (i = 0; i < total; i++) {
-        var x = Math.floor(i / 14) * daySize;
-        var y = i % 14 * daySize;
+        var y = Math.floor(i / 14) * daySize;
+        var x = i % 14 * daySize;
         if (days.has(i+1)) {
             ctx.fillRect(x, y, daySize, daySize);
         }
         ctx.stroke();
     }
     ctx.strokeStyle = "#dddddd";
-    for (x = 0; x*daySize < width; x++) {
+    for (x = 0; x * daySize < width; x++) {
         ctx.beginPath();
-        ctx.moveTo(x*daySize, 0);
-        ctx.lineTo(x*daySize, 300);
+        ctx.moveTo(x * daySize, 0);
+        ctx.lineTo(x * daySize, height);
         ctx.closePath();
         ctx.stroke();
     }
-    for (y = 0; y < 14; y++) {
+    for (y = 0; y * daySize < height; y++) {
 
         ctx.beginPath();
-        ctx.moveTo(0, y*daySize);
-        ctx.lineTo(width, y*daySize);
+        ctx.moveTo(0, y * daySize);
+        ctx.lineTo(width, y * daySize);
         ctx.closePath();
         ctx.stroke();
 
