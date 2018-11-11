@@ -11,7 +11,8 @@ class TagsController < ApplicationController
   end
 
   def people
-    @people = LegacyTag.people.includes(:photos).group_by { |tag| tag.name.first }
+    people_tag = Tag.find_by_name('people')
+    @people = people_tag.descendants.includes(:photos).group_by { |tag| tag.name.first }
   end
 
   def categories

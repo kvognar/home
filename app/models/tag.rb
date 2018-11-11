@@ -19,6 +19,7 @@ class Tag < ActiveRecord::Base
   acts_as_nested_set
   has_many :taggings
   has_many :days, through: :taggings
+  has_many :photos, -> { order(created_at: :desc).limit(1) }, through: :days, source: :photo_of_the_day
 
   validates :name, uniqueness: true
 
@@ -33,6 +34,10 @@ class Tag < ActiveRecord::Base
       end
       current_tag
     end
+  end
+
+  def preview_photo
+    photos.first
   end
 
   private

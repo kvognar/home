@@ -27,8 +27,6 @@
         = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
         = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
         = f.text_field :mouseover,    value: @day.mouseover, placeholder: 'Mouseover'
-        = f.text_field :people,       value: @day.people.map(&:name).join(', '), placeholder: 'People'
-        = f.text_field :categories,   value: @day.categories.map(&:name).join(', '), placeholder: 'Categories'
         = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
         = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
         = f.submit value: "Good night.", class: 'good-night'
