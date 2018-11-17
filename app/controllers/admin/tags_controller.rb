@@ -22,9 +22,16 @@ class Admin::TagsController < ApplicationController
     end
   end
 
+  def update
+    @tag = Tag.find(params[:id])
+    if @tag.update(tag_params)
+      render json: @tag.to_json
+    end
+  end
+
   private
 
   def tag_params
-    params.require(:tag).permit(:parent_id, :name)
+    params.require(:tag).permit(:parent_id, :name, :featured)
   end
 end

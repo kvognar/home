@@ -11,6 +11,7 @@
 #  children_count :integer          default(0), not null
 #  created_at     :datetime
 #  updated_at     :datetime
+#  featured       :boolean          default(FALSE)
 #
 
 FactoryGirl.define do

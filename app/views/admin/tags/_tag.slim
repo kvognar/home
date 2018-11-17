@@ -1,0 +1,7 @@
+.tag
+  span.feature-toggle data-id=tag.id class=('featured' if tag.featured?)
+    | ♥︎
+  span.tag-name style=("font-size: #{[33-(3*level), 16].max}px")
+    = tag.name
+  - tag.children.each do |child|
+    .subtag = render partial: 'tag', locals: { tag: child, level: [level + 1, 4].min }

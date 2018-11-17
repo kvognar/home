@@ -11,6 +11,7 @@
 #  children_count :integer          default(0), not null
 #  created_at     :datetime
 #  updated_at     :datetime
+#  featured       :boolean          default(FALSE)
 #
 
 class Tag < ActiveRecord::Base
@@ -24,6 +25,8 @@ class Tag < ActiveRecord::Base
   validates :name, uniqueness: true
 
   before_validation :standardize_name
+
+  scope :featured, -> { where(featured: true) }
 
   def self.recursive_create(name_chain)
     names = name_chain.split('::')

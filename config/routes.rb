@@ -17,10 +17,9 @@ Rails.application.routes.draw do
   get 'your_song', to: 'days#your_song'
   get 'api_your_song', to: 'api/days#your_song'
   get 'people', to: 'tags#people'
-  get 'categories', to: 'tags#categories'
   get 'feed', to: 'days#feed'
 
-  resources :tags, only: :show
+  resources :tags, only: [:show, :index]
   resources :comments, only: [:index, :update]
   get 'comments/rejected', to: 'comments#rejected', as: 'rejected_comments'
 

@@ -23,10 +23,20 @@ h3.letter-shortcuts {
 
 .tags-index {
   margin: 0 20%;
+  .feature-toggle {
+    font-size: 3rem;
+    cursor: pointer;
+    &.featured {
+      color: deepskyblue;
+    }
+  }
+  .tag-name {
+    margin-left: 1rem;
+  }
 }
 
 .subtag {
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 
 .quick-tag {
