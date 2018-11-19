@@ -1,34 +1,46 @@
-.tags-index
-  h1 Cast of Characters
-  .thanks Thank you for being part of my story.
-  h3.letter-shortcuts
-    - ('a'..'z').each do |letter|
-      - if @people.key?(letter)
-        = link_to " #{letter}", "##{letter}"
-      - else
-        span = " #{letter}"
-    = link_to ' #', '#sym'
+/ .tags-index
+/   h1 Cast of Characters
+/   .thanks Thank you for being part of my story.
+/   h3.letter-shortcuts
+/     - ('a'..'z').each do |letter|
+/       - if @people.key?(letter)
+/         = link_to " #{letter}", "##{letter}"
+/       - else
+/         span = " #{letter}"
+/     = link_to ' #', '#sym'
+/
+/   - ('a'..'z').each do |letter|
+/     - if @people.key?(letter)
+/       .tag-letter-box id=letter
+/         h1 = letter
+/         - @people[letter].each do |person|
+/           .tag-preview
+/             a href=tag_url(person)
+/               - if person.preview_photo.nil?
+/                 .photo-placeholder = '☂'
+/               - else
+/                 = image_tag(person.preview_photo.photo.url(:thumb))
+/               .person-link = person.name
+/   .tag-letter-box id='sym'
+/     h1 #
+/     - @people.keys.reject { |char| ('a'..'z').include?(char) }.sort.each do |char|
+/       - @people[char].each do |person|
+/         .person-preview
+/           a href=tag_url(person)
+/             - if person.preview_photo.nil?
+/               .photo-placeholder = '☂'
+/             - else
+/               = image_tag(person.preview_photo.photo.url(:thumb))
+/             .person-link = person.name
 
-  - ('a'..'z').each do |letter|
-    - if @people.key?(letter)
-      .tag-letter-box id=letter
-        h1 = letter
-        - @people[letter].each do |person|
-          .tag-preview
-            a href=tag_url(person)
-              - if person.preview_photo.nil?
-                .photo-placeholder = '☂'
-              - else
-                = image_tag(person.preview_photo.photo.url(:thumb))
-              .person-link = person.name
-  .tag-letter-box id='sym'
-    h1 #
-    - @people.keys.reject { |char| ('a'..'z').include?(char) }.sort.each do |char|
-      - @people[char].each do |person|
-        .person-preview
-          a href=tag_url(person)
-            - if person.preview_photo.nil?
-              .photo-placeholder = '☂'
-            - else
-              = image_tag(person.preview_photo.photo.url(:thumb))
-            .person-link = person.name
+.tags-index
+  h1 Cast of characters
+  .thanks Thank you for being part of my story.
+  .masonry
+    - @people.each do |person|
+      a.masonry-brick href=tag_url(person)
+        - if person.preview_photo.nil?
+          .photo-placeholder = '☂'
+        - else
+          = image_tag(person.preview_photo.photo.url(:medium), alt: person.name)
+          .tag-name = person.name

@@ -51,13 +51,13 @@ class Day < ActiveRecord::Base
   has_many :approved_comments, -> { where approved: true }, class_name: 'Comment'
 
   ##### Defaults ######
-  default_scope { order(number: :desc) }
   self.per_page = 10
 
   ##### Scopes #####
 
   scope :drafts, -> { where(is_draft: true) }
   scope :published, -> { where(is_draft: false) }
+  scope :recent, -> { order(publish_date: :desc) }
 
   ##### Class methods #####
 

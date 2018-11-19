@@ -19,7 +19,7 @@ class Api::DaysController < ApplicationController
       Tag.find_by(name: tag).self_and_descendants.map(&:day_ids).flatten.uniq
     end.inject(:&)
 
-    @days = Day.where(id: common_day_ids).pluck(:number)
+    @days = Day.published.where(id: common_day_ids).pluck(:number)
     @total = Day.published.count
     render json: {
         days: @days,

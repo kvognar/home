@@ -1,0 +1,14 @@
+.tags-index
+  h1 A few favorite tags
+
+  .masonry
+    - @tags_and_photos.each do |tag_set|
+      - tag = tag_set.first
+      - photo = tag_set.second
+      a.masonry-brick href=tag_url(tag)
+        - if photo.nil?
+          .photo-placeholder = '☂'
+        - else
+          = image_tag(photo.photo.url(:medium), alt: tag.name)
+        .tag-name = tag.name
+

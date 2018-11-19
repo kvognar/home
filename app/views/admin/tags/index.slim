@@ -1,7 +1,7 @@
 .admin
   h1 All the tags
   = link_to 'New tag', new_admin_tag_url
-  .tags-index
+  .tags-admin
     - @tags.each do |tag|
       = render partial: 'tag', locals: { tag: tag, level: 1 }
 

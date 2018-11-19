@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     @hide_navbar = true
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   helper_method :signed_in?
 
 end

@@ -17,7 +17,7 @@ class DaysController < ApplicationController
   end
 
   def index
-    @days = Day.published.paginate(page: params[:page]).includes(:legacy_tags, :photo_of_the_day, :approved_comments)
+    @days = Day.published.recent.paginate(page: params[:page]).includes(:legacy_tags, :photo_of_the_day, :approved_comments)
   end
 
   def calendar
@@ -25,18 +25,18 @@ class DaysController < ApplicationController
   end
 
   def susurrus
-    @days = Day.published.select(:id, :slug)
+    @days = Day.published.recent.select(:id, :slug)
   end
 
   def on_this_day
     dates = []
     current_date = @date = params[:date].try(:to_date) || Date.today
-    first_day = Day.published.last.day_of
+    first_day = Day.published.first.day_of
     while current_date >= first_day do
       dates << current_date
       current_date -= 1.year
     end
-    @days = Day.published.where(day_of: dates)
+    @days = Day.published.recent.where(day_of: dates)
   end
 
   def your_song
@@ -45,7 +45,7 @@ class DaysController < ApplicationController
   end
 
   def feed
-    @days = Day.published.limit(10)
+    @days = Day.published.recent.limit(10)
     respond_to do |format|
       format.rss { render layout: false }
     end

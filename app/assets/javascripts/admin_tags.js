@@ -1,6 +1,6 @@
 µ.readyTagAdmin = function() {
     console.log('mornin');
-    $('.tags-index').on('click', '.feature-toggle', µ.toggleTagFavorite);
+    $('.tags-admin').on('click', '.feature-toggle', µ.toggleTagFavorite);
 };
 
 $(document).on('turbolinks:load', µ.readyTagAdmin);
