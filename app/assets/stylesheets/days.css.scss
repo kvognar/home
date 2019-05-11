@@ -32,11 +32,16 @@
     }
   }
 
+  @media(min-width: 600px) {
+    .day-title {
+      padding: 0 15%;
+    }
+  }
+
   .day-title {
     color: #333333;
     transition: color 0.5s ease;
     display: inline-block;
-    padding: 0 15%;
 
     &:hover {
       color: deepskyblue;
@@ -69,7 +74,8 @@
   }
 
   #comments {
-    padding: 0 15%;
+    max-width: 800px;
+    margin: 0 auto;
     .comment {
       border: thin solid darkblue;
       padding: 1rem;
@@ -91,7 +97,6 @@
       .comment-text {
         width: 85%;
         display: inline-block;
-        margin-left: 1rem;
 
         .author {
           font-weight: bold;
@@ -412,6 +417,9 @@ div.susurrus {
     ::-webkit-scrollbar {
       width: 0px;
       background: transparent;
+    }
+    .canvas-column {
+      padding: 0;
     }
 
     * {

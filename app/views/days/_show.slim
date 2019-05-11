@@ -1,4 +1,4 @@
-.day
+article.day
   - if link_title
     a href=day_path(day)
       h1.day-title = "#{day.title} of the Day ##{day.number}"
@@ -6,7 +6,8 @@
     h1.day-title = "#{day.title} of the Day ##{day.number}"
   - if day.has_photo?
     .day-photo-container
-      = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
+      a href='#' data-featherlight=day.photo.url(:medium)
+        = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
   .day-body
     = markdown(day.body)
 
@@ -27,6 +28,18 @@
         .comment-link = link_to 'Leave a comment', "#{day_url(day)}#comments"
     - if signed_in?
       = link_to "Edit", edit_day_url(day), data: { 'no-turbolink' => true }
+
+    - if show_nav_links
+      .row
+        - previous_day = Day.find_by(number: day.number - 1)
+        - next_day = Day.published.find_by(number: day.number + 1)
+        .col-md-6
+          - if previous_day
+            h4
+              =link_to "← #{previous_day.title} of the Day ##{previous_day.number}", day_path(previous_day)
+        .col-md-6
+          - if next_day
+            h4.pull-right= link_to "#{next_day.title} of the Day ##{next_day.number} →", day_path(next_day)
 
   - if show_comments
     #comments

@@ -1,5 +1,4 @@
 µ.readyTagAdmin = function() {
-    console.log('mornin');
     $('.tags-admin').on('click', '.feature-toggle', µ.toggleTagFavorite);
 };
 

@@ -2,6 +2,6 @@
   .fisheye = link_to '◉', comments_path
 
 - @days.each do |day|
-  = render partial: 'show', locals: { day: day, link_title: true, show_comments: false }
+  = render partial: 'show', locals: { day: day, link_title: true, show_comments: false, show_nav_links: false }
 
 = will_paginate @days

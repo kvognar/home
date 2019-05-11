@@ -1,11 +1,22 @@
 = form_tag day_comments_url(day), class: 'comment-form', id: id, data: { method: 'POST' } do
+  h4 Leave a thought
   = hidden_field :comment, :day_id, value: day.id
   = hidden_field :comment, :parent_id, value: 0
-  = text_field :comment, :author, placeholder: 'Name', value: session[:author]
-  = text_field :comment, :author_email, placeholder: 'Email', value: session[:author_email]
-  = text_area :comment, :body, placeholder: "What's on your mind?"
-  = text_field :comment, :day_number, placeholder: "Number of the day", class: "human-verifier"
-  span
-    =< "(If this post is Photo of the Day #X, enter whatever X is)"
-  = submit_tag "Submit", class: 'submit-comment'
+  .row
+    .col-md-4
+      = text_field :comment, :author, placeholder: 'Name', value: session[:author], class: 'form-control'
+  .row
+    .col-md-4
+      = text_field :comment, :author_email, placeholder: 'Email', value: session[:author_email], class: 'form-control'
+  .row
+    .col-md-12
+      = text_area :comment, :body, placeholder: "What's on your mind?", rows: 4, class: 'form-control'
+  .row.day-number
+    .col-md-3
+      = text_field :comment, :day_number, placeholder: "Number of the day", class: "human-verifier form-control"
+    .col-md-6
+      span.form-text ="(If this post is Photo of the Day #X, enter whatever X is)"
+  .row
+    .col-md-3
+      = submit_tag "Submit", class: 'submit-comment btn btn-default form-control'
   .error-container
