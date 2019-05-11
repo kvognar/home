@@ -19,6 +19,7 @@
 
 $link-color : darkslateblue;
 $hover-color: deepskyblue;
+$hover-background-color: #eeeeff;
 
 .content {
   margin-bottom: 5rem;
@@ -42,6 +43,33 @@ nav {
       color: $hover-color;
     }
     transition: color 0.5s ease;
+  }
+
+  button.navbar-toggle {
+    border: thin solid darkblue;
+    &:hover {
+      background-color: $hover-background-color;
+    }
+    transition: background-color 0.5s ease;
+
+
+    .icon-bar {
+      border-top: 2px solid darkblue;
+    }
+  }
+
+  .navbar-nav, .navbar-nav .open {
+
+    a {
+      &:hover {
+        background-color: $hover-background-color;
+      }
+      &:focus {
+        background-color: $hover-background-color;
+      }
+
+      transition: background-color 0.5s ease;
+    }
   }
 }
 
