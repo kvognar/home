@@ -6,6 +6,6 @@ h1.tag-title
   span = @tag.name
 
 - @days.each do |day|
-  = render partial: 'days/show', locals: { day: day, link_title: true, show_comments: false }
+  = render partial: 'days/show', locals: { day: day, link_title: true, show_comments: false, show_nav_links: false }
 
 = will_paginate @days
