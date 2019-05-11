@@ -19,7 +19,6 @@
   .comment-text {
     width: 85%;
     display: inline-block;
-    margin-left: 1rem;
 
     .author {
       font-weight: bold;
@@ -32,12 +31,22 @@
       margin-left: 1rem;
     }
 
-    .body {
-      //display: block;
-    }
   }
-  .child-comments {
-    //margin-left: 2rem;
+
+  .reply-link {
+    margin: 0.5rem;
   }
+
 }
 
+.form-control {
+  margin-top: 0.5rem;
+}
+
+.comment-form {
+  .day-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

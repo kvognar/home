@@ -29,11 +29,9 @@ class Api::DaysController < ApplicationController
 
   def show
     @day = Day.find_by_number(params[:id])
-    p @day
     render json: {
         html: render_to_string(partial: 'days/show', locals: {day: @day, link_title: true, show_comments: false})
     }
-
   end
 
   private
