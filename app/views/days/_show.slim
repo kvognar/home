@@ -6,7 +6,8 @@
     h1.day-title = "#{day.title} of the Day ##{day.number}"
   - if day.has_photo?
     .day-photo-container
-      = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
+      a href='#' data-featherlight=day.photo.url(:medium)
+        = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
   .day-body
     = markdown(day.body)
 
