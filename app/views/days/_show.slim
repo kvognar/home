@@ -29,6 +29,18 @@ article.day
     - if signed_in?
       = link_to "Edit", edit_day_url(day), data: { 'no-turbolink' => true }
 
+    - if show_nav_links
+      .row
+        - previous_day = Day.find_by(number: day.number - 1)
+        - next_day = Day.published.find_by(number: day.number + 1)
+        .col-md-6
+          - if previous_day
+            h4
+              =link_to "← #{previous_day.title} of the Day ##{previous_day.number}", day_path(previous_day)
+        .col-md-6
+          - if next_day
+            h4.pull-right= link_to "#{next_day.title} of the Day ##{next_day.number} →", day_path(next_day)
+
   - if show_comments
     #comments
       - day.comments.top_level.approved.each do |comment|
