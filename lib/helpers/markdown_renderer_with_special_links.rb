@@ -1,4 +1,4 @@
-class MarkdownRendererWithYoutubeLinks < Redcarpet::Render::HTML
+class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
 
   def link(link, title, content)
     if content == '[youtube]'
