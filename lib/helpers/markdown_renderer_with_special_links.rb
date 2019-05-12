@@ -3,7 +3,7 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
   def link(link, title, content)
     if content == '[youtube]'
       youtube_embed(link)
-    elsif ['.jpg', '.png', '.gif'].any? { |extension| link.include?(extension) }
+    elsif %w[.jpg .jpeg .png .gif].any? { |extension| link.downcase.include?(extension) }
       "<a href='#' data-featherlight=#{link} title=#{title}>#{content}</a>"
     elsif day_match = link.match(/^day:(\d+)$/)
       number = day_match.captures.first.to_i
