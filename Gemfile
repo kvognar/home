@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7.1'
-# Use mysql as the database for Active Record
+# gem 'rails', '4.2.7.1'
+gem 'rails', '~> 5.0.7'
+# Use mysql as the dat  abase for Active Record
 gem 'mysql2', '~> 0.3.17'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -60,8 +61,10 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'pry-byebug'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
 end
 
 # Markdown

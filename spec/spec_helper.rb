@@ -45,7 +45,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
 
   Shoulda::Matchers.configure do |config|
@@ -55,12 +55,12 @@ RSpec.configure do |config|
     end
   end
 
-  # config.before(:suite) do
-  #   begin
-  #     DatabaseCleaner.start
-  #       # FactoryGirl.lint
-  #   ensure
-  #     DatabaseCleaner.clean
-  #   end
-  # end
+  config.before(:suite) do
+    begin
+      DatabaseCleaner.start
+        # FactoryBot.lint
+    ensure
+      DatabaseCleaner.clean
+    end
+  end
 end

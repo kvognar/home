@@ -13,7 +13,7 @@
 #  photo_updated_at   :datetime
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
     photo { File.new("#{Rails.root}/spec/support/fixtures/profile.jpg") }
   end

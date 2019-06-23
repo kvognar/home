@@ -22,19 +22,19 @@ describe DaysController, type: :controller do
   describe '#edit' do
     it 'renders the edit page' do
       controller.sign_in!(user)
-      get(:edit, id: day_1.slug)
+      get(:edit, params: { id: day_1.slug })
       expect(assigns(:day)).to eq day_1
       expect(response).to render_template :edit
     end
     it 'redirects to index if not signed in' do
-      get(:edit, id: day_1.slug)
+      get(:edit, params: { id: day_1.slug })
       expect(response).to redirect_to days_url
     end
   end
 
   describe '#show' do
     it 'renders the show page' do
-      get(:show, id: day_1.slug)
+      get(:show, params: { id: day_1.slug })
       expect(assigns(:day)).to eq day_1
       expect(response).to render_template :show
     end
@@ -50,7 +50,7 @@ describe DaysController, type: :controller do
       ten_days = (1..10).map { create(:day) }
       get(:index)
       expect(assigns(:days)).to eq ten_days.reverse
-      get(:index, page: 2)
+      get(:index, params: { page: 2 })
       expect(assigns(:days)).to eq [day_2, day_1]
     end
   end

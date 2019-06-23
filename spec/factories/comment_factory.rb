@@ -15,7 +15,7 @@
 #  rejected     :boolean          default(FALSE)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :comment do
     day
     author 'Umbrella Man'

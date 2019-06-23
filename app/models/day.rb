@@ -57,7 +57,7 @@ class Day < ActiveRecord::Base
 
   scope :drafts, -> { where(is_draft: true) }
   scope :published, -> { where(is_draft: false) }
-  scope :recent, -> { order(publish_date: :desc) }
+  scope :recent, -> { order(number: :desc) }
 
   ##### Class methods #####
 

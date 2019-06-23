@@ -14,9 +14,10 @@
 #  featured       :boolean          default(FALSE)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :tag do
-    name 'the dragon of doubt'
-    tag_type 'people'
+    sequence :name do |n|
+      "the dragon of doubt #{n}"
+    end
   end
 end

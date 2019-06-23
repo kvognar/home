@@ -22,7 +22,7 @@
 #  is_draft           :boolean          default(FALSE), not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :day do
     title "Photo"
     body "A long and meandering description of the mote of dust that hovered in front of my eyes this morning."
