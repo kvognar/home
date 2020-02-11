@@ -1,0 +1,155 @@
+.hero-section
+  h1 Kevin & Laurel
+  p
+    | are getting married at
+    br
+    | The Brazilian Room in Berkeley, CA
+    br
+    | on Saturday, May 2
+
+  = link_to('RSVP Here!', 'rsvp', class: 'rsvp-link')
+
+  .section-shortcuts
+    a href='#schedule' data-='green'
+      .rsvp-icon
+        = svg('wedding/Schedule')
+        | Schedule
+    a href='#travel'
+      .rsvp-icon
+        = svg('wedding/Airplane')
+        | Travel
+    a href='#qna'
+      .rsvp-icon
+        = svg('wedding/Q_A')
+        | Q & A
+    a href='#photos'
+      .rsvp-icon
+        = svg('wedding/Photo')
+        | Photos
+    a href='#registry'
+      .rsvp-icon
+        = svg('wedding/Registry')
+        | Registry
+
+
+
+
+.rsvp-section.row#schedule
+  .rsvp-icon.col-md-5
+    = svg('wedding/Schedule')
+    | Schedule
+
+  .col-md-7
+    h3
+      | The Brazilian Room
+      h4
+        = link_to('Tilden Regional Park Berkeley, CA 94708', 'https://goo.gl/maps/bbbJqfRHY5G8BgB36', target: '_blank')
+      .schedule
+        .row
+          .col-sm-2 6:00
+          .col-sm-10 Welcome
+        .row
+          .col-sm-2 6:30
+          .col-sm-10 Ceremony
+        .row
+          .col-sm-2 7:00
+          .col-sm-10 Toasts
+        .row
+          .col-sm-2 7:30
+          .col-sm-10 Dinner
+        .row
+          .col-sm-2 8:30
+          .col-sm-10 Cake cutting
+        .row
+          .col-sm-2 9:00-11:00
+          .col-sm-10 Dancing!
+
+.rsvp-section.row#travel
+  .rsvp-icon.col-md-5
+    = svg('wedding/Airplane')
+    | Travel
+
+  .section-info.col-md-7
+    .row
+      .col-md-2
+        = svg('wedding/Airport')
+      .col-md-10
+        h3 Getting here
+        p We recommend flying through the Oakland International Airport. From there you can take a train to the Oakland Coliseum BART station, which will get you to Berkeley. If you are staying at the HOTEL, you may want to call a Lyft to get there, as public transportation to the HOTEL is limited.
+    .row
+      .col-md-2
+        = svg('wedding/Transportation')
+      .col-md-10
+        h3 Getting around
+        p We'll have a shuttle to take you to and from the wedding if you're staying in our hotel block.
+        p Otherwise, we recommend using Lyft to get to the Brazilian Room.
+    .row
+      .col-md-2
+        = svg('wedding/Hotel')
+      .col-md-10
+        h3 Where to stay
+        p We have a limited number of rooms with the #{link_to('Double Tree at the Berkeley Marina', 'doubleTreeLink', target: '_blank')}.
+        p We also recommend:
+        p
+          = link_to('Holiday Inn Express on University', 'holidayInn', target: '_blank')
+        p
+          = link_to('La Quinta Inn on University', 'laQuinta', target: '_blank')
+    .row
+      .col-md-2
+        = svg('wedding/Food')
+      .col-md-10
+        h3 Things to eat
+        p =link_to("Barney's Burgers", 'barneyBurgers', target: '_blank')
+        p Delicious burgers in a variety of styles with good vegetarian options. We love their milkshakes!
+        p =link_to('Royal Cafe' 'royalCafe', target: '_blank')
+        p Classic kitchsy diner cafe with great food. Laurel loves their pancakes.
+        p =link_to('Super Super Pho', 'superSuper', target: '_blank')
+        p We eat here all the time
+
+
+.rsvp-section.row#qna
+  .rsvp-icon.col-md-5
+    = svg('wedding/Q_A')
+    | Q & A
+  .section-info.col-md-7
+
+    strong When is the RSVP deadline?
+    p We'd appreciate if you RSVP'd by this date
+
+    strong Can I bring a date?
+    p Please do! We'd love to meet your date. Just be sure to include them in your RSVP.
+
+    strong Are kids welcome?
+    p Yep!
+
+    strong What time should I arrive?
+    p 6pm
+
+    strong How should I get there? Where should I park?
+    p There is a parking lot on site. blahblah
+
+    strong Is the Brazil Room wheelchair accessible?
+    p I hope so
+
+    strong What should I wear?
+    p Filthy casual
+
+    strong Who should I contact with questions?
+    p If you have any questions or concerns, please let us know at #{link_to('mailto: wedding@example.com')}
+
+.rsvp-section.row#photos
+  .rsvp-icon.col-md-5
+    = svg('wedding/Photo')
+    | Photos
+  .section-info.col-md-7
+    p We'd love to see the photos you take! We've set up a drive you can submit to if you'd like to share.
+    =link_to('Photo drive', class: 'btn-link')
+    p You can also use the hashtag <strong>#lovegarden2020</strong> on social media so we can see your pics.
+
+.rsvp-section.row#registry
+  .rsvp-icon.col-md-5
+    = svg('wedding/Registry')
+    | Registry
+  .section-info.col-md-7
+    p How do registries work? ¯\_(ツ)_/¯
+

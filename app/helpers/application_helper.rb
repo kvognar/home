@@ -9,4 +9,17 @@ module ApplicationHelper
     )
     return markdown.render(text).html_safe
   end
+
+  #def svg(name)
+  #  file_path = "#{Rails.root}/app/assets/images/#{name}.svg"
+  #  return File.read(file_path).html_safe if File.exists?(file_path)
+  #  '(not found)'
+  #end
+
+  def svg(name)
+    file = File.read(Rails.root.join('app', 'assets', 'images', "#{name}.svg"))
+    doc = Nokogiri::HTML::DocumentFragment.parse file
+    svg = doc.at_css 'svg'
+    svg.to_html.html_safe
+  end
 end

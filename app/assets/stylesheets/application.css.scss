@@ -21,6 +21,11 @@ $link-color : darkslateblue;
 $hover-color: deepskyblue;
 $hover-background-color: #eeeeff;
 
+@font-face {
+  font-family: "Neutra Display";
+  src: url(NeutraDisplay-LightAlt.otf);
+}
+
 .content {
   margin-bottom: 5rem;
 }

@@ -13,4 +13,9 @@ class StaticPagesController < ApplicationController
     type: "application/pdf"
     )
   end
+
+  def ♥︎
+    hide_navbar
+    render 'rsvp'
+  end
 end

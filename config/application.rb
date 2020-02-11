@@ -12,6 +12,7 @@ module Portfolio
   class Application < Rails::Application
     config.assets.paths << "#{Rails.root}/app/assets/games"
     config.assets.paths << "#{Rails.root}/app/assets/doodles"
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     config.filter_parameters << :secret
 
