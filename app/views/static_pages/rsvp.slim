@@ -3,11 +3,11 @@
   p
     | are getting married at
     br
-    | The Brazilian Room in Berkeley, CA
+    | #{link_to 'The Brazilian Room in Berkeley, CA', 'https://goo.gl/maps/bbbJqfRHY5G8BgB36', target: '_blank' }
     br
     | on Saturday, May 2
 
-  = link_to('RSVP Here!', 'rsvp', class: 'rsvp-link')
+  = link_to('RSVP Here!', 'https://forms.gle/aFGbWeTFdydnQAPF8', class: 'rsvp-link', target: '_blank')
 
   .section-shortcuts
     a href='#schedule' data-='green'
@@ -31,125 +31,158 @@
         = svg('wedding/Registry')
         | Registry
 
+.wedding-info
+
+  .rsvp-section.row#schedule
+    .rsvp-icon.col-md-5
+      = svg('wedding/Schedule')
+      | Schedule
+
+    .col-md-7
+      h3
+        | The Brazilian Room
+        h4
+          = link_to('Tilden Regional Park Berkeley, CA 94708', 'https://goo.gl/maps/bbbJqfRHY5G8BgB36', target: '_blank')
+        br
+        .schedule
+          .row
+            .col-sm-2 6:00
+            .col-sm-10 Welcome
+          .row
+            .col-sm-2 6:30
+            .col-sm-10 Ceremony
+          .row
+            .col-sm-2 7:00
+            .col-sm-10 Toasts
+          .row
+            .col-sm-2 7:30
+            .col-sm-10 Dinner
+          .row
+            .col-sm-2 8:30
+            .col-sm-10 Cake cutting
+          .row
+            .col-sm-2 9:00-11:00
+            .col-sm-10 Dancing!
+
+        small
+          | (Final schedula TBA)
+
+  .rsvp-section.row#travel
+    .rsvp-icon.col-md-5
+      = svg('wedding/Airplane')
+      | Travel
+
+    .section-info.col-md-7
+      .row
+        .col-md-2
+          = svg('wedding/Airport')
+        .col-md-10
+          h3 Getting here
+          p We recommend flying through the Oakland International Airport. From there you can take a train to the Oakland Coliseum BART station, which will get you to Berkeley. If you are staying at the Double Tree, you may want to call a Lyft to get there, as public transportation on the Marina is limited.
+      .row
+        .col-md-2
+          = svg('wedding/Transportation')
+        .col-md-10
+          h3 Getting around
+          p We'll have a shuttle to take you to and from the wedding if you're staying in one of our hotel blocks.
+          p Otherwise, we recommend using Lyft to get to the Brazilian Room.
+      .row
+        .col-md-2
+          = svg('wedding/Hotel')
+        .col-md-10
+          h3 Where to stay
+          p We have a limited number of rooms reserved at a discounted rate with the following hotels:
+          p
+            = link_to('La Quinta Inn on University', 'https://www.wyndhamhotels.com/laquinta/berkeley-california/la-quinta-inn-berkeley/rooms-rates?brand_id=LQ&checkInDate=4/30/2020&checkOutDate=5/3/2020&useWRPoints=false&children=0&groupCode=CGDEEL', target: '_blank')
+          p
+            = link_to('Holiday Inn Express on University', 'https://www.ihg.com/holidayinnexpress/hotels/us/en/find-hotels/hotel/rooms?qDest=Berkeley,%20CA,%20United%20States&qCiMy=32020&qCiD=30&qCoMy=42020&qCoD=3&qAdlt=1&qChld=0&qRms=1&qRtP=6CBARC&qGrpCd=dvw&qSlH=BEKCA&qAkamaiCC=US&qSrt=sBR&qBrs=re.ic.in.vn.cp.vx.hi.ex.rs.cv.sb.cw.ma.ul.ki.va.ii.&qAAR=6CBARC&qWch=0&qSmP=1&setPMCookies=true&qRad=30&qRdU=mi&srb_u=0', target: '_blank')
+          p
+           = link_to('Double Tree at the Berkeley Marina', 'https://doubletree.hilton.com/en/dt/groups/personalized/J/JBKCADT-602-20200430/index.jhtml?WT.mc_id=POG', target: '_blank')
+
+          p Additionally, we may organize a house rental with AirBnB if some of our friends are interested in sharing a house together for a weekend. Let us know if this is something you want to do!
+
+      .row
+        .col-md-2
+          = svg('wedding/Food')
+        .col-md-10
+          h3 Things to eat
+          p =link_to("Ippudo Ramen", 'https://www.yelp.com/biz/ippudo-berkeley-berkeley-2', target: '_blank')
+          p Great ramen in downtown Berkeley. Can be a bit crowded at times, but worth the wait.
+          p =link_to('Royal Cafe', 'https://www.yelp.com/biz/royal-cafe-albany', target: '_blank')
+          p Classic kitchsy diner cafe with great food. Laurel loves their pancakes.
+          p =link_to('Super Super Pho', 'https://www.yelp.com/biz/super-super-restaurant-berkeley', target: '_blank')
+          p Delicious pho with a good vegetarian option. We eat here all the time.
+          p = link_to('Berkeley Social Club', 'https://www.yelp.com/biz/berkeley-social-club-berkeley', target: '_blank')
+          p Korean-American fusion. Kevin recommends their lemon ricotta pancakes.
+          p = link_to("Zachary's Pizza", 'https://www.yelp.com/biz/zacharys-chicago-pizza-berkeley?osq=Zachary%27s%20Pizza', target: '_blank')
+          p Chicago-style deep dish pizza. One of the two must-have pizzas in the East Bay.
+          p = link_to('Cheeseboard Pizza', 'https://www.yelp.com/biz/cheese-board-pizza-berkeley?osq=Cheeseboard%20Pizza%20Collective', target: '_blank')
+          p A Berkeley institution. One kind of pizza available each day, always delicious, always vegetarian. Often has live jazz too.
 
 
-
-.rsvp-section.row#schedule
-  .rsvp-icon.col-md-5
-    = svg('wedding/Schedule')
-    | Schedule
-
-  .col-md-7
-    h3
-      | The Brazilian Room
-      h4
-        = link_to('Tilden Regional Park Berkeley, CA 94708', 'https://goo.gl/maps/bbbJqfRHY5G8BgB36', target: '_blank')
-      .schedule
-        .row
-          .col-sm-2 6:00
-          .col-sm-10 Welcome
-        .row
-          .col-sm-2 6:30
-          .col-sm-10 Ceremony
-        .row
-          .col-sm-2 7:00
-          .col-sm-10 Toasts
-        .row
-          .col-sm-2 7:30
-          .col-sm-10 Dinner
-        .row
-          .col-sm-2 8:30
-          .col-sm-10 Cake cutting
-        .row
-          .col-sm-2 9:00-11:00
-          .col-sm-10 Dancing!
-
-.rsvp-section.row#travel
-  .rsvp-icon.col-md-5
-    = svg('wedding/Airplane')
-    | Travel
-
-  .section-info.col-md-7
-    .row
-      .col-md-2
-        = svg('wedding/Airport')
-      .col-md-10
-        h3 Getting here
-        p We recommend flying through the Oakland International Airport. From there you can take a train to the Oakland Coliseum BART station, which will get you to Berkeley. If you are staying at the HOTEL, you may want to call a Lyft to get there, as public transportation to the HOTEL is limited.
-    .row
-      .col-md-2
-        = svg('wedding/Transportation')
-      .col-md-10
-        h3 Getting around
-        p We'll have a shuttle to take you to and from the wedding if you're staying in our hotel block.
-        p Otherwise, we recommend using Lyft to get to the Brazilian Room.
-    .row
-      .col-md-2
-        = svg('wedding/Hotel')
-      .col-md-10
-        h3 Where to stay
-        p We have a limited number of rooms with the #{link_to('Double Tree at the Berkeley Marina', 'doubleTreeLink', target: '_blank')}.
-        p We also recommend:
-        p
-          = link_to('Holiday Inn Express on University', 'holidayInn', target: '_blank')
-        p
-          = link_to('La Quinta Inn on University', 'laQuinta', target: '_blank')
-    .row
-      .col-md-2
-        = svg('wedding/Food')
-      .col-md-10
-        h3 Things to eat
-        p =link_to("Barney's Burgers", 'barneyBurgers', target: '_blank')
-        p Delicious burgers in a variety of styles with good vegetarian options. We love their milkshakes!
-        p =link_to('Royal Cafe' 'royalCafe', target: '_blank')
-        p Classic kitchsy diner cafe with great food. Laurel loves their pancakes.
-        p =link_to('Super Super Pho', 'superSuper', target: '_blank')
-        p We eat here all the time
+      .row
+        .col-md-2
+          =svg('wedding/Activities')
+        .col-md-10
+          h3 Things to do
+          p #{link_to 'Shopping on Telegraph',' https://telegraphshop.com/', target: '_blank'} or #{link_to 'Fourth Street', 'https://fourthstreetshop.com/', target: '_blank'}
+          p Both locations have tons of shops and restaurants.
+          p= link_to 'Hike Tilden Regional Park', 'https://www.alltrails.com/parks/us/california/tilden-regional-park', target: '_blank'
+          p Lots of hiking routes with great views of the Bay. Maybe check out the animals at the Little Farm while you're up there, too!
+          p= link_to 'Draw Billiards', 'https://www.yelp.com/biz/draw-billiard-club-berkeley', target: '_blank'
+          p A surprisingly vast billiards spot under Shattuck Avenue. Not too loud, and a nice place to try your hand at pool.
+          p= link_to 'The Albatross', 'https://www.yelp.com/biz/the-albatross-pub-berkeley', target: '_blank'
+          p Fun pub with darts, board games, and unlimited popcorn!
+          p= link_to  'Berkeley Art Museum and Pacific Film Archive', 'https://www.yelp.com/biz/berkeley-art-museum-and-pacific-film-archive-berkeley', target: '_blank'
+          p Art & Film museum in downtown Berkeley. Kevin went on lots of field trips here back in elementary school.
 
 
-.rsvp-section.row#qna
-  .rsvp-icon.col-md-5
-    = svg('wedding/Q_A')
-    | Q & A
-  .section-info.col-md-7
+  .rsvp-section.row#qna
+    .rsvp-icon.col-md-5
+      = svg('wedding/Q_A')
+      | Q & A
+    .section-info.col-md-7
 
-    strong When is the RSVP deadline?
-    p We'd appreciate if you RSVP'd by this date
+      strong When is the RSVP deadline?
+      p We'd appreciate if you RSVP'd by March 30, 2020.
 
-    strong Can I bring a date?
-    p Please do! We'd love to meet your date. Just be sure to include them in your RSVP.
+      strong Can I bring a date?
+      p Please do! We'd love to meet your date. Just be sure to include them in your RSVP.
 
-    strong Are kids welcome?
-    p Yep!
+      strong Are kids welcome?
+      p Yep!
 
-    strong What time should I arrive?
-    p 6pm
+      strong What time should I arrive?
+      p 6pm
 
-    strong How should I get there? Where should I park?
-    p There is a parking lot on site. blahblah
+      strong How should I get there? Where should I park?
+      p There is a parking lot on site. If you’re staying in our hotel block or Airbnb we’ll have a shuttle to take you to and from the wedding. Otherwise, we recommend using Lyft.
 
-    strong Is the Brazil Room wheelchair accessible?
-    p I hope so
+      strong Is the Brazil Room wheelchair accessible?
+      p Yes
 
-    strong What should I wear?
-    p Filthy casual
+      strong What should I wear?
+      p Dressy casual. Have fun with it!
 
-    strong Who should I contact with questions?
-    p If you have any questions or concerns, please let us know at #{link_to('mailto: wedding@example.com')}
+      strong Who should I contact with questions?
+      p If you have any questions or concerns, please let us know at #{mail_to('kevinandlaurel2020@gmail.com')}
 
-.rsvp-section.row#photos
-  .rsvp-icon.col-md-5
-    = svg('wedding/Photo')
-    | Photos
-  .section-info.col-md-7
-    p We'd love to see the photos you take! We've set up a drive you can submit to if you'd like to share.
-    =link_to('Photo drive', class: 'btn-link')
-    p You can also use the hashtag <strong>#lovegarden2020</strong> on social media so we can see your pics.
+  .rsvp-section.row#photos
+    .rsvp-icon.col-md-5
+      = svg('wedding/Photo')
+      | Photos
+    .section-info.col-md-7
+      p We'd love to see the photos you take! Closer to the wedding, we'll send out a link where you can share your photos. You can also use the hashtag <strong>#kevinandlaurel2020</strong> on social media so we can see your pics.
 
-.rsvp-section.row#registry
-  .rsvp-icon.col-md-5
-    = svg('wedding/Registry')
-    | Registry
-  .section-info.col-md-7
-    p How do registries work? ¯\_(ツ)_/¯
+  .rsvp-section.row#registry
+    .rsvp-icon.col-md-5
+      = svg('wedding/Registry')
+      | Registry
+    .section-info.col-md-7
+      p We're still figuring this out! We really just want to see you, but if you really want to give us something, check back here later. :)
 
+
+.text-center
+  small Galaxy photo by #{link_to 'Jeremy Thomas', 'https://unsplash.com/photos/E0AHdsENmDg', target: '_blank'}
+  br
+  small=markdown("[Engagement illustration](#{image_path('laurel_and_kevin.jpg')}) by [Katie O'Neill](http://ktoneill.com/)")
