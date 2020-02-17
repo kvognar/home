@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get 'resume' => 'static_pages#resume', as: 'resume'
   get 'contact', to: 'static_pages#contact'
-  get 'laurel_and_kevin', to: 'static_pages#♥︎'
+  get 'kevinandlaurel', to: 'static_pages#♥︎'
 
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'
