@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: media_creator_works
+#
+#  id               :integer          not null, primary key
+#  media_creator_id :integer
+#  media_work_id    :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
+class MediaCreatorWork < ActiveRecord::Base
+  belongs_to :media_creator, dependent: :destroy
+  belongs_to :media_work, dependent: :destroy
+end

@@ -11,27 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111044747) do
-
-  create_table "bubbles", force: :cascade do |t|
-    t.string   "name",               limit: 255,   null: false
-    t.string   "artist",             limit: 255,   null: false
-    t.string   "medium",             limit: 255,   null: false
-    t.integer  "radius",             limit: 4
-    t.text     "thoughts",           limit: 65535
-    t.text     "spoiler_thoughts",   limit: 65535
-    t.date     "finish_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
-    t.datetime "image_updated_at"
-  end
-
-  add_index "bubbles", ["artist"], name: "index_bubbles_on_artist", using: :btree
-  add_index "bubbles", ["medium"], name: "index_bubbles_on_medium", using: :btree
-  add_index "bubbles", ["name"], name: "index_bubbles_on_name", using: :btree
+ActiveRecord::Schema.define(version: 20200223203953) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "day_id",       limit: 4,                     null: false
@@ -109,6 +89,72 @@ ActiveRecord::Schema.define(version: 20181111044747) do
   end
 
   add_index "legacy_tags", ["name", "tag_type"], name: "index_legacy_tags_on_name_and_tag_type", unique: true, using: :btree
+
+  create_table "media_consumptions", force: :cascade do |t|
+    t.integer  "media_work_id", limit: 4
+    t.datetime "start_date"
+    t.datetime "finish_date"
+    t.boolean  "revisiting"
+    t.string   "state",         limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_consumptions", ["finish_date"], name: "index_media_consumptions_on_finish_date", using: :btree
+  add_index "media_consumptions", ["start_date"], name: "index_media_consumptions_on_start_date", using: :btree
+  add_index "media_consumptions", ["state"], name: "index_media_consumptions_on_state", using: :btree
+
+  create_table "media_creator_works", force: :cascade do |t|
+    t.integer  "media_creator_id", limit: 4
+    t.integer  "media_work_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_creator_works", ["media_creator_id"], name: "index_media_creator_works_on_media_creator_id", using: :btree
+  add_index "media_creator_works", ["media_work_id"], name: "index_media_creator_works_on_media_work_id", using: :btree
+
+  create_table "media_creators", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_creators", ["name"], name: "index_media_creators_on_name", using: :btree
+
+  create_table "media_image", force: :cascade do |t|
+    t.integer  "attachable_id",      limit: 4,   null: false
+    t.integer  "attachable_type",    limit: 4,   null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "media_sessions", force: :cascade do |t|
+    t.integer  "day_id",               limit: 4
+    t.integer  "media_consumption_id", limit: 4,     null: false
+    t.string   "title",                limit: 255
+    t.text     "text",                 limit: 65535
+    t.text     "spoiler_text",         limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_sessions", ["day_id"], name: "index_media_sessions_on_day_id", using: :btree
+  add_index "media_sessions", ["media_consumption_id"], name: "index_media_sessions_on_media_consumption_id", using: :btree
+
+  create_table "media_works", force: :cascade do |t|
+    t.string   "medium",     limit: 255, null: false
+    t.string   "title",      limit: 255, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_works", ["medium"], name: "index_media_works_on_medium", using: :btree
+  add_index "media_works", ["title"], name: "index_media_works_on_title", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
