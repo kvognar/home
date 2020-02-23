@@ -7,8 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create([{ name: 'Umbrella Man', password: 'good morning', is_admin: true}])
 
-people = (0...50).map { Faker::Name.first_name.downcase }.uniq.map { |name| Tag.create(tag_type: 'people', name: name) }
-categories = (0...10).map { Faker::Book.genre.downcase }.uniq.map { |name| Tag.create(tag_type: 'categories', name: name) }
+people_tag = Tag.create(name: 'people')
+people = (0...50).map { Faker::Name.first_name.downcase }.uniq.map { |name| Tag.create(parent: people_tag, name: name) }
+categories = (0...10).map { Faker::Book.genre.downcase }.uniq.map { |name| Tag.create(name: name) }
 photos = Dir["#{Rails.root}/spec/support/fixtures/photos/*.JPG"].map { |filename| File.new(filename) }
 
 first_day = 500.days.ago
@@ -28,8 +29,7 @@ first_day = 500.days.ago
     lyrics: Faker::Book.title,
     lyric_credit: Faker::Book.author,
     whisper: "#{Faker::Superhero.power} #{number}",
-    people: day_people,
-    categories: day_categories,
+    tags: day_categories + day_people,
     publish_date: first_day + number.days + rand(6).hours
   })
 
