@@ -12,13 +12,12 @@
 #  updated_at    :datetime
 #
 
-class MediaConsumption < ActiveRecord::Base
+require 'spec_helper'
 
-  VALID_STATES = %w[someday queued in_progress icebox abandoned finished]
+describe MediaConsumption, type: :model do
 
-  belongs_to :media_work
-  has_many :media_sessions
-
-  validates :state, inclusion: { in: VALID_STATES }
+  it { is_expected.to belong_to :media_work }
+  it { is_expected.to have_many :media_sessions }
+  it { is_expected.to validate_inclusion_of(:state).in_array(MediaConsumption::VALID_STATES) }
 
 end

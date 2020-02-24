@@ -35,7 +35,7 @@ class CreateMediaLogTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :media_image do |t|
+    create_table :media_images do |t|
       t.integer :attachable_id, null: false
       t.integer :attachable_type, null: false
       t.string :image_file_name

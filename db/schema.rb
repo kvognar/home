@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20200223203953) do
 
   add_index "media_creators", ["name"], name: "index_media_creators_on_name", using: :btree
 
-  create_table "media_image", force: :cascade do |t|
+  create_table "media_images", force: :cascade do |t|
     t.integer  "attachable_id",      limit: 4,   null: false
     t.integer  "attachable_type",    limit: 4,   null: false
     t.string   "image_file_name",    limit: 255

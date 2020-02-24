@@ -13,16 +13,11 @@
 #  updated_at         :datetime
 #
 
-class MediaImage < ActiveRecord::Base
+require 'spec_helper'
 
-  belongs_to :attachable, polymorphic: true
-
-  has_attached_file :image,
-                    styles: { thumb: '100x100#', medium: '1200x900>' },
-                    convert_options: {
-                        thumb: '-strip'
-                    }
-
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+describe MediaImage, type: :model do
+  it { is_expected.to have_attached_file(:image) }
+  it { is_expected.to validate_attachment_content_type(:image).allowing('image/*') }
+  it { is_expected.to belong_to :attachable}
 
 end
