@@ -8,6 +8,7 @@ class CreateMediaLogTables < ActiveRecord::Migration
     create_table :media_works do |t|
       t.string :medium, null: false, index: true
       t.string :title, null: false, index: true
+      t.boolean :perennial
       t.timestamps
     end
 

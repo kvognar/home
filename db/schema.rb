@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20200223203953) do
   create_table "media_works", force: :cascade do |t|
     t.string   "medium",     limit: 255, null: false
     t.string   "title",      limit: 255, null: false
+    t.boolean  "perennial"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

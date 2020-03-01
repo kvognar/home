@@ -36,6 +36,9 @@ Rails.application.routes.draw do
     resources :quick_tags, only: [:show, :update]
   end
 
+  resources :media_works
+  resources :media_creators
+
   get 'code/projects', to: 'code#projects'
   get 'code/games', to: 'code#games'
   get 'code/doodles', to: 'code#doodles'
