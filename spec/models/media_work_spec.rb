@@ -5,8 +5,10 @@
 #  id         :integer          not null, primary key
 #  medium     :string(255)      not null
 #  title      :string(255)      not null
+#  perennial  :boolean
 #  created_at :datetime
 #  updated_at :datetime
+#
 
 require 'spec_helper'
 
