@@ -19,6 +19,7 @@ class MediaWorkCreationService
     if @media_work.save
       add_and_remove_creators
       add_image
+      add_media_consumption
     end
 
     [@media_work, success]
@@ -47,6 +48,14 @@ class MediaWorkCreationService
   def add_creators(creators)
     new_creators = creators - @media_work.media_creators
     new_creators.each { |creator| @media_work.media_creators << creator }
+  end
+
+  def add_media_consumption
+    if @media_work.media_consumptions.empty?
+      @media_work.media_consumptions.create(
+          state: 'someday'
+      )
+    end
   end
 
   def remove_creators(creators_to_keep)

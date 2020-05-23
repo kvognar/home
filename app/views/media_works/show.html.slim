@@ -9,6 +9,11 @@ ul
   - @media_work.media_creators.each do |creator|
     li= link_to creator.name, media_creator_path(creator)
 
-=> link_to 'Edit', edit_media_work_path(@media_work)
-'|
-=< link_to 'Back', media_works_path
+- @media_work.media_consumptions.each do |consumption|
+  = render partial: 'consumption', locals: { consumption: consumption }
+
+
+nav
+  => link_to 'Edit', edit_media_work_path(@media_work)
+  '|
+  =< link_to 'Back', media_works_path

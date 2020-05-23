@@ -1,11 +1,11 @@
 class MediaWorksController < ApplicationController
-  before_action :set_media_work, only: [:show, :edit, :update, :destroy]
+  before_action :set_media_work, only: [:show, :edit, :update, :destroy, :start]
   before_action :require_admin!
 
   # GET /media_works
   # GET /media_works.json
   def index
-    @media_works = MediaWork.all
+    @media_works = MediaWork.includes(:media_consumptions).joins(:media_consumptions).all
   end
 
   # GET /media_works/1
@@ -61,6 +61,14 @@ class MediaWorksController < ApplicationController
       format.html { redirect_to media_works_url, notice: 'Media work was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def start
+    @consumption = @media_work.media_consumptions.find_by(state: %w[someday queued])
+    @consumption = @media_work.media_consumptions.create(state: 'someday') if @consumption.blank?
+
+    @consumption.update(state: 'in_progress', start_date: Time.now)
+    redirect_to @media_work
   end
 
   private

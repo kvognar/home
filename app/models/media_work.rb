@@ -20,4 +20,12 @@ class MediaWork < ActiveRecord::Base
   validates :title, presence: true
 
   MEDIUM_OPTIONS = %w[book movie tv_show video_game podcast comic article youtuber stage_play other]
+
+  def state
+    media_consumptions.last.state
+  end
+
+  def not_started?
+    %w[someday queued].include? state
+  end
 end

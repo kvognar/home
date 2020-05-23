@@ -36,7 +36,11 @@ Rails.application.routes.draw do
     resources :quick_tags, only: [:show, :update]
   end
 
-  resources :media_works
+  resources :media_works do
+    member do
+      put :start
+    end
+  end
   resources :media_creators
 
   get 'code/projects', to: 'code#projects'

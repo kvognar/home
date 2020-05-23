@@ -21,4 +21,23 @@ class MediaConsumption < ActiveRecord::Base
 
   validates :state, inclusion: { in: VALID_STATES }
 
+  def started?
+    start_date.present?
+  end
+
+  def finished?
+    finish_date.present?
+  end
+
+  def in_progress?
+    state == 'in_progress'
+  end
+
+  def on_deck?
+    state == 'on_deck'
+  end
+
+  def abandoned?
+    state == 'abandoned'
+  end
 end
