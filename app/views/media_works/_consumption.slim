@@ -1,0 +1,12 @@
+.u-margin-T-s
+
+- if consumption.started?
+  p Started #{consumption.start_date.to_s(:long_ordinal)}
+  - if consumption.in_progress?
+    p Currently in progress
+  - if consumption.finished?
+    p Finished #{consumption.finish_date(:long_ordinal)}
+  - elsif consumption.abandoned?
+    p I probably won't come back to this.
+-  else
+  p Not Started
