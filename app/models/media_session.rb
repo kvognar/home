@@ -15,7 +15,12 @@
 class MediaSession < ActiveRecord::Base
 
   has_many :media_images, as: :attachable
+  belongs_to :day
   belongs_to :media_consumption, dependent: :destroy
   validates :media_consumption, presence: true
+
+  def has_spoilers?
+    spoiler_text.present?
+  end
   
 end

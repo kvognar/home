@@ -5,7 +5,7 @@
     = f.text_field :title
   div
     = f.label :medium
-    = f.select :medium, MediaWork::MEDIUM_OPTIONS
+    = f.select :medium, MediaWork::MEDIUM_OPTIONS.map { |option| [option.humanize, option] }
   div
     = f.label :perennial
     = f.check_box :perennial

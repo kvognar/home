@@ -1,12 +1,23 @@
-.u-margin-T-s
-
 - if consumption.started?
-  p Started #{consumption.start_date.to_s(:long_ordinal)}
+  p.text-center Started #{consumption.start_date.to_date.to_s(:long_ordinal)}
   - if consumption.in_progress?
     p Currently in progress
+
+  - consumption.media_sessions.order(:created_at).each do |session|
+    .media-session
+      - if session.title.present?
+        h4=session.title
+        h6= session.day.day_of.to_s(:long_ordinal)
+      - if session.text.present?
+        = markdown(session.text)
+      - if session.spoiler_text.present?
+        .spoilers.hidden= markdown(session.spoiler_text)
+        p.spoiler-warning Spoilers!
   - if consumption.finished?
-    p Finished #{consumption.finish_date(:long_ordinal)}
+    p.text-center Finished #{consumption.finish_date.to_date.to_s(:long_ordinal)}
+  - elsif consumption.icebox?
+    p.text-center I've put this away for now, but I plan to finish it someday.
   - elsif consumption.abandoned?
-    p I probably won't come back to this.
+    p.text-center I probably won't come back to this.
 -  else
   p Not Started

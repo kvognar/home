@@ -1,0 +1,36 @@
+// Place all the styles related to the media_works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.media_works {
+
+  label {
+    margin-right: 1rem;
+  }
+
+  .creator-select {
+    width: 800px;
+  }
+
+  th {
+    min-width: 80px;
+  }
+  td {
+    padding-right: 1rem;
+  }
+
+  img {
+    max-height: 300px;
+  }
+}
+
+.consumption-log {
+  border: 1px solid darkblue;
+  padding: 1rem;
+}
+
+.spoiler-warning {
+  color: white;
+  background: darkred;
+  padding: 1rem;
+}

@@ -42,4 +42,8 @@ class MediaConsumption < ActiveRecord::Base
   def abandoned?
     state == 'abandoned'
   end
+
+  def icebox?
+    state == 'icebox'
+  end
 end

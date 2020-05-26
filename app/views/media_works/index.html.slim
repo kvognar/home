@@ -14,7 +14,7 @@ table
     - @media_works.each do |media_work|
       tr
         td= media_work.title
-        td= media_work.medium
+        td= media_work.medium.humanize
         td= media_work.media_creators.map(&:name).join(', ')
         td= media_work.state.titleize
         td = link_to 'Show', media_work
