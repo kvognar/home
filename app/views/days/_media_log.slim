@@ -1,0 +1,14 @@
+- medias = MediaConsumption.where(state: 'in_progress').includes(:media_sessions)
+- medias.each do |media|
+  - session = media.media_sessions.find_or_initialize_by(day_id: day.id)
+  .media-log-miniform
+    = check_box_tag "media_consumption[#{media.id}][continued]", 'continued', session.persisted?, class: 'media-log-toggle'
+    = label_tag "media_consumption[#{media.id}][continued]", "Log #{media.title}", class: 'checkbox-label'
+    .media-log-texts class=(session.new_record? ? 'hidden' : nil)
+      / = label_tag "media_consumption[#{media.id}][title]", "Title"
+      = text_field_tag "media_consumption[#{media.id}][title]", session.title, class: 'form-control', placeholder: 'Title'
+      / = label_tag "media_consumption[#{media.id}][text]", "Thoughts"
+      = text_area_tag "media_consumption_[#{media.id}][text]", session.text, class: 'form-control', placeholder: 'Thoughts'
+      / = label_tag "media_consumption_[#{media.id}][spoiler_text]", "Spoilers"
+      = text_area_tag "media_consumption_[#{media.id}][spoiler_text]", session.spoiler_text, class: 'form-control', placeholder: 'Spoilers'
+

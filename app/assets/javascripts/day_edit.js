@@ -35,6 +35,17 @@ Dropzone.autoDiscover = false;
         event.preventDefault();
         $('.day-data-container').toggleClass('glass');
     });
+
+    $('.media-log-toggle').on('click', function(event) {
+        const $checkbox = $(event.currentTarget);
+        console.log($checkbox);
+        console.log($checkbox[0].checked);
+        if ($checkbox[0].checked) {
+            $checkbox.siblings('.media-log-texts').removeClass('hidden');
+        } else {
+            $checkbox.siblings('.media-log-texts').addClass('hidden');
+        }
+    })
 };
 
 $(document).on('turbolinks:load', function() {

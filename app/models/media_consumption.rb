@@ -21,6 +21,8 @@ class MediaConsumption < ActiveRecord::Base
 
   validates :state, inclusion: { in: VALID_STATES }
 
+  delegate :title, to: :media_work
+
   def started?
     start_date.present?
   end
