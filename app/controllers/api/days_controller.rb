@@ -40,6 +40,7 @@ class Api::DaysController < ApplicationController
     Day.transaction do
       if @day.save
         add_and_remove_tags
+        MediaSessionService.save(params: params, day: @day)
         if params[:photo]
           photo = Photo.find(params[:photo][:id])
           photo.update_attributes(day_id: @day.id, is_canonical: true)

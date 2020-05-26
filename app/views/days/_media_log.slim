@@ -8,7 +8,9 @@
       / = label_tag "media_consumption[#{media.id}][title]", "Title"
       = text_field_tag "media_consumption[#{media.id}][title]", session.title, class: 'form-control', placeholder: 'Title'
       / = label_tag "media_consumption[#{media.id}][text]", "Thoughts"
-      = text_area_tag "media_consumption_[#{media.id}][text]", session.text, class: 'form-control', placeholder: 'Thoughts'
-      / = label_tag "media_consumption_[#{media.id}][spoiler_text]", "Spoilers"
-      = text_area_tag "media_consumption_[#{media.id}][spoiler_text]", session.spoiler_text, class: 'form-control', placeholder: 'Spoilers'
+      = text_area_tag "media_consumption[#{media.id}][text]", session.text, class: 'form-control', placeholder: 'Thoughts'
+      / = label_tag "media_consumption[#{media.id}][spoiler_text]", "Spoilers"
+      = text_area_tag "media_consumption[#{media.id}][spoiler_text]", session.spoiler_text, class: 'form-control', placeholder: 'Spoilers'
+      = check_box_tag "media_consumption[#{media.id}][finish]", 'finish', false, class: 'media-log-toggle'
+      = label_tag "media_consumption[#{media.id}][finish]", "Finish up", class: 'checkbox-label'
 
