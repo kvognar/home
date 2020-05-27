@@ -30,3 +30,4 @@ nav.navbar role='navigation'
         li.nav-item = link_to 'Contact', contact_url
         - if signed_in?
           li.nav-item = link_to '☂', new_day_url
+          li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete

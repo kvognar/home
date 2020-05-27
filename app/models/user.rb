@@ -13,10 +13,9 @@
 
 class User < ActiveRecord::Base
 
-  validates_uniqueness_of :name, :session_token
-  validates_presence_of :name, :session_token
-
-  after_initialize :ensure_session_token
+  validates_uniqueness_of :name
+  validates_presence_of :name
+  has_many :sessions
 
   scope :admin, -> { where(is_admin: true).first }
 
@@ -28,22 +27,5 @@ class User < ActiveRecord::Base
   def is_password?(password)
     BCrypt::Password.new(self.password_hash).is_password?(password)
   end
-
-  def reset_session_token!
-    self.session_token = generate_token
-    self.save!
-    self.session_token
-  end
-  
-  private
-
-  def ensure_session_token
-    self.session_token ||= generate_token
-  end
-
-  def generate_token
-    SecureRandom::urlsafe_base64(16)
-  end
-
 
 end

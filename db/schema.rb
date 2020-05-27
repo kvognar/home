@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200223203953) do
+ActiveRecord::Schema.define(version: 20200527202005) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "day_id",       limit: 4,                     null: false
@@ -178,6 +178,16 @@ ActiveRecord::Schema.define(version: 20200223203953) do
 
   add_index "photos", ["day_id"], name: "index_photos_on_day_id", using: :btree
   add_index "photos", ["is_canonical"], name: "index_photos_on_is_canonical", using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_token", limit: 255
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_token"], name: "index_sessions_on_session_token", using: :btree
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "day_id",     limit: 4, null: false

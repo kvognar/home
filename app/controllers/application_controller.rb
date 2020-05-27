@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by_session_token(session[:token])
+    return @current_user if @current_user.present?
+    current_session = Session.find_by(session_token: session[:token])
+    @current_user = current_session.user if current_session.present?
+    @current_user
   end
 
   def signed_in?
@@ -17,11 +20,12 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_in!(user)
-    session[:token] = user.reset_session_token!
+    new_session = Session.create!(user: user)
+    session[:token] = new_session.session_token
   end
 
   def sign_out!
-    current_user.try(:reset_session_token)
+    Session.where(user: current_user).destroy_all
     @current_user = nil
     session[:token] = nil
   end
@@ -48,5 +52,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :signed_in?
   helper_method :admin?
+  helper_method :current_user
 
 end
