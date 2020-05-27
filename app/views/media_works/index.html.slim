@@ -18,10 +18,11 @@ table
         td= media_work.media_creators.map(&:name).join(', ')
         td= media_work.state.titleize
         td = link_to 'Show', media_work
-        td = link_to 'Edit', edit_media_work_path(media_work)
-        td = link_to 'Destroy', media_work, data: { confirm: 'Are you sure?' }, method: :delete
-        - if media_work.not_started?
-          td = link_to 'Start', start_media_work_path(media_work), method: :put
+        - if admin?
+          td = link_to 'Edit', edit_media_work_path(media_work)
+          td = link_to 'Destroy', media_work, data: { confirm: 'Are you sure?' }, method: :delete
+          - if media_work.not_started?
+            td = link_to 'Start', start_media_work_path(media_work), method: :put
 
 br
 
