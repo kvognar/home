@@ -26,7 +26,7 @@ nav.navbar role='navigation'
             li = link_to 'Projects', code_projects_url
             li = link_to 'Games', code_games_url
             li = link_to 'Doodles', code_doodles_url
+        li.nav-item = link_to 'Medialog', media_works_path
         li.nav-item = link_to 'Contact', contact_url
         - if signed_in?
-          li.nav-item = link_to 'Medialog', media_works_path
           li.nav-item = link_to '☂', new_day_url

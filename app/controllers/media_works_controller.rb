@@ -1,11 +1,13 @@
 class MediaWorksController < ApplicationController
   before_action :set_media_work, only: [:show, :edit, :update, :destroy, :start]
-  before_action :require_admin!, except: :show
+  before_action :require_admin!, except: [:show, :index]
 
   # GET /media_works
   # GET /media_works.json
   def index
-    @media_works = MediaWork.includes(:media_consumptions).joins(:media_consumptions).all
+    @media_works = MediaWork.includes(:media_consumptions).joins(:media_consumptions).all.group_by do |work|
+      work.media_consumptions.last.state
+    end
   end
 
   # GET /media_works/1

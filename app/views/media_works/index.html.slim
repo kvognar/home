@@ -1,29 +1,25 @@
-h1 Bubbles
+h1 Delicious media
 
-table
-  thead
-    tr
-      th Title
-      th Medium
-      th Creators
-      th State
-      th
-      th
+h3 In progress
+= render partial: 'list', locals: { media_works: @media_works['in_progress'] }
 
-  tbody
-    - @media_works.each do |media_work|
-      tr
-        td= media_work.title
-        td= media_work.medium.humanize
-        td= media_work.media_creators.map(&:name).join(', ')
-        td= media_work.state.titleize
-        td = link_to 'Show', media_work
-        - if admin?
-          td = link_to 'Edit', edit_media_work_path(media_work)
-          td = link_to 'Destroy', media_work, data: { confirm: 'Are you sure?' }, method: :delete
-          - if media_work.not_started?
-            td = link_to 'Start', start_media_work_path(media_work), method: :put
+- if @media_works['queued'].present?
+  h3 Coming up
+  = render partial: 'list', locals: { media_works: @media_works['queued'] }
+
+- if @media_works['someday'].present?
+  h3 Someday
+  = render partial: 'list', locals: { media_works: @media_works['someday'] }
+
+- if @media_works['icebox'].present?
+  h3 Shelved for now
+  = render partial: 'list', locals: { media_works: @media_works['icebox'] }
+
+- if @media_works['finished'].present?
+  h3 Finished
+  = render partial: 'list', locals: { media_works: @media_works['finished'] }
 
 br
 
-= link_to 'New Media work', new_media_work_path
+- if admin?
+  = link_to 'New Media work', new_media_work_path
