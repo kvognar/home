@@ -14,7 +14,7 @@
     = f.select :media_creators, options_from_collection_for_select(MediaCreator.all.order(:name), :name, :name, @media_work.media_creators.map(&:name)), { }, { prompt: 'Creators', multiple: :multiple, class: 'searchable-select creator-select'}
   div
     = f.label :image
-    = f.file_field :image, accept: 'image/png,image/jpg,image/gif'
+    = f.file_field :image, accept: 'image/png,image/jpg,image/gif,image/jpeg'
 
   - if @media_work.errors.any?
     #error_explanation
