@@ -454,12 +454,18 @@ div.susurrus {
   margin-left: 0.5rem;
 }
 
-.media-icon {
-  svg {
-    height: 2rem;
-    width: 2rem;
-    fill: gray;
+.media-summary {
+  .media-icon {
+    svg {
+      height: 2rem;
+      width: 2rem;
+      fill: gray;
+    }
+    margin: 1rem;
+    display: inline;
   }
-  margin: 1rem;
-  display: inline;
+ * {
+    vertical-align: top;
+  }
 }
+
