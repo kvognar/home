@@ -17,6 +17,7 @@ class MediaSession < ActiveRecord::Base
   has_many :media_images, as: :attachable
   belongs_to :day
   belongs_to :media_consumption, dependent: :destroy
+  has_one :media_work, through: :media_consumption
   validates :media_consumption, presence: true
 
   def has_spoilers?

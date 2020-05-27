@@ -49,6 +49,7 @@ class Day < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :approved_comments, -> { where approved: true }, class_name: 'Comment'
+  has_many :media_sessions
 
   ##### Defaults ######
   self.per_page = 10

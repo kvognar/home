@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body.static_pages {
+  @media (prefers-color-scheme: dark) {
+    //background-color: black;
+  }
+}
+
 .day {
   margin: 0 auto;
   .day-photo-container {
@@ -446,4 +452,14 @@ div.susurrus {
 
 .checkbox-label {
   margin-left: 0.5rem;
+}
+
+.media-icon {
+  svg {
+    height: 2rem;
+    width: 2rem;
+    fill: gray;
+  }
+  margin: 1rem;
+  display: inline;
 }
