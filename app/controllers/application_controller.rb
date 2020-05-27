@@ -42,6 +42,11 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def admin?
+    current_user&.is_admin
+  end
+
   helper_method :signed_in?
+  helper_method :admin?
 
 end

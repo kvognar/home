@@ -13,11 +13,27 @@
       - if session.spoiler_text.present?
         .spoilers.hidden= markdown(session.spoiler_text)
         p.spoiler-warning Spoilers!
-  - if consumption.finished?
+  - if consumption.in_progress?
+    - if admin?
+      = button_to 'Shelve it for now', media_consumption_path(consumption), method: :put, params: { state: 'icebox' }
+  - elsif consumption.finished?
     p.text-center Finished #{consumption.finish_date.to_date.to_s(:long_ordinal)}
   - elsif consumption.icebox?
     p.text-center I've put this away for now, but I plan to finish it someday.
+    - if admin?
+      = button_to 'Continue', media_consumption_path(consumption), method: :put, params: { state: 'in_progress' }
+      = button_to 'I give up', media_consumption_path(consumption), method: :put, params: { state: 'abandoned' }
   - elsif consumption.abandoned?
     p.text-center I probably won't come back to this.
--  else
+    - if admin?
+      = button_to 'Hope springs anew', media_consumption_path(consumption), method: :put, params: { state: 'in_progress' }
+-  elsif consumption.queued?
+  p On deck! I'll start this one soon.
+  - if admin?
+    = button_to 'Begin', media_consumption_path(consumption), method: :put, params: { state: 'in_progress' }
+    = button_to 'Maybe later', media_consumption_path(consumption), method: :put, params: { state: 'someday' }
+- else
   p Not Started
+  - if admin?
+    = button_to 'Begin', media_consumption_path(consumption), method: :put, params: { state: 'in_progress' }
+    = button_to 'Queue up', media_consumption_path(consumption), method: :put, params: { state: 'queued' }

@@ -35,8 +35,8 @@ class MediaConsumption < ActiveRecord::Base
     state == 'in_progress'
   end
 
-  def on_deck?
-    state == 'on_deck'
+  def queued?
+    state == 'queued'
   end
 
   def abandoned?

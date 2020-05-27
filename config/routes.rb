@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     end
   end
   resources :media_creators
+  resources :media_consumptions, only: :update
 
   get 'code/projects', to: 'code#projects'
   get 'code/games', to: 'code#games'
