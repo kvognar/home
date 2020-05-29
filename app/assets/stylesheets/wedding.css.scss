@@ -113,6 +113,32 @@ body.♥︎ {
     width: 100%;
     padding: 0;
   }
+  @media(max-width: 768px) {
+    h1 {
+      font-size: 60px;
+    }
+
+    .rsvp-section {
+      margin: 20px 10px 0;
+    }
+
+    .col-md-2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h3 {
+      margin-top: 5px;
+    }
+
+    .hero-section .section-shortcuts {
+      display: none;
+    }
+
+    .rsvp-icon {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .rsvp-icon {
@@ -139,29 +165,4 @@ body.♥︎ {
 
 }
 
-@media(max-width: 768px) {
-  h1 {
-    font-size: 60px;
-  }
 
-  .rsvp-section {
-    margin: 20px 10px 0;
-  }
-
-  .col-md-2 {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  h3 {
-    margin-top: 5px;
-  }
-
-  .hero-section .section-shortcuts {
-    display: none;
-  }
-
-  .rsvp-icon {
-    margin-bottom: 20px;
-  }
-}

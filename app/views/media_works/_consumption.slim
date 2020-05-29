@@ -7,6 +7,7 @@
     .media-session
       - if session.title.present?
         h4=session.title
+      - if session.title.present? || session.text.present? || session.spoiler_text.present?
         h6= session.day.day_of.to_s(:long_ordinal)
       - if session.text.present?
         = markdown(session.text)

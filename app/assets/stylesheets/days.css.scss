@@ -455,17 +455,17 @@ div.susurrus {
 }
 
 .media-summary {
-  .media-icon {
-    svg {
-      height: 2rem;
-      width: 2rem;
-      fill: gray;
-    }
-    margin: 1rem;
-    display: inline;
-  }
  * {
     vertical-align: top;
   }
 }
 
+.media-icon {
+  svg {
+    height: 2rem;
+    width: 2rem;
+    fill: gray;
+  }
+  margin: 1rem;
+  display: inline;
+}

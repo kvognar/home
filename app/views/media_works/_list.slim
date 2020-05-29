@@ -4,8 +4,6 @@ table
       th Title
       th Medium
       th Creators
-      th
-      th
 
   tbody
     - media_works.each do |media_work|
@@ -13,8 +11,3 @@ table
         td= link_to media_work.title, media_work
         td= media_work.medium.humanize
         td= media_work.media_creators.map(&:name).join(', ')
-        - if admin?
-          td = link_to 'Edit', edit_media_work_path(media_work)
-          td = link_to 'Destroy', media_work, data: { confirm: 'Are you sure?' }, method: :delete
-          - if media_work.not_started?
-            td = link_to 'Start', start_media_work_path(media_work), method: :put
