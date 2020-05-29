@@ -20,7 +20,7 @@ h3 In progress
 
 - if @media_works['ongoing'].present?
   h3 Evergreen
-  small These works are never really done
+  small These things are never really done
   = render partial: 'list', locals: { media_works: @media_works['ongoing'] }
 
 - if @media_works['finished'].present?
