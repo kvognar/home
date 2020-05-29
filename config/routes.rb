@@ -27,6 +27,12 @@ Rails.application.routes.draw do
   namespace :api do
     resources :photos, only: :create
     resources :days, only: [:update, :create, :show]
+    resources :media_sessions, only: [] do
+      collection do
+        get 'perennial_form', to: 'media_sessions#perennial_form'
+      end
+    end
+
     post 'migrate', to: 'migrations#migrate'
     put 'migrate/:number', to: 'migrations#update_migrate'
   end

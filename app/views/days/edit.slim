@@ -30,7 +30,13 @@
         = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
         = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
 
-        = render partial: 'media_log', locals: { day: @day }
+        - medias = MediaConsumption.where(state: 'in_progress').includes(:media_sessions)
+        - medias.each do |media|
+          - session = media.media_sessions.find_or_initialize_by(day_id: @day.id)
+          = render partial: 'media_log', locals: { media: media, session: session }
+        .perennials
+          = select_tag :perennials, options_from_collection_for_select(MediaWork.where(perennial: true), :id, :title), { class: 'perennial-picker searchable-select', id: 'tag-selector' }
+          #perennialForms data={ day_id: @day.id }
         = f.submit value: "Good night.", class: 'good-night'
 
     .continue-container

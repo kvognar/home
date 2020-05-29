@@ -3,7 +3,7 @@ class MediaConsumptionsController < ApplicationController
 
   def update
     @consumption = MediaConsumption.find(params[:id])
-    if params[:state] == 'in_progress' && !@consumption.started?
+    if %w[in_progress ongoing].include?(params[:state]) && !@consumption.started?
       @consumption.start_date = Time.now
     end
     @consumption.update!(state: params[:state])

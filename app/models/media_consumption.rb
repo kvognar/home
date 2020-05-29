@@ -14,7 +14,7 @@
 
 class MediaConsumption < ActiveRecord::Base
 
-  VALID_STATES = %w[someday queued in_progress icebox abandoned finished]
+  VALID_STATES = %w[someday queued in_progress ongoing icebox abandoned finished]
 
   belongs_to :media_work
   has_many :media_sessions
@@ -22,6 +22,14 @@ class MediaConsumption < ActiveRecord::Base
   validates :state, inclusion: { in: VALID_STATES }
 
   delegate :title, to: :media_work
+
+  def start_state
+    if media_work.perennial?
+      'ongoing'
+    else
+      'in_progress'
+    end
+  end
 
   def started?
     start_date.present?
@@ -33,6 +41,10 @@ class MediaConsumption < ActiveRecord::Base
 
   def in_progress?
     state == 'in_progress'
+  end
+
+  def perennial?
+    state == 'perennial'
   end
 
   def queued?

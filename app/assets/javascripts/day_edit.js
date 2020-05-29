@@ -36,16 +36,17 @@ Dropzone.autoDiscover = false;
         $('.day-data-container').toggleClass('glass');
     });
 
-    $('.media-log-toggle').on('click', function(event) {
+    $('body').on('click', '.media-log-toggle', function(event) {
         const $checkbox = $(event.currentTarget);
-        console.log($checkbox);
-        console.log($checkbox[0].checked);
         if ($checkbox[0].checked) {
             $checkbox.siblings('.media-log-texts').removeClass('hidden');
         } else {
             $checkbox.siblings('.media-log-texts').addClass('hidden');
         }
-    })
+    });
+
+    $('.perennial-picker').on('change', µ.addPerennialLog);
+    µ.addedPerennials = []
 };
 
 $(document).on('turbolinks:load', function() {
@@ -95,7 +96,7 @@ $(document).on('turbolinks:load', function() {
     $('#bonus-container').append('<img class="photo-preview" src="' + response.url + '">');
     $('#bonus-container').append('<code>' + response.url + '</code>');
 
-}
+};
 
 // Response callbacks
 
@@ -121,4 +122,28 @@ $(document).on('turbolinks:load', function() {
     response.responseJSON.errors.forEach(function(error) {
         $('.error-container ul').append('<li>' + error + '</li>')
     })
+};
+
+µ.addPerennialLog = function(event) {
+    const id = $(event.currentTarget).val();
+    const dayId = $('#perennialForms').data('day-id');
+
+    if (µ.addedPerennials.indexOf(id) >= 0) {
+        return;
+    }
+    µ.addedPerennials.push(id);
+
+    $.ajax({
+        type: 'get',
+        url: '/api/media_sessions/perennial_form',
+        data: {
+            media_work_id: id,
+            day_id: dayId,
+        },
+        success: µ.handlePerennialResponse
+    });
+};
+
+µ.handlePerennialResponse = function(response) {
+    $('#perennialForms').append(response.html);
 };

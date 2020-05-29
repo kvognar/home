@@ -19,10 +19,10 @@ class Api::DaysController < ApplicationController
       Tag.find_by(name: tag).self_and_descendants.map(&:day_ids).flatten.uniq
     end.inject(:&)
 
-    @days = Day.published.where(id: common_day_ids).pluck(:number)
+    @days  = Day.published.where(id: common_day_ids).pluck(:number)
     @total = Day.published.count
     render json: {
-        days: @days,
+        days:  @days,
         total: @total
     }
   end
@@ -30,7 +30,7 @@ class Api::DaysController < ApplicationController
   def show
     @day = Day.find_by_number(params[:id])
     render json: {
-        html: render_to_string(partial: 'days/show', locals: {day: @day, link_title: true, show_comments: false, show_nav_links: false})
+        html: render_to_string(partial: 'days/show', locals: { day: @day, link_title: true, show_comments: false, show_nav_links: false })
     }
   end
 
