@@ -35,7 +35,7 @@
           - session = media.media_sessions.find_or_initialize_by(day_id: @day.id)
           = render partial: 'media_log', locals: { media: media, session: session }
         .perennials
-          = select_tag :perennials, options_from_collection_for_select(MediaWork.where(perennial: true), :id, :title), { class: 'perennial-picker searchable-select', id: 'tag-selector' }
+          = select_tag :perennials, options_from_collection_for_select(MediaWork.where(perennial: true), :id, :title), { class: 'perennial-picker searchable-select', id: 'tag-selector', prompt: 'Evergreens' }
           #perennialForms data={ day_id: @day.id }
         = f.submit value: "Good night.", class: 'good-night'
 

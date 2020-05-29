@@ -128,6 +128,9 @@ $(document).on('turbolinks:load', function() {
     const id = $(event.currentTarget).val();
     const dayId = $('#perennialForms').data('day-id');
 
+    if (id.length == 0) {
+        return;
+    }
     if (µ.addedPerennials.indexOf(id) >= 0) {
         return;
     }

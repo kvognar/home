@@ -17,6 +17,7 @@ class MediaConsumption < ActiveRecord::Base
   VALID_STATES = %w[someday queued in_progress ongoing icebox abandoned finished]
 
   belongs_to :media_work
+  validates :media_work, presence: true
   has_many :media_sessions
 
   validates :state, inclusion: { in: VALID_STATES }
