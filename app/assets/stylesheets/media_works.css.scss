@@ -19,7 +19,7 @@
     padding-right: 1rem;
   }
 
-  img {
+  img.media-work-cover-image {
     max-height: 300px;
   }
 
@@ -36,6 +36,14 @@
 .consumption-log {
   border: 1px solid darkblue;
   padding: 1rem;
+  font-family: 'Gentium Book Basic', Georgia, serif;
+  font-size: 1.7rem;
+  max-width: 70rem;
+  margin: 1.5rem auto 0 auto;
+  img {
+    max-width: 100%;
+    display: block;
+  }
 }
 
 .spoiler-warning {

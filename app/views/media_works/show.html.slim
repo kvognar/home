@@ -7,7 +7,7 @@ h4
     .media-icon title= "This #{@media_work.medium.humanize.downcase} is evergreen"
       = svg('icons/perennial')
 - if @media_work.media_image
-  = image_tag(@media_work.media_image.image.url(:medium))
+  = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
 h4 Creators
 ul
   - @media_work.media_creators.each do |creator|
