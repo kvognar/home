@@ -1,0 +1,5 @@
+- if session.has_text?
+  strong
+    = link_to session.media_work.title, media_work_path(session.media_work)
+- else
+  = link_to session.media_work.title, media_work_path(session.media_work)

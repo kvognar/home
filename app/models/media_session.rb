@@ -23,5 +23,9 @@ class MediaSession < ActiveRecord::Base
   def has_spoilers?
     spoiler_text.present?
   end
-  
+
+  def has_text?
+    text.present? || spoiler_text.present?
+  end
+
 end

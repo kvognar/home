@@ -24,7 +24,7 @@ article.day
     .media-summary
       - day.media_sessions.group_by { |i| i.media_work.medium }.each do |medium, sessions|
         .media-icon = svg("icons/#{medium}")
-        = sessions.map { |s| link_to s.media_work.title, media_work_path(s.media_work) }.join(' • ').html_safe
+        = sessions.map { |s| render(partial: '/media_sessions/link', locals: { session: s }) }.join(' • ').html_safe
     - unless show_comments
       - if day.has_comments?
         .comment-count = link_to "#{day.approved_comments.count} #{'comment'.pluralize(day.approved_comments.count)}", "#{day_url(day)}#comments"

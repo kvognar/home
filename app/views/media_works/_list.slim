@@ -6,7 +6,7 @@ table
       th Creators
 
   tbody
-    - media_works.each do |media_work|
+    - media_works.sort_by { |i| [i.medium, i.title] }.each do |media_work|
       tr
         td= link_to media_work.title, media_work
         td= media_work.medium.humanize
