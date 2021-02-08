@@ -8,11 +8,13 @@ class MediaWorksController < ApplicationController
     @media_works = MediaWork.includes(:media_consumptions).joins(:media_consumptions).all.group_by do |work|
       work.media_consumptions.last.state
     end
+    @badges = Badge.all.sort_by(&:name)
   end
 
   # GET /media_works/1
   # GET /media_works/1.json
   def show
+    @badges = Badge.all.sort_by(&:name)
   end
 
   # GET /media_works/new

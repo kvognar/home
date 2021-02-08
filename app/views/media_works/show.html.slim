@@ -1,20 +1,24 @@
 p#notice = notice
+.media-data
+  .text-center
+    h1= @media_work.title
+    h4
+      .badges= render partial: 'badges/badges', locals: { badges: @badges, media_work: @media_work }
+      = @media_work.medium.humanize
+      - if @media_work.perennial?
+        .media-icon title= "This #{@media_work.medium.humanize.downcase} is evergreen"
+          = svg('icons/perennial')
 
-h1= @media_work.title
-h4
-  = @media_work.medium.humanize
-  - if @media_work.perennial?
-    .media-icon title= "This #{@media_work.medium.humanize.downcase} is evergreen"
-      = svg('icons/perennial')
-- if @media_work.media_image
-  = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
-h4 Creators
-ul
-  - @media_work.media_creators.each do |creator|
-    li= link_to creator.name, media_creator_path(creator)
+    - if @media_work.media_image
+      = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
+  - if @media_work.media_creators.present?
+    h4 Creators
+    ul
+      - @media_work.media_creators.each do |creator|
+        li= link_to creator.name, media_creator_path(creator)
 
-- if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
-  = button_tag 'Show spoilers', class: 'spoiler-toggle form-control'
+  - if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
+    = button_tag 'Show spoilers', class: 'spoiler-toggle form-control'
 - @media_work.media_consumptions.each do |consumption|
   .consumption-log
     = render partial: 'consumption', locals: { consumption: consumption }

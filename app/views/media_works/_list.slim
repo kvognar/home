@@ -1,13 +1,18 @@
 table
   thead
     tr
+      th.media-icon-header
       th Title
-      th Medium
+      th.text-center Feelings
       th Creators
 
   tbody
     - media_works.sort_by { |i| [i.medium, i.title] }.each do |media_work|
       tr
-        td= link_to media_work.title, media_work
-        td= media_work.medium.humanize
-        td= media_work.media_creators.map(&:name).join(', ')
+        td
+          .media-icon = svg("icons/#{media_work.medium}", title: media_work.medium.humanize)
+        td.media-title= link_to media_work.title, media_work
+        td.text-center
+          = render partial: 'badges/badges', locals: { badges: @badges, media_work: media_work }
+        td.creator-names= media_work.media_creators.map(&:name).join(', ')
+

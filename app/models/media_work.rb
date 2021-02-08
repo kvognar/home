@@ -15,6 +15,8 @@ class MediaWork < ActiveRecord::Base
   has_many :media_creator_works
   has_many :media_creators, through: :media_creator_works
   has_one :media_image, as: :attachable
+  has_many :media_work_badges
+  has_many :badges, through: :media_work_badges
 
   validates :medium, presence: true
   validates :title, presence: true

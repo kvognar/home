@@ -4,6 +4,29 @@
 
 .media_works {
 
+  .badge-display {
+    text-align: center;
+    display: none;
+    &.selected {
+      display: inline;
+      color: darkslateblue
+    }
+  }
+
+  .badge-toggle {
+    color: lightgray;
+
+    &.selected {
+      color: darkslateblue;
+    }
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+
   label {
     margin-right: 1rem;
   }
@@ -12,11 +35,26 @@
     width: 800px;
   }
 
-  th {
-    min-width: 80px;
-  }
   td {
+    &:not(:first-child) {
+      min-width: 80px;
+    }
+    &.text-center {
+      padding: 0;
+    }
+
     padding-right: 1rem;
+
+    &.creator-names {
+      max-width: 300px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &.media-title {
+      width: 300px;
+    }
   }
 
   img.media-work-cover-image {
@@ -31,6 +69,17 @@
     margin-top: 10px;
   }
 
+  .badges {
+    display:inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .media-data {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
 }
 
 .consumption-log {
@@ -40,6 +89,7 @@
   font-size: 1.7rem;
   max-width: 70rem;
   margin: 1.5rem auto 0 auto;
+
   img {
     max-width: 100%;
     display: block;

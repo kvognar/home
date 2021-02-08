@@ -12,11 +12,27 @@
 
         $(event.currentTarget).text('Hide Spoilers')
         }
-    })
-}
+    });
+
+    $('.media_works').on('click', '.badge-toggle', µ.toggleBadge);
+};
 
 $(document).on('turbolinks:load', function() {
-    if ($('body.media_works.show').length) {
+    if ($('body.media_works').length) {
         µ.readyMediaWorks();
     }
 });
+
+µ.toggleBadge = function(event) {
+    const $target = $(event.currentTarget);
+    console.log($target.data());
+    $.ajax({
+        type: 'put',
+        url: '/api/media_work_badges/toggle',
+        data: {
+            badge_id: $target.data('badgeId'),
+            media_work_id: $target.data('mediaWorkId')
+        },
+        success: (_response => $target.toggleClass('selected'))
+    });
+};

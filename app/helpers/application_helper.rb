@@ -16,10 +16,10 @@ module ApplicationHelper
   #  '(not found)'
   #end
 
-  def svg(name)
+  def svg(name, title: nil)
     file = File.read(Rails.root.join('app', 'assets', 'images', "#{name}.svg"))
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
-    svg.to_html.html_safe
+    "<span title='#{title}'>#{svg.to_html}</span>".html_safe
   end
 end

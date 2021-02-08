@@ -32,9 +32,11 @@ Rails.application.routes.draw do
         get 'perennial_form', to: 'media_sessions#perennial_form'
       end
     end
+    resources :media_images, only: :create
 
     post 'migrate', to: 'migrations#migrate'
     put 'migrate/:number', to: 'migrations#update_migrate'
+    put '/media_work_badges/toggle',to: 'media_work_badges#toggle'
   end
 
   namespace :admin do

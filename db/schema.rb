@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200527202005) do
+ActiveRecord::Schema.define(version: 20210207221632) do
+
+  create_table "badges", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name",        limit: 255
+    t.string   "symbol",      limit: 255
+    t.string   "description", limit: 255
+  end
+
+  add_index "badges", ["name"], name: "index_badges_on_name", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "day_id",       limit: 4,                     null: false
@@ -145,6 +155,16 @@ ActiveRecord::Schema.define(version: 20200527202005) do
 
   add_index "media_sessions", ["day_id"], name: "index_media_sessions_on_day_id", using: :btree
   add_index "media_sessions", ["media_consumption_id"], name: "index_media_sessions_on_media_consumption_id", using: :btree
+
+  create_table "media_work_badges", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "media_work_id", limit: 4
+    t.integer  "badge_id",      limit: 4
+  end
+
+  add_index "media_work_badges", ["badge_id"], name: "index_media_work_badges_on_badge_id", using: :btree
+  add_index "media_work_badges", ["media_work_id"], name: "index_media_work_badges_on_media_work_id", using: :btree
 
   create_table "media_works", force: :cascade do |t|
     t.string   "medium",     limit: 255, null: false
