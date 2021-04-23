@@ -3,17 +3,23 @@
   - if consumption.in_progress?
     p Currently in progress
 
-  - consumption.media_sessions.order(:created_at).each do |session|
-    .media-session
-      - if session.title.present?
-        h3=session.title
-      - if session.title.present? || session.text.present? || session.spoiler_text.present?
-        h6= session.day.day_of.to_s(:long_ordinal)
-      - if session.text.present?
-        = markdown(session.text)
-      - if session.spoiler_text.present?
-        .spoilers.hidden= markdown(session.spoiler_text)
-        p.spoiler-warning Spoilers!
+  .text-center
+    - consumption.media_sessions.order(:created_at).each do |session|
+      - if session.has_text?
+        .media-session.text-left
+          - if session.title.present?
+            h3=session.title
+          - if session.title.present? || session.text.present? || session.spoiler_text.present?
+            h6
+              = link_to session.day.day_of.to_s(:long_ordinal), day_path(session.day), title: "#{session.day.title} of the Day ##{session.day.number}"
+          - if session.text.present?
+            = markdown(session.text)
+          - if session.spoiler_text.present?
+            .spoilers.hidden= markdown(session.spoiler_text)
+            p.spoiler-warning Spoilers!
+      - else
+        = link_to '.', day_path(session.day), title: "#{session.day.title} of the Day ##{session.day.number}"
+
   - if consumption.in_progress?
     - if admin?
       = button_to 'Shelve it for now', media_consumption_path(consumption), method: :put, params: { state: 'icebox' }

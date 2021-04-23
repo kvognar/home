@@ -79,7 +79,7 @@ class MediaWorksController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_media_work
-    @media_work = MediaWork.find(params[:id])
+    @media_work = MediaWork.includes(:media_creators, media_consumptions: { media_sessions: :day }).find(params[:id])
   end
 
 end
