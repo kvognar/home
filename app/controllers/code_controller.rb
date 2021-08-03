@@ -32,5 +32,6 @@ class CodeController < ApplicationController
   end
 
   def spooky_castle
+    response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM https://app.schoolology.com"
   end
 end
