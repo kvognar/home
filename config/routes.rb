@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   get 'code/doodles/jeffress_model', to: 'code#jeffress_model', as: 'sound_location'
   get 'code/doodles/tweetjam_sea', to: 'code#tweetjam_sea', as: 'tweetjam_sea'
 
+  get 'spookycastle', to: 'code#spooky_castle', as: 'spooky_castle'
 
 
 end

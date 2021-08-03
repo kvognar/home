@@ -30,4 +30,7 @@ class CodeController < ApplicationController
 
   def bubble_booper
   end
+
+  def spooky_castle
+  end
 end

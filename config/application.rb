@@ -11,6 +11,8 @@ Bundler.require(*Rails.groups)
 module Portfolio
   class Application < Rails::Application
     config.assets.paths << "#{Rails.root}/app/assets/games"
+    config.assets.paths << "#{Rails.root}/app/assets/vendor"
+    config.assets.paths << "#{Rails.root}/app/assets/swfs"
     config.assets.paths << "#{Rails.root}/app/assets/doodles"
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
