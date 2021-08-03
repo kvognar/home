@@ -1,6 +1,7 @@
 class CodeController < ApplicationController
 
   before_action :hide_navbar, except: [:projects, :games, :doodles]
+
   def projects
   end
 
@@ -33,5 +34,6 @@ class CodeController < ApplicationController
 
   def spooky_castle
     response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM https://app.schoolology.com"
+    render(layout: 'embeddable')
   end
 end
