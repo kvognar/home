@@ -1,4 +1,11 @@
-<script type="text/javascript" src="/assets/swf2js.js"></script>
-<script type="text/javascript">
-    swf2js.load("/assets/spooky_castle.swf");
+<script src="/assets/ruffle/ruffle.js"></script>
+
+<script>
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+    const container = document.getElementById("ruffle-container");
+    container.appendChild(player);
+    player.style.width = "825px";
+    player.style.height = "600px";
+    player.load("/assets/spooky_castle.swf");
 </script>

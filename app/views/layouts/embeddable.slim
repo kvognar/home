@@ -3,8 +3,8 @@ html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     meta name="viewport" content="width=device-width, initial-scale=1"
-    link rel="stylesheet" href="https://use.typekit.net/enb5nqs.css"
     title Good morning
     = favicon_link_tag 'favicon.ico'
   body class="#{controller_name} #{action_name}"
-    = yield
+    #ruffle-container style="text-align: center"
+      = yield
