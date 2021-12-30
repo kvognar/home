@@ -5,6 +5,11 @@ h1="#{@year} in Review"
   h3= month[:month]
   table.month-review-table
     tbody
+      thead
+        tr
+          th
+          th.text-center Feelings
+          th Days
       - month[:works].each do |work|
         tr
           td

@@ -7,6 +7,7 @@
   .badge-display {
     text-align: center;
     display: none;
+
     &.selected {
       display: inline;
       color: darkslateblue
@@ -39,6 +40,7 @@
     &:not(:first-child) {
       min-width: 80px;
     }
+
     &.text-center {
       padding: 0;
     }
@@ -70,7 +72,7 @@
   }
 
   .badges {
-    display:inline-block;
+    display: inline-block;
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -109,16 +111,20 @@
 
 .month-review-table {
   width: 100%;
+
   tr {
     width: 100%;
   }
-    td:nth-child(1) {
-      width: 30%;
-    }
-  td:nth-child(2) {
+
+  th:nth-child(1) {
+    width: 30%;
+  }
+
+  th:nth-child(2) {
     width: 10%;
   }
-  td:nth-child(3) {
+
+  th:nth-child(3) {
     width: 40%;
   }
 }
