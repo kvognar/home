@@ -39,7 +39,7 @@ class YearInReviewHelper
         end
       end
       months << {
-          month: MONTHS[month + 1],
+          month: MONTHS[month - 1],
           works: deciduous + evergreens
       }
     end
