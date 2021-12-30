@@ -1,6 +1,6 @@
 class MediaWorksController < ApplicationController
   before_action :set_media_work, only: [:show, :edit, :update, :destroy, :start]
-  before_action :require_admin!, except: [:show, :index]
+  before_action :require_admin!, except: [:show, :index, :year_in_review]
 
   # GET /media_works
   # GET /media_works.json
