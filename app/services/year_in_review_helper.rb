@@ -28,14 +28,15 @@ class YearInReviewHelper
         work    = work_sessions.first.media_work
         summary = {
             work:  work,
+            medium: work.medium,
             title: work.title,
             count: work_sessions.length,
             days:  work_sessions.map do |s|
 
-              icon = if s == s.media_consumption.media_sessions.first
-                '➤'
-              elsif s == s.media_consumption.media_sessions.last && s.media_consumption.finished?
+              icon = if s == s.media_consumption.media_sessions.last && s.media_consumption.finished?
                 '✔'
+              elsif s == s.media_consumption.media_sessions.first
+                '➤'
               else
                 '◉'
               end

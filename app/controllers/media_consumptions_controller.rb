@@ -1,5 +1,5 @@
 class MediaConsumptionsController < ApplicationController
-  before_action :require_admin!
+  before_action :require_admin!, only: :update
 
   def update
     @consumption = MediaConsumption.find(params[:id])
@@ -15,7 +15,7 @@ class MediaConsumptionsController < ApplicationController
     start = Date.parse("January 1 #{params[:year]}")
     range = start...(start + 1.year)
 
-    @sessions = MediaSession.joins(:day).includes(:day, media_consumption: :media_work).where(days: { day_of: range} )
-    @data = YearInReviewHelper.new(@sessions).data
+    @sessions = MediaSession.joins(:day).includes(:day, media_consumption: { media_work: :badges }).where(days: { day_of: range })
+    @data     = YearInReviewHelper.new(@sessions).data
   end
 end

@@ -14,6 +14,19 @@ photos = Dir["#{Rails.root}/spec/support/fixtures/photos/*.JPG"].map { |filename
 
 first_day = 500.days.ago
 
+works = []
+
+100.times do |number|
+  work = MediaWork.create(
+      title: Faker::Book.title,
+      medium: MediaWork::MEDIUM_OPTIONS.sample,
+      perennial: rand(100) < 20
+      )
+  works << work
+end
+
+puts 'starting days...'
+
 500.times do |number|
   day_people = people.sample(rand(5))
   day_categories = categories.sample(rand(3))
@@ -21,7 +34,7 @@ first_day = 500.days.ago
   day_body = Faker::Lorem.paragraphs.join("\n\n")
   day_body = "[[youtube]](RdR-JSVQrVw) \n\n #{day_body}" if day_photo_file.nil?
 
-  day = Day.create({
+  day = Day.create!({
     title: Faker::Lorem.word.capitalize,
     number: number + 1,
     body: day_body,
@@ -34,4 +47,17 @@ first_day = 500.days.ago
   })
 
   Photo.create(photo: File.new(day_photo_file), day: day, is_canonical: true) unless day_photo_file.nil?
+
+  work = works.sample
+  if work.media_consumptions.empty?
+    work.media_consumptions.create(start_date: day.publish_date, state: 'in_progress')
+  end
+  consumption = work.media_consumptions.first
+  consumption.media_sessions.create!(
+      day: day,
+      text: Faker::Lorem.paragraphs.join("\n\n"),
+      spoiler_text: Faker::Lorem.paragraphs.join("\n\n")
+  )
+  puts day.number
+
 end
