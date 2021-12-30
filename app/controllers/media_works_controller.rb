@@ -75,6 +75,15 @@ class MediaWorksController < ApplicationController
     redirect_to @media_work
   end
 
+  def year_in_review
+    @year = params[:year]
+    start = Date.parse("January 1 #{params[:year]}")
+    range = start...(start + 1.year)
+
+    @sessions = MediaSession.joins(:day).includes(:day, media_consumption: { media_work: :badges }).where(days: { day_of: range })
+    @data     = YearInReviewHelper.new(@sessions).data
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
