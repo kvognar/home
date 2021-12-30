@@ -8,4 +8,4 @@ h1="#{@year} in Review"
       li
         = link_to work[:title], media_work_path(work[:work])
         - work[:days].map do |day|
-          span.day-enumeration = link_to '◉', day_path(day), class: 'margin-h'
+          span.day-enumeration = link_to day[:icon], day_path(day[:day]), class: 'margin-h'
