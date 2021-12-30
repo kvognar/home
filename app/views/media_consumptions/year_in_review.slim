@@ -1,0 +1,11 @@
+h1="#{@year} in Review"
+
+- months = %w[January February March April May June July August September October November December]
+- @data[:months].each do |month|
+  h3= month[:month]
+  ul
+    - month[:works].each do |work|
+      li
+        = link_to work[:title], media_work_path(work[:work])
+        - work[:days].map do |day|
+          span.day-enumeration = link_to '◉', day_path(day), class: 'margin-h'
