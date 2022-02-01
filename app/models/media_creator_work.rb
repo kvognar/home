@@ -10,6 +10,6 @@
 #
 
 class MediaCreatorWork < ActiveRecord::Base
-  belongs_to :media_creator, dependent: :destroy
-  belongs_to :media_work, dependent: :destroy
+  belongs_to :media_creator
+  belongs_to :media_work
 end

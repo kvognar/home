@@ -16,7 +16,7 @@ class MediaSession < ActiveRecord::Base
 
   has_many :media_images, as: :attachable
   belongs_to :day
-  belongs_to :media_consumption, dependent: :destroy
+  belongs_to :media_consumption
   has_one :media_work, through: :media_consumption
   validates :media_consumption, presence: true
 
