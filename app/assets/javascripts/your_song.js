@@ -80,11 +80,12 @@ $(document).on('turbolinks:load', function() {
 
 µ.getDays = function(event) {
     event.preventDefault();
-    tags = $('#tag-selector').val();
+    tags = $('#tag-selector').val() || [];
+    media_works = $('#media-work-selector').val() || [];
     $.ajax({
         type: 'GET',
         url: $('#sky').data('index-url'),
-        data: { tags: tags },
+        data: { tags: tags, media_works: media_works },
         success: µ.drawDays,
         error: µ.failDrawDays
     });

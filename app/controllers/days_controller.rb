@@ -41,6 +41,7 @@ class DaysController < ApplicationController
 
   def your_song
     @tags      = Tag.all.order(:name)
+    @media_works = MediaWork.all.order(:title)
     @day_count = Day.count
   end
 
