@@ -18,6 +18,9 @@ class DaysController < ApplicationController
 
   def index
     @days = Day.published.recent.paginate(page: params[:page]).includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work })
+    if params[:search_text]
+      @days = @days.where("body LIKE :a OR title LIKE :a OR mouseover LIKE :a", { a: "%#{params[:search_text]}%"})
+    end
   end
 
   def calendar
@@ -26,6 +29,12 @@ class DaysController < ApplicationController
 
   def susurrus
     @days = Day.published.recent.select(:id, :slug)
+  end
+
+  def search
+    @days = Day.published.recent.paginate(page: params[:page]).includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work })
+
+    render :index
   end
 
   def on_this_day

@@ -76,7 +76,16 @@ nav {
       transition: background-color 0.5s ease;
     }
   }
+
 }
+
+.nav-search {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 
 a {
   color: $link-color;

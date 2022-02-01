@@ -28,6 +28,10 @@ nav.navbar role='navigation'
             li = link_to 'Doodles', code_doodles_url
         li.nav-item = link_to 'Medialog', media_works_path
         li.nav-item = link_to 'Contact', contact_url
+        li.nav-item
+          .nav-search
+            form.search action=days_url method="get"
+              input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
         - if signed_in?
           li.nav-item = link_to '☂', new_day_url
           li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
