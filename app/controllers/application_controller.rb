@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return @current_user if @current_user.present?
-    current_session = Session.find_by(session_token: session[:token])
+    current_session = Session.find_by(session_token: cookies.permanent[:token])
     @current_user = current_session.user if current_session.present?
     @current_user
   end
@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
 
   def sign_in!(user)
     new_session = Session.create!(user: user)
-    session[:token] = new_session.session_token
+    cookies.permanent[:token] = new_session.session_token
   end
 
   def sign_out!
     Session.where(user: current_user).destroy_all
     @current_user = nil
-    session[:token] = nil
+    cookies.permanent[:token] = nil
   end
 
   def require_admin!
