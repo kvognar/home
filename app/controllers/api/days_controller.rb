@@ -17,11 +17,11 @@ class Api::DaysController < ApplicationController
   def your_song
     common_tag_day_ids = (params[:tags].presence || []).map do |tag|
       Tag.find_by(name: tag).self_and_descendants.map(&:day_ids).flatten.uniq
-    end.inject(:&).flatten
+    end.inject(:&)&.flatten
 
     common_media_day_ids = (params[:media_works].presence || []).map do |media_work_id|
       MediaConsumption.where(media_work_id: media_work_id).map { |i| i.media_sessions.pluck(:day_id) }
-    end.inject(:&).flatten
+    end.inject(:&)&.flatten
 
     ids = if common_media_day_ids.present? && common_tag_day_ids.present?
       common_media_day_ids & common_tag_day_ids
