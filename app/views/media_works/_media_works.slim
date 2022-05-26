@@ -1,0 +1,27 @@
+- if @media_works['in_progress'].present?
+  h3 In progress
+  = render partial: 'list', locals: { media_works: @media_works['in_progress'] }
+
+- if @media_works['queued'].present?
+  h3 Coming up
+  small I have these and plan to get to them soon
+  = render partial: 'list', locals: { media_works: @media_works['queued'] }
+
+- if @media_works['someday'].present?
+  h3 Someday
+  small I don't have these, but I'd like to get to them someday
+  = render partial: 'list', locals: { media_works: @media_works['someday'] }
+
+- if @media_works['icebox'].present?
+  h3 Shelved for now
+  small I started these but haven't continued with them in a while
+  = render partial: 'list', locals: { media_works: @media_works['icebox'] }
+
+- if @media_works['ongoing'].present?
+  h3 Evergreen
+  small These things are never really done
+  = render partial: 'list', locals: { media_works: @media_works['ongoing'] }
+
+- if @media_works['finished'].present?
+  h3 Finished
+  = render partial: 'list', locals: { media_works: @media_works['finished'] }

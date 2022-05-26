@@ -45,6 +45,10 @@ Rails.application.routes.draw do
   end
 
   resources :media_works do
+    collection do
+      get :search
+    end
+
     member do
       put :start
     end

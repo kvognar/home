@@ -1,0 +1,21 @@
+= form_tag(search_media_works_path, id: 'media-work-search', method: 'get') do
+  .row
+    .col-sm-3
+      = label_tag('search-term', 'Search title or creator')
+      = text_field_tag :search_term, params[:search_term], id: 'search-term', class: 'form-control form-no-margin'
+    .col-sm-3
+      = label_tag('medium-selector', 'Filter by medium')
+      = select_tag :medium, options_from_collection_for_select(MediaWork::MEDIUM_OPTIONS, :downcase, :humanize), { multiple: :multiple, class: 'tag-picker', id: 'medium-selector' }
+    .col-sm-3
+      = label_tag('status-selector', 'Filter by status')
+      = select_tag :state, options_from_collection_for_select(MediaConsumption::VALID_STATES, :downcase, :humanize), { multiple: :multiple, class: 'tag-picker', id: 'status-selector' }
+    .col-sm-2.text-center
+      = label_tag('badges', 'Filter by badge')
+      div
+        - @badges.each do |badge|
+          label
+            = check_box_tag 'badges[]', badge.id, false, class: "hidden badge-check badge-check-#{badge.name}"
+            = render partial: 'form_badge', locals: { badge: badge }
+
+
+  = button_tag 'Go', id: 'media-work-search-button', class: 'btn btn-default mt-1'

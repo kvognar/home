@@ -15,6 +15,8 @@
     });
 
     $('.media_works').on('click', '.badge-toggle', µ.toggleBadge);
+
+    $('#media-work-search').on('submit', µ.submitSearch);
 };
 
 $(document).on('turbolinks:load', function() {
@@ -25,7 +27,6 @@ $(document).on('turbolinks:load', function() {
 
 µ.toggleBadge = function(event) {
     const $target = $(event.currentTarget);
-    console.log($target.data());
     $.ajax({
         type: 'put',
         url: '/api/media_work_badges/toggle',
@@ -36,3 +37,21 @@ $(document).on('turbolinks:load', function() {
         success: (_response => $target.toggleClass('selected'))
     });
 };
+
+µ.submitSearch = function(event) {
+    event.preventDefault();
+
+    var $submitForm = $(event.target)
+
+    $.ajax({
+        type: 'get',
+        url: '/media_works/search',
+        data: $submitForm.serialize(),
+        success: function (response) {
+            $('#media-work-list-container').html(response);
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    })
+}

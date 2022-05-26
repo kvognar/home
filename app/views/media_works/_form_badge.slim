@@ -1,0 +1,2 @@
+span.media-badge.badge-check-toggle class=('selected' if params[:badges]&.include?(badge)) data={badge_id: badge.id}
+  = svg("icons/#{badge.name}", title: badge.description)

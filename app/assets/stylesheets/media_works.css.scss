@@ -14,7 +14,7 @@
     }
   }
 
-  .badge-toggle {
+  .media-badge {
     color: lightgray;
 
     &.selected {
@@ -127,4 +127,14 @@
   th:nth-child(3) {
     width: 40%;
   }
+}
+
+.form-control {
+  &.form-no-margin {
+    margin: 0;
+  }
+}
+
+.badge-check:checked + .media-badge {
+  color: darkslateblue;
 }

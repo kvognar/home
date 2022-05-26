@@ -1,8 +1,8 @@
 - if admin?
   - badges.each do |badge|
-    span.badge-toggle data-badge-id=badge.id data-media-work-id=media_work.id class=('selected' if media_work.badges.include?(badge))
+    span.media-badge.badge-toggle data-badge-id=badge.id data-media-work-id=media_work.id class=('selected' if media_work.badges.include?(badge))
       = svg("icons/#{badge.name}", title: badge.description)
 - else
   - badges.each do |badge|
-    span.badge-display class=('selected' if media_work.badges.include?(badge))
+    span.media-badge.badge-display class=('selected' if media_work.badges.include?(badge))
       = svg("icons/#{badge.name}", title: badge.description)
