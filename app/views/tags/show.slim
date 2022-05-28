@@ -4,6 +4,9 @@ h1.tag-title
       = link_to(ancestor.name, tag_path(ancestor))
       = ' > '
   span = @tag.name
+div
+  = sanitize(@tag.children.sort_by(&:name).map { |child| link_to(child.name, tag_path(child)) }.join(', '))
+
 
 - @days.each do |day|
   = render partial: 'days/show', locals: { day: day, link_title: true, show_comments: false, show_nav_links: false }
