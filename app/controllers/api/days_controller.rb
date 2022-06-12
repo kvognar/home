@@ -51,7 +51,7 @@ class Api::DaysController < ApplicationController
   def save_day
     Day.transaction do
       if @day.save
-        add_and_remove_tags
+        TagService.new(tag_params, @day, Tag).add_and_remove_tags
         MediaSessionService.save(params: params, day: @day)
         if params[:photo]
           photo = Photo.find(params[:photo][:id])

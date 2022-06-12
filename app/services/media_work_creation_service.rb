@@ -18,6 +18,7 @@ class MediaWorkCreationService
     success = @media_work.save
     if @media_work.save
       add_and_remove_creators
+      add_and_remove_tags
       add_image
       add_media_consumption
     end
@@ -45,6 +46,10 @@ class MediaWorkCreationService
     add_creators(new_creators.select(&:persisted?))
   end
 
+  def add_and_remove_tags
+    TagService.new(tag_params, @media_work, MediaTag).add_and_remove_tags
+  end
+
   def add_creators(creators)
     new_creators = creators - @media_work.media_creators
     new_creators.each { |creator| @media_work.media_creators << creator }
@@ -69,6 +74,10 @@ class MediaWorkCreationService
 
   def media_work_params
     @params.require(:media_work).permit(:title, :perennial, :medium)
+  end
+
+  def tag_params
+    @params.require(:media_work)[:media_tags].select(&:present?)
   end
 
 

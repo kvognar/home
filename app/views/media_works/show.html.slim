@@ -17,6 +17,7 @@ p#notice = notice
       - @media_work.media_creators.each do |creator|
         li= link_to creator.name, media_creator_path(creator)
 
+  = @media_work.media_tags.map { |tag| link_to(tag.name, media_works_path(tags: [tag.name])) }.join(' • ').html_safe
   - if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
     = button_tag 'Show spoilers', class: 'spoiler-toggle form-control'
 - @media_work.media_consumptions.each do |consumption|

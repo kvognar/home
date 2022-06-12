@@ -17,6 +17,8 @@ class MediaWork < ActiveRecord::Base
   has_one :media_image, as: :attachable
   has_many :media_work_badges
   has_many :badges, through: :media_work_badges
+  has_many :media_taggings
+  has_many :media_tags, through: :media_taggings
 
   validates :medium, presence: true
   validates :title, presence: true
@@ -31,9 +33,20 @@ class MediaWork < ActiveRecord::Base
   scope :by_medium, ->(medium) { where(medium: medium) }
   scope :by_state, ->(state) { joins(:media_consumptions).where(media_consumptions: { state: state }) }
   scope :with_badge_ids, ->(ids) { ids.inject(joins(:badges)) { |query, id| query.where(id: MediaWorkBadge.where(badge_id: id).select(:media_work_id)) } }
+  scope :with_tags, ->(tag_names) {
+    common_tagged_work_ids = tag_names.map do |name|
+      MediaTag.find_by(name: name).self_and_descendants.map(&:media_work_ids).flatten.uniq
+    end.inject(:&)&.flatten
+
+    where(id: common_tagged_work_ids)
+  }
 
   def state
     media_consumptions.last.state
+  end
+
+  def tags
+    media_tags
   end
 
   def not_started?

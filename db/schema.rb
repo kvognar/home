@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210207221632) do
+ActiveRecord::Schema.define(version: 20220530200912) do
 
   create_table "badges", force: :cascade do |t|
     t.datetime "created_at"
@@ -155,6 +155,32 @@ ActiveRecord::Schema.define(version: 20210207221632) do
 
   add_index "media_sessions", ["day_id"], name: "index_media_sessions_on_day_id", using: :btree
   add_index "media_sessions", ["media_consumption_id"], name: "index_media_sessions_on_media_consumption_id", using: :btree
+
+  create_table "media_taggings", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "media_work_id", limit: 4
+    t.integer  "media_tag_id",  limit: 4
+  end
+
+  add_index "media_taggings", ["media_tag_id"], name: "index_media_taggings_on_media_tag_id", using: :btree
+  add_index "media_taggings", ["media_work_id"], name: "index_media_taggings_on_media_work_id", using: :btree
+
+  create_table "media_tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "lft",        limit: 4
+    t.integer  "rgt",        limit: 4
+    t.integer  "parent_id",  limit: 4
+    t.integer  "depth",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "media_tags", ["depth"], name: "index_media_tags_on_depth", using: :btree
+  add_index "media_tags", ["lft"], name: "index_media_tags_on_lft", using: :btree
+  add_index "media_tags", ["name"], name: "index_media_tags_on_name", using: :btree
+  add_index "media_tags", ["parent_id"], name: "index_media_tags_on_parent_id", using: :btree
+  add_index "media_tags", ["rgt"], name: "index_media_tags_on_rgt", using: :btree
 
   create_table "media_work_badges", force: :cascade do |t|
     t.datetime "created_at"

@@ -9,9 +9,12 @@
   div
     = f.label :perennial
     = f.check_box :perennial
-  div.creator-select
+  div.tag-select
     = f.label :creators, 'Creators'
-    = f.select :media_creators, options_from_collection_for_select(MediaCreator.all.order(:name), :name, :name, @media_work.media_creators.map(&:name)), { }, { prompt: 'Creators', multiple: :multiple, class: 'searchable-select creator-select'}
+    = f.select :media_creators, options_from_collection_for_select(MediaCreator.all.order(:name), :name, :name, @media_work.media_creators.map(&:name)), { }, { prompt: 'Creators', multiple: :multiple, class: 'form-control searchable-select creator-select'}
+  div.tag-select
+    = f.label :tags, 'Tags'
+    = f.select :media_tags, options_from_collection_for_select(MediaTag.all.order(:name), :name, :name, @media_work.media_tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'form-control searchable-select creator-select' }
   div
     = f.label :image
     = f.file_field :image, accept: 'image/png,image/jpg,image/gif,image/jpeg'

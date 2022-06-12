@@ -5,7 +5,8 @@ class MediaWorksController < ApplicationController
   # GET /media_works
   # GET /media_works.json
   def index
-    @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions).all.group_by do |work|
+    fetch_media_works
+    @media_works = @media_works.group_by do |work|
       work.media_consumptions.last.state
     end
     @badges = Badge.all.sort_by(&:name)
@@ -14,20 +15,8 @@ class MediaWorksController < ApplicationController
   # GET/media_works/search
   def search
     @hide_navbar = true
-    @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions)
-    if params[:search_term].present?
-      @media_works = @media_works.search_term(params[:search_term])
-    end
-    if params[:medium].present?
-      @media_works = @media_works.by_medium(params[:medium])
-    end
-    if params[:state].present?
-      @media_works = @media_works.by_state(params[:state])
-    end
-    if params[:badges].present?
-      @media_works = @media_works.with_badge_ids(params[:badges])
-    end
-    
+    fetch_media_works
+
     @media_works = @media_works.group_by do |work|
       work.media_consumptions.last.state
     end
@@ -108,6 +97,26 @@ class MediaWorksController < ApplicationController
   end
 
   private
+
+  def fetch_media_works
+    @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions)
+
+    if params[:search_term].present?
+      @media_works = @media_works.search_term(params[:search_term])
+    end
+    if params[:medium].present?
+      @media_works = @media_works.by_medium(params[:medium])
+    end
+    if params[:state].present?
+      @media_works = @media_works.by_state(params[:state])
+    end
+    if params[:badges].present?
+      @media_works = @media_works.with_badge_ids(params[:badges])
+    end
+    if params[:tags].present?
+      @media_works = @media_works.with_tags(params[:tags])
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_media_work
