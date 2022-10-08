@@ -1,10 +1,10 @@
 class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
 
-  def link(link, title, content)
+  def link(link, title='', content)
     if content == '[youtube]'
       youtube_embed(link)
     elsif %w[.jpg .jpeg .png .gif].any? { |extension| link.downcase.include?(extension) }
-      "<a href='#' data-featherlight=#{link} title=#{title}>#{content}</a>"
+      "<a href='#' data-featherlight=#{link} title='#{CGI::escapeHTML(title || '')}'>#{CGI::escapeHTML(content || '')}</a>"
     elsif day_match = link.match(/^day:(\d+)$/)
       number = day_match.captures.first.to_i
       day = Day.find_by(number: number)
@@ -14,10 +14,18 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
         path = '#'
         puts 'no such day'
       end
-      "<a href=#{path} title=#{title}>#{content}</a>"
+      "<a href=#{path} title='#{CGI::escapeHTML(title || '')}'>#{CGI::escapeHTML(content || '')}</a>"
     else
       normal_link(link, title, content)
     end
+  end
+
+  def image(link, title='', alt_text='')
+    <<~HTML
+    <a href='#' data-featherlight='#{link}' title='#{CGI::escapeHTML(title)}'>
+    <img src='#{link}' title='#{CGI::escapeHTML(title || '')}' alt='#{CGI::escapeHTML(alt_text || '')}' />
+    </a>
+    HTML
   end
 
   def normal_link(link, title, content)
