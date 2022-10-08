@@ -4,7 +4,7 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
     if content == '[youtube]'
       youtube_embed(link)
     elsif %w[.jpg .jpeg .png .gif].any? { |extension| link.downcase.include?(extension) }
-      "<a href='#' data-featherlight=#{link} title='#{CGI::escapeHTML(title || '')}'>#{CGI::escapeHTML(content || '')}</a>"
+      "<a href='#' data-featherlight=#{link} title='#{escape(title)}'>#{escape(content)}</a>"
     elsif day_match = link.match(/^day:(\d+)$/)
       number = day_match.captures.first.to_i
       day = Day.find_by(number: number)
@@ -14,7 +14,7 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
         path = '#'
         puts 'no such day'
       end
-      "<a href=#{path} title='#{CGI::escapeHTML(title || '')}'>#{CGI::escapeHTML(content || '')}</a>"
+      "<a href=#{path} title='#{escape(title)}'>#{escape(content)}</a>"
     else
       normal_link(link, title, content)
     end
@@ -22,10 +22,14 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
 
   def image(link, title='', alt_text='')
     <<~HTML
-    <a href='#' data-featherlight='#{link}' title='#{CGI::escapeHTML(title)}'>
-    <img src='#{link}' title='#{CGI::escapeHTML(title || '')}' alt='#{CGI::escapeHTML(alt_text || '')}' />
+    <a href='#' data-featherlight='#{link}' title='#{escape(title)}'>
+    <img src='#{link}' title='#{escape(title)}' alt='#{escape(alt_text)}' />
     </a>
     HTML
+  end
+
+  def escape(string=nil)
+    CGI::escapeHTML(string || '')
   end
 
   def normal_link(link, title, content)
