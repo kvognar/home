@@ -6,8 +6,9 @@ module ApplicationHelper
                                        fenced_code_blocks: true,
                                        autolink: true,
                                        disable_indented_code_blocks: true,
+                                       escape_html: true
     )
-    return markdown.render(text).html_safe
+    markdown.render(text).html_safe
   end
 
   #def svg(name)

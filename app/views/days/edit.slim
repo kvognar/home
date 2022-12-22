@@ -24,11 +24,17 @@
 
       a.day-data-container-toggle href='#toggle' ◉
       .day-data-container.glass
-        = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
-        = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
-        = f.text_field :mouseover,    value: @day.mouseover, placeholder: 'Mouseover'
-        = f.text_field :whisper,      value: @day.whisper, placeholder: 'whisper'
-        = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
+        .day-meta-data
+          = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
+          = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
+          = f.label :mouseover
+          = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover', class: 'meta-text'
+          = label_tag 'photo_alt_text', 'Alt text'
+          = text_area_tag 'photo[alt_text]', @day.photo_of_the_day&.alt_text, placeholder: 'Alt text', class: 'meta-text'
+          = f.label :whisper
+          = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
+          = f.label :tags
+          = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
 
         - medias = MediaConsumption.where(state: 'in_progress').includes(:media_sessions)
         - medias.each do |media|

@@ -19,7 +19,7 @@ class DaysController < ApplicationController
   def index
     @days = Day.published.recent.paginate(page: params[:page]).includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work })
     if params[:search_text]
-      @days = @days.where("body LIKE :a OR title LIKE :a OR mouseover LIKE :a", { a: "%#{params[:search_text]}%"})
+      @days = @days.joins('LEFT OUTER JOIN photos ON photos.day_id = days.id AND photos.is_canonical = true').where("body LIKE :a OR title LIKE :a OR mouseover LIKE :a OR photos.alt_text LIKE :a", { a: "%#{params[:search_text]}%"})
     end
   end
 

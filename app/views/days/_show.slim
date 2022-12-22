@@ -7,7 +7,7 @@ article.day
   - if day.has_photo?
     .day-photo-container
       a title=day.mouseover data-featherlight=day.photo.url(:medium)
-        = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo'
+        = image_tag day.photo.url(:medium), title: day.mouseover, class: 'day-photo', alt: day.photo_of_the_day.alt_text
   .day-body
     = markdown(day.body)
 

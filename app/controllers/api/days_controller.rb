@@ -54,8 +54,8 @@ class Api::DaysController < ApplicationController
         TagService.new(tag_params, @day, Tag).add_and_remove_tags
         MediaSessionService.save(params: params, day: @day)
         if params[:photo]
-          photo = Photo.find(params[:photo][:id])
-          photo.update_attributes(day_id: @day.id, is_canonical: true)
+          photo = @day.photo_of_the_day
+          photo&.update_attributes(alt_text: params[:photo][:alt_text])
         end
         render json: { url: day_url(@day), id: @day.id }, status: :ok
       else

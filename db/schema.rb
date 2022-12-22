@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220530200912) do
+ActiveRecord::Schema.define(version: 20221221194547) do
 
   create_table "badges", force: :cascade do |t|
     t.datetime "created_at"
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 20220530200912) do
     t.string   "photo_content_type", limit: 255
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
+    t.text     "alt_text",           limit: 65535
   end
 
   add_index "photos", ["day_id"], name: "index_photos_on_day_id", using: :btree
