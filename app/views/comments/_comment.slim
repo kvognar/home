@@ -6,7 +6,7 @@
       .comment-header
         span.author = comment.author
         span.timestamp = "#{time_ago_in_words(comment.date)} ago"
-      .body = markdown(comment.body)
+      .body = sanitize(markdown(comment.body))
   .reply-link = link_to 'reply', '#reply'
 
   .child-comments

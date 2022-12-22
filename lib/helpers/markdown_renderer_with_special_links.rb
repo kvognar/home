@@ -4,7 +4,7 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
     if content == '[youtube]'
       youtube_embed(link)
     elsif %w[.jpg .jpeg .png .gif].any? { |extension| link.downcase.include?(extension) }
-      "<a href='#' data-featherlight=#{link} title='#{escape(title)}'>#{escape(content)}</a>"
+      "<a href='#' data-featherlight=#{link} title='#{escape(title)}'>#{content}</a>"
     elsif day_match = link.match(/^day:(\d+)$/)
       number = day_match.captures.first.to_i
       day = Day.find_by(number: number)
@@ -14,7 +14,7 @@ class MarkdownRendererWithSpecialLinks < Redcarpet::Render::HTML
         path = '#'
         puts 'no such day'
       end
-      "<a href=#{path} title='#{escape(title)}'>#{escape(content)}</a>"
+      "<a href=#{path} title='#{escape(title)}'>#{content}</a>"
     else
       normal_link(link, title, content)
     end
