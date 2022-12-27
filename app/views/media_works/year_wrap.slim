@@ -4,7 +4,7 @@ h1.text-center= @year
   h2 TV
   .media-review-set
     - @works['tv_show'].each do |show|
-      - next unless (show.badges.map(&:name) & ['great', 'resonate']).present?
+      - next unless show.badges.present?
       = render partial: 'media_works/thumbnail', locals: { media_work: show}
 - if @works['movie']
   h2 Movies
