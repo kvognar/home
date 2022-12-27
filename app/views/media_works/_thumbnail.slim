@@ -1,0 +1,9 @@
+.media-work-thumbnail
+  a href=media_work_path(media_work)
+    -if media_work.media_image.present?
+      = image_tag(media_work.media_image.image.url(:medium))
+    - else
+      .medium= svg("icons/#{media_work.medium}")
+    h5= media_work.title
+    .badges= render partial: 'badges/badges', locals: { badges: media_work.badges, media_work: media_work }
+

@@ -96,6 +96,15 @@ class MediaWorksController < ApplicationController
     @data     = YearInReviewHelper.new(@sessions).data
   end
 
+  def year_wrap
+    @year = params[:year]
+    start = Date.parse("January 1 #{params[:year]}")
+    range = start...(start + 1.year)
+    # @sessions = MediaSession.joins(:day).includes(:day, media_consumption: { media_work: [:badges, :media_image] }).where(days: { day_of: range })
+    @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:badges, :media_image, media_consumptions: { media_sessions: :day} ).group_by(&:medium)
+
+  end
+
   private
 
   def fetch_media_works

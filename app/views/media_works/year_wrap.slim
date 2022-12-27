@@ -1,0 +1,39 @@
+h2 TV
+.media-review-set
+  - @works['tv_show'].each do |show|
+    - next unless (show.badges.map(&:name) & ['great', 'resonate']).present?
+    = render partial: 'media_works/thumbnail', locals: { media_work: show}
+
+h2 Movies
+.media-review-set
+  - @works['movie'].each do |movie|
+    - next unless (movie.badges.map(&:name) & ['great', 'resonate']).present?
+    = render partial: 'media_works/thumbnail', locals: { media_work: movie}
+
+h2 Games
+.media-review-set
+  - @works['video_game'].each do |game|
+    - next unless (game.badges.map(&:name) & ['great', 'resonate']).present?
+    = render partial: 'media_works/thumbnail', locals: { media_work: game}
+
+h2 Youtube
+.media-review-set
+  - @works['youtuber'].each do |channel|
+    - next unless channel.media_consumptions.first.media_sessions.count > 3
+    = render partial: 'media_works/thumbnail', locals: { media_work: channel}
+
+h2 Books
+.media-review-set
+  -  @works['book'].each do |book|
+    = render partial: 'media_works/thumbnail', locals: { media_work: book }
+
+h2 Comics
+.media-review-set
+  -  @works['comic'].each do |comic|
+    = render partial: 'media_works/thumbnail', locals: { media_work: comic }
+
+h2 Podcasts
+.media-review-set
+  - @works['podcast'].each do |podcast|
+    - next unless podcast.media_consumptions.first.media_sessions.count > 3
+    = render partial: 'media_works/thumbnail', locals: { media_work: podcast }
