@@ -148,6 +148,8 @@
   .media-review-set {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+
     .media-work-thumbnail {
       text-align: center;
       width: 300px;
@@ -156,16 +158,20 @@
       align-items: center;
       flex-direction: column;
       justify-content: center;
+
       .medium svg {
         height: 200px;
         width: 200px;
         fill: slateblue;
+
         &:hover {
           fill: deepskyblue;
         }
+
         transition: fill 0.5s ease;
 
       }
+
       img {
         max-height: 225px;
         max-width: 225px;
@@ -173,7 +179,12 @@
     }
   }
 
-
+  .year-list {
+    span {
+      margin: 1rem;
+    }
+    text-align: center;
+  }
 
 
 }

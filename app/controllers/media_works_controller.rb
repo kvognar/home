@@ -101,7 +101,7 @@ class MediaWorksController < ApplicationController
     start = Date.parse("January 1 #{params[:year]}")
     range = start...(start + 1.year)
     # @sessions = MediaSession.joins(:day).includes(:day, media_consumption: { media_work: [:badges, :media_image] }).where(days: { day_of: range })
-    @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:badges, :media_image, media_consumptions: { media_sessions: :day} ).group_by(&:medium)
+    @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:badges, :media_image, media_consumptions: { media_sessions: :day} ).where(days: { day_of: range }).group_by(&:medium)
 
   end
 
