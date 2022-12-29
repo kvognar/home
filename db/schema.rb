@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221221194547) do
+ActiveRecord::Schema.define(version: 20221228170010) do
 
   create_table "badges", force: :cascade do |t|
     t.datetime "created_at"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20221221194547) do
     t.string   "whisper",            limit: 255
     t.date     "day_of"
     t.boolean  "is_draft",                         default: false, null: false
+    t.boolean  "favorite",                         default: false, null: false
   end
 
   add_index "days", ["day_of"], name: "index_days_on_day_of", using: :btree

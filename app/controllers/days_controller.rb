@@ -37,6 +37,11 @@ class DaysController < ApplicationController
     render :index
   end
 
+  def favorites
+    @days = Day.published.recent.favorites.paginate(page: params[:page], per_page: 2).includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work })
+    render :index
+  end
+
   def on_this_day
     dates        = []
     current_date = @date = params[:date].try(:to_date) || Date.today

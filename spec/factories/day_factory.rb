@@ -20,6 +20,7 @@
 #  whisper            :string(255)
 #  day_of             :date
 #  is_draft           :boolean          default(FALSE), not null
+#  favorite           :boolean          default(FALSE), not null
 #
 
 FactoryGirl.define do

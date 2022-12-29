@@ -16,9 +16,14 @@ article.day
         = "♪ #{day.lyrics}"
 
   .day-data
-    .timestamp
-      = day.publish_date.to_s(:long_ordinal)
-
+	.align-center
+      .timestamp
+        = day.publish_date.to_s(:long_ordinal)
+      .fav-container
+        - if admin?
+          = link_to '♥', '#', class: "favorite-toggle #{day.favorite ? 'favorited' : nil}", data: { day_id: day.id }
+        - elsif day.favorite?
+          = link_to '♥', favorite_days_path, class: 'favorited', title: 'See other favorites'
     .tags
       = day.tags.map { |t| link_to t.name, tag_url(t) }.join(' • ').html_safe
     .media-summary

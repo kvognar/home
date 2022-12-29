@@ -6,6 +6,7 @@
 #  name       :string(255)
 #  lft        :integer
 #  rgt        :integer
+#  parent_id  :integer
 #  depth      :integer
 #  created_at :datetime
 #  updated_at :datetime

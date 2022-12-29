@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :days, only: [:new, :index, :edit, :show] do
     resources :comments, only: :create, controller: 'api/comments'
-  end
+	end
+	get 'favorite_days', to: 'days#favorites', as: 'favorite_days'
   get 'day_by_day', to: 'days#calendar'
   get 'susurrus', to: 'days#susurrus'
   get 'on_this_day', to: 'days#on_this_day'
@@ -26,7 +27,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :photos, only: :create
-    resources :days, only: [:update, :create, :show]
+    resources :days, only: [:update, :create, :show] do
+			put 'toggle_favorite'
+    end
     resources :media_sessions, only: [] do
       collection do
         get 'perennial_form', to: 'media_sessions#perennial_form'

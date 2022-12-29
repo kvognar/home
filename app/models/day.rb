@@ -20,6 +20,7 @@
 #  whisper            :string(255)
 #  day_of             :date
 #  is_draft           :boolean          default(FALSE), not null
+#  favorite           :boolean          default(FALSE), not null
 #
 
 class Day < ActiveRecord::Base
@@ -59,6 +60,7 @@ class Day < ActiveRecord::Base
   scope :drafts, -> { where(is_draft: true) }
   scope :published, -> { where(is_draft: false) }
   scope :recent, -> { order(publish_date: :desc) }
+  scope :favorites, -> { where(favorite: true) }
 
   ##### Class methods #####
 

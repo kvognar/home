@@ -67,8 +67,17 @@ body.static_pages {
     border-top: thin solid darkblue;
     margin: 2rem auto;
     max-width: 70rem;
-    .timestamp {
-      margin: 1rem 0;
+    .align-center {
+      display: flex;
+      align-items: center;
+      .timestamp {
+        margin: 1rem 1rem 1rem 0;
+        display: inline-block;
+      }
+      .fav-container {
+        display: inline-block;
+      }
+
     }
   }
 
@@ -473,4 +482,11 @@ div.susurrus {
   }
   margin: 1rem;
   display: inline;
+}
+
+.favorite-toggle {
+  font-size: 2rem;
+  &.favorited {
+    color: gold;
+  }
 }
