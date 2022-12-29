@@ -11,7 +11,7 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
-#  alt_text           :text
+#  alt_text           :text(65535)
 #
 
 class Photo < ActiveRecord::Base

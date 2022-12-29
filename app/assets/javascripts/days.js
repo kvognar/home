@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-	if ($('body.days').length) {
+	if ($('body.days').length || $('body.tags').length) {
 		µ.readyDaysJs();
 	}
 });
