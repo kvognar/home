@@ -1,0 +1,6 @@
+.admin
+  h1 All the media tags
+  .tags-admin
+	- @tags.each do |tag|
+	  = render partial: 'tag', locals: { tag: tag, level: 1 }
+

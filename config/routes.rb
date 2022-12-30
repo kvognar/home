@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :tags
     resources :quick_tags, only: [:show, :update]
+		resources :media_tags, only: :index
   end
 
   resources :media_works do

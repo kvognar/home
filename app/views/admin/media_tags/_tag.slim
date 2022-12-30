@@ -1,0 +1,5 @@
+.tag
+  span.tag-name style=("font-size: #{[33-(3*[level, 4].min), 16].max}px")
+	= "#{'‣ ' * (level - 1)}#{tag.name}"
+  - tag.children.each do |child|
+	.subtag = render partial: 'tag', locals: { tag: child, level: level + 1 }
