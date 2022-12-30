@@ -60,8 +60,8 @@ h1.text-center.hero-title= @year
 	div
 	  h2 Top Tags
 	  ul
-	  - @popular_tags_by_medium['video_game'].each do |tag, count|
-		li = "#{tag.name} (#{count})"
+		- @popular_tags_by_medium['video_game'].each do |tag, count|
+		  li = "#{tag.name} (#{count})"
 
   h5.text-center.set-title
 	em Favorite games
@@ -83,8 +83,8 @@ h1.text-center.hero-title= @year
 	div
 	  h2 Top Tags
 	  ul
-	- @popular_tags_by_medium['youtuber'].each do |tag, count|
-	  li = "#{tag.name} (#{count})"
+		- @popular_tags_by_medium['youtuber'].each do |tag, count|
+		  li = "#{tag.name} (#{count})"
 
   h5.text-center.set-title
 	em Most-watched channels
