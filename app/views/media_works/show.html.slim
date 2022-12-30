@@ -9,15 +9,21 @@ p#notice = notice
         .media-icon title= "This #{@media_work.medium.humanize.downcase} is evergreen"
           = svg('icons/perennial')
 
-    - if @media_work.media_image
-      = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
-  - if @media_work.media_creators.present?
-    h4 Creators
-    ul
-      - @media_work.media_creators.each do |creator|
-        li= link_to creator.name, media_creator_path(creator)
+  .media-work-info
+	div
+	  div
+        - if @media_work.media_creators.present?
+          h4 Creators
+          = @media_work.media_creators.map { |creator| link_to(creator.name, media_works_path(tags: [creator.name])) }.join(' • ').html_safe
+      div
+        - if @media_work.media_tags.present?
+          h4 Tags
+          = @media_work.media_tags.map { |tag| link_to(tag.name, media_works_path(tags: [tag.name])) }.join(' • ').html_safe
+    div
+      - if @media_work.media_image
+        a data-featherlight=@media_work.media_image.image.url(:medium)
+          = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
 
-  = @media_work.media_tags.map { |tag| link_to(tag.name, media_works_path(tags: [tag.name])) }.join(' • ').html_safe
   - if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
     = button_tag 'Show spoilers', class: 'spoiler-toggle form-control'
 - @media_work.media_consumptions.each do |consumption|

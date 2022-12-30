@@ -80,6 +80,16 @@
   .media-data {
     max-width: 800px;
     margin: 0 auto;
+    .media-work-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      @media(max-width: 600px) {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    }
   }
 
 }
