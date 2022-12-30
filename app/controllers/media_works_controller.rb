@@ -100,8 +100,35 @@ class MediaWorksController < ApplicationController
     @year = params[:year]
     start = Date.parse("January 1 #{params[:year]}")
     range = start...(start + 1.year)
-    # @sessions = MediaSession.joins(:day).includes(:day, media_consumption: { media_work: [:badges, :media_image] }).where(days: { day_of: range })
-    @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:badges, :media_image, media_consumptions: { media_sessions: :day} ).where(days: { day_of: range }).group_by(&:medium)
+    @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:media_tags, :badges, :media_image, media_consumptions: { media_sessions: :day} ).where(days: { day_of: range })
+    @works_by_medium = @works.group_by(&:medium)
+
+    @days_by_medium = @works_by_medium.map do |medium, works|
+      [
+        medium,
+       works.map(&:media_consumptions).flatten.map { |m_c| m_c.media_sessions.map(&:day_id) }.flatten.uniq.count
+      ]
+    end.to_h
+
+    @popular_tags_by_medium = @works_by_medium.map do |medium, works|
+      tag_counts = Hash.new { |h, k| h[k] = 0 }
+      root_tags = works.map { |w| w.tags.map(&:root) }.flatten
+      root_tags.each { |tag| tag_counts[tag] += 1 }
+      top_3_tags = tag_counts.sort_by { |k, v| v}.reverse.take(3)
+
+      [
+        medium,
+        top_3_tags
+      ]
+    end.to_h
+
+    @hit_rate_by_medium = @works_by_medium.map do |medium, works|
+      hit_rate = works.select { |work| work.badges.present? }.count.to_f / works.count * 100
+      [
+        medium,
+        hit_rate
+      ]
+    end.to_h
 
   end
 

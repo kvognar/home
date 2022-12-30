@@ -1,47 +1,134 @@
-h1.text-center= @year
+h1.text-center.hero-title= @year
 
-- if @works['tv_show']
-  h2 TV
+- if @works_by_medium['tv_show']
+  h1 TV
+
+  .stat-breakdown
+    div
+      h2 Shows watched
+      h2 #{@works_by_medium['tv_show'].count }
+    div
+      h2 Days watched
+      h2 #{@days_by_medium['tv_show'] }
+    div
+      h2 Top Tags
+      ul
+        - @popular_tags_by_medium['tv_show'].each do |tag, count|
+          li = "#{tag.name} (#{count})"
+
+  h5.text-center.set-title
+  	em Shows I liked
   .media-review-set
-    - @works['tv_show'].each do |show|
+    - @works_by_medium['tv_show'].each do |show|
       - next unless show.badges.present?
       = render partial: 'media_works/thumbnail', locals: { media_work: show}
-- if @works['movie']
-  h2 Movies
+- if @works_by_medium['movie']
+  h1 Movies
+  .stat-breakdown
+    div
+      h2 Movies watched
+      h2 #{@works_by_medium['movie'].count }
+    div
+      h2 Hit rate
+      small.text-center
+        | (movies that earned a badge)
+      h2 #{@hit_rate_by_medium['movie'].round(2)}%
+    div
+      h2 Top Tags
+      ul
+        - @popular_tags_by_medium['movie'].each do |tag, count|
+          li = "#{tag.name} (#{count})"
+
+  h5.text-center.set-title
+  	em The hits
+
   .media-review-set
-    - @works['movie'].each do |movie|
-      - next unless (movie.badges.map(&:name) & ['great', 'resonate']).present?
+    - @works_by_medium['movie'].each do |movie|
+      - next unless movie.badges.present?
       = render partial: 'media_works/thumbnail', locals: { media_work: movie}
-- if @works['video_game']
-  h2 Games
+
+
+- if @works_by_medium['video_game']
+  h1 Games
+  .stat-breakdown
+	div
+	  h2 Games played
+	  h2 #{@works_by_medium['video_game'].count }
+	div
+	  h2 Days played
+	  h2 #{@days_by_medium['video_game'] }
+	div
+	  h2 Top Tags
+	  ul
+	  - @popular_tags_by_medium['video_game'].each do |tag, count|
+		li = "#{tag.name} (#{count})"
+
+  h5.text-center.set-title
+	em Favorite games
   .media-review-set
-    - @works['video_game'].each do |game|
+    - @works_by_medium['video_game'].each do |game|
       - next unless (game.badges.map(&:name) & ['great', 'resonate']).present?
       = render partial: 'media_works/thumbnail', locals: { media_work: game}
-- if @works['youtuber']
-  h2 Youtube
+
+
+- if @works_by_medium['youtuber']
+  h1 Youtube
+  .stat-breakdown
+	div
+	  h2 Channels Watched
+	  h2 #{@works_by_medium['youtuber'].count }
+  	div
+	  h2 Days of Watching
+	  h2 #{@days_by_medium['youtuber'] }
+	div
+	  h2 Top Tags
+	  ul
+	- @popular_tags_by_medium['youtuber'].each do |tag, count|
+	  li = "#{tag.name} (#{count})"
+
+  h5.text-center.set-title
+	em Most-watched channels
   .media-review-set
-    - @works['youtuber'].each do |channel|
+    - @works_by_medium['youtuber'].each do |channel|
       - next unless channel.media_consumptions.first.media_sessions.count > 3
       = render partial: 'media_works/thumbnail', locals: { media_work: channel}
-- if @works['book']
-  h2 Books
+
+- if @works_by_medium['book']
+  h1 Books
   .media-review-set
-    -  @works['book'].each do |book|
+    -  @works_by_medium['book'].each do |book|
       = render partial: 'media_works/thumbnail', locals: { media_work: book }
-- if @works['comic']
-  h2 Comics
+
+- if @works_by_medium['comic']
+  h1 Comics
   .media-review-set
-    -  @works['comic'].each do |comic|
+    -  @works_by_medium['comic'].each do |comic|
       = render partial: 'media_works/thumbnail', locals: { media_work: comic }
-- if @works['podcast']
-  h2 Podcasts
+
+- if @works_by_medium['podcast']
+  h1 Podcasts
+  .stat-breakdown
+	div
+	  h2 Podcasts Downloaded
+	  h2 #{@works_by_medium['podcast'].count }
+	div
+	  h2 Days of Listening
+	  h2 #{@days_by_medium['podcast'] }
+	div
+	  h2 Top Tags
+	  ul
+		- @popular_tags_by_medium['podcast'].each do |tag, count|
+		  li = "#{tag.name} (#{count})"
+
+  h5.text-center.set-title
+  	em Most-listened podcasts
+
   .media-review-set
-    - @works['podcast'].each do |podcast|
+    - @works_by_medium['podcast'].each do |podcast|
       - next unless podcast.media_consumptions.first.media_sessions.count > 3
       = render partial: 'media_works/thumbnail', locals: { media_work: podcast }
 
--if @works.empty?
+-if @works_by_medium.empty?
   h1.text-center ¯\_(ツ)_/¯
 
 .year-list

@@ -141,7 +141,7 @@
 
 
 .year_wrap {
-  h2 {
+  h1, h2 {
     text-align: center;
   }
 
@@ -186,5 +186,25 @@
     text-align: center;
   }
 
+  .stat-breakdown {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    div {
+      width: 300px;
+      text-align: center;
+    }
+    li {
+      list-style: none;
+    }
+  }
+
+  .hero-title {
+    font-size: 80px;
+  }
+
+  .set-title {
+    margin: 5rem 0 3rem;
+  }
 
 }
