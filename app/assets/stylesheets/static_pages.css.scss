@@ -5,7 +5,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 #home {
   display: flex;
   flex-direction: column;
@@ -54,14 +53,15 @@ ul.nav-tabs {
   }
   a {
     &:hover {
-      color: deepskyblue;
+      color: var(--hover-color);
     }
   }
 }
 
 #contact {
-  .contact-icon {
+  .contact-icon svg {
     width: 60px;
+    height: 60px;
   }
 
   ul {
@@ -79,7 +79,7 @@ ul.nav-tabs {
     text-decoration: none;
   }
 
-  a span {
+  a > span {
     opacity: 0;
     transition: opacity 0.2s ease;
     display: block;
@@ -90,4 +90,13 @@ ul.nav-tabs {
     opacity: 1;
     text-decoration: none;
   };
+}
+
+pre {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.contact-icon svg {
+  fill: var(--text-color);
 }

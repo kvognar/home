@@ -5,20 +5,20 @@
 #contact
   ul
     li
-      a href='http://github.com/kvognar' target='_blank'
-        = image_tag 'mark-github.svg', class: 'contact-icon'
+      a.contact-icon href='http://github.com/kvognar' target='_blank'
+        div= svg 'github-alt', title: 'Github'
         span Github
     li
-      a href='http://linkedin.com/in/kevinvognar' target='_blank'
-        = image_tag 'mark-linkedin.svg', class: 'contact-icon'
+      a.contact-icon href='http://linkedin.com/in/kevinvognar' target='_blank'
+        div= svg 'linkedin', title: 'Linkedin'
         span LinkedIn
     li
-      a href='mailto:kvognar@gmail.com'
-        = image_tag 'mark-email.svg', class: 'contact-icon'
+      a.contact-icon href='mailto:kvognar@gmail.com'
+        div= svg 'envelope-regular', title: 'Email'
         span Email
     li
-      a href='resume'
-        = image_tag 'mark-resume.svg', class: 'contact-icon'
+      a.contact-icon href='resume'
+        div= svg 'file-lines-solid', title: 'Resume'
         span Resume
 
 footer.text-center

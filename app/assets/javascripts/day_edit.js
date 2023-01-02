@@ -27,6 +27,7 @@ Dropzone.autoDiscover = false;
         µ.hasChanged = true;
         µ.saveCountdown = 3;
         $('.save-state').removeClass('saved');
+        $('.save-state').removeClass('error');
     });
 
     $('.good-night').on('click', µ.submitDay);
@@ -67,7 +68,7 @@ $(document).on('turbolinks:load', function() {
             url: dayForm.attr('action'),
             data: dayForm.serialize(),
             success: µ.handleDraftUpdate,
-            error: µ.handleDraftUpdateFailure
+            error: µ.handleDraftUpdateError
         });
     }
 };

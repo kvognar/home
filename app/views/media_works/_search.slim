@@ -2,7 +2,7 @@
   .row
     .col-sm-3
       = label_tag('search-term', 'Search title or creator')
-      = text_field_tag :search_term, params[:search_term], id: 'search-term', class: 'form-control form-no-margin'
+      = text_field_tag :search_term, params[:search_term], id: 'search-term', class: 'form-no-margin'
     .col-sm-2
       = label_tag('medium-selector', 'Medium')
       = select_tag :medium, options_from_collection_for_select(MediaWork::MEDIUM_OPTIONS, :downcase, :humanize, params[:medium]), { multiple: :multiple, class: 'tag-picker', id: 'medium-selector' }
@@ -22,4 +22,4 @@
 
   .row
     .col-sm-1
-      = button_tag 'Go', id: 'media-work-search-button', class: 'btn btn-default form-control'
+      = submit_tag 'Go', id: 'media-work-search-button'

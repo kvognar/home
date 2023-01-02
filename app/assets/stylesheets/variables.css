@@ -1,0 +1,46 @@
+:root {
+    --link-color : darkslateblue ;
+    --hover-color: deepskyblue;
+    --hover-background-color: #eeeeff;
+    --background-color: ghostwhite;
+    --text-color: #333333;
+    --border-color: darkblue;
+    --badge-selected-color: darkslateblue;
+    --badge-unselected-color: lightgray;
+    --media-icon-color: gray;
+}
+
+@media(prefers-color-scheme: dark) {
+    :root {
+        --link-color: deepskyblue;
+        --hover-color: MediumSpringGreen;
+        --background-color: #030a18;
+        --hover-background-color: darkslateblue;
+        --text-color: ghostwhite;
+        --border-color: lightblue;
+        --badge-selected-color: gold;
+        --badge-unselected-color: ghostwhite;
+        --media-icon-color: ghostwhite;
+    }
+    img {
+        opacity: 85%;
+    }
+    img.featherlight-image {
+        opacity: 100%;
+    }
+}
+
+/*@media(prefers-color-scheme: dark) {*/
+/*    :root {*/
+/*        --link-color: #63931a;*/
+/*        --hover-color: gold;*/
+/*        --background-color: #68ede4;*/
+/*        --hover-background-color: darkslateblue;*/
+/*        --text-color: #ee9eef;*/
+/*        --border-color: lightblue;*/
+/*        --badge-filled-color: gold;*/
+/*    }*/
+/*    img {*/
+/*        opacity: 85%;*/
+/*    }*/
+/*}*/

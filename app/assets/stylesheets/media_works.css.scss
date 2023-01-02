@@ -10,15 +10,15 @@
 
     &.selected {
       display: inline;
-      color: darkslateblue
+      color: var(--badge-selected-color)
     }
   }
 
   .media-badge {
-    color: lightgray;
+    color: var(--badge-unselected-color);
 
     &.selected {
-      color: darkslateblue;
+      color: var(--badge-selected-color)
     }
   }
 
@@ -95,7 +95,7 @@
 }
 
 .consumption-log {
-  border: 1px solid darkblue;
+  border: 1px solid var(--border-color);
   padding: 1rem;
   font-family: 'Gentium Book Basic', Georgia, serif;
   font-size: 1.7rem;
@@ -139,14 +139,12 @@
   }
 }
 
-.form-control {
-  &.form-no-margin {
+  .form-no-margin {
     margin: 0;
   }
-}
 
 .badge-check:checked + .media-badge {
-  color: darkslateblue;
+  color: var(--badge-selected-color);
 }
 
 
@@ -172,10 +170,10 @@
       .medium svg {
         height: 200px;
         width: 200px;
-        fill: slateblue;
+        fill: var(--link-color);
 
         &:hover {
-          fill: deepskyblue;
+          fill: var(--hover-color);
         }
 
         transition: fill 0.5s ease;

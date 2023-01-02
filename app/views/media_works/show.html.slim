@@ -25,7 +25,7 @@ p#notice = notice
           = image_tag(@media_work.media_image.image.url(:medium), class: 'media-work-cover-image')
 
   - if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
-    = button_tag 'Show spoilers', class: 'spoiler-toggle form-control'
+    .text-center= button_tag 'Show spoilers', class: 'spoiler-toggle'
 - @media_work.media_consumptions.each do |consumption|
   .consumption-log
     = render partial: 'consumption', locals: { consumption: consumption }

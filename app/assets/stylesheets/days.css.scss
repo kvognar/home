@@ -2,12 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.static_pages {
-  @media (prefers-color-scheme: dark) {
-    //background-color: black;
-  }
-}
-
 .day {
   margin: 0 auto;
   .day-photo-container {
@@ -45,26 +39,26 @@ body.static_pages {
   }
 
   .day-title {
-    color: #333333;
+    color: var(--text-color);
     transition: color 0.5s ease;
     display: inline-block;
 
     &:hover {
-      color: deepskyblue;
+      color: var(--hover-color);
     }
   }
 
   a {
-    color: mediumslateblue;
+    color: var(--link-color);
     transition: color 0.2s ease;
     &:hover {
-      color: deepskyblue;
+      color: var(--hover-color);
       text-decoration: none;
     }
   }
 
   .day-data {
-    border-top: thin solid darkblue;
+    border-top: thin solid var(--border-color);
     margin: 2rem auto;
     max-width: 70rem;
     .align-center {
@@ -92,7 +86,7 @@ body.static_pages {
     max-width: 800px;
     margin: 0 auto;
     .comment {
-      border: thin solid darkblue;
+      border: thin solid var(--border-color);
       padding: 1rem;
       margin-bottom: 2px;
 
@@ -170,17 +164,17 @@ body.static_pages {
 
     input {
       &:focus {
-        outline: thin solid darkblue;
+        outline: thin solid var(--border-color);
       }
-      color: #333333;
+      color: var(--text-color);
     }
     textarea {
-      color: #333333;
+      color: var(--text-color);
     }
 
     .day-title {
       font-size: 4rem;
-      color: darkgray;
+      color: var(--text-color);
     }
     #day_title {
       border: none;
@@ -189,14 +183,17 @@ body.static_pages {
       margin-right: 1rem;
     }
     .save-state {
-      color: white;
+      color: var(--text-color);
+      opacity: 0;
       &.saved {
+        opacity: 90%;
         color: darkgray;
       }
       &.error {
         color: crimson;
+        opacity: 100%;
       }
-      transition: color 0.5s ease;
+      transition: opacity 0.5s ease;
     }
 
     #day_body {
@@ -367,13 +364,13 @@ body.static_pages {
   input {
     display: block;
     &:focus {
-      outline: thin solid darkblue;
+      outline: thin solid var(--border-color);
     }
   }
   textarea {
     width: 100%;
     &:focus {
-      outline: thin solid darkblue;
+      outline: thin solid var(--border-color);
     }
   }
 
@@ -459,7 +456,7 @@ div.susurrus {
   canvas#sky {
     margin: 1rem auto;
     display: block;
-    border: thin solid darkblue;
+    border: thin solid var(--border-color);
   }
 }
 
@@ -478,7 +475,7 @@ div.susurrus {
   svg {
     height: 2rem;
     width: 2rem;
-    fill: gray;
+    fill: var(--media-icon-color);
   }
   margin: 1rem;
   display: inline;

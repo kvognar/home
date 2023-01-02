@@ -6,7 +6,7 @@
 .project {
   margin: 15px 40px;
   padding: 15px 0;
-  border-bottom: thin solid darkblue;
+  border-bottom: thin solid var(--border-color);
 
   h3 {
     margin: 0;
@@ -32,6 +32,6 @@
 
 #home {
   a {
-    color: darkblue;
+    color: var(--link-color);
   }
 }

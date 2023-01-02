@@ -97,7 +97,7 @@ h3.letter-shortcuts {
     font-size: 3rem;
     cursor: pointer;
     &.featured {
-      color: deepskyblue;
+      color: var(--hover-color);
     }
   }
 
