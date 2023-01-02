@@ -6,7 +6,7 @@ gem 'rails', '4.2.11.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.17'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
