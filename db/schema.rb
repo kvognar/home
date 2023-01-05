@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221228170010) do
+ActiveRecord::Schema.define(version: 20230105074557) do
 
   create_table "badges", force: :cascade do |t|
     t.datetime "created_at"
@@ -248,15 +248,16 @@ ActiveRecord::Schema.define(version: 20221228170010) do
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name",           limit: 255,                 null: false
-    t.integer  "parent_id",      limit: 4
-    t.integer  "lft",            limit: 4,                   null: false
-    t.integer  "rgt",            limit: 4,                   null: false
-    t.integer  "depth",          limit: 4,   default: 0,     null: false
-    t.integer  "children_count", limit: 4,   default: 0,     null: false
+    t.string   "name",            limit: 255,                 null: false
+    t.integer  "parent_id",       limit: 4
+    t.integer  "lft",             limit: 4,                   null: false
+    t.integer  "rgt",             limit: 4,                   null: false
+    t.integer  "depth",           limit: 4,   default: 0,     null: false
+    t.integer  "children_count",  limit: 4,   default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "featured",                   default: false
+    t.boolean  "featured",                    default: false
+    t.boolean  "content_warning",             default: false
   end
 
   add_index "tags", ["depth"], name: "index_tags_on_depth", using: :btree

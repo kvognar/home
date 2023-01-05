@@ -120,6 +120,10 @@ class Day < ActiveRecord::Base
     Day.find_by(number: number - 1)
   end
 
+  def content_warning?
+    tags.any?(&:content_warning?)
+  end
+
   private
 
   def ensure_publish_date
