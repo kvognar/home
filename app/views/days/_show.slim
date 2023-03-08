@@ -9,7 +9,10 @@ article.day
       a title=day.mouseover data-featherlight=day.photo.url(:medium)
         = image_tag day.photo.url(:medium), title: day.mouseover, class: "day-photo #{'content-blur' if day.content_warning?}", alt: day.photo_of_the_day.alt_text
         - if day.content_warning?
-          .content-warning click to see #{day.tags.select(&:content_warning).map(&:name).join(', ')}
+          .content-warning
+			h2 click to see #{day.tags.select(&:content_warning).map(&:name).join(', ')}
+            - if day.photo_of_the_day&.alt_text.present?
+              p= day.photo_of_the_day.alt_text
   .day-body
     = markdown(day.body)
 
