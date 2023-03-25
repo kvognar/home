@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   get 'code/doodles', to: 'code#doodles'
   get 'code/games/bubble_booper',   to: 'code#bubble_booper', as: 'bubble_booper'
   get 'code/games/fall_from_grace', to: 'code#fall_from_grace', as: 'fall_from_grace'
+  get 'code/games/last_words', to: 'code#last_words', as: 'last_words'
   get 'code/games/platformer', to: 'code#platformer', as: 'platformer'
   get 'code/doodles/fairy', to: 'code#fairy', as: 'fairy'
   get 'code/doodles/unicorn', to: 'code#unicorn', as: 'unicorn'

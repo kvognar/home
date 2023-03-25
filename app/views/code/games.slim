@@ -2,6 +2,28 @@
   h1 Games
 
   .project.row
+	.col-md-5.project-preview
+      = link_to image_tag('last_words.gif'), last_words_path, target: '_blank'
+    .col-md-6.project-description
+	  h3 Last Words
+	  .links
+		= link_to 'Play', last_words_path, target: '_blank'
+        span.divider = ' | '
+        = link_to 'Github', 'https://github.com/kvognar/ghost-town', target: '_blank'
+      p
+		span.code-date 2016-2023 -
+		|  In 2016, Laurel and I did a little game jam together to make a Pico-8 game that tells a story.
+		|  Our idea was a little ambitious for our ability at the time, and we started building
+		|  before really deciding what the game was going to <em>be</em>, so it didn't coalesce into
+		|  anything in particular during that jam, or in the next year, or in the year after that.
+		|  But I liked the setting and I liked the characters enough to keep coming
+		|  back to it, so every year I spent a few hours tinkering until it finally became something
+		|  I was willing to share with you.
+      p
+		| It's a silly little game about talking to ghosts. There's some weirdos in there, but they're
+		|  good souls.
+
+  .project.row
     .col-md-5.project-preview
       = link_to image_tag('bubble_booper.gif'), bubble_booper_url, target: '_blank'
     .col-md-6.project-description

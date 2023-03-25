@@ -32,6 +32,10 @@ class CodeController < ApplicationController
   def bubble_booper
   end
 
+  def last_words
+    render :last_words, layout: false
+  end
+
   def spooky_castle
     response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM https://app.schoolology.com"
     render(layout: 'embeddable')
