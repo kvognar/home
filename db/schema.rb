@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230105074557) do
+ActiveRecord::Schema.define(version: 20230814051131) do
 
   create_table "badges", force: :cascade do |t|
     t.datetime "created_at"
@@ -194,11 +194,13 @@ ActiveRecord::Schema.define(version: 20230105074557) do
   add_index "media_work_badges", ["media_work_id"], name: "index_media_work_badges_on_media_work_id", using: :btree
 
   create_table "media_works", force: :cascade do |t|
-    t.string   "medium",     limit: 255, null: false
-    t.string   "title",      limit: 255, null: false
+    t.string   "medium",              limit: 255,   null: false
+    t.string   "title",               limit: 255,   null: false
     t.boolean  "perennial"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "recommended_by",      limit: 255
+    t.text     "recommended_because", limit: 65535
   end
 
   add_index "media_works", ["medium"], name: "index_media_works_on_medium", using: :btree

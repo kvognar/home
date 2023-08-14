@@ -32,10 +32,6 @@
     margin-right: 1rem;
   }
 
-  .tag-select {
-    width: 800px;
-  }
-
   td {
     &:not(:first-child) {
       min-width: 80px;
@@ -90,6 +86,10 @@
         align-items: center;
       }
     }
+  }
+
+  .media-form {
+    max-width: 800px;
   }
 
 }

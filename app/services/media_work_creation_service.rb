@@ -73,7 +73,7 @@ class MediaWorkCreationService
   end
 
   def media_work_params
-    @params.require(:media_work).permit(:title, :perennial, :medium)
+    @params.require(:media_work).permit(:title, :perennial, :medium, :recommended_by, :recommended_because)
   end
 
   def tag_params

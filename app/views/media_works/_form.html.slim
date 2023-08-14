@@ -1,31 +1,37 @@
-= form_for @media_work do |f|
+= form_for @media_work, class: 'media-form' do |f|
+  .media-form
+    div
+      = f.label :title
+      = f.text_field :title
+    div
+      = f.label :medium
+      = f.select :medium, MediaWork::MEDIUM_OPTIONS.map { |option| [option.humanize, option] }
+    div
+      = f.label :perennial
+      = f.check_box :perennial
+    div.tag-select
+      = f.label :creators, 'Creators'
+      = f.select :media_creators, options_from_collection_for_select(MediaCreator.all.order(:name), :name, :name, @media_work.media_creators.map(&:name)), { }, { prompt: 'Creators', multiple: :multiple, class: 'form-control searchable-select creator-select'}
+    div.tag-select
+      = f.label :tags, 'Tags'
+      = f.select :media_tags, options_from_collection_for_select(MediaTag.all.order(:name), :name, :name, @media_work.media_tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'form-control searchable-select creator-select' }
+    div
+      = f.label :recommended_by
+      = f.text_field :recommended_by, class: 'form-control'
+    div
+      = f.label :recommended_because
+      = text_area :media_work, :recommended_because, value: @media_work.recommended_because, class: 'form-control'
+    div
+      = f.label :image
+      = f.file_field :image, accept: 'image/png,image/jpg,image/gif,image/jpeg'
 
-  div
-    = f.label :title
-    = f.text_field :title
-  div
-    = f.label :medium
-    = f.select :medium, MediaWork::MEDIUM_OPTIONS.map { |option| [option.humanize, option] }
-  div
-    = f.label :perennial
-    = f.check_box :perennial
-  div.tag-select
-    = f.label :creators, 'Creators'
-    = f.select :media_creators, options_from_collection_for_select(MediaCreator.all.order(:name), :name, :name, @media_work.media_creators.map(&:name)), { }, { prompt: 'Creators', multiple: :multiple, class: 'form-control searchable-select creator-select'}
-  div.tag-select
-    = f.label :tags, 'Tags'
-    = f.select :media_tags, options_from_collection_for_select(MediaTag.all.order(:name), :name, :name, @media_work.media_tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'form-control searchable-select creator-select' }
-  div
-    = f.label :image
-    = f.file_field :image, accept: 'image/png,image/jpg,image/gif,image/jpeg'
-
-  - if @media_work.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@media_work.errors.count, "error")} prohibited this media_work from being saved:"
-      ul
-        - @media_work.errors.full_messages.each do |message|
-          li = message
+    - if @media_work.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@media_work.errors.count, "error")} prohibited this media_work from being saved:"
+        ul
+          - @media_work.errors.full_messages.each do |message|
+            li = message
 
 
 
-  .actions = f.submit
+    .actions = f.submit
