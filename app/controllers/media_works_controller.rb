@@ -21,6 +21,7 @@ class MediaWorksController < ApplicationController
       work.media_consumptions.last.state
     end
     @badges = Badge.all.sort_by(&:name)
+    render(layout: 'element_response')
   end
 
   # GET /media_works/1
