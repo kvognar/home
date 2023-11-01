@@ -1,5 +1,15 @@
 class MediaConsumptionsController < ApplicationController
-  before_action :require_admin!, only: :update
+  before_action :require_admin!, only: [:update, :create]
+
+  def create
+    @media_work = MediaWork.find(params[:media_work_id])
+    @consumption = @media_work.media_consumptions.create(
+      start_date: Time.now,
+      state: 'in_progress',
+      revisiting: params[:revisiting]
+    )
+    redirect_to @media_work
+  end
 
   def update
     @consumption = MediaConsumption.find(params[:id])
