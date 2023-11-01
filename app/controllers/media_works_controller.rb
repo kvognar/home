@@ -5,7 +5,7 @@ class MediaWorksController < ApplicationController
   # GET /media_works
   # GET /media_works.json
   def index
-    fetch_media_works
+    fetch_media_works(true)
     @media_works = @media_works.group_by do |work|
       work.media_consumptions.last.state
     end
@@ -134,7 +134,7 @@ class MediaWorksController < ApplicationController
 
   private
 
-  def fetch_media_works
+  def fetch_media_works(default_state = nil)
     @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions)
 
     if params[:search_term].present?
@@ -145,6 +145,8 @@ class MediaWorksController < ApplicationController
     end
     if params[:state].present?
       @media_works = @media_works.by_state(params[:state])
+    elsif default_state.present?
+      @media_works = @media_works.by_state('in_progress')
     end
     if params[:badges].present?
       @media_works = @media_works.with_badge_ids(params[:badges])
