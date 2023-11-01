@@ -14,7 +14,7 @@ p#notice = notice
 	  div
         - if @media_work.media_creators.present?
           h4 Creators
-          = @media_work.media_creators.map { |creator| link_to(creator.name, media_works_path(tags: [creator.name])) }.join(' • ').html_safe
+          = @media_work.media_creators.map { |creator| link_to(creator.name, media_creator_path(creator)) }.join(' • ').html_safe
       div
         - if @media_work.media_tags.present?
           h4 Tags
