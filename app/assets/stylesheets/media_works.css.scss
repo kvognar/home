@@ -137,6 +137,21 @@
   th:nth-child(3) {
     width: 40%;
   }
+
+  .days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .day-enumeration {
+      border: 1px solid lightgrey;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+  }
 }
 
   .form-no-margin {
