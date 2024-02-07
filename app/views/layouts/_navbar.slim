@@ -27,7 +27,13 @@ nav.navbar role='navigation'
             li = link_to 'Projects', code_projects_url
             li = link_to 'Games', code_games_url
             li = link_to 'Doodles', code_doodles_url
-        li.nav-item = link_to 'Medialog', media_works_path
+        li.dropdown.nav-item
+		  a href='#' class='dropdown-toggle' data-toggle='dropdown' Medialog
+          ul.dropdown-menu rule='menu'
+            li = link_to 'Media', media_works_path
+            - year = Time.now.month < 12 ? Time.now.year - 1 : Time.now.year
+            li = link_to 'Year Wrap', year_wrap_path(year: year)
+		    li = link_to 'What is this?', about_media_works_path
         li.nav-item = link_to 'Contact', contact_url
         li.nav-item
           .nav-search

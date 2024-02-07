@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :media_works do
     collection do
       get :search
+			get :about
     end
 
     member do

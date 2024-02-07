@@ -1,6 +1,6 @@
 class MediaWorksController < ApplicationController
   before_action :set_media_work, only: [:show, :edit, :update, :destroy, :start]
-  before_action :require_admin!, except: [:show, :index, :year_in_review, :search, :year_wrap]
+  before_action :require_admin!, except: [:show, :index, :year_in_review, :search, :year_wrap, :about]
 
   # GET /media_works
   # GET /media_works.json
@@ -131,6 +131,12 @@ class MediaWorksController < ApplicationController
       ]
     end.to_h
 
+  end
+
+  def about
+    @fun = MediaWork.with_badge_ids(Badge.where(name: 'fun').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+    @great = MediaWork.with_badge_ids(Badge.where(name: 'great').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+    @resonate = MediaWork.with_badge_ids(Badge.where(name: 'resonate').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
   end
 
   private

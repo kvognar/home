@@ -33,22 +33,6 @@
       color: white;
     }
   }
-  .day-body {
-    font-family: 'Gentium Book Basic', Georgia, serif;
-    font-size: 1.7rem;
-    max-width: 70rem;
-    margin: 1.5rem auto 0 auto;
-    .lyrics {
-      padding-top: 2rem;
-      font-family: sans-serif;
-      font-style: italic;
-      font-weight: lighter;
-      font-size: 1rem;
-    }
-    img {
-      max-width: 100%;
-    }
-  }
 
   @media(min-width: 600px) {
     .day-title {
@@ -147,6 +131,24 @@
   }
 
 }
+
+.article-body {
+  font-family: 'Gentium Book Basic', Georgia, serif;
+  font-size: 1.7rem;
+  max-width: 70rem;
+  margin: 1.5rem auto 0 auto;
+  .lyrics {
+    padding-top: 2rem;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 1rem;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
 
 #comment-form-template {
   display: none;
