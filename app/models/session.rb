@@ -9,7 +9,7 @@
 #  updated_at    :datetime
 #
 
-class Session < ActiveRecord::Base
+class Session < ApplicationRecord
   belongs_to :user
   validates :user, presence: true
   validates :session_token, presence: true, uniqueness: true

@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #
 
-class MediaWork < ActiveRecord::Base
+class MediaWork < ApplicationRecord
   has_many :media_consumptions
   has_many :media_creator_works
   has_many :media_creators, through: :media_creator_works

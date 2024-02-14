@@ -8,7 +8,7 @@
 #  updated_at :datetime
 #
 
-class MediaCreator < ActiveRecord::Base
+class MediaCreator < ApplicationRecord
   validates :name, presence: true
   has_many :media_images, as: :attachable
   has_many :media_creator_works

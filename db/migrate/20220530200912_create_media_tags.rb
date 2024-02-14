@@ -1,4 +1,4 @@
-class CreateMediaTags < ActiveRecord::Migration
+class CreateMediaTags < ActiveRecord::Migration[4.2]
   def change
     create_table :media_tags do |t|
       t.string :name, index: true, unique: true

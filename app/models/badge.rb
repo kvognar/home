@@ -10,7 +10,7 @@
 #  description :string(255)
 #
 
-class Badge < ActiveRecord::Base
+class Badge < ApplicationRecord
   has_many :media_work_badges
   has_many :media_works, through: :media_work_badges
 end

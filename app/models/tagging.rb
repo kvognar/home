@@ -9,7 +9,7 @@
 #  updated_at :datetime
 #
 
-class Tagging < ActiveRecord::Base
+class Tagging < ApplicationRecord
   belongs_to :tag
   belongs_to :day
   validates :day_id, uniqueness: { scope: :tag_id }

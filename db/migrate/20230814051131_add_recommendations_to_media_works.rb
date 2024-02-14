@@ -1,4 +1,4 @@
-class AddRecommendationsToMediaWorks < ActiveRecord::Migration
+class AddRecommendationsToMediaWorks < ActiveRecord::Migration[4.2]
   def change
     add_column :media_works, :recommended_by, :string
     add_column :media_works, :recommended_because, :text

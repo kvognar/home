@@ -15,7 +15,7 @@
 #  rejected     :boolean          default(FALSE)
 #
 
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   belongs_to :day
   belongs_to :parent, class_name: 'Comment', foreign_key: :parent_id
   has_many :children, class_name: 'Comment', foreign_key: :parent_id

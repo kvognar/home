@@ -9,7 +9,7 @@
 #  media_tag_id  :integer
 #
 
-class MediaTagging < ActiveRecord::Base
+class MediaTagging < ApplicationRecord
   belongs_to :media_work
   belongs_to :media_tag
 end

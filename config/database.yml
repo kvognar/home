@@ -14,7 +14,8 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
+# default: &default
+default:
   adapter: mysql2
   encoding: utf8
   username: kevinvog
@@ -24,7 +25,10 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: utf8
+  username: kevinvog
   database: kevinvog_portfolio
   password:
 
@@ -59,7 +63,10 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: utf8
+  username: kevinvog
   database: portfolio_test
   password:
 
@@ -83,7 +90,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: utf8
+  username: kevinvog
   database: portfolio_production
   username: portfolio
   password: <%= ENV['portfolio_DATABASE_PASSWORD'] %>

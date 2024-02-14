@@ -9,7 +9,7 @@
 #  updated_at       :datetime
 #
 
-class MediaCreatorWork < ActiveRecord::Base
+class MediaCreatorWork < ApplicationRecord
   belongs_to :media_creator
   belongs_to :media_work
 end
