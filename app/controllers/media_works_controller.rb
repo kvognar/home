@@ -1,11 +1,11 @@
 class MediaWorksController < ApplicationController
   before_action :set_media_work, only: [:show, :edit, :update, :destroy, :start]
-  before_action :require_admin!, except: [:show, :index, :year_in_review, :search, :year_wrap]
+  before_action :require_admin!, except: [:show, :index, :year_in_review, :search, :year_wrap, :about]
 
   # GET /media_works
   # GET /media_works.json
   def index
-    fetch_media_works
+    fetch_media_works(true)
     @media_works = @media_works.group_by do |work|
       work.media_consumptions.last.state
     end
@@ -21,6 +21,7 @@ class MediaWorksController < ApplicationController
       work.media_consumptions.last.state
     end
     @badges = Badge.all.sort_by(&:name)
+    render(layout: 'element_response')
   end
 
   # GET /media_works/1
@@ -132,9 +133,15 @@ class MediaWorksController < ApplicationController
 
   end
 
+  def about
+    @fun = MediaWork.with_badge_ids(Badge.where(name: 'fun').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+    @great = MediaWork.with_badge_ids(Badge.where(name: 'great').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+    @resonate = MediaWork.with_badge_ids(Badge.where(name: 'resonate').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+  end
+
   private
 
-  def fetch_media_works
+  def fetch_media_works(default_state = nil)
     @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions)
 
     if params[:search_term].present?
@@ -145,6 +152,8 @@ class MediaWorksController < ApplicationController
     end
     if params[:state].present?
       @media_works = @media_works.by_state(params[:state])
+    elsif default_state.present?
+      @media_works = @media_works.by_state('in_progress')
     end
     if params[:badges].present?
       @media_works = @media_works.with_badge_ids(params[:badges])

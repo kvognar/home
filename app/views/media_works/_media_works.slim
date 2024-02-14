@@ -25,3 +25,7 @@
 - if @media_works['finished'].present?
   h3 Finished
   = render partial: 'list', locals: { media_works: @media_works['finished'] }
+
+- if @media_works['abandoned'].present?
+  h3 Abandoned
+  = render partial: 'list', locals: { media_works: @media_works['abandoned'] }

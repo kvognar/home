@@ -2,6 +2,27 @@
   h1 Games
 
   .project.row
+    .col-md-5.project-preview
+      = link_to image_tag('dreadnought.png'), 'https://somnule.itch.io/the-queens-dreadnaught', target: '_blank'
+    .col-md-6.project-description
+      h3 My First Day as an Intern of the Queen's Dreadnought and I Already Have to Fight a Hero?!
+      .links
+        = link_to 'Play', 'https://somnule.itch.io/the-queens-dreadnaught', target: '_blank'
+      p
+        span.code-date 2023 -
+        |  A game jam project I made with Laurel, Lee, Ian, and Jeff. The jam was the 2023 GMTK Game Jam, with a
+        |  theme of "Roles Reversed". It's a reverse-shoot-em-up in which you play as the final boss against a
+        |  tiny spaceship—but you are an intern on your first day, and you've been left alone at the helm while
+        |  your supervisor attends a meeting. Nobody taught you how the ship works, so it's up to you to figure it
+        |  out on the job.
+      p
+        |  I had such a good time making this weird game come to life. With more time I would arrange the dialogue
+        |  so it's less easy to miss, give better feedback on your progress through the game, and of course add
+        |  an additional battery of gadgets and weapons to fiddle with while you scramble to deal with the interloper.
+        |  I'm kind of fascinated with the idea of slowly learning how a machine works and how to control it, so I
+        |  would love to return to something like this in the future.
+
+  .project.row
 	.col-md-5.project-preview
       = link_to image_tag('last_words.gif'), last_words_path, target: '_blank'
     .col-md-6.project-description

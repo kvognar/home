@@ -42,12 +42,14 @@ class YearInReviewHelper
               else
                 '◉'
               end
-              {
+              [
+                s.day.day_of.day,
+                {
                   day:  s.day,
                   icon: icon
-              }
-
-            end
+                }
+              ]
+            end.to_h
         }
         # if work.perennial?
           evergreens << summary

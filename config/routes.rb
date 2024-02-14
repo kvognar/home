@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :media_works do
     collection do
       get :search
+			get :about
     end
 
     member do
@@ -58,7 +59,7 @@ Rails.application.routes.draw do
     end
   end
   resources :media_creators
-  resources :media_consumptions, only: :update
+  resources :media_consumptions, only: [:update, :create]
   get 'medialog/year_in_review/:year', to: 'media_works#year_in_review', as: 'year_in_review'
   get 'medialog/year_wrap/:year', to: 'media_works#year_wrap', as: 'year_wrap'
 

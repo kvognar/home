@@ -137,6 +137,21 @@
   th:nth-child(3) {
     width: 40%;
   }
+
+  .days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .day-enumeration {
+      border: 1px solid lightgrey;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+  }
 }
 
   .form-no-margin {
@@ -147,45 +162,48 @@
   color: var(--badge-selected-color);
 }
 
+.media-review-set {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+
+}
+
+.media-work-thumbnail {
+  text-align: center;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .medium svg {
+    height: 200px;
+    width: 200px;
+    fill: var(--link-color);
+
+    &:hover {
+      fill: var(--hover-color);
+    }
+
+    transition: fill 0.5s ease;
+
+  }
+
+  img {
+    max-height: 225px;
+    max-width: 225px;
+  }
+}
+
 
 .year_wrap {
   h1, h2 {
     text-align: center;
   }
 
-  .media-review-set {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-
-    .media-work-thumbnail {
-      text-align: center;
-      width: 250px;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-
-      .medium svg {
-        height: 200px;
-        width: 200px;
-        fill: var(--link-color);
-
-        &:hover {
-          fill: var(--hover-color);
-        }
-
-        transition: fill 0.5s ease;
-
-      }
-
-      img {
-        max-height: 225px;
-        max-width: 225px;
-      }
-    }
-  }
 
   .year-list {
     span {
@@ -214,4 +232,10 @@
     margin: 5rem 0 3rem;
   }
 
+}
+
+.media-examples {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

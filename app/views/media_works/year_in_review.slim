@@ -2,7 +2,9 @@ h1="#{@year} in Review"
 
 - months = %w[January February March April May June July August September October November December]
 - @data[:months].each do |month|
+  - month_length = (Date.parse(month[:month]) + 1.month- 1.day).day
   h3= month[:month]
+  span= month_length
   table.month-review-table
     tbody
       thead
@@ -18,5 +20,9 @@ h1="#{@year} in Review"
           td.text-center
             = render partial: 'badges/badges', locals: { badges: work[:work].badges, media_work: work[:work] }
           td.days
-            - work[:days].map do |day|
-              span.day-enumeration = link_to day[:icon], day_path(day[:day]), class: 'margin-h'
+			- (1..month_length).each do |date|
+              - if work[:days][date]
+                - day = work[:days][date]
+                span.day-enumeration = link_to day[:icon], day_path(day[:day]), class: 'margin-h'
+              - else
+                span.day-enumeration

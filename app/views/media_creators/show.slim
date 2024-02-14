@@ -1,5 +1,7 @@
-h1 = @creator.name
+.media_works
 
-ul
-  - @creator.media_works.each do |work|
-    li = link_to work.title, media_work_path(work)
+  h1 = @creator.name
+
+  .media-review-set
+    - @creator.media_works.each do |work|
+      = render partial: 'media_works/thumbnail', locals: { media_work: work, badges: work.badges.sort_by(&:name) }

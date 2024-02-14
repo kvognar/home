@@ -1,0 +1,76 @@
+
+article.article-body
+  h1.text-center What is the media log?
+  p
+	|  It's easy to lose yourself in the media you consume—to spend long weekends disappearing into a show or a game
+	|  just because it's the thing in front of you. Media in all its forms is important to me, but I
+	|  want to be deliberate in how I spend my time on it, and I want to be mindful in how I take it in. So
+	|  I started this media log, which I fill in at the same time I create my daily photo posts, to help me
+	|  keep track of what I'm consuming and so I can take notes along the way.
+  p
+	|  As of this writing it's been almost three years since I started this log, and through this process
+	|  I've come to find that I'm much more aware of the craft behind my favorite media. It's helped me appreciate
+	|  all this work on new levels, and informed my own creative projects. It also makes it easier to
+	|  let go when a certain piece of media (often a game) is taking too much of my time. I can close the book
+	|  on it definitively and move on to other things.
+  p
+	|  I use the word "consume" here, but I don't mean that in a sense that cheapens or commodifies the
+	|  work that has gone into all these pieces of media. Think of it more like food. The food you eat is what makes
+	|  up your body; it's what fuels you; what you can do and how you feel is heavily dependent on the food you consume.
+	|  So it is with media. When I am in the weeks-long process of consuming a book (because I like to ruminate on it), I
+	|  am shaped by the thoughts and the moods of the writer. I make it a part of me. I'm not much for quotes these days,
+	|  but I can't put it better than Ralph Waldo Emerson did: <i>“I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me.”</i>
+
+  h1.text-center Ratings
+
+  p
+	|  I don't like giving number ratings to media. Any given work, whatever the medium, has its own purpose, and that
+	|  can vary so wildly from one piece to the next that it hardly makes sense to compare one to another. That said,
+	|  there's still value in having some kind of shorthand to describe your impression of a piece, so I've made up
+	|  three badges I use to mark pieces that stand out to me.
+
+  .text-center
+	h2
+	  div= svg('icons/fun', title: 'Fun')
+	  | Fun
+
+  p
+	|  This asks, simply: did I enjoy myself consuming this thing? Maybe it
+	|  was funny, or clever, or full of dazzling spectacle? You might see this on a sitcom, or a dumb superhero movie,
+	|  or on a good crunchy action game. This is the easiest badge for a piece of media to get, but because many pieces
+	|  are not <em>meant</em> to be fun, don't take the absence of this badge as a poor review.
+
+  .media-examples
+	- @fun.each do |work|
+	  = render partial: 'thumbnail', locals: { media_work: work }
+
+  .text-center
+	h2
+	  div= svg('icons/great', title: 'Great')
+	  | Great
+  p
+	|  In my head, a work is great if it knows what it wants to be and it excels at accomplishing that. That's pretty
+	|  fuzzy, and sometimes I'll lean more toward giving a star if the piece's goal is unusual or especially interesting;
+	|  if it's something very well-trodden, its craft needs to be really exceptional. This can be a book with
+	|  very compelling writing, a cartoon where all the characters are well-realized and beautifully animated, or a
+	|  podcast with thoughtful and articulate hosts. Sometimes it can be very heavy; just as a Fun piece of work can
+	|  be good without being Great, a Great work might not be very enjoyable.
+
+
+  .media-examples
+	- @great.each do |work|
+	  = render partial: 'thumbnail', locals: { media_work: work }
+
+  .text-center
+	h2
+	  div= svg('icons/resonate', title: 'This resonated with me')
+	  | This resonated with me
+
+  p
+	|  The rarest badge. These works are ones that struck a chord with me, or that felt like they were made for me,
+	|  or that I felt a personal connection with. It might be scrappy, or it might not be very popular (though some
+	|  are), but if you want to get to know me, taking a look at these things is not a bad first step.
+
+  .media-examples
+	- @resonate.each do |work|
+	  = render partial: 'thumbnail', locals: { media_work: work }

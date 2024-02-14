@@ -13,7 +13,7 @@ article.day
 			h2 click to see #{day.tags.select(&:content_warning).map(&:name).join(', ')}
             - if day.photo_of_the_day&.alt_text.present?
               p= day.photo_of_the_day.alt_text
-  .day-body
+  .article-body
     = markdown(day.body)
 
     - if day.lyrics.present?
