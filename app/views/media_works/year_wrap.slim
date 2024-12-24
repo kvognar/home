@@ -67,7 +67,7 @@ h1.text-center.hero-title= @year
 	em Favorite games
   .media-review-set
     - @works_by_medium['video_game'].each do |game|
-      - next unless (game.badges.map(&:name) & ['great', 'resonate']).present?
+      - next unless game.badges.present?
       = render partial: 'media_works/thumbnail', locals: { media_work: game}
 
 
@@ -95,6 +95,18 @@ h1.text-center.hero-title= @year
 
 - if @works_by_medium['book']
   h1 Books
+  .stat-breakdown
+    div
+      h2 Books read
+      h2 #{@works_by_medium['book'].count }
+    div
+      h2 Days read
+      h2 #{@days_by_medium['book'] }
+    div
+      h2 Top Tags
+      ul
+        - @popular_tags_by_medium['book'].each do |tag, count|
+          li = "#{tag.name} (#{count})"
   .media-review-set
     -  @works_by_medium['book'].each do |book|
       = render partial: 'media_works/thumbnail', locals: { media_work: book }
