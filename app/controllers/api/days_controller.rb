@@ -65,7 +65,7 @@ class Api::DaysController < ApplicationController
 				MediaSessionService.save(params: params, day: @day)
 				if params[:photo]
 					photo = @day.photo_of_the_day
-					photo&.update_attributes(alt_text: params[:photo][:alt_text])
+					photo&.update(alt_text: params[:photo][:alt_text])
 				end
 				render json: { url: day_url(@day), id: @day.id }, status: :ok
 			else
