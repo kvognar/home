@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.2.3'
+gem 'rails', '~> 8.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5.7'
 # Use SCSS for stylesheets
@@ -45,7 +45,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 gem 'json', '~> 2.7.1'
-gem 'awesome_nested_set' # for hierarchical tags
+gem 'awesome_nested_set', '~> 3.8.0' # for hierarchical tags
 
 group :development, :test do
   gem 'annotate'
@@ -69,5 +69,3 @@ gem 'redcarpet'
 
 # Pagination
 gem 'will_paginate', '~> 4.0'
-
-# gem 'gravatar_image_tag'
