@@ -8,7 +8,7 @@ gem 'mysql2', '~> 0.5.7'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'terser'
 
 gem 'psych', '~> 5.1.2'
 
