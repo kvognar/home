@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2023_08_14_051131) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_30_065006) do
   create_table "badges", id: :integer, charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
@@ -124,13 +124,13 @@ ActiveRecord::Schema[7.2].define(version: 2023_08_14_051131) do
 
   create_table "media_images", id: :integer, charset: "utf8mb3", force: :cascade do |t|
     t.integer "attachable_id", null: false
-    t.integer "attachable_type", null: false
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at", precision: nil
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.string "attachable_type", default: "MediaWork"
   end
 
   create_table "media_sessions", id: :integer, charset: "utf8mb3", force: :cascade do |t|
