@@ -49,6 +49,7 @@ $(document).on('turbolinks:load', function() {
         data: $submitForm.serialize(),
         success: function (response) {
             $('#media-work-list-container').html(response);
+			$('#media-work-search-button').prop('disabled', false);
         },
         error: function(response) {
             console.log(response);
