@@ -1,5 +1,5 @@
 - if consumption.started?
-  p.text-center Started #{consumption.start_date.to_date.to_s(:long_ordinal)}
+  p.text-center Started #{consumption.media_sessions.first.day.day_of.strftime('%A, %B %-d, %Y')}
   - if consumption.in_progress?
     p Currently in progress
 
@@ -11,7 +11,7 @@
             h3=session.title
           - if session.title.present? || session.text.present? || session.spoiler_text.present?
             h6
-              = link_to session.day.day_of.to_s(:long_ordinal), day_path(session.day), title: "#{session.day.title} of the Day ##{session.day.number}"
+              = link_to session.day.day_of.strftime('%A, %B %-d, %Y'), day_path(session.day), title: "#{session.day.title} of the Day ##{session.day.number}"
           - if session.text.present?
             = markdown(session.text)
           - if session.spoiler_text.present?
@@ -24,7 +24,7 @@
     - if admin?
       = button_to 'Shelve it for now', media_consumption_path(consumption), method: :put, params: { state: 'icebox' }
   - elsif consumption.finished?
-    p.text-center Finished #{consumption.finish_date.to_date.to_s(:long_ordinal)}
+    p.text-center Finished #{consumption.media_sessions.last.day.day_of.strftime('%A, %B %-d, %Y')}
   - elsif consumption.icebox?
     p.text-center I've put this away for now, but I plan to finish it someday.
     - if admin?

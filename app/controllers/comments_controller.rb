@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    if @comment.update_attributes(comment_params)
+    if @comment.update(comment_params)
       flash[:success] = 'Comment approved!' if @comment.approved?
     end
     redirect_to comments_url

@@ -1,5 +1,6 @@
 require './lib/helpers/markdown_renderer_with_special_links'
 module ApplicationHelper
+	include GravatarImageTag
   def markdown(text)
     markdown = Redcarpet::Markdown.new(MarkdownRendererWithSpecialLinks,
                                        no_intra_emphasis: true,
@@ -22,5 +23,5 @@ module ApplicationHelper
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
     "<span title='#{title}'>#{svg.to_html}</span>".html_safe
-  end
+	end
 end

@@ -12,7 +12,7 @@
 #  updated_at    :datetime
 #
 
-class MediaConsumption < ActiveRecord::Base
+class MediaConsumption < ApplicationRecord
 
   VALID_STATES = %w[in_progress queued someday ongoing icebox finished abandoned]
 

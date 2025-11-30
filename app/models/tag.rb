@@ -15,7 +15,7 @@
 #  content_warning :boolean          default(FALSE)
 #
 
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   include Taggable
   extend FriendlyId
 

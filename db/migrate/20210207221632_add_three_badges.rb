@@ -1,4 +1,4 @@
-class AddThreeBadges < ActiveRecord::Migration
+class AddThreeBadges < ActiveRecord::Migration[4.2]
   def up
     Badge.create(
         name: 'fun',

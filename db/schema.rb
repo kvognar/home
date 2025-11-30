@@ -1,284 +1,261 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230814051131) do
-
-  create_table "badges", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",        limit: 255
-    t.string   "symbol",      limit: 255
-    t.string   "description", limit: 255
+ActiveRecord::Schema[8.0].define(version: 2025_11_30_065006) do
+  create_table "badges", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "name"
+    t.string "symbol"
+    t.string "description"
+    t.index ["name"], name: "index_badges_on_name"
   end
 
-  add_index "badges", ["name"], name: "index_badges_on_name", using: :btree
-
-  create_table "comments", force: :cascade do |t|
-    t.integer  "day_id",       limit: 4,                     null: false
-    t.string   "author",       limit: 255
-    t.string   "author_email", limit: 255
-    t.text     "body",         limit: 65535,                 null: false
-    t.datetime "date"
-    t.integer  "parent_id",    limit: 4,     default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "approved",                   default: true
-    t.boolean  "rejected",                   default: false
+  create_table "comments", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.string "author"
+    t.string "author_email"
+    t.text "body", null: false
+    t.datetime "date", precision: nil
+    t.integer "parent_id", default: 0
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.boolean "approved", default: true
+    t.boolean "rejected", default: false
+    t.index ["approved"], name: "index_comments_on_approved"
+    t.index ["day_id"], name: "index_comments_on_day_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["rejected"], name: "index_comments_on_rejected"
   end
 
-  add_index "comments", ["approved"], name: "index_comments_on_approved", using: :btree
-  add_index "comments", ["day_id"], name: "index_comments_on_day_id", using: :btree
-  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
-  add_index "comments", ["rejected"], name: "index_comments_on_rejected", using: :btree
-
-  create_table "days", force: :cascade do |t|
-    t.string   "title",              limit: 255
-    t.integer  "number",             limit: 4,                     null: false
-    t.datetime "publish_date"
-    t.text     "body",               limit: 65535
-    t.string   "slug",               limit: 255
-    t.text     "mouseover",          limit: 65535
-    t.string   "lyrics",             limit: 255
-    t.string   "lyric_credit",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "photo_file_name",    limit: 255
-    t.string   "photo_content_type", limit: 255
-    t.integer  "photo_file_size",    limit: 4
-    t.datetime "photo_updated_at"
-    t.string   "whisper",            limit: 255
-    t.date     "day_of"
-    t.boolean  "is_draft",                         default: false, null: false
-    t.boolean  "favorite",                         default: false, null: false
+  create_table "days", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "title"
+    t.integer "number", null: false
+    t.datetime "publish_date", precision: nil
+    t.text "body"
+    t.string "slug"
+    t.text "mouseover"
+    t.string "lyrics"
+    t.string "lyric_credit"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at", precision: nil
+    t.string "whisper"
+    t.date "day_of"
+    t.boolean "is_draft", default: false, null: false
+    t.boolean "favorite", default: false, null: false
+    t.index ["day_of"], name: "index_days_on_day_of"
+    t.index ["is_draft"], name: "index_days_on_is_draft"
+    t.index ["number"], name: "index_days_on_number", unique: true
+    t.index ["slug"], name: "index_days_on_slug", unique: true
+    t.index ["title"], name: "index_days_on_title"
+    t.index ["whisper"], name: "index_days_on_whisper", unique: true
   end
 
-  add_index "days", ["day_of"], name: "index_days_on_day_of", using: :btree
-  add_index "days", ["is_draft"], name: "index_days_on_is_draft", using: :btree
-  add_index "days", ["number"], name: "index_days_on_number", unique: true, using: :btree
-  add_index "days", ["slug"], name: "index_days_on_slug", unique: true, using: :btree
-  add_index "days", ["title"], name: "index_days_on_title", using: :btree
-  add_index "days", ["whisper"], name: "index_days_on_whisper", unique: true, using: :btree
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",           limit: 255, null: false
-    t.integer  "sluggable_id",   limit: 4,   null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope",          limit: 255
-    t.datetime "created_at"
+  create_table "friendly_id_slugs", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at", precision: nil
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-
-  create_table "legacy_taggings", force: :cascade do |t|
-    t.integer  "day_id",     limit: 4, null: false
-    t.integer  "tag_id",     limit: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "legacy_taggings", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["day_id"], name: "index_legacy_taggings_on_day_id"
+    t.index ["tag_id"], name: "index_legacy_taggings_on_tag_id"
   end
 
-  add_index "legacy_taggings", ["day_id"], name: "index_legacy_taggings_on_day_id", using: :btree
-  add_index "legacy_taggings", ["tag_id"], name: "index_legacy_taggings_on_tag_id", using: :btree
-
-  create_table "legacy_tags", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.string   "tag_type",   limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "legacy_tags", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "tag_type", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["name", "tag_type"], name: "index_legacy_tags_on_name_and_tag_type", unique: true
   end
 
-  add_index "legacy_tags", ["name", "tag_type"], name: "index_legacy_tags_on_name_and_tag_type", unique: true, using: :btree
-
-  create_table "media_consumptions", force: :cascade do |t|
-    t.integer  "media_work_id", limit: 4
-    t.datetime "start_date"
-    t.datetime "finish_date"
-    t.boolean  "revisiting"
-    t.string   "state",         limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_consumptions", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "media_work_id"
+    t.datetime "start_date", precision: nil
+    t.datetime "finish_date", precision: nil
+    t.boolean "revisiting"
+    t.string "state", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["finish_date"], name: "index_media_consumptions_on_finish_date"
+    t.index ["start_date"], name: "index_media_consumptions_on_start_date"
+    t.index ["state"], name: "index_media_consumptions_on_state"
   end
 
-  add_index "media_consumptions", ["finish_date"], name: "index_media_consumptions_on_finish_date", using: :btree
-  add_index "media_consumptions", ["start_date"], name: "index_media_consumptions_on_start_date", using: :btree
-  add_index "media_consumptions", ["state"], name: "index_media_consumptions_on_state", using: :btree
-
-  create_table "media_creator_works", force: :cascade do |t|
-    t.integer  "media_creator_id", limit: 4
-    t.integer  "media_work_id",    limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_creator_works", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "media_creator_id"
+    t.integer "media_work_id"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["media_creator_id"], name: "index_media_creator_works_on_media_creator_id"
+    t.index ["media_work_id"], name: "index_media_creator_works_on_media_work_id"
   end
 
-  add_index "media_creator_works", ["media_creator_id"], name: "index_media_creator_works_on_media_creator_id", using: :btree
-  add_index "media_creator_works", ["media_work_id"], name: "index_media_creator_works_on_media_work_id", using: :btree
-
-  create_table "media_creators", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_creators", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["name"], name: "index_media_creators_on_name"
   end
 
-  add_index "media_creators", ["name"], name: "index_media_creators_on_name", using: :btree
-
-  create_table "media_images", force: :cascade do |t|
-    t.integer  "attachable_id",      limit: 4,   null: false
-    t.integer  "attachable_type",    limit: 4,   null: false
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
-    t.datetime "image_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_images", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "attachable_id", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "attachable_type", default: "MediaWork"
   end
 
-  create_table "media_sessions", force: :cascade do |t|
-    t.integer  "day_id",               limit: 4
-    t.integer  "media_consumption_id", limit: 4,     null: false
-    t.string   "title",                limit: 255
-    t.text     "text",                 limit: 65535
-    t.text     "spoiler_text",         limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_sessions", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "day_id"
+    t.integer "media_consumption_id", null: false
+    t.string "title"
+    t.text "text"
+    t.text "spoiler_text"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["day_id"], name: "index_media_sessions_on_day_id"
+    t.index ["media_consumption_id"], name: "index_media_sessions_on_media_consumption_id"
   end
 
-  add_index "media_sessions", ["day_id"], name: "index_media_sessions_on_day_id", using: :btree
-  add_index "media_sessions", ["media_consumption_id"], name: "index_media_sessions_on_media_consumption_id", using: :btree
-
-  create_table "media_taggings", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "media_work_id", limit: 4
-    t.integer  "media_tag_id",  limit: 4
+  create_table "media_taggings", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.integer "media_work_id"
+    t.integer "media_tag_id"
+    t.index ["media_tag_id"], name: "index_media_taggings_on_media_tag_id"
+    t.index ["media_work_id"], name: "index_media_taggings_on_media_work_id"
   end
 
-  add_index "media_taggings", ["media_tag_id"], name: "index_media_taggings_on_media_tag_id", using: :btree
-  add_index "media_taggings", ["media_work_id"], name: "index_media_taggings_on_media_work_id", using: :btree
-
-  create_table "media_tags", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "lft",        limit: 4
-    t.integer  "rgt",        limit: 4
-    t.integer  "parent_id",  limit: 4
-    t.integer  "depth",      limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "media_tags", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.integer "lft"
+    t.integer "rgt"
+    t.integer "parent_id"
+    t.integer "depth"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["depth"], name: "index_media_tags_on_depth"
+    t.index ["lft"], name: "index_media_tags_on_lft"
+    t.index ["name"], name: "index_media_tags_on_name"
+    t.index ["parent_id"], name: "index_media_tags_on_parent_id"
+    t.index ["rgt"], name: "index_media_tags_on_rgt"
   end
 
-  add_index "media_tags", ["depth"], name: "index_media_tags_on_depth", using: :btree
-  add_index "media_tags", ["lft"], name: "index_media_tags_on_lft", using: :btree
-  add_index "media_tags", ["name"], name: "index_media_tags_on_name", using: :btree
-  add_index "media_tags", ["parent_id"], name: "index_media_tags_on_parent_id", using: :btree
-  add_index "media_tags", ["rgt"], name: "index_media_tags_on_rgt", using: :btree
-
-  create_table "media_work_badges", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "media_work_id", limit: 4
-    t.integer  "badge_id",      limit: 4
+  create_table "media_work_badges", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.integer "media_work_id"
+    t.integer "badge_id"
+    t.index ["badge_id"], name: "index_media_work_badges_on_badge_id"
+    t.index ["media_work_id"], name: "index_media_work_badges_on_media_work_id"
   end
 
-  add_index "media_work_badges", ["badge_id"], name: "index_media_work_badges_on_badge_id", using: :btree
-  add_index "media_work_badges", ["media_work_id"], name: "index_media_work_badges_on_media_work_id", using: :btree
-
-  create_table "media_works", force: :cascade do |t|
-    t.string   "medium",              limit: 255,   null: false
-    t.string   "title",               limit: 255,   null: false
-    t.boolean  "perennial"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "recommended_by",      limit: 255
-    t.text     "recommended_because", limit: 65535
+  create_table "media_works", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "medium", null: false
+    t.string "title", null: false
+    t.boolean "perennial"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "recommended_by"
+    t.text "recommended_because"
+    t.index ["medium"], name: "index_media_works_on_medium"
+    t.index ["title"], name: "index_media_works_on_title"
   end
 
-  add_index "media_works", ["medium"], name: "index_media_works_on_medium", using: :btree
-  add_index "media_works", ["title"], name: "index_media_works_on_title", using: :btree
-
-  create_table "people", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "people", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["name"], name: "index_people_on_name", unique: true
   end
 
-  add_index "people", ["name"], name: "index_people_on_name", unique: true, using: :btree
-
-  create_table "photos", force: :cascade do |t|
-    t.integer  "day_id",             limit: 4
-    t.boolean  "is_canonical"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "photo_file_name",    limit: 255
-    t.string   "photo_content_type", limit: 255
-    t.integer  "photo_file_size",    limit: 4
-    t.datetime "photo_updated_at"
-    t.text     "alt_text",           limit: 65535
+  create_table "photos", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "day_id"
+    t.boolean "is_canonical"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at", precision: nil
+    t.text "alt_text"
+    t.index ["day_id"], name: "index_photos_on_day_id"
+    t.index ["is_canonical"], name: "index_photos_on_is_canonical"
   end
 
-  add_index "photos", ["day_id"], name: "index_photos_on_day_id", using: :btree
-  add_index "photos", ["is_canonical"], name: "index_photos_on_is_canonical", using: :btree
-
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_token", limit: 255
-    t.integer  "user_id",       limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "sessions", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "session_token"
+    t.integer "user_id"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["session_token"], name: "index_sessions_on_session_token"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  add_index "sessions", ["session_token"], name: "index_sessions_on_session_token", using: :btree
-  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "day_id",     limit: 4, null: false
-    t.integer  "tag_id",     limit: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "taggings", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["day_id"], name: "index_taggings_on_day_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
-  add_index "taggings", ["day_id"], name: "index_taggings_on_day_id", using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name",            limit: 255,                 null: false
-    t.integer  "parent_id",       limit: 4
-    t.integer  "lft",             limit: 4,                   null: false
-    t.integer  "rgt",             limit: 4,                   null: false
-    t.integer  "depth",           limit: 4,   default: 0,     null: false
-    t.integer  "children_count",  limit: 4,   default: 0,     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "featured",                    default: false
-    t.boolean  "content_warning",             default: false
+  create_table "tags", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "parent_id"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.boolean "featured", default: false
+    t.boolean "content_warning", default: false
+    t.index ["depth"], name: "index_tags_on_depth"
+    t.index ["featured"], name: "index_tags_on_featured"
+    t.index ["lft"], name: "index_tags_on_lft"
+    t.index ["name"], name: "index_tags_on_name", unique: true
+    t.index ["parent_id"], name: "index_tags_on_parent_id"
+    t.index ["rgt"], name: "index_tags_on_rgt"
   end
 
-  add_index "tags", ["depth"], name: "index_tags_on_depth", using: :btree
-  add_index "tags", ["featured"], name: "index_tags_on_featured", using: :btree
-  add_index "tags", ["lft"], name: "index_tags_on_lft", using: :btree
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-  add_index "tags", ["parent_id"], name: "index_tags_on_parent_id", using: :btree
-  add_index "tags", ["rgt"], name: "index_tags_on_rgt", using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name",          limit: 255,                 null: false
-    t.boolean  "is_admin",                  default: false
-    t.string   "password_hash", limit: 255
-    t.string   "session_token", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "users", id: :integer, charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_admin", default: false
+    t.string "password_hash"
+    t.string "session_token"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
-
-  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
-  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
-
 end

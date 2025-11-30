@@ -1,4 +1,4 @@
-class ChangeDayColumnNulls < ActiveRecord::Migration
+class ChangeDayColumnNulls < ActiveRecord::Migration[4.2]
   def change
     change_column_null :days, :title, true
     change_column_null :days, :publish_date, true

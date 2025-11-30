@@ -23,7 +23,7 @@
 #  favorite           :boolean          default(FALSE), not null
 #
 
-class Day < ActiveRecord::Base
+class Day < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 

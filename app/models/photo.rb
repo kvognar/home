@@ -14,7 +14,7 @@
 #  alt_text           :text(65535)
 #
 
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
 
   belongs_to :day
 

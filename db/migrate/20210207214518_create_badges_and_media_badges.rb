@@ -1,4 +1,4 @@
-class CreateBadgesAndMediaBadges < ActiveRecord::Migration
+class CreateBadgesAndMediaBadges < ActiveRecord::Migration[4.2]
   def change
 
     create_table :badges do |t|

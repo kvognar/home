@@ -12,7 +12,7 @@
 #  updated_at :datetime
 #
 
-class MediaTag < ActiveRecord::Base
+class MediaTag < ApplicationRecord
   extend FriendlyId
   include Taggable
 

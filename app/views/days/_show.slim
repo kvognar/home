@@ -23,7 +23,7 @@ article.day
   .day-data
 	.align-center
       .timestamp
-        = day.publish_date.to_s(:long_ordinal)
+        = day.publish_date.strftime('%A, %B %-d, %Y at %-I:%M %P')
       .fav-container
         - if admin?
           = link_to '♥', '#', class: "favorite-toggle #{day.favorite ? 'favorited' : nil}", data: { day_id: day.id }

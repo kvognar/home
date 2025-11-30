@@ -11,7 +11,7 @@
 #  updated_at    :datetime
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 
   validates_uniqueness_of :name
   validates_presence_of :name

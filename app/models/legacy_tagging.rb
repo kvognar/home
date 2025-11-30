@@ -9,7 +9,7 @@
 #  updated_at :datetime
 #
 
-class LegacyTagging < ActiveRecord::Base
+class LegacyTagging < ApplicationRecord
   belongs_to :legacy_tag, foreign_key: :tag_id
   belongs_to :day
 end

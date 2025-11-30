@@ -12,7 +12,7 @@
 #  updated_at           :datetime
 #
 
-class MediaSession < ActiveRecord::Base
+class MediaSession < ApplicationRecord
 
   has_many :media_images, as: :attachable
   belongs_to :day

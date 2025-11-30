@@ -1,4 +1,4 @@
-class CreateMediaLogTables < ActiveRecord::Migration
+class CreateMediaLogTables < ActiveRecord::Migration[4.2]
   def change
     create_table :media_creators do |t|
       t.string :name, null: false, index: true

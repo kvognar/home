@@ -9,7 +9,7 @@
 #  badge_id      :integer
 #
 
-class MediaWorkBadge < ActiveRecord::Base
+class MediaWorkBadge < ApplicationRecord
   belongs_to :badge
   belongs_to :media_work
   validates :badge, presence: true

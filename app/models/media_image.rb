@@ -13,7 +13,7 @@
 #  updated_at         :datetime
 #
 
-class MediaImage < ActiveRecord::Base
+class MediaImage < ApplicationRecord
 
   belongs_to :attachable, polymorphic: true
 

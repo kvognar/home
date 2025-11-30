@@ -8,6 +8,6 @@ class Admin::QuickTagsController < ApplicationController
   def update
     @day = Day.find(params[:id])
     add_and_remove_tags
-    redirect_to :back
+    redirect_back(fallout_location: day_path(@day))
   end
 end
