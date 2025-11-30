@@ -149,17 +149,19 @@ class MediaWorksController < ApplicationController
     end
     if params[:medium].present?
       @media_works = @media_works.by_medium(params[:medium])
-    end
-    if params[:state].present?
+		end
+		if params[:badges].present?
+			default_state = false
+			@media_works = @media_works.with_badge_ids(params[:badges])
+		end
+		if params[:tags].present?
+			default_state = false
+			@media_works = @media_works.with_tags(params[:tags])
+		end
+		if params[:state].present?
       @media_works = @media_works.by_state(params[:state])
-    elsif default_state.present?
+    elsif default_state
       @media_works = @media_works.by_state('in_progress')
-    end
-    if params[:badges].present?
-      @media_works = @media_works.with_badge_ids(params[:badges])
-    end
-    if params[:tags].present?
-      @media_works = @media_works.with_tags(params[:tags])
     end
   end
 

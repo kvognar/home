@@ -1,5 +1,4 @@
 class MediaCreatorsController < ApplicationController
-  before_action :require_admin!
 
   def index
     @creators = MediaCreator.all.order(:name)
