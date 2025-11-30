@@ -14,12 +14,12 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-# default: &default
-default:
+default: &default
+# default:
   adapter: mysql2
   encoding: utf8
-  username: kevinvog
-  password: h7zel-R0h
+  username: root
+  password: <%= ENV['PORTFOLIO_DB_PASSWORD'] %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -66,9 +66,9 @@ test:
   # <<: *default
   adapter: mysql2
   encoding: utf8
-  username: kevinvog
+  username: root
   database: portfolio_test
-  password:
+  password: <%= ENV['PORTFOLIO_DB_PASSWORD'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,10 +90,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  # <<: *default
-  adapter: mysql2
-  encoding: utf8
-  username: kevinvog
+  <<: *default
   database: portfolio_production
-  username: portfolio
-  password: <%= ENV['portfolio_DATABASE_PASSWORD'] %>
+  username: rails
+  password: <%= ENV['PORTFOLIO_DB_PASSWORD'] %>

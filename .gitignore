@@ -26,3 +26,6 @@
 /public/assets
 
 .DS_Store
+config/master.key
+config/credentials.yml.enc
+

@@ -1,6 +1,6 @@
 class Api::MediaWorkBadgesController < ApplicationController
 
-  before_action 'require_admin!'
+  before_action :require_admin!
 
   def toggle
     badge = Badge.find_by(id: params[:badge_id])
