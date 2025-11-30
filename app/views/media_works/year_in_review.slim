@@ -1,10 +1,15 @@
 h1="#{@year} in Review"
 
+p
+  |> Another way of looking at patterns in my media habits. ➤ marks the day I started something, ✔ is the day I finished,
+  |> and ◉ is everything in between. You can see certain patterns arise: weekly movie nights and anime club sessions,
+  |> months I got <i>really</i> into a new game or podcast, the big gap during travel when most of my normal picks are put
+  |> aside. I'd like to explore this idea further someday.
+
 - months = %w[January February March April May June July August September October November December]
 - @data[:months].each do |month|
   - month_length = (Date.parse(month[:month]) + 1.month- 1.day).day
   h3= month[:month]
-  span= month_length
   table.month-review-table
     tbody
       thead
