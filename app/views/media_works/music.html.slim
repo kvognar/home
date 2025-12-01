@@ -2,5 +2,5 @@
 h1 Music
 
 .media-review-set.margin-top-l
-  - (@albums.to_a * 10).each do |album|
+  - @albums.each do |album|
     = render partial: 'media_works/thumbnail', locals: { media_work: album, badges: album.badges.sort_by(&:name) }
