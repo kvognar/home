@@ -23,7 +23,7 @@ class MediaWork < ApplicationRecord
   validates :medium, presence: true
   validates :title, presence: true
 
-  MEDIUM_OPTIONS = %w[book movie tv_show video_game podcast comic article youtuber stage_play other]
+  MEDIUM_OPTIONS = %w[book movie tv_show video_game podcast comic article youtuber stage_play album other]
 
   scope :search_term, ->(term) { with_creators.where('title LIKE :a OR search_creators.name LIKE :a', { a: "%#{term}%" }) }
   scope :with_creators, -> {

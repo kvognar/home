@@ -20,7 +20,9 @@ class MediaWorkCreationService
       add_and_remove_creators
       add_and_remove_tags
       add_image
-      add_media_consumption
+			unless @media_work.medium == 'album'
+      	add_media_consumption
+			end
     end
 
     [@media_work, success]
@@ -73,7 +75,8 @@ class MediaWorkCreationService
   end
 
   def media_work_params
-    @params.require(:media_work).permit(:title, :perennial, :medium, :recommended_by, :recommended_because)
+    @params.require(:media_work).
+			permit(:title, :perennial, :medium, :recommended_by, :recommended_because, :thoughts)
   end
 
   def tag_params

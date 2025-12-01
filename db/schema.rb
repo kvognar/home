@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_30_065006) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_01_032558) do
   create_table "badges", id: :integer, charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
@@ -186,6 +186,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_30_065006) do
     t.datetime "updated_at", precision: nil
     t.string "recommended_by"
     t.text "recommended_because"
+    t.text "thoughts"
     t.index ["medium"], name: "index_media_works_on_medium"
     t.index ["title"], name: "index_media_works_on_title"
   end

@@ -5,5 +5,7 @@
     - else
       .medium= svg("icons/#{media_work.medium}")
     h5= media_work.title
+    - if media_work.medium == 'album'
+      h5= media_work.media_creators.first&.name
     .badges= render partial: 'badges/badges', locals: { badges: media_work.badges.sort_by(&:name), media_work: media_work }
 

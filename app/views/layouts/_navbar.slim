@@ -32,6 +32,7 @@ nav.navbar role='navigation'
           ul.dropdown-menu rule='menu'
             li = link_to 'Media', media_works_path
             - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
+            li = link_to 'Music', music_media_works_path
             li = link_to 'Year Wrap', year_wrap_path(year: year)
             li = link_to 'Year in Review', year_in_review_path(year: year)
 		    li = link_to 'What is this?', about_media_works_path

@@ -32,6 +32,10 @@ p#notice = notice
       p
         = "Recommended because: #{@media_work.recommended_because}"
 
+  - if @media_work.thoughts.present?
+    .consumption-log
+      h4.text-center Thoughts
+      p = markdown(@media_work.thoughts)
 
   - if @media_work.media_consumptions.any? { |consumption| consumption.media_sessions.any?(&:has_spoilers?) }
     .text-center= button_tag 'Show spoilers', class: 'spoiler-toggle'
@@ -39,11 +43,9 @@ p#notice = notice
   .consumption-log
     = render partial: 'consumption', locals: { consumption: consumption }
 
-- if @media_work.media_consumptions.last&.finished? || @media_work.media_consumptions.blank?
+- if @media_work.media_consumptions.last&.finished? || (@media_work.media_consumptions.blank? && !@media_work.medium == 'album')
   .text-center
     = button_to 'One more time', media_consumptions_path, method: :post, params: { media_work_id: @media_work.id, revisiting: true }, data: { confirm: 'Ready to go again?'}
-
-
 
 nav
   - if admin?

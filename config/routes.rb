@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     collection do
       get :search
 			get :about
+			get :music
     end
 
     member do
@@ -77,6 +78,4 @@ Rails.application.routes.draw do
   get 'code/doodles/tweetjam_sea', to: 'code#tweetjam_sea', as: 'tweetjam_sea'
 
   get 'spookycastle', to: 'code#spooky_castle', as: 'spooky_castle'
-
-
 end

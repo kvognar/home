@@ -86,7 +86,11 @@ class MediaWorksController < ApplicationController
 
     @consumption.update(state: 'in_progress', start_date: Time.now)
     redirect_to @media_work
-  end
+	end
+
+	def music
+		@albums = MediaWork.where(medium: 'album').includes(:media_creators)
+	end
 
   def year_in_review
     @year = params[:year]
