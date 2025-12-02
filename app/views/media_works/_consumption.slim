@@ -1,5 +1,6 @@
 - if consumption.started?
-  p.text-center Started #{consumption.media_sessions.first.day.day_of.strftime('%A, %B %-d, %Y')}
+  - start_day = consumption.media_sessions.first&.day&.day_of || consumption.created_at
+  p.text-center Started #{start_day.strftime('%A, %B %-d, %Y')}
   - if consumption.in_progress?
     p Currently in progress
 
