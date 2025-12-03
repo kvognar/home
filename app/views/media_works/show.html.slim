@@ -51,4 +51,4 @@ nav
   - if admin?
     => link_to 'Edit', edit_media_work_path(@media_work)
     '|
-  =< link_to 'Back', media_works_path
+  =< link_to 'Back', @media_work.medium == 'album' ? music_media_works_path : media_works_path
