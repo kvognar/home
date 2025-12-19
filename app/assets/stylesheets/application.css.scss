@@ -135,3 +135,29 @@ select {
   padding: 6px 12px;
   border-radius: 3px;
 }
+
+.webring {
+  margin-top: 5rem;
+  h6 {
+    text-align: center;
+  }
+}
+#webring-container {
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+  justify-content: center;
+
+  #webring-left {
+    flex: 10;
+    text-align: end;
+  }
+  #webring-right {
+    flex: 10;
+  }
+
+  .webring-center {
+    flex: 1;
+    text-align: center;
+  }
+}
