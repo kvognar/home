@@ -6,31 +6,35 @@
     #webring-right
 
 javascript:
-  webring = document.getElementById('webring-container')
-	fetch('https://willdotwhite.github.io/webring/data.json').then((response) => {
-		response.json().then((data) => {
-      let center = data.findIndex((site) => site.url === 'https://kevinvognar.com');
-      let left = center - 1;
-      if (left < 0) { left = data.length - 1 }
-		  let right = center + 1;
-      if (right === data.length) { right = 0 }
+  webring = document.getElementById('webring-container');
+  if (!webring.getAttribute('data-loaded')) {
+    fetch('https://willdotwhite.github.io/webring/data.json').then((response) => {
+      response.json().then((data) => {
+        let center = data.findIndex((site) => site.url === 'https://kevinvognar.com');
+        let left = center - 1;
+        if (left < 0) { left = data.length - 1 }
+        let right = center + 1;
+        if (right === data.length) { right = 0 }
 
-		  let leftSite = data[left];
-      let rightSite = data[right];
+        let leftSite = data[left];
+        let rightSite = data[right];
 
-		  let rightElement = document.createElement('a');
-      rightElement.setAttribute('href', rightSite.url);
-      rightElement.setAttribute('target', '__blank');
-      rightElement.setAttribute('title', rightSite.description);
-			rightElement.appendChild(document.createTextNode(rightSite.title + ' →'));
-      document.getElementById('webring-right').appendChild(rightElement);
+        let rightElement = document.createElement('a');
+        rightElement.setAttribute('href', rightSite.url);
+        rightElement.setAttribute('target', '__blank');
+        rightElement.setAttribute('title', rightSite.description);
+        rightElement.appendChild(document.createTextNode(rightSite.title + ' →'));
+        document.getElementById('webring-right').appendChild(rightElement);
 
-			let leftElement = document.createElement('a');
-			leftElement.setAttribute('href', leftSite.url);
-			leftElement.setAttribute('target', '__blank');
-			leftElement.setAttribute('title', leftSite.description);
-			leftElement.appendChild(document.createTextNode('← ' + leftSite.title));
-      document.getElementById('webring-left').appendChild(leftElement);
-		})
-	})
+        let leftElement = document.createElement('a');
+        leftElement.setAttribute('href', leftSite.url);
+        leftElement.setAttribute('target', '__blank');
+        leftElement.setAttribute('title', leftSite.description);
+        leftElement.appendChild(document.createTextNode('← ' + leftSite.title));
+        document.getElementById('webring-left').appendChild(leftElement);
+
+				webring.setAttribute('data-loaded', 'true')
+      })
+    })
+  }
 
