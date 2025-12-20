@@ -11,4 +11,3 @@ class CreateLinks < ActiveRecord::Migration[8.0]
 		add_index :links, :category
   end
 end
-str
