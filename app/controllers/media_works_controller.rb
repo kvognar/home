@@ -108,6 +108,9 @@ class MediaWorksController < ApplicationController
     @works = MediaWork.joins(media_consumptions: { media_sessions: :day} ).includes(:media_tags, :badges, :media_image, media_consumptions: { media_sessions: :day} ).where(days: { day_of: range })
     @works_by_medium = @works.group_by(&:medium)
 
+		music = MediaWork.where(medium: 'album').where(created_at: range)
+		@works_by_medium['album'] = music
+
     @days_by_medium = @works_by_medium.map do |medium, works|
       [
         medium,

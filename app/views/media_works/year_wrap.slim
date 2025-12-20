@@ -140,6 +140,13 @@ h1.text-center.hero-title= @year
       - next unless podcast.media_consumptions.first.media_sessions.count > 3
       = render partial: 'media_works/thumbnail', locals: { media_work: podcast }
 
+- if @works_by_medium['album']
+  h1 New music
+  br
+  .media-review-set
+    - @works_by_medium['album'].each do |album|
+      = render partial: 'media_works/thumbnail', locals: { media_work: album }
+
 -if @works_by_medium.empty?
   h1.text-center ¯\_(ツ)_/¯
 
