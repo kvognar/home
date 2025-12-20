@@ -1,0 +1,36 @@
+h1.text-center Links
+
+- if admin?
+  div.text-center
+    = link_to 'New link', new_link_path
+  br
+
+.links-intro
+  p Cool things from around the Internet.
+  p
+    ' I really like having a space that I've created for myself like this. You can do it too!
+    ' The Internet has in a way gotten a lot smaller since it centralized around a handful of
+    ' mega-sites. This is a reminder that you can tend your own garden here, too.
+
+- if @links_by_category.key?('friends')
+  h2.text-center Friends
+  .links-container
+    - @links_by_category['friends'].each do |link|
+      = render partial: 'link', locals: { link: link }
+
+- if @links_by_category.key?('cool_people')
+  h2.text-center Cool people
+  .links-container
+    - @links_by_category['cool_people'].each do |link|
+      = render partial: 'link', locals: { link: link }
+
+- if @links_by_category.key?('cool_things')
+  h2.text-center Cool things
+  .links-container
+    - @links_by_category['cool_things'].each do |link|
+      = render partial: 'link', locals: { link: link }
+
+- if @links_by_category.key?('references')
+  h2.text-center References
+  - @links_by_category['references'].each do |link|
+    = render partial: 'link', locals: { link: link }

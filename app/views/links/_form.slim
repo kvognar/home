@@ -1,0 +1,9 @@
+= form_for link, html: { class: 'link-form' }  do |f|
+  = f.text_field :name, placeholder: 'Name', data: { '1p-ignore': true }
+  = f.text_field :url, placeholder: 'url'
+  = f.label :order, 'Order'
+  = f.number_field :order
+  = f.label :category, 'Category'
+  = f.select :category, options_from_collection_for_select(Link::VALID_CATEGORIES, :downcase, :humanize, selected: link.category)
+  = f.textarea :description, placeholder: 'Description', rows: 5
+  = f.submit

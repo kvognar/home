@@ -36,6 +36,7 @@ nav.navbar role='navigation'
             li = link_to 'Year Wrap', year_wrap_path(year: year)
             li = link_to 'Year in Review', year_in_review_path(year: year)
 		    li = link_to 'What is this?', about_media_works_path
+        li.nav-item = link_to 'Links', links_path
         li.nav-item = link_to 'Contact', contact_url
         li.nav-item
           .nav-search

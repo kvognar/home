@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_01_032558) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_20_030251) do
   create_table "badges", id: :integer, charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
@@ -91,6 +91,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_01_032558) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.index ["name", "tag_type"], name: "index_legacy_tags_on_name_and_tag_type", unique: true
+  end
+
+  create_table "links", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.text "description"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order", default: 100
+    t.index ["category"], name: "index_links_on_category"
   end
 
   create_table "media_consumptions", id: :integer, charset: "utf8mb3", force: :cascade do |t|
