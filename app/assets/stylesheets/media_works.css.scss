@@ -145,7 +145,7 @@
     flex-direction: row;
     justify-content: space-between;
     .day-enumeration {
-      border: 1px solid lightgrey;
+      border: 1px solid var(--border-color);
       width: 2rem;
       height: 2rem;
       display: flex;
@@ -153,6 +153,94 @@
       align-items: center;
       margin: 0;
     }
+  }
+}
+
+.work-row {
+  display: none;
+}
+
+body:has(#book:checked) {
+  .book-row {
+    display: table-row;
+  }
+}
+
+body:has(#movie:checked) {
+  .movie-row {
+    display: table-row;
+  }
+}
+
+body:has(#tv_show:checked) {
+  .tv_show-row {
+    display: table-row;
+  }
+}
+
+body:has(#video_game:checked) {
+  .video_game-row {
+    display: table-row;
+  }
+}
+
+
+body:has(#podcast:checked) {
+  .podcast-row {
+    display: table-row;
+  }
+}
+
+body:has(#comic:checked) {
+  .comic-row {
+    display: table-row;
+  }
+}
+
+body:has(#article:checked) {
+  .article-row {
+    display: table-row;
+  }
+}
+
+body:has(#youtuber:checked) {
+  .youtuber-row {
+    display: table-row;
+  }
+}
+
+body:has(#stage_play:checked) {
+  .stage_play-row {
+    display: table-row;
+  }
+}
+
+body:has(#other:checked) {
+  .other-row {
+    display: table-row;
+  }
+}
+
+.filter-picker {
+  label {
+    border: 1px solid var(--border-color);
+    &:has(input:checked) {
+      border: 3px solid var(--border-color);
+      //box-shadow: inset 0px 0px 8px 0px #888;
+      margin: 0;
+    }
+    //box-shadow: inset 0px 0px 1.2px 0px #000;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    margin: 2px;
+    padding: 14px;
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
   }
 }
 

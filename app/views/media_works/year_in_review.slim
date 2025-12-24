@@ -6,6 +6,38 @@ p
   |> months I got <i>really</i> into a new game or podcast, the big gap during travel when most of my normal picks are put
   |> aside. I'd like to explore this idea further someday.
 
+.filter-picker
+  label
+    ' Books
+    input type='checkbox' id='book' checked='checked'
+  label
+    ' Movies
+    input type='checkbox' id='movie' checked='checked'
+  label
+    ' TV shows
+    input type='checkbox' id='tv_show' checked='checked'
+  label
+    ' Video games
+    input type='checkbox' id='video_game' checked='checked'
+  label
+    ' Podcasts
+    input type='checkbox' id='podcast' checked='checked'
+  label
+    ' Comics
+    input type='checkbox' id='comic' checked='checked'
+  label
+    ' Articles
+    input type='checkbox' id='article' checked='checked'
+  label
+    ' Youtubers
+    input type='checkbox' id='youtuber' checked='checked'
+  label
+    ' Stage plays
+    input type='checkbox' id='stage_play' checked='checked'
+  label
+    ' Other
+    input type='checkbox' id='other' checked='checked'
+
 - months = %w[January February March April May June July August September October November December]
 - @data[:months].each do |month|
   - month_length = (Date.parse(month[:month]) + 1.month- 1.day).day
@@ -18,7 +50,7 @@ p
           th.text-center Feelings
           th Days
       - month[:works].each do |work|
-        tr
+        tr class="work-row #{work[:medium]}-row"
           td
             .media-icon= svg("icons/#{work[:medium]}", title: work[:medium].humanize)
             = link_to work[:title], media_work_path(work[:work])
