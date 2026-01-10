@@ -1,0 +1,71 @@
+.webgarden {
+  marquee {
+    height: 210px;
+    margin-top: -53px;
+  }
+
+  h3 {
+    margin-top: 5px;
+    text-align: center;
+    font-family: "Gentium Book Basic", Georgia, serif;
+  }
+
+  h4 {
+    font-family: "Gentium Book Basic", Georgia, serif;
+    font-size: 18px;
+    margin-left: 1rem;
+    margin-top: 0;
+  }
+
+  .webgarden-container {
+    width: 250px;
+    height: 250px;
+    //border: 1px solid darkblue;
+
+    .day-frame {
+      display: inline-block;
+      margin: 5rem;
+
+      .day-frame-contents {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &.container-2 {
+      overflow-y: scroll;
+      p {
+        padding: 5px;
+      }
+      h3 {
+        font-size: 20px;
+      }
+    }
+
+  }
+
+  .pac-walk {
+    width: 41px;
+    margin-left: 2rem;
+  }
+
+  a {
+    h4, h6 {
+      color: var(--text-color)  !important;
+      &:hover {
+        color: var(--text-color) !important;
+      }
+
+    }
+  }
+
+}
+
+body.webgarden {
+  .content {
+    margin: 0;
+    padding: 0;
+  }
+}

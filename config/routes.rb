@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'resume' => 'static_pages#resume', as: 'resume'
   get 'contact', to: 'static_pages#contact'
   get 'kevinandlaurel', to: 'static_pages#♥︎'
+	get 'webgarden', to: 'static_pages#webgarden'
 
   get '/secrets' => 'sessions#new', as: 'secrets'
   post 'secrets' => 'sessions#create', as: 'login'

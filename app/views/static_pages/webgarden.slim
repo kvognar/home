@@ -1,0 +1,21 @@
+.webgarden-container
+  = link_to root_url do
+    h3 a photo a day
+    marquee direction='left'
+      - @days.each do |day|
+        .day-frame
+          .day-frame-contents
+            h4= "#{day.title} of the Day ##{day.number}234"
+            = image_tag(day.photo.url(:thumb))
+            h6= day.day_of.strftime('%A, %B %-d, %Y')
+
+    = image_tag('whistlewalk.gif', class: 'pac-walk')
+
+/ alternate mini-blog-post format
+/ = link_to root_url do
+/   .webgarden-container.container-2
+/     - day = @days.first
+/     h3= "#{day.title} of the Day ##{day.number}234"
+/     .text-center
+/       = image_tag(day.photo.url(:thumb))
+/     p=day.body

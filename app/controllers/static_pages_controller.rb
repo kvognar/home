@@ -17,5 +17,25 @@ class StaticPagesController < ApplicationController
   def ♥︎
     hide_navbar
     render 'rsvp'
-  end
+	end
+
+	def webgarden
+		hide_navbar
+
+		dates        = []
+		current_date = @date = Date.yesterday
+		first_day    = Day.published.first.day_of
+
+		while current_date >= first_day do
+			dates << current_date
+			current_date -= 1.year
+		end
+
+		@days = Day.published.recent.includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work }).where(day_of: dates)
+
+		# for testing
+		# @days = (Day.joins(:photo_of_the_day).all.to_a * 6).first(16)
+
+		render 'webgarden'
+	end
 end
