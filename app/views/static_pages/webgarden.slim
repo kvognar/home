@@ -5,7 +5,7 @@
       - @days.each do |day|
         .day-frame
           .day-frame-contents
-            h4= "#{day.title} of the Day ##{day.number}234"
+            h4= "#{day.title} of the Day ##{day.number}"
             = image_tag(day.photo.url(:thumb))
             h6= day.day_of.strftime('%A, %B %-d, %Y')
 
