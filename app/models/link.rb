@@ -10,7 +10,7 @@
 # created_at       :datetime
 # updated_at       :datetime
 class Link < ApplicationRecord
-	VALID_CATEGORIES = %w[friends cool_people cool_things references]
+	VALID_CATEGORIES = %w[friends cool_people cool_things references webgarden]
 
 	validates :name, presence: true
 	validates :url, presence: true, uniqueness: true

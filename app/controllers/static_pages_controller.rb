@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+
+	after_action :allow_iframe, only: :webgarden
   def home
     @day = Day.joins(:photo_of_the_day).includes(:photo_of_the_day).last
   end
@@ -37,5 +39,11 @@ class StaticPagesController < ApplicationController
 		# @days = (Day.joins(:photo_of_the_day).all.to_a * 6).first(16)
 
 		render 'webgarden'
+	end
+
+	private
+
+	def allow_iframe
+		response.headers.except! 'X-Frame-Options'
 	end
 end

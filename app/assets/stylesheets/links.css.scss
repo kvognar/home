@@ -27,8 +27,19 @@
     flex-flow: wrap;
   }
 
-  .links-intro {
+  .links-explanation {
     max-width: 700px;
     margin: 0 auto;
+  }
+
+  .webgarden-pot {
+    margin: 1rem;
+  }
+
+  textarea {
+    width: 300px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
   }
 }

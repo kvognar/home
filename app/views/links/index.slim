@@ -5,7 +5,7 @@ h1.text-center Links
     = link_to 'New link', new_link_path
   br
 
-.links-intro
+.links-explanation
   p Cool things from around the Internet.
   p
     ' I really like having a space that I've created for myself like this. You can do it too!
@@ -35,3 +35,30 @@ h1.text-center Links
   .links-container
     - @links_by_category['references'].each do |link|
       = render partial: 'link', locals: { link: link }
+
+- if @links_by_category.key?('webgarden')
+  h2.text-center Webgarden
+  .links-explanation
+    p
+      ' <a href="https://webgardens.neocities.org/" target="_blank">Webgardens</a> are sort of a modern take on those little badges people used to use to link to
+      ' each other's sites back in the day. Each of these is an embed from another person's site,
+      ' a microcosm of the little world they've made for themselves on the Internet. Making a little
+      ' bottle-able version of your own website to plant on someone else's is Exactly My Jam and I was
+      ' so excited to stumble on it.
+  .links-container
+    - @links_by_category['webgarden'].each do |link|
+      .webgarden-pot
+        iframe src="#{link.url}/webgarden" height="250px" width="250px" scrolling="no" loading="lazy"
+        - if admin?
+          .text-center
+            = link_to 'edit', edit_link_path(link)
+
+  .links-explanation
+    p.text-center
+      ' If you'd like, here's my own webgarden pot to plant in your garden!
+  .text-center
+    iframe src="https://kevinvognar.com/webgarden" height="250px" width="250px" scrolling="no" loading="lazy"
+    textarea
+      | <iframe src="https://kevinvognar.com/webgarden.html" height="250px" width="250px" scrolling="no" loading="lazy"></iframe>
+
+
