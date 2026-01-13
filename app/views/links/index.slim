@@ -48,7 +48,7 @@ h1.text-center Links
   .links-container
     - @links_by_category['webgarden'].each do |link|
       .webgarden-pot
-        iframe src="#{link.url}/webgarden" height="250px" width="250px" scrolling="no" loading="lazy"
+        iframe src="#{link.url}/webgarden.html" height="250px" width="250px" scrolling="no" loading="lazy"
         - if admin?
           .text-center
             = link_to 'edit', edit_link_path(link)
