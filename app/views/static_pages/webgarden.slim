@@ -3,7 +3,7 @@
     h3 a photo a day
     marquee direction='left'
       - @days.each do |day|
-        - next if day&.photo.blank?
+        - next if day.photo_of_the_day.blank?
         .day-frame
           .day-frame-contents
             h4= "#{day.title} of the Day ##{day.number}"
