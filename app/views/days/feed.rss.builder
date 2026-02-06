@@ -13,7 +13,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title "#{day.title} of the Day ##{day.number}"
         xml.author "Umbrella Man"
-        xml.pubDate day.publish_date.to_s(:rfc822)
+        xml.pubDate day.publish_date.strftime('%A, %B %-d, %Y at %-I:%M %P')
         xml.link day_url(day)
         xml.guid day.slug
 
