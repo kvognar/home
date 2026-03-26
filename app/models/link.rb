@@ -9,8 +9,9 @@
 # category         :string
 # created_at       :datetime
 # updated_at       :datetime
+# order						 :integer
 class Link < ApplicationRecord
-	VALID_CATEGORIES = %w[friends cool_people cool_things references webgarden]
+	VALID_CATEGORIES = %w[friends photo_a_day cool_people cool_things references webgarden]
 
 	validates :name, presence: true
 	validates :url, presence: true, uniqueness: true
