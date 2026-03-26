@@ -50,7 +50,7 @@ class DaysController < ApplicationController
       dates << current_date
       current_date -= 1.year
     end
-    @days = Day.published.recent.where(day_of: dates)
+    @days = Day.published.recent.includes(:tags, :photo_of_the_day, :approved_comments, media_sessions: { media_consumption: :media_work }).where(day_of: dates)
   end
 
   def your_song
