@@ -89,7 +89,7 @@ class MediaWorksController < ApplicationController
 	end
 
 	def music
-		@albums = MediaWork.where(medium: 'album').includes(:media_creators)
+		@albums = MediaWork.where(medium: 'album').includes(:media_creators).order(created_at: :desc)
 	end
 
   def year_in_review
