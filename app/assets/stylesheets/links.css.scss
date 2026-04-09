@@ -34,6 +34,9 @@
 
   .webgarden-pot {
     margin: 1rem;
+    iframe {
+      box-sizing: content-box;
+    }
   }
 
   textarea {
