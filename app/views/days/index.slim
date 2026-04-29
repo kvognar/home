@@ -1,6 +1,3 @@
-- if signed_in? && Comment.unapproved.present?
-  .fisheye = link_to '◉', comments_path
-
 - if params[:search_text]
   h3 Searching for #{params[:search_text]}
 - elsif action_name.include?('favorite')
