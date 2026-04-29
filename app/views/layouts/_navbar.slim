@@ -44,7 +44,7 @@ nav.navbar role='navigation'
               input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
         - if signed_in?
           li.nav-item.home-brella = link_to '☂', new_day_url
-          - if  Comment.unapproved.present?
+          - if Comment.unapproved.present?
             li.nav-item.fisheye
               = link_to '◉', comments_path
           li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
