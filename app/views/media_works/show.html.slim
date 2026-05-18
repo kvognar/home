@@ -1,7 +1,13 @@
 p#notice = notice
 .media-data
   .text-center
-    h1= @media_work.title
+    h1
+      - if @media_work.title == 'House of Leaves'
+        span style=("color: blue")
+          ' House
+        ' of Leaves
+      - else
+        = @media_work.title
     h4
       .badges= render partial: 'badges/badges', locals: { badges: @badges, media_work: @media_work }
       = @media_work.medium.humanize

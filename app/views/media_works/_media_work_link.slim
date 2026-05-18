@@ -1,0 +1,7 @@
+a href=media_work_path(media_work)
+  - if media_work.title == 'House of Leaves'
+    span style=("color: blue")
+      ' House
+    ' of Leaves
+  - else
+    = media_work.title
