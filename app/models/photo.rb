@@ -19,7 +19,7 @@ class Photo < ApplicationRecord
   belongs_to :day
 
   has_attached_file :photo,
-                    styles: { thumb: '100x100#', medium: '1200x900>' },
+                    styles: { thumb: '100x100#', medium: '3000x2000>' },
                     convert_options: {
                         thumb: '-strip'
                     }
