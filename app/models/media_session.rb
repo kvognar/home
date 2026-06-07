@@ -16,7 +16,7 @@ class MediaSession < ApplicationRecord
 
   has_many :media_images, as: :attachable
   belongs_to :day
-  belongs_to :media_consumption
+  belongs_to :media_consumption, touch: true
   has_one :media_work, through: :media_consumption
   validates :media_consumption, presence: true
 

@@ -1,0 +1,8 @@
+- @consumptions.group_by { _1.updated_at.year }.each do |year, consumptions_by_year|
+  h1 =year
+  - consumptions_by_month =  consumptions_by_year.group_by { _1.updated_at.month }
+  - 12.downto(1).each do |month|
+    - next unless consumptions_by_month.key?(month)
+    h2 = @months[month]
+    - works = consumptions_by_month[month].sort_by(&:updated_at).reverse.map(&:media_work)
+    = render partial: 'list', locals: { media_works: works }

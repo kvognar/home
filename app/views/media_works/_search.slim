@@ -20,6 +20,7 @@
             = check_box_tag 'badges[]', badge.id, false, class: "hidden badge-check badge-check-#{badge.name}"
             = render partial: 'form_badge', locals: { badge: badge }
 
-  .row
-    .col-sm-1
-      = submit_tag 'Go', id: 'media-work-search-button'
+  .submit-row
+    = submit_tag 'Go', id: 'media-work-search-button'
+    = check_box_tag 'chronological'
+    = label_tag 'chronological', 'Chronological'

@@ -17,11 +17,17 @@ class MediaWorksController < ApplicationController
     @hide_navbar = true
     fetch_media_works
 
-    @media_works = @media_works.group_by do |work|
-      work.media_consumptions.last.state
-    end
     @badges = Badge.all.sort_by(&:name)
-    render(layout: 'element_response')
+		if params[:chronological]
+			render_timeline
+			return
+		end
+
+		@media_works = @media_works.group_by do |work|
+			work.media_consumptions.last.state
+		end
+
+		render(layout: 'element_response')
   end
 
   # GET /media_works/1
@@ -147,6 +153,26 @@ class MediaWorksController < ApplicationController
   end
 
   private
+
+	def render_timeline
+		@consumptions = MediaConsumption.order(updated_at: :desc).includes(media_work: [:media_creators, :badges]).where(media_work: @media_works)
+		@months = {
+			1 => 'January',
+			2 => 'February',
+			3 => 'March',
+			4 => 'April',
+			5 => 'May',
+			6 => 'June',
+			7 => 'July',
+			8 => 'August',
+			9 => 'September',
+			10 => 'October',
+			11 => 'November',
+			12 => 'December'
+		}
+		@badges = Badge.all.sort_by(&:name)
+		render('timeline', layout: 'element_response')
+	end
 
   def fetch_media_works(default_state = nil)
     @media_works = MediaWork.includes(:media_consumptions, :media_creators, :badges).joins(:media_consumptions)

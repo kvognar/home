@@ -338,3 +338,15 @@ body:has(#other:checked) {
     max-width: 800px;
   }
 }
+
+.submit-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+  label, input {
+    margin: 0
+  }
+  margin: 1rem 0;
+}
