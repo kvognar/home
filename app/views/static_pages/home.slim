@@ -14,8 +14,11 @@
         h3 Games
         = image_tag 'fall_from_grace.gif'
     .project-preview
-      a href=code_projects_url
-       h3 Code
-       = image_tag 'rails-lite-screenshot.png'
+      a href=media_works_url
+        h3 Medialog
+        - if @media_work.media_image.present?
+          = image_tag(@media_work.media_image.image.url(:medium))
+        - else
+          .medium= svg("icons/#{@media_work.medium}")
 
 = render partial: 'links/gmtk_webring'

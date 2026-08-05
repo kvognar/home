@@ -3,6 +3,9 @@ class StaticPagesController < ApplicationController
 	after_action :allow_iframe, only: :webgarden
   def home
     @day = Day.joins(:photo_of_the_day).includes(:photo_of_the_day).last
+		@media_work = MediaWork.joins(:media_image).with_badge_ids(
+			Badge.first(3).pluck(:id)
+		).order(Arel.sql('RAND()')).first
   end
 
   def contact
