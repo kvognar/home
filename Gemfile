@@ -36,8 +36,6 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass'
-
 gem 'kt-paperclip', ' 7.2.2'
 gem 'friendly_id', '~> 5.1.0'
 gem 'bcrypt', '~> 3.1.7'

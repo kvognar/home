@@ -11,7 +11,7 @@
     position: relative;
 
     .day-photo {
-      max-height: 75rem;
+      max-height: 90vh;
       max-width: 100%;
       margin: 0 auto;
       display: block;
@@ -44,6 +44,7 @@
     color: var(--text-color);
     transition: color 0.5s ease;
     display: inline-block;
+    font-weight: normal;
 
     &:hover {
       color: var(--hover-color);
@@ -133,9 +134,9 @@
 }
 
 .article-body {
-  font-family: 'Gentium Book Basic', Georgia, serif;
-  font-size: 1.7rem;
-  max-width: 70rem;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  max-width: 700px;
   margin: 1.5rem auto 0 auto;
   .lyrics {
     padding-top: 2rem;

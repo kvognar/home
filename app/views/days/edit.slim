@@ -17,7 +17,7 @@
       = f.hidden_field :number, value: @day.number
       = f.hidden_field :is_draft, value: @day.is_draft
       .day-title
-        = f.text_field :title, value: @day.title, placeholder: 'Title'
+        = f.text_field :title, value: @day.title, placeholder: 'Title', data: { '1p-ignore': true }
         = "of the Day ##{@day.number}"
         span.save-state = " ☂"
         = text_area :day, :body, placeholder: "What's on your mind?", value: @day.body
@@ -25,14 +25,14 @@
       a.day-data-container-toggle href='#toggle' ◉
       .day-data-container.glass
         .day-meta-data
-          = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics'
-          = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit'
+          = f.text_field :lyrics,       value: @day.lyrics, placeholder: 'Lyrics', data: { '1p-ignore': true }
+          = f.text_field :lyric_credit, value: @day.lyric_credit, placeholder: 'Lyrics credit', data: { '1p-ignore': true }
           = f.label :mouseover
-          = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover', class: 'meta-text'
+          = f.text_field :mouseover, value: @day.mouseover, placeholder: 'Mouseover', class: 'meta-text', data: { '1p-ignore': true }
           = label_tag 'photo_alt_text', 'Alt text'
           = text_area_tag 'photo[alt_text]', @day.photo_of_the_day&.alt_text, placeholder: 'Alt text', class: 'meta-text'
           = f.label :whisper
-          = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper'
+          = f.text_field :whisper, value: @day.whisper, placeholder: 'whisper', data: { '1p-ignore': true }
           = f.label :tags
           = f.select :tags, options_from_collection_for_select(Tag.all.order(:name), :name, :name, @day.tags.map(&:name)), { }, { prompt: 'Tags', multiple: :multiple, class: 'searchable-select tag-select'}
 

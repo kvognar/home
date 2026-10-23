@@ -1,50 +1,89 @@
-nav.navbar role='navigation'
-  .container-fluid
-    .navbar-header
-      = link_to 'Good morning', root_url, class: 'navbar-brand'
-      button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#navbar-items' aria-expanded="false"
-        span.sr-only Toggle Navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-    .collapse.navbar-collapse#navbar-items
-      ul.nav.navbar-nav
-        li.dropdown.nav-item
-          a href='#' class='dropdown-toggle' data-toggle='dropdown' A photo a day
-          ul.dropdown-menu role='menu'
-            li = link_to 'Today', days_url
-            li = link_to 'People', people_url
-            li = link_to 'Featured Tags', tags_url
-            li = link_to 'Tag Search', your_song_url
-            li = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
-            li = link_to 'Susurrus', susurrus_url
-            li = link_to 'On This Day', on_this_day_url
-            li = link_to 'Favorites', favorite_days_path
-            li#rss = link_to 'RSS', '#rss'
-        li.dropdown.nav-item
-          a href='#' class='dropdown-toggle' data-toggle='dropdown' Code
-          ul.dropdown-menu role='menu'
-            li = link_to 'Projects', code_projects_url
-            li = link_to 'Games', code_games_url
-            li = link_to 'Doodles', code_doodles_url
-        li.dropdown.nav-item
-		  a href='#' class='dropdown-toggle' data-toggle='dropdown' Medialog
-          ul.dropdown-menu rule='menu'
-            li = link_to 'Media', media_works_path
-            - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
-            li = link_to 'Music', music_media_works_path
-            li = link_to 'Year Wrap', year_wrap_path(year: year)
-            li = link_to 'Year in Review', year_in_review_path(year: year)
-		    li = link_to 'What is this?', about_media_works_path
-        li.nav-item = link_to 'Links', links_path
-        li.nav-item = link_to 'Contact', contact_url
-        li.nav-item
-          .nav-search
-            form.search action=days_url method="get"
-              input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
-        - if signed_in?
-          li.nav-item.home-brella = link_to '☂', new_day_url
-          - if Comment.unapproved.present?
-            li.nav-item.fisheye
-              = link_to '◉', comments_path
-          li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
+/ nav.navbar role='navigation'
+/   .container-fluid
+/     .navbar-header
+/       = link_to 'Good morning', root_url, class: 'navbar-brand'
+/       button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#navbar-items' aria-expanded="false"
+/         span.sr-only Toggle Navigation
+/         span.icon-bar
+/         span.icon-bar
+/         span.icon-bar
+/     .collapse.navbar-collapse#navbar-items
+/       ul.nav.navbar-nav
+/         li.dropdown.nav-item
+/           a href='#' class='dropdown-toggle' data-toggle='dropdown' A photo a day
+/           ul.dropdown-menu role='menu'
+/             li = link_to 'Today', days_url
+/             li = link_to 'People', people_url
+/             li = link_to 'Featured Tags', tags_url
+/             li = link_to 'Tag Search', your_song_url
+/             li = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
+/             li = link_to 'Susurrus', susurrus_url
+/             li = link_to 'On This Day', on_this_day_url
+/             li = link_to 'Favorites', favorite_days_path
+/             li#rss = link_to 'RSS', '#rss'
+/         li.dropdown.nav-item
+/           a href='#' class='dropdown-toggle' data-toggle='dropdown' Code
+/           ul.dropdown-menu role='menu'
+/             li = link_to 'Projects', code_projects_url
+/             li = link_to 'Games', code_games_url
+/             li = link_to 'Doodles', code_doodles_url
+/         li.dropdown.nav-item
+/ 		  a href='#' class='dropdown-toggle' data-toggle='dropdown' Medialog
+/           ul.dropdown-menu rule='menu'
+/             li = link_to 'Media', media_works_path
+/             - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
+/             li = link_to 'Music', music_media_works_path
+/             li = link_to 'Year Wrap', year_wrap_path(year: year)
+/             li = link_to 'Year in Review', year_in_review_path(year: year)
+/ 		    li = link_to 'What is this?', about_media_works_path
+/         li.nav-item = link_to 'Links', links_path
+/         li.nav-item = link_to 'Contact', contact_url
+/         li.nav-item
+/           .nav-search
+/             form.search action=days_url method="get"
+/               input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
+/         - if signed_in?
+/           li.nav-item.home-brella = link_to '☂', new_day_url
+/           - if Comment.unapproved.present?
+/             li.nav-item.fisheye
+/               = link_to '◉', comments_path
+/           li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
+.nav-2
+  ul
+    li = link_to 'Good morning', root_url
+    li.expand
+      span A Photo a Day
+      ul.items
+        li = link_to 'Today', days_url
+        li = link_to 'People', people_url
+        li = link_to 'Featured Tags', tags_url
+        li = link_to 'Tag Search', your_song_url
+        li = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
+        li = link_to 'Susurrus', susurrus_url
+        li = link_to 'On This Day', on_this_day_url
+        li = link_to 'Favorites', favorite_days_path
+
+    li
+      = link_to 'Games', code_games_path
+    li.expand
+        span Medialog
+        ul.items
+          li = link_to 'Media', media_works_path
+          - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
+          li = link_to 'Music', music_media_works_path
+          li = link_to 'Year Wrap', year_wrap_path(year: year)
+          li = link_to 'Year in Review', year_in_review_path(year: year)
+          li = link_to 'What is this?', about_media_works_path
+    li
+      = link_to 'Links', links_path
+    li
+      = link_to 'Contact', contact_path
+    - if controller_name.in?(%w[days static_pages])
+      li
+        .nav-search
+          form.search action=days_url method="get"
+            input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
+      / - if signed_in?
+      /   li
+      /   .nav-item = link_to '☂', new_day_url
+      /   .nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete

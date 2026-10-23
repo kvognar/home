@@ -11,4 +11,16 @@ $(document).on('turbolinks:load', function() {
 	if ($('.select2').length === 0) {
     	$('.tag-picker').select2({ width: '100%'});
 	}
+
+	$('.expand').on('click', function (event) {
+		if (event.target === event.currentTarget) {
+			event.preventDefault();
+		}
+		let newState = !$(event.currentTarget).hasClass('expanded');
+		$('.expand').removeClass('expanded')
+		if (newState) {
+			$(event.currentTarget).addClass('expanded');
+		}
+	})
 });
+
