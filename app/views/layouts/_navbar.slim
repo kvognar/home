@@ -44,36 +44,39 @@
 /               input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
 /         - if signed_in?
 /           li.nav-item.home-brella = link_to '☂', new_day_url
-/           - if Comment.unapproved.present?
-/             li.nav-item.fisheye
-/               = link_to '◉', comments_path
 /           li.nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
 .nav-2
   ul
     li = link_to 'Good morning', root_url
-    li.expand
-      span A Photo a Day
-      ul.items
-        li = link_to 'Today', days_url
-        li = link_to 'People', people_url
-        li = link_to 'Featured Tags', tags_url
-        li = link_to 'Tag Search', your_song_url
-        li = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
-        li = link_to 'Susurrus', susurrus_url
-        li = link_to 'On This Day', on_this_day_url
-        li = link_to 'Favorites', favorite_days_path
+    li.nav-dropdown
+      .dropdown-header
+        = link_to 'A photo a day', days_url
+        details name='nav'
+          summary
+      .contents
+        div = link_to 'Today', days_url
+        div = link_to 'People', people_url
+        div = link_to 'Featured Tags', tags_url
+        div = link_to 'Tag Search', your_song_url
+        div = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
+        div = link_to 'Susurrus', susurrus_url
+        div = link_to 'On This Day', on_this_day_url
+        div = link_to 'Favorites', favorite_days_path
+
+    li.nav-dropdown
+      .dropdown-header
+        = link_to 'Medialog', media_works_url
+        details name='nav'
+          summary
+      .contents
+        - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
+        div = link_to 'Music', music_media_works_path
+        div = link_to 'Year Wrap', year_wrap_path(year: year)
+        div = link_to 'Year in Review', year_in_review_path(year: year)
+        div = link_to 'What is this?', about_media_works_path
 
     li
       = link_to 'Games', code_games_path
-    li.expand
-        span Medialog
-        ul.items
-          li = link_to 'Media', media_works_path
-          - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
-          li = link_to 'Music', music_media_works_path
-          li = link_to 'Year Wrap', year_wrap_path(year: year)
-          li = link_to 'Year in Review', year_in_review_path(year: year)
-          li = link_to 'What is this?', about_media_works_path
     li
       = link_to 'Links', links_path
     li
@@ -83,7 +86,10 @@
         .nav-search
           form.search action=days_url method="get"
             input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
-      / - if signed_in?
-      /   li
-      /   .nav-item = link_to '☂', new_day_url
-      /   .nav-item = link_to "#{current_user.sessions.count} ✖︎", logout_url, method: :delete
+      - if signed_in?
+        li
+          div.admin-nav
+            = link_to '☂', new_day_url
+            - if Comment.unapproved.present?
+              = link_to '◉', comments_path
+            = link_to "#{current_user.sessions.count} Ⓧ", logout_url, method: :delete, class: 'sign-out'

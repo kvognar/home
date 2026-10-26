@@ -84,6 +84,15 @@ nav {
   //  display: block;
   //  background-color: blue;
   //}
+  button {
+    color: var(--text-color);
+    border: none;
+    font-family: var(--serif-font);
+    font-size: 1rem;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
   ul {
     list-style: none;
     display: flex;
@@ -94,15 +103,25 @@ nav {
 
     > li {
       width: 200px;
-      //height: 100px;
-      border: 1px solid blue;
-      display: flex;
+      text-align: center;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 1rem;
-      font-size: 1rem;
       font-family: "Gentium Book Basic", Georgia, serif;
+      &.expanded {
+        background: var(--hover-background-color);
+      }
+
+      a, button {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 20px;
+        &:hover {
+          background-color: var(--hover-background-color);
+        }
+      }
       &:hover {
         //margin-top: 1rem;
       }
@@ -110,6 +129,8 @@ nav {
         ::marker {
           content: '+ ';
           cursor: pointer;
+          width: 20px;
+          height: 20px;
         }
         summary {
           cursor: pointer;
@@ -121,10 +142,42 @@ nav {
           }
         }
       }
-      details[open] {
-        ::marker {
-          content: '– '
-        }
+    }
+
+    .dropdown-header {
+      display: flex;
+      gap: 5px;
+      flex-direction: row;
+      align-items: center;
+      details ::marker {
+        content: '+'
+      }
+      details[open] ::marker {
+        content: '–'
+      }
+    }
+    .nav-dropdown {
+      display: flex;
+    }
+  }
+  .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .contents {
+      display: none;
+      a {
+        display: block;
+        padding: 6px;
+      }
+    }
+    &:hover, &:has(details[open]) {
+      .contents {
+        display: block;
+        position: absolute;
+        z-index: 1000;
+        top: 100%;
+        background: var(--background-color);
       }
     }
   }
@@ -134,7 +187,7 @@ nav {
     .items {
       display: none;
     }
-    &.expanded {
+    &.expanded, &:hover {
       .items {
 
         display: flex;
@@ -160,13 +213,27 @@ nav {
       }
     }
   }
+  .admin-nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 30px;
+    width: 150px;
+    a {
+      font-size: 30px;
+      &.sign-out {
+      font-size: 20px;}
+    }
+  }
+
 }
 
 .nav-search {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+
+  input {
+    font-size: 20px;
+    width: 200px;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -183,6 +250,7 @@ a {
     text-decoration: none;
   }
   transition: color 0.5s ease;
+  text-decoration: none;
 }
 
 pre {

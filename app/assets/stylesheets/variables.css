@@ -8,6 +8,7 @@
     --badge-selected-color: darkslateblue;
     --badge-unselected-color: lightgray;
     --media-icon-color: gray;
+    --serif-font: "Gentium Book Basic", Georgia, serif
 }
 
 @media(prefers-color-scheme: dark) {
@@ -44,3 +45,7 @@
 /*        opacity: 85%;*/
 /*    }*/
 /*}*/
+
+.text-center {
+    text-align: center;
+}
