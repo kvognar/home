@@ -4,6 +4,7 @@
 
 .media_works {
 
+
   .badge-display {
     text-align: center;
     display: none;
@@ -358,4 +359,11 @@ body:has(#other:checked) {
     margin: 0
   }
   margin: 1rem 0;
+}
+
+nav {
+  margin: 1rem 200px;
+  @media(max-width: 800px) {
+    margin: 1rem 0;
+  }
 }

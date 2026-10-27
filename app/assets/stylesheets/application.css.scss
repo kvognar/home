@@ -22,6 +22,10 @@
   src: url(NeutraDisplay-LightAlt.otf);
 }
 
+html {
+  font-size: 16px;
+}
+
 
 .content {
   margin-bottom: 5rem;
@@ -29,7 +33,7 @@
 
 body {
   color: var(--text-color);
-  background-color: var(--background-color)
+  background-color: var(--background-color);
 }
 
 nav {
@@ -100,6 +104,7 @@ nav {
     align-items: first baseline;
     justify-content: start;
     padding: 0;
+    margin-top: 0;
 
     > li {
       padding: 0 10px;
@@ -287,6 +292,7 @@ button {
   border: 1px solid var(--border-color);
   border-radius: 3px;
   padding: 6px 12px;
+  cursor: pointer;
 }
 
 select {
@@ -332,4 +338,11 @@ select {
 }
 .input-medium {
   width: 300px;
+}
+
+.page-container {
+  margin:0 200px;
+  @media(max-width: 800px) {
+    margin: 0;
+  }
 }
