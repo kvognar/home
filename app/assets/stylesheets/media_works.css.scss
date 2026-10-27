@@ -23,8 +23,8 @@
   }
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: var(--badge-size);
+    height: var(--badge-size);
   }
 
 
@@ -92,6 +92,15 @@
 
   .media-form {
     max-width: 800px;
+  }
+
+  #media-work-search {
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
   }
 
 }

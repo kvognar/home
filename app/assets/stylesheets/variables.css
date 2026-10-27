@@ -3,12 +3,13 @@
     --hover-color: deepskyblue;
     --hover-background-color: #eeeeff;
     --background-color: ghostwhite;
-    --text-color: #333333;
+    --text-color: #333344;
     --border-color: darkblue;
     --badge-selected-color: darkslateblue;
     --badge-unselected-color: lightgray;
     --media-icon-color: gray;
-    --serif-font: "Gentium Book Basic", Georgia, serif
+    --serif-font: "Gentium Book Basic", Georgia, serif;
+    --badge-size: 24px;
 }
 
 @media(prefers-color-scheme: dark) {

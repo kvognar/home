@@ -3,13 +3,15 @@
     .col-sm-3
       = label_tag('search-term', 'Search title or creator')
       = text_field_tag :search_term, params[:search_term], id: 'search-term', class: 'form-no-margin'
-    .col-sm-2
+  h2 Filters
+  .row
+    .input-small
       = label_tag('medium-selector', 'Medium')
       = select_tag :medium, options_from_collection_for_select(MediaWork::MEDIUM_OPTIONS, :downcase, :humanize, params[:medium]), { multiple: :multiple, class: 'tag-picker', id: 'medium-selector' }
-    .col-sm-2
+    .input-small
       = label_tag('status-selector', 'Status')
       = select_tag :state, options_from_collection_for_select(MediaConsumption::VALID_STATES, :downcase, :humanize, params[:state]), { multiple: :multiple, class: 'tag-picker', id: 'status-selector' }
-    .col-sm-3
+    .input-medium
       = label_tag('tag-selector', 'Tags')
       = select_tag 'tags[]', options_from_collection_for_select(MediaTag.all.order(:name), :name, :name, params[:tags]), { multiple: :multiple, class: 'tag-picker', id: 'media-tag-selector' }
     .col-sm-2.text-center
