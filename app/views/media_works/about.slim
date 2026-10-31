@@ -62,6 +62,21 @@ article.article-body
 	  = render partial: 'thumbnail', locals: { media_work: work }
 
   .text-center
+    h2
+      div=svg('icons/interesting', title: 'Interesting')
+      | Interesting
+  p
+    ' After a few years of keeping this log, I found that there were a lot of works that I felt deserved more attention, but didn't fit with the other ratings.
+    ' Sometimes a work doesn't quite stick the landing, or has some glaring flaws that detract from the experience, but there's something <i>interesting</i> about it.
+    ' Maybe it's trying something new; maybe the set design or the music is exceptional; maybe it's just <i>weird</i>.
+  p
+    ' If a work has only the Interesting rating, check it out if you're curious, and tell me what you think. If it's also Great or Fun,
+    ' then you're in for a real treat.
+  .media-examples
+    - @interesting.each do |work|
+      = render partial: 'thumbnail', locals: { media_work: work }
+
+  .text-center
 	h2
 	  div= svg('icons/resonate', title: 'This resonated with me')
 	  | This resonated with me

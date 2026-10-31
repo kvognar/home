@@ -149,6 +149,7 @@ class MediaWorksController < ApplicationController
   def about
     @fun = MediaWork.with_badge_ids(Badge.where(name: 'fun').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
     @great = MediaWork.with_badge_ids(Badge.where(name: 'great').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
+		@interesting = MediaWork.with_badge_ids(Badge.where(name: 'interesting').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
     @resonate = MediaWork.with_badge_ids(Badge.where(name: 'resonate').pluck(:id)).distinct.order(Arel.sql('RAND()')).first(3)
   end
 
