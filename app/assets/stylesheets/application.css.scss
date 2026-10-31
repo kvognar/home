@@ -36,58 +36,14 @@ body {
   background-color: var(--background-color);
 }
 
-nav {
-  ul.nav a {
-    color: var(--text-color);
-    &:hover {
-      color: var(--link-color);
-    }
-    transition: background-color 0.5s ease;
-  }
-  .navbar-brand {
-    color: var(--text-color);
-    &:hover {
-      color: var(--hover-color);
-    }
-    transition: color 0.5s ease;
-  }
-
-  button.navbar-toggle {
-    border: thin solid var(--border-color);
-    &:hover {
-      background-color: var(--hover-background-color);
-    }
-    transition: background-color 0.5s ease;
-
-
-    .icon-bar {
-      border-top: 2px solid var(--border-color);
-    }
-  }
-
-  .navbar-nav, .navbar-nav .open {
-
-    a {
-      &:hover {
-        background-color: var(--hover-background-color);
-      }
-      &:focus {
-        background-color: var(--hover-background-color);
-      }
-
-      transition: background-color 0.5s ease;
-    }
-  }
-
+h5, h6 {
+  font-weight: normal;
+}
+h5 {
+  margin: 14px 0;
 }
 
 .nav-2 {
-  //.placeholder {
-  //  width: 50px;
-  //  height: 50px;
-  //  display: block;
-  //  background-color: blue;
-  //}
   button {
     color: var(--text-color);
     border: none;
@@ -345,4 +301,17 @@ select {
   @media(max-width: 800px) {
     margin: 0;
   }
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+
+button {
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
 }

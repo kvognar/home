@@ -104,14 +104,19 @@
     }
   }
 
+  h6 {
+    font-size: 14px;
+    font-weight: normal;
+  }
+
 }
 
 .consumption-log {
   border: 1px solid var(--border-color);
   padding: 1rem;
   font-family: 'Gentium Book Basic', Georgia, serif;
-  font-size: 1.7rem;
-  max-width: 70rem;
+  font-size: 1rem;
+  max-width: 800px;
   margin: 1.5rem auto 0 auto;
 
   img {
