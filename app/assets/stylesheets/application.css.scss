@@ -301,6 +301,18 @@ select {
 .input-medium {
   width: 300px;
 }
+.input-full {
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+}
+
+select {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
 
 .page-container {
   margin:0 200px;
@@ -319,5 +331,13 @@ select {
 button {
   border: 1px solid var(--border-color);
   color: var(--text-color);
-
 }
+
+pre {
+  white-space: normal;
+}
+
+.select2-selection__choice {
+  padding: 2px;
+}
+
