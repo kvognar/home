@@ -44,6 +44,41 @@ h5 {
 }
 
 .nav-2 {
+  @media(max-width: 700px) {
+    .nav-large {
+      display: none;
+    }
+  }
+  .nav-small {
+    display: none;
+    ul {
+      flex-direction: column;
+      a {
+        padding: 0;
+      }
+      li {
+        margin: 6px;
+      }
+      details {
+        ::marker {
+          font-size: 18px;
+        }
+      }
+    }
+    details.top-title {
+      font-size: 20px;
+      font-family: "Gentium Book Basic", Georgia, serif;
+      cursor: pointer;
+      .contents {
+        position: relative;
+      }
+
+    }
+    @media(max-width: 700px) {
+      display: block;
+    }
+  }
+
   button {
     color: var(--text-color);
     border: none;
@@ -91,9 +126,6 @@ h5 {
         }
         color: var(--text-color);
         border-radius: 5px;
-      }
-      &:hover {
-        //margin-top: 1rem;
       }
       details {
         ::marker {

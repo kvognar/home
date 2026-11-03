@@ -1,5 +1,5 @@
 .nav-2
-  ul
+  ul.nav-large
     li = link_to 'Good morning', root_url
     li.nav-dropdown
       .dropdown-header
@@ -52,3 +52,61 @@
       = image_tag('under-construction/ArArea51Portal7671construction-an.gif', title: "Don't mind the mess!")
     li
       = image_tag('under-construction/yoyosemite3827construction.gif', title: "Polish is overrated.")
+
+  .nav-small
+    details.top-title
+      summary Good morning
+      ul
+        li
+          = link_to 'Home', root_url
+        li.nav-dropdown
+          .dropdown-header
+            = link_to 'A photo a day', days_url
+            details name='nav'
+              summary
+          .contents
+            div = link_to 'Today', days_url
+            div = link_to 'People', people_url
+            div = link_to 'Featured Tags', tags_url
+            div = link_to 'Tag Search', your_song_url
+            div = link_to 'Day by Day', day_by_day_url, data: { confirm: 'This page will be slow! I recommend a wifi connection.' }
+            div = link_to 'Susurrus', susurrus_url
+            div = link_to 'On This Day', on_this_day_url
+            div = link_to 'Favorites', favorite_days_path
+
+        li.nav-dropdown
+          .dropdown-header
+            = link_to 'Medialog', media_works_url
+            details name='nav'
+              summary
+          .contents
+            - year = Time.now.month < 11 ? Time.now.year - 1 : Time.now.year
+            div = link_to 'Music', music_media_works_path
+            div = link_to 'Year Wrap', year_wrap_path(year: year)
+            div = link_to 'Year in Review', year_in_review_path(year: year)
+            div = link_to 'What is this?', about_media_works_path
+
+        li
+          = link_to 'Games', code_games_path
+        li
+          = link_to 'Links', links_path
+        li
+          = link_to 'Contact', contact_path
+        - if controller_name.in?(%w[days static_pages])
+          li
+            .nav-search
+              form.search action=days_url method="get"
+                input type="text" placeholder="Search..." id="search-text" name="search_text" autocomplete='off'
+          - if signed_in?
+            li
+              div.admin-nav
+                = link_to '☂', new_day_url
+                - if Comment.unapproved.present?
+                  = link_to '◉', comments_path
+                = link_to "#{current_user.sessions.count} Ⓧ", logout_url, method: :delete, class: 'sign-out'
+        li
+          = image_tag('under-construction/TokyoFuji7118constructsonic.gif', title: "Working on some things!")
+        li
+          = image_tag('under-construction/ArArea51Portal7671construction-an.gif', title: "Don't mind the mess!")
+        li
+          = image_tag('under-construction/yoyosemite3827construction.gif', title: "Polish is overrated.")
