@@ -500,9 +500,14 @@ div.susurrus {
   margin-left: 0.5rem;
 }
 
+.medium-list {
+  display: flex;
+}
+
 .media-summary {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .media-icon {
@@ -511,7 +516,7 @@ div.susurrus {
     width: 20px;
     fill: var(--media-icon-color);
   }
-  margin: 10px;
+  margin: 0 10px;
   display: inline;
 }
 
