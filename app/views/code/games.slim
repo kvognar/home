@@ -2,6 +2,30 @@
   h1 Games
 
   .project.row
+    .project-preview
+      = link_to image_tag('games/we_have_a_problem.png'), 'https://somnule.itch.io/we-have-a-problem', target: '_blank'
+    .project-description
+      h3 We Have a PROBLEM
+      .links
+        = link_to 'Play', 'https://somnule.itch.io/we-have-a-problem', target: '_blank'
+      p
+        span.code-date
+          ' 2026 -
+        ' Our fifth GMTK jam game. The theme was "Count Down", and after some brainstorming we finally landed on the
+        ' early days of the US space program. I've wanted to do a microgame collection for a long time—it gives you so
+        ' many  opportunities to throw ideas at the wall and goof around. It's ideal material for a four-day game jam,
+        ' though we could certainly have used a little more playtesting in the process.
+      p
+        ' Lee led the art design for this one, choosing our color palette and the halftone photo scrapbook style. Ian
+        ' did some writing and art, and unfortunately not all of his work made it into the final product; I think it's
+        ' the nature of these things for lots of good work to be left on the cutting room floor unless your team is
+        ' <em>really</em> on top of things. Laurel helped manage the chaos and did some of her own graphic design. Kevin
+        ' was our second programmer, and it was great to not be the only one. Leo was in the middle of a move during
+        ' this jam but still managed to put together the 3D art, a few funny posters, and do the voice acting. I think
+        ' that voice work really lent a lot of personality to the game; it didn't feel complete until we had his intros
+        ' to every new chaotic scenario.
+
+  .project.row
     .col-md-5.project-preview
       = link_to image_tag('avery.png'), 'https://somnule.itch.io/little-trouble-in-little-heights', target: '_blank'
     .col-md-6.project-description
@@ -34,7 +58,7 @@
       .links
         = link_to 'Play', 'https://leowiggins.itch.io/tmbr', target: '_blank'
       p
-        span.code-date 2023-2024 -
+        span.code-date 2023–2024 -
         |  The first game I made with Leo. He came to me with the idea of making a game about being too tall
         |  to sit in your seat on the bus. We workshopped the idea for a long time, trying to work out what
         |  the actual game loop would be—what do you do? What's the story? At one point we thought it would
@@ -80,7 +104,7 @@
         span.divider = ' | '
         = link_to 'Github', 'https://github.com/kvognar/ghost-town', target: '_blank'
       p
-		span.code-date 2016-2023 -
+		span.code-date 2016–2023 -
 		|  In 2016, Laurel and I did a little game jam together to make a Pico-8 game that tells a story.
 		|  Our idea was a little ambitious for our ability at the time, and we started building
 		|  before really deciding what the game was going to <em>be</em>, so it didn't coalesce into
